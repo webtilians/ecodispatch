@@ -124,3 +124,28 @@ Las bases e incidentes siguen siendo sintéticos y la v0.4 todavía calcula ETA
 con distancia geodésica. El siguiente paso matemático/geoespacial será introducir
 rutas reales de carretera/pista sin volver a hacer de un servicio externo una
 dependencia crítica de la demo.
+
+
+## v0.5 — three-experiment research suite + ES/EN
+
+The public site now separates efficiency into three reproducible experiments:
+
+1. **Pre-positioning** — exact risk-weighted k-median is compared with the average
+   objective across all possible 3-base deployments.
+2. **Simultaneous crisis** — a small exact lexicographic matching oracle maximizes
+   feasible coverage first, then minimizes secondary cost, and is compared with
+   a severity-ordered nearest-resource greedy baseline.
+3. **Full operating day** — 120 sequential incidents compare greedy dispatch
+   against a risk-aware online potential policy that penalizes decisions that
+   degrade future coverage.
+
+The interface is fully bilingual (Spanish / English). The language can be chosen
+from the header and is persisted locally; `?lang=en` is suitable for sharing the
+English version directly.
+
+Stress mode deliberately searches for hard allocation/coverage cases and labels
+them as stress tests. Those results are not presented as average-case performance.
+
+The site also states explicitly that EcoDispatch is an independent prototype
+inspired by public OpenAI mathematics results and is not affiliated with or
+endorsed by OpenAI.
