@@ -39,3 +39,32 @@ and research notes.
 Research prototype. Not intended for operational emergency dispatch without
 domain validation, calibrated risk models, real travel-time data, safety
 constraints, and human oversight.
+
+
+## Visual dashboard
+
+The repository includes a static research dashboard in `web/`.
+
+When GitHub Pages is enabled with **GitHub Actions** as the source, it is designed
+to publish at:
+
+https://webtilians.github.io/ecodispatch/
+
+The dashboard shows:
+
+- current synthetic placement and dispatch geometry;
+- coverage, k-median objective and selected bases;
+- online movement versus the exact offline k-server optimum;
+- an evolution log with screenshot slots for each milestone.
+
+### Add a milestone screenshot
+
+1. Put the image in `web/assets/screenshots/`.
+2. Add the version entry to `web/data/timeline.json`.
+3. Set its `screenshot` field, for example:
+
+```json
+"screenshot": "./assets/screenshots/v0.2-wildfire-simulation.png"
+```
+
+The Pages workflow redeploys automatically after changes under `web/`.
