@@ -68,6 +68,7 @@ test('v1.1 boots, translates, runs exploratory and isolated holdout workers', as
   expect(realHoldoutResult.protocol.seed).toBe('ci-real-routing-holdout-browser');
   await page.evaluate(result=>{
     window.ecoRealRoutingHoldout.result=result;
+    window.ecoRealRoutingHoldout.stop();
     window.ecoRealRoutingHoldout.render();
   },realHoldoutResult);
   await expect(page.locator('#rh-results')).toBeVisible();
