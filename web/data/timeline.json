@@ -1,5 +1,13 @@
 [
   {
+    "version": "v0.2",
+    "date": "7 Oct 2026",
+    "title": "Live reproducible simulator",
+    "description": "Seeded incident generation, animated resource movement and live comparison between EcoDispatch, nearest-feasible greedy and an exact finite offline optimum computed by dynamic programming.",
+    "tags": ["simulation", "dynamic programming", "benchmark", "visual"],
+    "screenshot": null
+  },
+  {
     "version": "v0.1",
     "date": "7 Oct 2026",
     "title": "Mathematical core + first visual dashboard",
