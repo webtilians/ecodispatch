@@ -1,5 +1,35 @@
 [
   {
+    "version": "v0.9.1",
+    "date": "2026-10-07",
+    "title_es": "Resultado holdout congelado + p-values estables",
+    "title_en": "Frozen holdout result + stable p-values",
+    "description_es": "Publicamos el resultado confirmatorio real sin reejecutar escenarios, guardamos el SHA-256 del JSON bruto y sustituimos los p=0 por colas normales numéricamente estables en notación científica.",
+    "description_en": "We publish the real confirmatory result without rerunning scenarios, record the raw JSON SHA-256, and replace p=0 underflow with numerically stable normal-tail p-values shown in scientific notation.",
+    "tags": [
+      "v0.9.1",
+      "frozen result",
+      "p-values",
+      "SHA-256",
+      "holdout"
+    ],
+    "tags_es": [
+      "v0.9.1",
+      "resultado congelado",
+      "p-values",
+      "SHA-256",
+      "holdout"
+    ],
+    "tags_en": [
+      "v0.9.1",
+      "frozen result",
+      "p-values",
+      "SHA-256",
+      "holdout"
+    ],
+    "screenshot": null
+  },
+  {
     "version": "v0.9",
     "date": "2026-10-07",
     "title_es": "Holdout pre-registrado y confirmación con Holm",
