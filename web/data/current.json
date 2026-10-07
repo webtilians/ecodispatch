@@ -1,5 +1,5 @@
 {
-  "version": "0.7",
+  "version": "0.8",
   "date": "2026-10-07",
   "placement": {
     "selected_bases": [
@@ -276,6 +276,18 @@
       "maximize_severity_covered",
       "maximize_incidents_served",
       "minimize_secondary_cost"
+    ],
+    "unserved_penalty_k": 10,
+    "unserved_penalty_options": [
+      5,
+      10,
+      20
+    ],
+    "bootstrap_replicates": 500,
+    "baselines": [
+      "lambda0",
+      "eta-greedy",
+      "distance-greedy"
     ]
   }
 }
