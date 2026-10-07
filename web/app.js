@@ -1,39 +1,48 @@
 const currentUrl="./data/current.json";
 const timelineUrl="./data/timeline.json";
+let timelineData=[];
 
 Promise.all([
-  fetch(currentUrl).then(r=>{if(!r.ok)throw new Error("No se pudieron cargar los datos del experimento");return r.json();}),
-  fetch(timelineUrl).then(r=>{if(!r.ok)throw new Error("No se pudo cargar el historial");return r.json();})
+  fetch(currentUrl).then(r=>{if(!r.ok)throw new Error("current.json");return r.json();}),
+  fetch(timelineUrl).then(r=>{if(!r.ok)throw new Error("timeline.json");return r.json();})
 ]).then(([data,timeline])=>{
-  renderTimeline(timeline);
-  window.ecoSimulator=window.EcoDispatchSimulator.init(data);
+  timelineData=timeline;
+  setupExperimentTabs();
+  renderTimeline();
+  window.ecoLab=window.EcoDispatchResearch.init(data);
 }).catch(error=>{
   console.error(error);
-  const map=document.getElementById("scenario-map");
-  if(map) map.innerHTML='<text x="450" y="280" text-anchor="middle" fill="#92a0aa">No se pudieron cargar los datos del simulador</text>';
+  document.querySelectorAll("svg").forEach(svg=>svg.innerHTML='<text x="50%" y="50%" text-anchor="middle" fill="#92a0aa">Data unavailable</text>');
 });
 
-function renderTimeline(items){
-  const root=document.getElementById("timeline");
+window.addEventListener("languagechange",()=>renderTimeline());
+
+function setupExperimentTabs(){
+  document.querySelectorAll(".experiment-tab").forEach(button=>{
+    button.addEventListener("click",()=>{
+      const target=button.dataset.experiment;
+      document.querySelectorAll(".experiment-tab").forEach(x=>x.classList.toggle("active",x===button));
+      document.querySelectorAll(".experiment-pane").forEach(x=>x.classList.toggle("active",x.dataset.pane===target));
+    });
+  });
+}
+
+function renderTimeline(){
+  const root=document.getElementById("timeline");if(!root)return;
   root.innerHTML="";
-  items.forEach(item=>{
-    const wrapper=document.createElement("article");
-    wrapper.className="timeline-item";
+  timelineData.forEach(item=>{
+    const lang=I18N.lang;
+    const title=item["title_"+lang]||item.title||item.title_es||item.title_en||"";
+    const description=item["description_"+lang]||item.description||item.description_es||item.description_en||"";
+    const wrapper=document.createElement("article");wrapper.className="timeline-item";
     const image=item.screenshot
-      ? `<div class="screenshot"><img src="${escapeAttr(item.screenshot)}" alt="Captura de ${escapeAttr(item.title)}"></div>`
-      : '<div class="screenshot">Captura pendiente<br>web/assets/screenshots/</div>';
+      ? `<div class="screenshot"><img src="${escapeAttr(item.screenshot)}" alt="${escapeAttr(title)}"></div>`
+      : `<div class="screenshot">${escapeHtml(I18N.t("dynamic.timelineShot"))}</div>`;
     wrapper.innerHTML=`
       <div class="timeline-meta"><strong>${escapeHtml(item.version)}</strong><span>${escapeHtml(item.date)}</span></div>
-      <div class="timeline-card">
-        <div>
-          <h3>${escapeHtml(item.title)}</h3>
-          <p>${escapeHtml(item.description)}</p>
-          <div class="timeline-tags">${item.tags.map(tag=>`<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
-        </div>
-        ${image}
-      </div>`;
+      <div class="timeline-card"><div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(description)}</p><div class="timeline-tags">${(item.tags||[]).map(tag=>`<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div></div>${image}</div>`;
     root.appendChild(wrapper);
   });
 }
-function escapeHtml(value){return String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]));}
-function escapeAttr(value){return escapeHtml(value);}
+function escapeHtml(v){return String(v).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]));}
+function escapeAttr(v){return escapeHtml(v);}
