@@ -1,5 +1,5 @@
 {
-  "version": "0.3",
+  "version": "0.4",
   "date": "2026-10-07",
   "placement": {
     "selected_bases": [
@@ -168,7 +168,10 @@
   ],
   "resources": [
     {
-      "name": "R0",
+      "name": "B-01",
+      "label": "Brigada Alfa",
+      "kind": "brigade",
+      "icon": "🚒",
       "point": [
         1,
         5
@@ -177,11 +180,14 @@
         "medical",
         "fire"
       ],
-      "speed_kmh": 75,
-      "co2_g_per_km": 210
+      "speed_kmh": 55,
+      "co2_g_per_km": 230
     },
     {
-      "name": "R1",
+      "name": "A-01",
+      "label": "Ambulancia Sierra",
+      "kind": "ambulance",
+      "icon": "🚑",
       "point": [
         1,
         5
@@ -189,11 +195,14 @@
       "capabilities": [
         "medical"
       ],
-      "speed_kmh": 70,
-      "co2_g_per_km": 170
+      "speed_kmh": 65,
+      "co2_g_per_km": 185
     },
     {
-      "name": "R2",
+      "name": "D-01",
+      "label": "Dron Cóndor",
+      "kind": "drone",
+      "icon": "🚁",
       "point": [
         5,
         5
@@ -202,11 +211,14 @@
         "fire",
         "drone"
       ],
-      "speed_kmh": 65,
-      "co2_g_per_km": 190
+      "speed_kmh": 80,
+      "co2_g_per_km": 15
     },
     {
-      "name": "R3",
+      "name": "U-01",
+      "label": "Unidad Eco",
+      "kind": "utility",
+      "icon": "🚙",
       "point": [
         7,
         8
@@ -215,12 +227,12 @@
         "medical",
         "drone"
       ],
-      "speed_kmh": 80,
-      "co2_g_per_km": 160
+      "speed_kmh": 60,
+      "co2_g_per_km": 155
     }
   ],
   "geo": {
-    "mode": "real-map-synthetic-events",
+    "mode": "real-coordinates-local-tactical-map",
     "center": [
       36.8258889,
       -4.3832417
@@ -240,6 +252,6 @@
       ],
       "source": "Junta de Andalucía"
     },
-    "disclaimer": "Synthetic bases and incidents projected over real Málaga geography. They are not operational locations."
+    "disclaimer": "Coordenadas reales de Málaga; mapa táctico esquemático. Bases e incidentes simulados."
   }
 }
