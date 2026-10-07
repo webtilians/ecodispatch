@@ -5,19 +5,23 @@ EcoDispatch is a research prototype for allocating scarce mobile resources
 using a hierarchical optimization architecture inspired by recent results in
 metric **k-median**, **maximum matching**, and **k-server**.
 
-## v0.1 architecture
+## Current architecture (v0.7)
 
 1. **Pre-positioning** — risk-weighted metric k-median chooses where resources
    should wait before incidents are known.
-2. **Dispatch** — maximum feasible coverage is optimized first; among all
-   maximum-cardinality assignments, EcoDispatch minimizes a secondary cost
-   combining severity-weighted ETA, emissions, and travel distance.
-3. **Online benchmark** — a small-instance k-server benchmark compares an online
-   policy against the exact offline optimum.
+2. **Simultaneous crisis dispatch** — EcoDispatch uses one canonical
+   lexicographic objective: **maximize total severity covered → maximize number
+   of incidents served → minimize secondary response cost**.
+3. **Sequential online dispatch** — an experimental risk-aware potential policy
+   trades immediate response cost against degradation of future risk coverage.
+4. **Benchmarking** — small exact matching/k-server oracles, Monte Carlo
+   validation, and the paired lambda ablation are used to measure behavior.
 
-The current implementation intentionally uses transparent exact algorithms on
-small instances. The modules are designed so that they can later be replaced by
-scalable implementations of the new theoretical algorithms.
+The exact small-instance algorithms are validation oracles. OpenAI results
+#125, #120 and #110 motivate the placement, matching and online layers
+respectively, but EcoDispatch's severity priority, weighted objectives and
+current online potential policy are application-level extensions and do not
+inherit those papers' guarantees.
 
 ## Run the demo
 
@@ -166,6 +170,13 @@ as cost-free. Its exact lexicographic objective is now:
 
 This prevents a lower-cost solution from looking better merely because it drops
 a more severe incident.
+
+### Canonical objective alignment
+
+The browser crisis optimizer, `src/ecodispatch/core.py`, Python tests and
+`docs/math_spec.md` use the same severity → cardinality → secondary-cost
+ordering. Historical v0.5 text describes the older experiment and should not be
+read as the current objective.
 
 ### Monte Carlo validation
 
