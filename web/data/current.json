@@ -1,5 +1,5 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "date": "2026-10-07",
   "placement": {
     "selected_bases": ["B1", "B3", "B7"],
@@ -30,26 +30,9 @@
     {"name":"D11","point":[8.2,8.5],"risk_weight":2.0}
   ],
   "resources": [
-    {"name":"R0","point":[3,1],"capabilities":["medical","fire"]},
-    {"name":"R1","point":[3,1],"capabilities":["medical"]},
-    {"name":"R2","point":[1,5],"capabilities":["fire","drone"]},
-    {"name":"R3","point":[7,8],"capabilities":["medical","drone"]}
-  ],
-  "incidents": [
-    {"name":"I0","point":[0.8,4.7],"type":"medical","severity":5.0,"deadline_min":12},
-    {"name":"I1","point":[6.0,5.2],"type":"fire","severity":4.5,"deadline_min":15},
-    {"name":"I2","point":[7.4,7.4],"type":"drone","severity":2.0,"deadline_min":12},
-    {"name":"I3","point":[5.8,0.7],"type":"medical","severity":3.5,"deadline_min":10}
-  ],
-  "dispatch": [
-    {"resource":"R0","incident":"I0","eta_min":3.44,"distance_km":4.30,"secondary_cost":17.89},
-    {"resource":"R1","incident":"I3","eta_min":2.41,"distance_km":2.82,"secondary_cost":8.83},
-    {"resource":"R2","incident":"I1","eta_min":4.62,"distance_km":5.00,"secondary_cost":21.51},
-    {"resource":"R3","incident":"I2","eta_min":0.54,"distance_km":0.72,"secondary_cost":1.18}
-  ],
-  "benchmark": {
-    "online_cost": 32.23,
-    "offline_optimum": 24.659,
-    "empirical_ratio": 1.307
-  }
+    {"name":"R0","point":[3,1],"capabilities":["medical","fire"],"speed_kmh":75,"co2_g_per_km":210},
+    {"name":"R1","point":[3,1],"capabilities":["medical"],"speed_kmh":70,"co2_g_per_km":170},
+    {"name":"R2","point":[1,5],"capabilities":["fire","drone"],"speed_kmh":65,"co2_g_per_km":190},
+    {"name":"R3","point":[7,8],"capabilities":["medical","drone"],"speed_kmh":80,"co2_g_per_km":160}
+  ]
 }
