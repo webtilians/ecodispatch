@@ -1,1 +1,41 @@
-# ecodispatch
+# EcoDispatch
+
+EcoDispatch is a research prototype for allocating scarce mobile resources
+(ambulances, wildfire brigades, drones, rescue teams, inspection crews, etc.)
+using a hierarchical optimization architecture inspired by recent results in
+metric **k-median**, **maximum matching**, and **k-server**.
+
+## v0.1 architecture
+
+1. **Pre-positioning** — risk-weighted metric k-median chooses where resources
+   should wait before incidents are known.
+2. **Dispatch** — maximum feasible coverage is optimized first; among all
+   maximum-cardinality assignments, EcoDispatch minimizes a secondary cost
+   combining severity-weighted ETA, emissions, and travel distance.
+3. **Online benchmark** — a small-instance k-server benchmark compares an online
+   policy against the exact offline optimum.
+
+The current implementation intentionally uses transparent exact algorithms on
+small instances. The modules are designed so that they can later be replaced by
+scalable implementations of the new theoretical algorithms.
+
+## Run the demo
+
+```bash
+python examples/demo.py
+```
+
+## Run tests
+
+```bash
+python -m unittest discover -s tests
+```
+
+See [`docs/math_spec.md`](docs/math_spec.md) for the mathematical formulation
+and research notes.
+
+## Status
+
+Research prototype. Not intended for operational emergency dispatch without
+domain validation, calibrated risk models, real travel-time data, safety
+constraints, and human oversight.
