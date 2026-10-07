@@ -40,6 +40,7 @@ jobs:
         run: |
           node tests/ablation.test.cjs
           node tests/holdout.test.cjs
+          node tests/real-routing.test.cjs
           python -m unittest discover -s tests
 
       - name: Set up Node for browser integration tests
