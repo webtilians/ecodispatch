@@ -135,7 +135,7 @@ def secondary_edge_cost(
     w_emissions: float = 0.0005,
     w_distance: float = 0.05,
 ) -> float:
-    """Secondary dispatch cost after maximum feasible coverage is fixed."""
+    """Secondary dispatch cost after severity coverage and cardinality are fixed."""
     harm = incident.severity * eta_min
     emissions_g = resource.co2_g_per_km * distance_km
     return (
@@ -165,13 +165,18 @@ def dispatch_lexicographic(
 ) -> DispatchResult:
     """Exact small-batch dispatcher.
 
-    Lexicographic objective:
-      1) maximize number of feasible incidents served;
-      2) among maximum-cardinality assignments, minimize secondary cost.
+    Canonical lexicographic objective (v0.6+):
+      1) maximize total incident severity covered;
+      2) among equal-severity solutions, maximize incidents served;
+      3) among ties on (1) and (2), minimize secondary response cost.
+
+    Severity is an application-level priority layered on top of feasible
+    matching. OpenAI result #120 motivates the matching layer, but does not by
+    itself provide this weighted lexicographic objective.
 
     Complexity is exponential in the number of incidents, so this is a
-    research oracle for small batches. A scalable matching/min-cost backend
-    can replace it without changing the public objective.
+    research oracle for small batches. A scalable weighted/b-matching or
+    min-cost-flow backend can replace it while preserving the public objective.
     """
     feasible: dict[tuple[int, int], tuple[float, float, float]] = {}
     for r_idx, resource in enumerate(resources):
@@ -180,12 +185,19 @@ def dispatch_lexicographic(
             if pair is not None:
                 feasible[(r_idx, i_idx)] = pair
 
+    severity_epsilon = 1e-9
+
     @lru_cache(maxsize=None)
     def solve(r_idx: int, mask: int):
         if r_idx == len(resources):
-            return 0, 0.0, ()
+            return 0.0, 0, 0.0, ()
 
-        best_count, best_cost, best_choices = solve(r_idx + 1, mask)
+        (
+            best_severity,
+            best_count,
+            best_cost,
+            best_choices,
+        ) = solve(r_idx + 1, mask)
 
         for i_idx in range(len(incidents)):
             bit = 1 << i_idx
@@ -196,21 +208,44 @@ def dispatch_lexicographic(
                 continue
 
             eta_min, distance_km, edge_cost = pair
-            count2, cost2, choices2 = solve(r_idx + 1, mask | bit)
+            severity2, count2, cost2, choices2 = solve(
+                r_idx + 1, mask | bit
+            )
             candidate = (
+                severity2 + incidents[i_idx].severity,
                 count2 + 1,
                 cost2 + edge_cost,
-                ((r_idx, i_idx, eta_min, distance_km, edge_cost),) + choices2,
+                (
+                    (r_idx, i_idx, eta_min, distance_km, edge_cost),
+                )
+                + choices2,
             )
 
-            if candidate[0] > best_count or (
-                candidate[0] == best_count and candidate[1] < best_cost
-            ):
-                best_count, best_cost, best_choices = candidate
+            candidate_severity, candidate_count, candidate_cost, _ = candidate
+            severity_better = (
+                candidate_severity > best_severity + severity_epsilon
+            )
+            severity_tied = (
+                abs(candidate_severity - best_severity) <= severity_epsilon
+            )
+            count_better = severity_tied and candidate_count > best_count
+            cost_better = (
+                severity_tied
+                and candidate_count == best_count
+                and candidate_cost < best_cost
+            )
 
-        return best_count, best_cost, best_choices
+            if severity_better or count_better or cost_better:
+                (
+                    best_severity,
+                    best_count,
+                    best_cost,
+                    best_choices,
+                ) = candidate
 
-    _, total_cost, choices = solve(0, 0)
+        return best_severity, best_count, best_cost, best_choices
+
+    _, _, total_cost, choices = solve(0, 0)
 
     served: set[int] = set()
     pairs: list[DispatchPair] = []
