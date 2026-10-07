@@ -171,3 +171,11 @@ footer{margin-top:86px;padding:27px 0 38px;border-top:1px solid var(--line);disp
 #rr-table th,#rr-table td{white-space:nowrap}
 @media(max-width:900px){.rr-facts{grid-template-columns:1fr 1fr}.rr-controls{grid-template-columns:1fr 1fr}.rr-controls button{min-width:0}}
 @media(max-width:650px){.rr-facts,.rr-controls{grid-template-columns:1fr}.rr-attribution{flex-direction:column}}
+
+/* v1.1 preregistered real-routing holdout */
+.rh-lock{grid-template-columns:1.4fr .55fr .45fr .9fr 1.15fr .85fr .7fr}
+.rh-lock strong{font-size:.75rem;overflow-wrap:anywhere}
+#rh-table th,#rh-table td{white-space:nowrap}
+@media(max-width:1100px){.rh-lock{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.rh-lock{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.rh-lock{grid-template-columns:1fr}}
