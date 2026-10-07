@@ -85,3 +85,20 @@ The current simulator is deliberately synthetic and sequential. Its assumptions
 are shown on the page so future versions can replace Euclidean distance,
 instant resource availability and single-incident arrival with real road graphs,
 service durations and simultaneous emergency batches.
+
+
+## v0.3 real geography
+
+The browser simulator now renders on a real OpenStreetMap view of Málaga /
+Montes de Málaga.
+
+- Candidate bases and demand nodes are projected onto real geographic coordinates.
+- Risk-weighted k-median is recomputed using haversine distance in kilometres.
+- Live resource movement is drawn directly on the map.
+- Las Contadoras is shown as an official geographic reference point.
+- Emergency events and candidate/selected bases remain synthetic and are
+  explicitly labelled as such.
+
+Road routing is **not** implemented yet. v0.3 uses geodesic distance and resource
+speed. The next research step is a road/track graph so ETA follows real routes
+instead of straight-line distance.
