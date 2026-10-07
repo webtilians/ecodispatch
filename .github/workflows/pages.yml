@@ -38,6 +38,7 @@ jobs:
       - name: Validate paired study, model regression, translations and syntax
         run: |
           node tests/ablation.test.cjs
+          node tests/holdout.test.cjs
           python -m unittest discover -s tests
 
       - name: Set up Node for browser integration tests
