@@ -1,5 +1,35 @@
 [
   {
+    "version": "v0.8",
+    "date": "2026-10-07",
+    "title_es": "Baselines fuertes, daño total y Pareto bootstrap",
+    "title_en": "Stronger baselines, total harm and bootstrap Pareto",
+    "description_es": "λ=0 pasa a ser la referencia principal; añadimos ETA-greedy, daño total con penalización explícita a incidentes no atendidos, IC95 bootstrap pareados, probabilidad bootstrap de no-dominancia y tests reales en Chromium con Playwright.",
+    "description_en": "λ=0 becomes the primary reference; ETA-greedy, explicit total harm for unserved incidents, paired bootstrap 95% CIs, bootstrap probability of non-dominance and real Chromium integration tests with Playwright are added.",
+    "tags": [
+      "v0.8",
+      "ETA-greedy",
+      "bootstrap",
+      "Pareto",
+      "Playwright"
+    ],
+    "screenshot": null,
+    "tags_es": [
+      "v0.8",
+      "ETA-greedy",
+      "bootstrap",
+      "Pareto",
+      "Playwright"
+    ],
+    "tags_en": [
+      "v0.8",
+      "ETA-greedy",
+      "bootstrap",
+      "Pareto",
+      "Playwright"
+    ]
+  },
+  {
     "version": "v0.7",
     "date": "2026-10-07",
     "title_es": "Ablación pareada de lambda y frente de Pareto",
