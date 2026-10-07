@@ -46,7 +46,7 @@ jobs:
 
       - name: Commit versioned routing dataset
         run: |
-          if git diff --quiet -- web/data/routing-v1.0.json; then
+          if [ -z "$(git status --porcelain -- web/data/routing-v1.0.json)" ]; then
             echo "No routing-data change"
             exit 0
           fi
