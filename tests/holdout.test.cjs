@@ -13,6 +13,11 @@ assert.equal(H.protocol.preregCommit,'017cda8cf011a89794d987ad65658249df60b2f9')
 const prereg=fs.readFileSync('docs/holdout-v0.9-preregistered.md','utf8');
 for(const literal of ['ecodispatch-holdout-09','1000','0.2, 0.35, 0.5, 1','K = 10','Holm'])assert.ok(prereg.includes(literal),literal);
 
+// Stable far-tail p-values must remain finite and non-zero.
+const tiny=H.twoSidedNormalP(-82.64920494554723,310.1901866949698,1000);
+assert.ok(tiny>0&&tiny<1e-16);
+assert.ok(Math.abs(tiny-3.5832461760302455e-17)/3.5832461760302455e-17<1e-5);
+
 // Holm step-down monotonic adjusted p-values.
 const holm=H.holm([
   {id:'a',rawP:.001},{id:'b',rawP:.01},{id:'c',rawP:.03},{id:'d',rawP:.2}
@@ -40,7 +45,7 @@ for(const p of analysis.primary){
   assert.equal(p.pass,true);
 }
 const result=H.finish(data,rows,'ci-holdout-unit');
-assert.equal(result.version,'0.9');
+assert.equal(result.version,'0.9.1');
 assert.equal(result.protocol.seed,'ci-holdout-unit');
 assert.equal(result.preregistration.frozenBeforeResults,true);
 assert.ok(H.csv(result).includes('"primary"'));
@@ -56,10 +61,18 @@ const v={severityDelay:100,totalHarm:200};
 assert.equal(H.harmAtK(v,5),150);
 assert.equal(H.harmAtK(v,20),300);
 
+// Frozen official result matches the user-exported canonical summary.
+const frozen=JSON.parse(fs.readFileSync('web/data/holdout-v0.9.1-frozen.json','utf8'));
+assert.equal(frozen.sourceArtifact.sha256,'38b912b0941e4ab8edb9c9da9c7e12d4da4d4c0f3f8b4d82fe911573b3132985');
+assert.equal(frozen.sourceArtifact.bytes,2868071);
+assert.equal(frozen.analysis.confirmed,true);
+assert.deepEqual(frozen.analysis.passingLambdas,[.2,.35,.5,1]);
+assert.ok(frozen.analysis.primary.every(x=>x.rawP>0&&x.holmP>0&&x.pass));
+
 // Dynamic holdout translations exist in both languages.
 const i18n=fs.readFileSync('web/i18n.js','utf8');
 const translations=vm.runInNewContext(i18n.slice(i18n.indexOf('const D=')+8,i18n.indexOf('  const requested')).replace(/;\s*$/,'').replace(/^/, '(')+')');
-const dynamic=['ho.ready','ho.complete','ho.error','ho.confirmed','ho.failed','ho.confirmedCopy','ho.failedCopy','ho.pass','ho.fail'];
+const dynamic=['ho.ready','ho.frozenLoaded','ho.complete','ho.error','ho.confirmed','ho.failed','ho.confirmedCopy','ho.failedCopy','ho.pass','ho.fail'];
 for(const key of dynamic)for(const lang of ['es','en'])assert.ok(translations[lang][key],lang+' '+key);
 
-console.log('PASS: v0.9 preregistration, Holm correction, confirmation rule, sensitivity, isolated CI seed and translations');
+console.log('PASS: v0.9.1 stable p-values, frozen result, preregistration, Holm correction, confirmation rule, sensitivity, isolated CI seed and translations');
