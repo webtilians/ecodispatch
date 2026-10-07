@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "date": "2026-10-07",
+  "version": "1.1",
+  "date": "2026-10-08",
   "placement": {
     "selected_bases": [
       "B3",
@@ -344,6 +344,36 @@
         "drone": 30
       },
       "status": "exploratory_real_routing_not_real_risk"
+    },
+    "real_routing_holdout": {
+      "status": "preregistered_unrun",
+      "prereg_commit": "691a85c96afa497fc8c2f42386d1d12c00a4ff5a",
+      "seed": "ecodispatch-real-routing-holdout-11",
+      "n": 1000,
+      "harm_k": 10,
+      "bootstrap_replicates": 500,
+      "primary_lambdas": [
+        0.2,
+        0.35,
+        0.5,
+        1
+      ],
+      "reference_lambda": 0,
+      "alpha": 0.05,
+      "multiplicity": "Holm",
+      "routing_dataset": "malaga-real-routing-v1",
+      "routing_blob_sha": "4fbfaf903988f896fd3c6e49099141a6dd810c75",
+      "max_snap_m": 500,
+      "selected_bases": [
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "excluded_demand": [
+        "D5",
+        "D8"
+      ],
+      "historical_exploratory_seed_excluded": "ecodispatch-real-routing-10"
     }
   }
 }
