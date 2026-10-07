@@ -62,12 +62,13 @@
         const events=generateCrisisBatch(this.data,this.geoDemand,this.data.research?.crisis_incidents||6,rng);
         const greedy=greedyBatch(resources,events);
         const eco=optimalBatch(resources,events);
+        const severityGap=eco.severityCovered-greedy.severityCovered;
         const coverageGap=eco.served-greedy.served;
-        const costGain=eco.served===greedy.served&&greedy.cost>0?(1-eco.cost/greedy.cost)*100:0;
-        const score=coverageGap*100+costGain;
-        const candidate={events,greedy,eco,attempt,coverageGap,costGain,score};
+        const costGain=Math.abs(severityGap)<1e-9&&eco.served===greedy.served&&greedy.cost>0?(1-eco.cost/greedy.cost)*100:0;
+        const score=severityGap*100+coverageGap*20+costGain;
+        const candidate={events,greedy,eco,attempt,severityGap,coverageGap,costGain,score};
         if(!best||candidate.score>best.score)best=candidate;
-        if(profile==="stress"&&(coverageGap>=1||costGain>=20)){best=candidate;break;}
+        if(profile==="stress"&&(severityGap>=1||coverageGap>=1||costGain>=20)){best=candidate;break;}
       }
       return best;
     }
@@ -119,9 +120,11 @@
       document.getElementById("crisis-delta").textContent=r.coverageGap>0?"+"+r.coverageGap:I18N.t("dynamic.sameCoverage");
       document.getElementById("crisis-greedy-cost").textContent=r.greedy.cost.toFixed(1);
       document.getElementById("crisis-eco-cost").textContent=r.eco.cost.toFixed(1);
-      document.getElementById("crisis-story").textContent=r.coverageGap>0
-        ? I18N.t("dynamic.crisisStoryMore",{eco:r.eco.served,total:r.events.length,greedy:r.greedy.served})
-        : I18N.t("dynamic.crisisStoryCost",{served:r.eco.served,pct:Math.max(0,r.costGain).toFixed(1)});
+      document.getElementById("crisis-story").textContent=r.severityGap>1e-9
+        ? I18N.t("dynamic.crisisStorySeverity",{delta:r.severityGap.toFixed(1),eco:r.eco.severityCovered.toFixed(1),greedy:r.greedy.severityCovered.toFixed(1)})
+        : r.coverageGap>0
+          ? I18N.t("dynamic.crisisStoryMore",{eco:r.eco.served,total:r.events.length,greedy:r.greedy.served})
+          : I18N.t("dynamic.crisisStoryCost",{served:r.eco.served,pct:Math.max(0,r.costGain).toFixed(1)});
       drawCrisisMap(document.getElementById("crisis-map"),this.data,this.geoDemand,this.geoCandidates,this.makeResources(this.results.placement.selected),r);
       this.renderAssignments(r);
     }
@@ -237,20 +240,21 @@
   function optimalBatch(resources,events){
     const memo=new Map();
     function solve(ri,mask){
-      if(ri===resources.length)return{served:0,cost:0,assignments:[]};
+      if(ri===resources.length)return{severityCovered:0,served:0,cost:0,assignments:[]};
       const key=ri+"|"+mask;if(memo.has(key))return memo.get(key);
       let best=solve(ri+1,mask);
-      best={served:best.served,cost:best.cost,assignments:best.assignments.slice()};
+      best={severityCovered:best.severityCovered,served:best.served,cost:best.cost,assignments:best.assignments.slice()};
       for(let i=0;i<events.length;i++){
         if(mask&(1<<i))continue;
         const ev=evaluate(resources[ri],resources[ri].point,events[i]);if(!ev)continue;
         const fut=solve(ri+1,mask|(1<<i));
         const cand={
+          severityCovered:fut.severityCovered+events[i].severity,
           served:fut.served+1,
           cost:fut.cost+ev.cost,
           assignments:[{resourceIndex:ri,resource:resources[ri],incidentIndex:i,event:events[i],...ev},...fut.assignments]
         };
-        if(cand.served>best.served||(cand.served===best.served&&cand.cost<best.cost))best=cand;
+        if(isBetterCrisis(cand,best))best=cand;
       }
       memo.set(key,best);return best;
     }
@@ -260,10 +264,19 @@
   function summarizeAssignments(assignments){
     return{
       assignments,
+      severityCovered:assignments.reduce((s,x)=>s+x.event.severity,0),
       served:assignments.length,
       cost:assignments.reduce((s,x)=>s+x.cost,0),
       meanEta:assignments.length?assignments.reduce((s,x)=>s+x.eta,0)/assignments.length:0
     };
+  }
+
+  function isBetterCrisis(a,b){
+    const eps=1e-9;
+    if(a.severityCovered>b.severityCovered+eps)return true;
+    if(a.severityCovered<b.severityCovered-eps)return false;
+    if(a.served!==b.served)return a.served>b.served;
+    return a.cost<b.cost-eps;
   }
 
   function simulateDay(demand,resources,events,policy,lambda){
@@ -358,5 +371,190 @@
   function textNode(x,y,text,cls){const n=el("text",{x,y,class:cls});n.textContent=text;return n;}
   function escapeHtml(v){return String(v).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]));}
 
+  class MonteCarloValidation{
+    constructor(data){
+      this.data=data;
+      this.seedInput=document.getElementById("mc-seed");
+      this.samplesInput=document.getElementById("mc-samples");
+      this.runButton=document.getElementById("mc-run");
+      this.jsonButton=document.getElementById("mc-export-json");
+      this.csvButton=document.getElementById("mc-export-csv");
+      this.geoCandidates=data.candidates.map(x=>({...x,geo:projectPoint(data,x.point)}));
+      this.geoDemand=data.demand.map(x=>({...x,geo:projectPoint(data,x.point)}));
+      const combos=combinations(this.geoCandidates,data.research?.placement_k||3)
+        .map(set=>({set,objective:placementObjective(this.geoDemand,set)}))
+        .sort((a,b)=>a.objective-b.objective);
+      const selected=combos[0].set.map(x=>x.name);
+      const byName=Object.fromEntries(this.geoCandidates.map(x=>[x.name,x.geo]));
+      const starts=[byName[selected[0]],byName[selected[0]],byName[selected[1]],byName[selected[2]]];
+      this.resources=data.resources.map((r,i)=>({...r,point:[...starts[i]]}));
+      this.result=null;
+      this.running=false;
+      this.runButton.addEventListener("click",()=>this.run());
+      this.jsonButton.addEventListener("click",()=>this.exportJSON());
+      this.csvButton.addEventListener("click",()=>this.exportCSV());
+      window.addEventListener("languagechange",()=>this.render());
+    }
+
+    async run(){
+      if(this.running)return;
+      this.running=true;
+      this.runButton.disabled=true;
+      this.jsonButton.disabled=true;
+      this.csvButton.disabled=true;
+      const n=Number(this.samplesInput.value)||500;
+      const seed=this.seedInput.value.trim()||"ecodispatch-mc-06";
+      const rows=[];
+      this.setProgress(0,n);
+
+      for(let i=0;i<n;i++){
+        const crisisRng=mulberry32(hashString(seed+"|normal|crisis|"+i));
+        const crisisEvents=generateCrisisBatch(this.data,this.geoDemand,this.data.research?.crisis_incidents||6,crisisRng);
+        const cg=greedyBatch(this.resources,crisisEvents);
+        const ce=optimalBatch(this.resources,crisisEvents);
+
+        const dayRng=mulberry32(hashString(seed+"|normal|day|"+i));
+        const dayEvents=generateDay(this.data,this.geoDemand,this.data.research?.day_incidents||120,dayRng);
+        const dg=simulateDay(this.geoDemand,this.resources,dayEvents,"greedy",this.data.research?.online_lambda||.35);
+        const de=simulateDay(this.geoDemand,this.resources,dayEvents,"eco",this.data.research?.online_lambda||.35);
+
+        rows.push({
+          index:i,
+          crisisSeverityDiff:ce.severityCovered-cg.severityCovered,
+          crisisCoverageDiff:ce.served-cg.served,
+          crisisEcoSeverity:ce.severityCovered,
+          crisisGreedySeverity:cg.severityCovered,
+          crisisEcoServed:ce.served,
+          crisisGreedyServed:cg.served,
+          dayCoverageDiff:de.served-dg.served,
+          dayEtaDiff:de.meanEta-dg.meanEta,
+          dayP95Diff:de.p95Eta-dg.p95Eta,
+          dayDistanceDiff:de.distance-dg.distance,
+          dayEcoServed:de.served,
+          dayGreedyServed:dg.served
+        });
+
+        if(i%10===0||i===n-1){
+          this.setProgress(i+1,n);
+          await new Promise(resolve=>setTimeout(resolve,0));
+        }
+      }
+
+      this.result={version:"0.6",seed,n,generatedAt:new Date().toISOString(),rows,summary:this.summarize(rows)};
+      this.running=false;
+      this.runButton.disabled=false;
+      this.jsonButton.disabled=false;
+      this.csvButton.disabled=false;
+      this.render();
+    }
+
+    summarize(rows){
+      const field=name=>rows.map(r=>r[name]);
+      return{
+        crisisSeverity:describe(field("crisisSeverityDiff")),
+        crisisCoverage:describe(field("crisisCoverageDiff")),
+        crisisSeverityWinRate:rows.filter(r=>r.crisisSeverityDiff>1e-9).length/rows.length,
+        dayCoverage:describe(field("dayCoverageDiff")),
+        dayEta:describe(field("dayEtaDiff")),
+        dayP95:describe(field("dayP95Diff")),
+        dayDistance:describe(field("dayDistanceDiff")),
+        dayCoverageWinRate:rows.filter(r=>r.dayCoverageDiff>0).length/rows.length,
+        dayCoverageLoseRate:rows.filter(r=>r.dayCoverageDiff<0).length/rows.length
+      };
+    }
+
+    setProgress(done,total){
+      const pct=total?100*done/total:0;
+      document.getElementById("mc-progress-bar").style.width=pct.toFixed(1)+"%";
+      document.getElementById("mc-progress-text").textContent=done===0?I18N.t("mc.ready"):I18N.t("mc.progress",{done,total});
+    }
+
+    render(){
+      if(!this.result)return;
+      const s=this.result.summary;
+      setStat("mc-crisis-severity",signed(s.crisisSeverity.mean,2));
+      setStat("mc-crisis-severity-ci",ciText(s.crisisSeverity));
+      setStat("mc-crisis-cover",signed(s.crisisCoverage.mean,3));
+      setStat("mc-crisis-cover-ci",ciText(s.crisisCoverage));
+      setStat("mc-crisis-win",(100*s.crisisSeverityWinRate).toFixed(1)+"%");
+      setStat("mc-crisis-quantiles",quantileText(s.crisisSeverity));
+      drawHistogram(document.getElementById("mc-crisis-hist"),this.result.rows.map(r=>r.crisisSeverityDiff),0);
+
+      setStat("mc-day-cover",signed(s.dayCoverage.mean,3));
+      setStat("mc-day-cover-ci",ciText(s.dayCoverage));
+      setStat("mc-day-eta",signed(s.dayEta.mean,3)+" min");
+      setStat("mc-day-eta-ci",ciText(s.dayEta," min"));
+      setStat("mc-day-p95",signed(s.dayP95.mean,3)+" min");
+      setStat("mc-day-p95-ci",ciText(s.dayP95," min"));
+      setStat("mc-day-distance",signed(s.dayDistance.mean,1)+" km");
+      setStat("mc-day-distance-ci",ciText(s.dayDistance," km"));
+      setStat("mc-day-win",(100*s.dayCoverageWinRate).toFixed(1)+"%");
+      setStat("mc-day-lose",(100*s.dayCoverageLoseRate).toFixed(1)+"%");
+      setStat("mc-day-quantiles",quantileText(s.dayCoverage));
+      drawHistogram(document.getElementById("mc-day-hist"),this.result.rows.map(r=>r.dayCoverageDiff),0);
+      document.getElementById("mc-progress-text").textContent=I18N.t("mc.complete",{n:this.result.n});
+    }
+
+    exportJSON(){
+      if(!this.result)return;
+      downloadBlob("ecodispatch-v0.6-"+this.result.seed+".json",JSON.stringify(this.result,null,2),"application/json");
+    }
+
+    exportCSV(){
+      if(!this.result)return;
+      const keys=Object.keys(this.result.rows[0]||{});
+      const lines=[keys.join(","),...this.result.rows.map(r=>keys.map(k=>r[k]).join(","))];
+      downloadBlob("ecodispatch-v0.6-"+this.result.seed+".csv",lines.join("\n"),"text/csv");
+    }
+  }
+
+  function describe(values){
+    const sorted=values.slice().sort((a,b)=>a-b);
+    const n=sorted.length;
+    const mean=n?sorted.reduce((a,b)=>a+b,0)/n:0;
+    const variance=n>1?sorted.reduce((s,x)=>s+(x-mean)**2,0)/(n-1):0;
+    const sd=Math.sqrt(variance);
+    const half=1.96*sd/Math.sqrt(Math.max(n,1));
+    return{n,mean,sd,ciLow:mean-half,ciHigh:mean+half,p5:quantile(sorted,.05),median:quantile(sorted,.5),p95:quantile(sorted,.95)};
+  }
+
+  function quantile(sorted,p){
+    if(!sorted.length)return 0;
+    const pos=(sorted.length-1)*p;
+    const lo=Math.floor(pos),hi=Math.ceil(pos);
+    if(lo===hi)return sorted[lo];
+    return sorted[lo]+(sorted[hi]-sorted[lo])*(pos-lo);
+  }
+
+  function signed(v,digits){return(v>0?"+":"")+v.toFixed(digits);}
+  function ciText(s,suffix=""){return"95% CI ["+signed(s.ciLow,2)+", "+signed(s.ciHigh,2)+"]"+suffix;}
+  function quantileText(s){return s.p5.toFixed(1)+" / "+s.median.toFixed(1)+" / "+s.p95.toFixed(1);}
+  function setStat(id,text){const el=document.getElementById(id);if(el)el.textContent=text;}
+
+  function drawHistogram(root,values,zero){
+    if(!root||!values.length)return;
+    const min=Math.min(...values,zero),max=Math.max(...values,zero);
+    const bins=17,span=max-min||1,counts=Array(bins).fill(0);
+    values.forEach(v=>{let i=Math.floor((v-min)/span*bins);if(i>=bins)i=bins-1;if(i<0)i=0;counts[i]++;});
+    const top=Math.max(...counts,1);
+    root.innerHTML="";
+    counts.forEach((c,i)=>{
+      const bar=document.createElement("i");
+      const center=min+(i+.5)*span/bins;
+      bar.style.height=(100*c/top)+"%";
+      bar.className=center<zero?"hist-neg":center>zero?"hist-pos":"hist-zero";
+      bar.title=center.toFixed(2)+" · n="+c;
+      root.appendChild(bar);
+    });
+  }
+
+  function downloadBlob(name,text,type){
+    const blob=new Blob([text],{type});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+
   window.EcoDispatchResearch={init:data=>new ResearchSuite(data)};
+  window.EcoDispatchMonteCarlo={init:data=>new MonteCarloValidation(data)};
 })();
