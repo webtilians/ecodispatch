@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EcoDispatch research dashboard — visual experiments in risk-aware resource placement and dispatch.">
+  <title>EcoDispatch — Research Dashboard</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="EcoDispatch home">
+      <span class="brand-mark">ED</span>
+      <span>
+        <strong>EcoDispatch</strong>
+        <small>Research Lab</small>
+      </span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#experiment">Experiment</a>
+      <a href="#metrics">Metrics</a>
+      <a href="#evolution">Evolution</a>
+      <a href="https://github.com/webtilians/ecodispatch">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">OPEN RESEARCH · v0.1</p>
+        <h1>Allocating resources <span>before</span> the emergency happens.</h1>
+        <p class="lede">
+          EcoDispatch combines risk-weighted k-median, feasible matching and
+          online k-server benchmarks to study how mobile resources can be
+          positioned and dispatched more efficiently.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#experiment">View current experiment</a>
+          <a class="button" href="#evolution">See evolution</a>
+        </div>
+      </div>
+      <div class="hero-system" aria-label="Optimization pipeline">
+        <div class="pipeline-node">
+          <span>01</span><strong>Risk model</strong><small>Where can harm occur?</small>
+        </div>
+        <div class="pipeline-arrow">↓</div>
+        <div class="pipeline-node">
+          <span>02</span><strong>Pre-position</strong><small>Weighted k-median</small>
+        </div>
+        <div class="pipeline-arrow">↓</div>
+        <div class="pipeline-node">
+          <span>03</span><strong>Dispatch</strong><small>Coverage first, cost second</small>
+        </div>
+        <div class="pipeline-arrow">↓</div>
+        <div class="pipeline-node">
+          <span>04</span><strong>Benchmark</strong><small>Online vs offline optimum</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="metrics" class="metric-grid" aria-label="Current metrics">
+      <article class="metric"><span>Coverage</span><strong id="metric-coverage">—</strong><small>incidents served</small></article>
+      <article class="metric"><span>Online / optimum</span><strong id="metric-ratio">—</strong><small>empirical movement ratio</small></article>
+      <article class="metric"><span>k-median objective</span><strong id="metric-kmedian">—</strong><small>risk-weighted distance</small></article>
+      <article class="metric"><span>Selected bases</span><strong id="metric-bases">—</strong><small>preventive locations</small></article>
+    </section>
+
+    <section id="experiment" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">CURRENT SYNTHETIC EXPERIMENT</p>
+          <h2>What the optimizer is doing</h2>
+        </div>
+        <p>
+          Larger grey circles represent higher risk demand. Selected bases are
+          highlighted. Dispatch lines connect available resources to incidents.
+        </p>
+      </div>
+
+      <div class="experiment-grid">
+        <article class="panel map-panel">
+          <div class="panel-head">
+            <div>
+              <span class="panel-kicker">Scenario map</span>
+              <strong>Placement + dispatch</strong>
+            </div>
+            <div class="legend" aria-label="Map legend">
+              <span><i class="dot demand"></i>Risk</span>
+              <span><i class="dot base"></i>Candidate</span>
+              <span><i class="dot selected"></i>Selected</span>
+              <span><i class="dot incident"></i>Incident</span>
+            </div>
+          </div>
+          <svg id="scenario-map" viewBox="0 0 820 560" role="img" aria-label="EcoDispatch synthetic scenario"></svg>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <span class="panel-kicker">Assignments</span>
+              <strong>Current dispatch</strong>
+            </div>
+          </div>
+          <div id="dispatch-list" class="dispatch-list" aria-live="polite"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">BENCHMARK</p>
+          <h2>Online movement vs knowing the future</h2>
+        </div>
+        <p>
+          The offline optimum sees the entire request sequence in advance.
+          EcoDispatch uses it only as a research baseline.
+        </p>
+      </div>
+      <article class="panel benchmark-panel">
+        <div class="bar-row">
+          <div class="bar-label"><span>Online baseline</span><strong id="online-value">—</strong></div>
+          <div class="bar-track"><div id="online-bar" class="bar online"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Offline optimum</span><strong id="offline-value">—</strong></div>
+          <div class="bar-track"><div id="offline-bar" class="bar offline"></div></div>
+        </div>
+        <p id="benchmark-copy" class="benchmark-copy"></p>
+      </article>
+    </section>
+
+    <section id="evolution" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">BUILD IN PUBLIC</p>
+          <h2>Evolution log</h2>
+        </div>
+        <p>
+          Each milestone can include metrics, notes and a screenshot. This is
+          the visual history of how the research changes over time.
+        </p>
+      </div>
+      <div id="timeline" class="timeline"></div>
+    </section>
+
+    <section class="section">
+      <article class="panel methodology">
+        <div>
+          <p class="eyebrow">WHY THIS EXISTS</p>
+          <h2>From theorem to measurable experiment.</h2>
+        </div>
+        <p>
+          The goal is not to claim that a new theorem instantly solves emergency
+          response. The goal is to create a reproducible test bed where each
+          mathematical idea can be implemented, compared against baselines and
+          kept only when it produces a measurable improvement.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <span>EcoDispatch · open research prototype</span>
+    <a href="https://github.com/webtilians/ecodispatch">Source code</a>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
