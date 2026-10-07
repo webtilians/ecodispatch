@@ -1,571 +1,362 @@
-(()=>{
+(()=> {
   const NS="http://www.w3.org/2000/svg";
-  const LABELS={eco:"EcoDispatch",greedy:"Greedy",offline:"Óptimo offline"};
   const TYPE_INFO={
-    medical:{label:"Asistencia médica",icon:"🩺"},
-    fire:{label:"Incendio",icon:"🔥"},
-    drone:{label:"Reconocimiento",icon:"🔭"}
+    medical:{icon:"🩺",es:"Médica",en:"Medical"},
+    fire:{icon:"🔥",es:"Incendio",en:"Fire"},
+    drone:{icon:"🔭",es:"Reconocimiento",en:"Recon"}
   };
+  const TYPE_PROBS={medical:.35,fire:.4,drone:.25};
 
-  class LiveSimulator{
+  class ResearchSuite{
     constructor(data){
       this.data=data;
-      this.timer=null;
-      this.view="eco";
-      this.seedInput=document.getElementById("sim-seed");
-      this.countInput=document.getElementById("sim-count");
-      this.speedInput=document.getElementById("sim-speed");
-      this.svg=document.getElementById("scenario-map");
-      this.events=[];
-      this.cursor=0;
-      this.offlinePlan=[];
-      this.strategies={};
-      this.lastDecisions={eco:null,greedy:null,offline:null};
-      this.lastEcoAnalysis=null;
-
+      this.seedInput=document.getElementById("research-seed");
+      this.profileInput=document.getElementById("research-profile");
       this.geoCandidates=data.candidates.map(x=>({...x,geo:projectPoint(data,x.point)}));
       this.geoDemand=data.demand.map(x=>({...x,geo:projectPoint(data,x.point)}));
-
-      const placement=computePlacement(this.geoDemand,this.geoCandidates,3);
-      this.data.placement={
-        selected_bases:placement.selected,
-        objective:placement.objective,
-        metric:"riesgo × distancia geodésica"
-      };
-
-      const baseByName=Object.fromEntries(this.geoCandidates.map(x=>[x.name,x.geo]));
-      const s=placement.selected;
-      const starts=[baseByName[s[0]],baseByName[s[0]],baseByName[s[1]],baseByName[s[2]]];
-      this.resources=data.resources.map((r,i)=>({...r,point:[...starts[i]]}));
-
-      this.bind();
-      this.generate();
+      this.results=null;
+      document.getElementById("run-suite").addEventListener("click",()=>this.run());
+      window.addEventListener("languagechange",()=>this.renderAll());
+      this.run();
     }
 
-    bind(){
-      document.getElementById("sim-generate").addEventListener("click",()=>this.generate());
-      document.getElementById("sim-play").addEventListener("click",()=>this.toggleRun());
-      document.getElementById("sim-step").addEventListener("click",()=>this.step());
-      document.getElementById("sim-reset").addEventListener("click",()=>this.reset());
-
-      document.querySelectorAll(".strategy-tab").forEach(button=>{
-        button.addEventListener("click",()=>{
-          this.view=button.dataset.view;
-          document.querySelectorAll(".strategy-tab").forEach(x=>x.classList.toggle("active",x===button));
-          document.getElementById("map-strategy-title").textContent="Vista "+LABELS[this.view];
-          this.renderMap();
-        });
-      });
-
-      this.speedInput.addEventListener("change",()=>{
-        if(this.timer){this.stopTimer();this.startTimer();}
-      });
-    }
-
-    generate(){
-      this.stopTimer();
-      const count=clampInt(Number(this.countInput.value),4,10,8);
-      this.countInput.value=String(count);
-      const seed=this.seedInput.value.trim()||"malaga-v04";
-      const random=mulberry32(hashString(seed));
-      this.events=generateIncidents(this.data,this.geoDemand,count,random);
-      this.offlinePlan=exactOfflinePlan(this.resources,this.events);
-      this.resetState();
+    run(){
+      const seed=this.seedInput.value.trim()||"open-research-05";
+      const profile=this.profileInput.value;
+      const placement=this.runPlacement();
+      const resources=this.makeResources(placement.selected);
+      const crisis=this.runCrisis(seed,profile,resources);
+      const day=this.runDay(seed,profile,resources);
+      this.results={seed,profile,placement,crisis,day};
       this.renderAll();
     }
 
-    reset(){
-      this.stopTimer();
-      this.resetState();
-      this.renderAll();
-    }
-
-    resetState(){
-      this.cursor=0;
-      this.strategies={
-        eco:createStrategyState(this.resources),
-        greedy:createStrategyState(this.resources),
-        offline:createStrategyState(this.resources)
+    runPlacement(){
+      const combos=combinations(this.geoCandidates,this.data.research?.placement_k||3);
+      const scored=combos.map(set=>({set,objective:placementObjective(this.geoDemand,set)}));
+      scored.sort((a,b)=>a.objective-b.objective);
+      const best=scored[0];
+      const avg=scored.reduce((s,x)=>s+x.objective,0)/scored.length;
+      return{
+        selected:best.set.map(x=>x.name),
+        selectedNodes:best.set,
+        objective:best.objective,
+        averageObjective:avg,
+        worstObjective:scored[scored.length-1].objective,
+        improvement:(1-best.objective/avg)*100,
+        combinations:scored.length
       };
-      this.lastDecisions={eco:null,greedy:null,offline:null};
-      this.lastEcoAnalysis=null;
-      document.getElementById("sim-play").textContent="▶ Ejecutar";
     }
 
-    toggleRun(){
-      if(this.timer){this.stopTimer();return;}
-      if(this.cursor<this.events.length)this.startTimer();
+    makeResources(selected){
+      const byName=Object.fromEntries(this.geoCandidates.map(x=>[x.name,x.geo]));
+      const starts=[byName[selected[0]],byName[selected[0]],byName[selected[1]],byName[selected[2]]];
+      return this.data.resources.map((r,i)=>({...r,point:[...starts[i]]}));
     }
 
-    startTimer(){
-      document.getElementById("sim-play").textContent="⏸ Pausa";
-      this.step();
-      if(this.cursor>=this.events.length)return;
-      const delay=clampInt(Number(this.speedInput.value),250,2500,900);
-      this.timer=setInterval(()=>this.step(),delay);
+    runCrisis(seed,profile,resources){
+      const tries=profile==="stress"?220:1;
+      let best=null;
+      for(let attempt=0;attempt<tries;attempt++){
+        const rng=mulberry32(hashString(seed+"|crisis|"+attempt));
+        const events=generateCrisisBatch(this.data,this.geoDemand,this.data.research?.crisis_incidents||6,rng);
+        const greedy=greedyBatch(resources,events);
+        const eco=optimalBatch(resources,events);
+        const coverageGap=eco.served-greedy.served;
+        const costGain=eco.served===greedy.served&&greedy.cost>0?(1-eco.cost/greedy.cost)*100:0;
+        const score=coverageGap*100+costGain;
+        const candidate={events,greedy,eco,attempt,coverageGap,costGain,score};
+        if(!best||candidate.score>best.score)best=candidate;
+        if(profile==="stress"&&(coverageGap>=1||costGain>=20)){best=candidate;break;}
+      }
+      return best;
     }
 
-    stopTimer(){
-      if(this.timer)clearInterval(this.timer);
-      this.timer=null;
-      const play=document.getElementById("sim-play");
-      if(play)play.textContent=this.cursor>=this.events.length?"✓ Finalizado":"▶ Ejecutar";
-    }
-
-    step(){
-      if(this.cursor>=this.events.length){this.stopTimer();return;}
-
-      const event=this.events[this.cursor];
-      const ecoAnalysis=chooseEcoDetailed(this.resources,this.strategies.eco.positions,event);
-      const greedyAction=chooseGreedy(this.resources,this.strategies.greedy.positions,event);
-      const offlineAction=this.offlinePlan[this.cursor];
-
-      this.lastEcoAnalysis=ecoAnalysis;
-      this.lastDecisions={
-        eco:applyAction(this.resources,this.strategies.eco,event,ecoAnalysis.action,this.cursor),
-        greedy:applyAction(this.resources,this.strategies.greedy,event,greedyAction,this.cursor),
-        offline:applyAction(this.resources,this.strategies.offline,event,offlineAction,this.cursor)
-      };
-
-      this.cursor+=1;
-      this.renderAll();
-      if(this.cursor>=this.events.length)this.stopTimer();
+    runDay(seed,profile,resources){
+      const tries=profile==="stress"?60:1;
+      let best=null;
+      for(let attempt=0;attempt<tries;attempt++){
+        const rng=mulberry32(hashString(seed+"|day|"+attempt));
+        const events=generateDay(this.data,this.geoDemand,this.data.research?.day_incidents||120,rng);
+        const greedy=simulateDay(this.geoDemand,resources,events,"greedy",this.data.research?.online_lambda||.35);
+        const eco=simulateDay(this.geoDemand,resources,events,"eco",this.data.research?.online_lambda||.35);
+        const coverageGap=eco.served-greedy.served;
+        const etaGain=greedy.meanEta>0?(1-eco.meanEta/greedy.meanEta)*100:0;
+        const harmGain=greedy.severityDelay>0?(1-eco.severityDelay/greedy.severityDelay)*100:0;
+        const score=coverageGap*100+Math.max(0,etaGain)+Math.max(0,harmGain)*.25;
+        const candidate={events,greedy,eco,attempt,coverageGap,etaGain,harmGain,score};
+        if(!best||candidate.score>best.score)best=candidate;
+        if(profile==="stress"&&(coverageGap>=2||(coverageGap>=0&&etaGain>=7))){best=candidate;break;}
+      }
+      return best;
     }
 
     renderAll(){
-      this.renderTopMetrics();
-      this.renderScene();
-      this.renderMap();
-      this.renderEvent();
-      this.renderQueue();
-      this.renderScores();
-      this.renderBenchmark();
+      if(!this.results)return;
+      const {seed,profile,placement,crisis,day}=this.results;
+      document.getElementById("summary-placement").textContent="-"+placement.improvement.toFixed(1)+"%";
+      document.getElementById("summary-crisis").textContent=(crisis.coverageGap>=0?"+":"")+crisis.coverageGap;
+      document.getElementById("summary-day").textContent=(day.coverageGap>=0?"+":"")+day.coverageGap;
+      document.getElementById("summary-seed").textContent=seed;
+
+      this.renderPlacement(placement);
+      this.renderCrisis(crisis,profile);
+      this.renderDay(day,profile);
     }
 
-    renderTopMetrics(){
-      const eco=this.strategies.eco;
-      const offline=this.strategies.offline;
-      document.getElementById("metric-coverage").textContent=`${eco.served}/${this.cursor}`;
-      const comparable=this.cursor>0&&eco.served===offline.served&&offline.cost>0;
-      document.getElementById("metric-ratio").textContent=comparable?(eco.cost/offline.cost).toFixed(3):"—";
-      document.getElementById("metric-kmedian").textContent=this.data.placement.objective.toFixed(1);
-      document.getElementById("metric-bases").textContent=this.data.placement.selected_bases.join(" · ");
+    renderPlacement(r){
+      document.getElementById("placement-improvement").textContent="-"+r.improvement.toFixed(1)+"%";
+      document.getElementById("placement-opt").textContent=r.objective.toFixed(1);
+      document.getElementById("placement-avg").textContent=r.averageObjective.toFixed(1);
+      document.getElementById("placement-bases").textContent=r.selected.join(" · ");
+      drawBaseMap(document.getElementById("placement-map"),this.data,this.geoDemand,this.geoCandidates,new Set(r.selected));
     }
 
-    renderScene(){
-      const badge=document.getElementById("scene-badge");
-      const title=document.getElementById("scene-title");
-      const copy=document.getElementById("scene-copy");
-      const bar=document.getElementById("scene-progress-bar");
-      const progress=document.getElementById("sim-progress");
-      const total=this.events.length;
-
-      bar.style.width=`${total?this.cursor/total*100:0}%`;
-      progress.textContent=`${this.cursor} / ${total}`;
-
-      badge.className="scene-badge";
-      if(this.cursor===0){
-        badge.classList.add("ready");
-        badge.textContent="PREPARADO";
-        title.textContent="Escenario generado y listo";
-        copy.textContent="Misma semilla, mismos incidentes. Pulsa «Ejecutar» para empezar.";
-      }else if(this.cursor>=total){
-        badge.classList.add("done");
-        badge.textContent="FINALIZADO";
-        title.textContent=`Simulación completada: ${total} incidentes`;
-        copy.textContent=this.summarySentence();
-      }else{
-        badge.classList.add("live");
-        badge.textContent="EN CURSO";
-        const last=this.events[this.cursor-1];
-        title.textContent=`${last.name}: ${typeInfo(last.type).label}`;
-        copy.textContent=this.decisionComparisonSentence();
-      }
+    renderCrisis(r,profile){
+      document.getElementById("crisis-stress-banner").hidden=profile!=="stress";
+      document.getElementById("crisis-greedy-cover").textContent=r.greedy.served+"/"+r.events.length;
+      document.getElementById("crisis-eco-cover").textContent=r.eco.served+"/"+r.events.length;
+      document.getElementById("crisis-delta").textContent=r.coverageGap>0?"+"+r.coverageGap:I18N.t("dynamic.sameCoverage");
+      document.getElementById("crisis-greedy-cost").textContent=r.greedy.cost.toFixed(1);
+      document.getElementById("crisis-eco-cost").textContent=r.eco.cost.toFixed(1);
+      document.getElementById("crisis-story").textContent=r.coverageGap>0
+        ? I18N.t("dynamic.crisisStoryMore",{eco:r.eco.served,total:r.events.length,greedy:r.greedy.served})
+        : I18N.t("dynamic.crisisStoryCost",{served:r.eco.served,pct:Math.max(0,r.costGain).toFixed(1)});
+      drawCrisisMap(document.getElementById("crisis-map"),this.data,this.geoDemand,this.geoCandidates,this.makeResources(this.results.placement.selected),r);
+      this.renderAssignments(r);
     }
 
-    renderMap(){
-      const svg=this.svg;
-      svg.innerHTML="";
-      const W=900,H=560,pad={l:52,r:38,t:42,b:54};
-      const bounds=this.data.geo.bounds;
-      const xy=point=>[
-        pad.l+(point[1]-bounds.west)/(bounds.east-bounds.west)*(W-pad.l-pad.r),
-        H-pad.b-(point[0]-bounds.south)/(bounds.north-bounds.south)*(H-pad.t-pad.b)
-      ];
-
-      const defs=el("defs");
-      const grad=el("linearGradient",{id:"bgGrad",x1:"0",y1:"0",x2:"0",y2:"1"});
-      grad.append(el("stop",{offset:"0%","stop-color":"#0d1715"}),el("stop",{offset:"100%","stop-color":"#0b1116"}));
-      defs.append(grad);
-      svg.append(defs);
-      svg.append(el("rect",{x:0,y:0,width:W,height:H,fill:"url(#bgGrad)"}));
-
-      for(let i=0;i<=8;i++){
-        const x=pad.l+i*(W-pad.l-pad.r)/8;
-        svg.append(el("line",{x1:x,y1:pad.t,x2:x,y2:H-pad.b,class:"map-grid"}));
-      }
-      for(let i=0;i<=6;i++){
-        const y=pad.t+i*(H-pad.t-pad.b)/6;
-        svg.append(el("line",{x1:pad.l,y1:y,x2:W-pad.r,y2:y,class:"map-grid"}));
-      }
-
-      svg.append(el("path",{d:"M80 120 C210 70 330 165 455 108 S700 55 835 135",class:"map-contour"}));
-      svg.append(el("path",{d:"M45 205 C180 150 315 245 470 175 S715 125 865 215",class:"map-contour"}));
-      svg.append(el("path",{d:"M70 315 C190 250 350 350 485 292 S710 240 850 328",class:"map-contour"}));
-      svg.append(el("rect",{x:0,y:475,width:900,height:85,class:"map-city-band"}));
-      svg.append(textNode(735,520,"Málaga / costa", "map-label"));
-      svg.append(textNode(74,87,"Montes de Málaga", "map-label"));
-
-      const zone=el("path",{d:"M115 90 C245 45 455 54 650 112 C790 155 825 310 735 410 C565 468 305 452 135 365 C55 275 42 165 115 90 Z",class:"map-zone"});
-      svg.insertBefore(zone,svg.children[2]||null);
-
-      this.geoDemand.forEach(node=>{
-        const [x,y]=xy(node.geo);
-        svg.append(el("circle",{cx:x,cy:y,r:5+node.risk_weight*2.1,class:"risk-zone"}));
-      });
-
-      const selected=new Set(this.data.placement.selected_bases);
-      this.geoCandidates.forEach(base=>{
-        const [x,y]=xy(base.geo);
-        svg.append(el("rect",{x:x-5,y:y-5,width:10,height:10,rx:2,class:selected.has(base.name)?"base-dot selected":"base-dot"}));
-        const label=textNode(x+9,y+4,base.name,selected.has(base.name)?"base-label selected":"base-label");
-        svg.append(label);
-      });
-
-      if(this.data.geo.anchor){
-        const [x,y]=xy(this.data.geo.anchor.point);
-        svg.append(el("circle",{cx:x,cy:y,r:6,class:"anchor-dot"}));
-        svg.append(textNode(x+10,y-7,"Las Contadoras","base-label selected"));
-      }
-
-      const state=this.strategies[this.view];
-      const color=strategyColor(this.view);
-      state.history.forEach((move,index)=>{
-        if(!move.resource)return;
-        const [x1,y1]=xy(move.from),[x2,y2]=xy(move.to);
-        const path=el("line",{x1,y1,x2,y2,stroke:color,class:index===state.history.length-1?"route-current":"route-history"});
-        svg.append(path);
-      });
-
-      if(this.cursor>0){
-        const incident=this.events[this.cursor-1];
-        const [x,y]=xy(incident.point);
-        svg.append(el("circle",{cx:x,cy:y,r:18,class:"incident-ring"}));
-        svg.append(el("circle",{cx:x,cy:y,r:6,fill:"#ff6f6f"}));
-        svg.append(textNode(x+13,y-16,`${typeInfo(incident.type).icon} ${incident.name}`,"incident-label"));
-      }
-      if(this.cursor<this.events.length){
-        const next=this.events[this.cursor];
-        const [x,y]=xy(next.point);
-        svg.append(el("circle",{cx:x,cy:y,r:10,class:"incident-next"}));
-        svg.append(textNode(x+12,y+4,`siguiente · ${next.name}`,"base-label"));
-      }
-
-      state.positions.forEach((point,index)=>{
-        const [x,y]=xy(point);
-        const resource=this.resources[index];
-        const g=el("g",{class:"resource-node"});
-        g.append(el("circle",{cx:x,cy:y,r:15,fill:color}));
-        const icon=textNode(x,y+1,resource.icon||"●","resource-emoji");
-        g.append(icon);
-        g.append(textNode(x+20,y-2,resource.label||resource.name,"resource-label"));
-        g.append(textNode(x+20,y+11,resource.name,"resource-sub"));
-        svg.append(g);
-      });
-
-      for(let i=0;i<=4;i++){
-        const lat=bounds.south+i*(bounds.north-bounds.south)/4;
-        const [,y]=xy([lat,bounds.west]);
-        svg.append(textNode(6,y+4,lat.toFixed(3)+"°","resource-sub"));
-      }
-      for(let i=0;i<=4;i++){
-        const lon=bounds.west+i*(bounds.east-bounds.west)/4;
-        const [x]=xy([bounds.south,lon]);
-        const t=textNode(x,H-15,Math.abs(lon).toFixed(3)+"° O","resource-sub");
-        t.setAttribute("text-anchor","middle");svg.append(t);
-      }
-    }
-
-    renderEvent(){
-      const name=document.getElementById("event-name");
-      const type=document.getElementById("event-type");
-      const icon=document.getElementById("event-icon");
-      const detail=document.getElementById("event-detail");
-      const severityFill=document.getElementById("severity-fill");
-      const severityValue=document.getElementById("severity-value");
-      const storyTitle=document.getElementById("decision-story-title");
-      const storyCopy=document.getElementById("decision-story-copy");
-
-      if(this.cursor===0){
-        name.textContent="Sin incidente activo";
-        type.textContent="—";icon.textContent="◎";detail.textContent="El escenario está preparado. Ejecuta la simulación para empezar.";
-        severityFill.style.width="0%";severityValue.textContent="—";
-        storyTitle.textContent="Todavía no hay decisión.";
-        storyCopy.textContent="Aquí aparecerá qué recurso envía EcoDispatch, su ETA y por qué fue elegido.";
-        ["eco","greedy","offline"].forEach(k=>document.getElementById(`decision-${k}`).textContent="—");
-        return;
-      }
-
-      const event=this.events[this.cursor-1];
-      const info=typeInfo(event.type);
-      name.textContent=`${event.name} · ${info.label}`;
-      type.textContent=info.label;
-      icon.textContent=info.icon;
-      severityFill.style.width=`${clamp(event.severity/5*100,0,100)}%`;
-      severityValue.textContent=event.severity.toFixed(1)+"/5";
-      detail.innerHTML=`Origen de riesgo <strong>${escapeHtml(event.source)}</strong> · límite de respuesta <strong>${event.deadline_min.toFixed(1)} min</strong>.`;
-
-      for(const key of ["eco","greedy","offline"]){
-        const d=this.lastDecisions[key];
-        document.getElementById(`decision-${key}`).textContent=d&&d.resource
-          ? `${d.icon} ${d.resource} · ${d.eta.toFixed(1)} min`
-          :"No atendido";
-      }
-
-      const eco=this.lastDecisions.eco;
-      if(!eco||!eco.resource){
-        storyTitle.textContent="EcoDispatch no encuentra un recurso factible.";
-        storyCopy.textContent=`Ningún recurso compatible llega antes del límite de ${event.deadline_min.toFixed(1)} minutos.`;
-      }else{
-        storyTitle.textContent=`${eco.icon} Envía ${eco.label} · ETA ${eco.eta.toFixed(1)} min`;
-        const feasible=this.lastEcoAnalysis?this.lastEcoAnalysis.candidates.filter(x=>x.feasible):[];
-        const greedy=this.lastDecisions.greedy;
-        let sentence=`Entre ${feasible.length} recurso${feasible.length===1?"":"s"} factible${feasible.length===1?"":"s"}, minimiza el coste secundario (gravedad × ETA + distancia + emisiones).`;
-        if(greedy&&greedy.resource&&greedy.resource!==eco.resource){
-          sentence+=` Greedy habría enviado ${greedy.label}; aquí las estrategias toman caminos distintos.`;
-        }
-        storyCopy.textContent=sentence;
-      }
-    }
-
-    renderQueue(){
-      const root=document.getElementById("event-queue");
+    renderAssignments(r){
+      const root=document.getElementById("crisis-assignments");
       root.innerHTML="";
-      document.getElementById("queue-count").textContent=`${this.events.length} eventos`;
-      this.events.forEach((event,index)=>{
-        const info=typeInfo(event.type);
-        const item=document.createElement("div");
-        item.className="queue-item";
-        if(index<this.cursor)item.classList.add("done");
-        if(index===this.cursor)item.classList.add("next");
-        item.innerHTML=`
-          <span class="queue-index">${String(index+1).padStart(2,"0")}</span>
-          <span class="queue-icon">${info.icon}</span>
-          <span><strong>${escapeHtml(event.name)} · ${escapeHtml(info.label)}</strong><small>gravedad ${event.severity.toFixed(1)} · zona ${escapeHtml(event.source)}</small></span>
-          <span class="queue-deadline">${event.deadline_min.toFixed(0)} min</span>`;
-        root.appendChild(item);
+      const gByIncident=Object.fromEntries(r.greedy.assignments.map(a=>[a.incidentIndex,a]));
+      const eByIncident=Object.fromEntries(r.eco.assignments.map(a=>[a.incidentIndex,a]));
+      r.events.forEach((event,i)=>{
+        const row=document.createElement("div");
+        row.className="assignment-row";
+        const g=gByIncident[i],e=eByIncident[i],info=typeInfo(event.type);
+        row.innerHTML=`
+          <span class="assignment-event">${info.icon} ${event.name}</span>
+          <span class="assignment-greedy">G: ${g?escapeHtml(resourceLabel(g.resource)):"—"}</span>
+          <span class="assignment-eco">E: ${e?escapeHtml(resourceLabel(e.resource)):"—"}</span>`;
+        root.appendChild(row);
       });
     }
 
-    renderScores(){
-      for(const key of ["eco","greedy","offline"]){
-        const state=this.strategies[key];
-        document.getElementById(`${key}-served`).textContent=`${state.served}/${this.cursor}`;
-        document.getElementById(`${key}-cost`).textContent=state.cost.toFixed(2);
-        document.getElementById(`${key}-distance`).textContent=state.distance.toFixed(2)+" km";
-      }
-      document.querySelectorAll(".strategy-card").forEach(x=>x.classList.remove("is-best"));
-      if(this.cursor>0){
-        const ranked=["eco","greedy","offline"].map(k=>({k,...this.strategies[k]}))
-          .sort((a,b)=>b.served-a.served||a.cost-b.cost);
-        const card=document.querySelector(`.strategy-card[data-strategy="${ranked[0].k}"]`);
-        if(card)card.classList.add("is-best");
-      }
-    }
+    renderDay(r,profile){
+      document.getElementById("day-stress-banner").hidden=profile!=="stress";
+      document.getElementById("day-cover-delta").textContent=(r.coverageGap>=0?"+":"")+r.coverageGap;
+      document.getElementById("day-eco-served").textContent=r.eco.served+"/"+r.events.length;
+      document.getElementById("day-greedy-served").textContent=r.greedy.served+"/"+r.events.length;
+      document.getElementById("day-eco-eta").textContent=I18N.t("dynamic.eta",{eta:r.eco.meanEta.toFixed(1)});
+      document.getElementById("day-greedy-eta").textContent=I18N.t("dynamic.eta",{eta:r.greedy.meanEta.toFixed(1)});
+      document.getElementById("day-story").textContent=r.coverageGap>0
+        ? I18N.t("dynamic.dayMore",{n:r.coverageGap})
+        : I18N.t("dynamic.daySame",{n:r.eco.served,pct:r.etaGain.toFixed(1)});
 
-    renderBenchmark(){
-      const s=this.strategies;
-      const max=Math.max(s.eco.cost,s.greedy.cost,s.offline.cost,1);
-      for(const key of ["eco","greedy","offline"]){
-        document.getElementById(`bar-${key}-value`).textContent=s[key].cost.toFixed(2);
-        document.getElementById(`bar-${key}`).style.width=`${s[key].cost/max*100}%`;
-      }
-
-      const headline=document.getElementById("benchmark-headline");
-      const copy=document.getElementById("benchmark-copy");
-      const vg=document.getElementById("verdict-greedy");
-      const vo=document.getElementById("verdict-offline");
-      const vc=document.getElementById("verdict-coverage");
-
-      if(this.cursor===0){
-        headline.textContent="Todavía no hay resultados.";
-        copy.textContent="Las tres políticas parten exactamente de las mismas posiciones iniciales.";
-        vg.textContent=vo.textContent=vc.textContent="—";return;
-      }
-
-      headline.textContent=this.cursor>=this.events.length?"Resultado final del escenario":"Resultado del prefijo procesado";
-      vc.textContent=`${s.eco.served}/${this.cursor} Eco · ${s.greedy.served}/${this.cursor} Greedy`;
-
-      if(s.greedy.cost>0&&s.eco.served===s.greedy.served){
-        const pct=(1-s.eco.cost/s.greedy.cost)*100;
-        vg.textContent=Math.abs(pct)<.05?"≈ igual":pct>0?`${pct.toFixed(1)}% mejor`:`${Math.abs(pct).toFixed(1)}% peor`;
-      }else vg.textContent="cobertura distinta";
-
-      if(s.offline.cost>0&&s.eco.served===s.offline.served){
-        vo.textContent=(s.eco.cost/s.offline.cost).toFixed(3)+"×";
-      }else vo.textContent="cobertura distinta";
-
-      if(s.eco.served!==s.offline.served){
-        copy.textContent="No comparamos costes como equivalentes porque la cobertura entre EcoDispatch y el óptimo es distinta.";
-      }else if(s.offline.cost>0){
-        const ratio=s.eco.cost/s.offline.cost;
-        copy.textContent=`EcoDispatch, sin conocer el futuro, está en ${ratio.toFixed(3)}× el coste del óptimo offline para los incidentes procesados.`;
-      }
-    }
-
-    summarySentence(){
-      const e=this.strategies.eco,g=this.strategies.greedy,o=this.strategies.offline;
-      if(e.served===g.served&&g.cost>0){
-        const pct=(1-e.cost/g.cost)*100;
-        return pct>=0?`EcoDispatch termina con ${pct.toFixed(1)}% menos coste que greedy en este escenario.`:`Greedy termina con ${Math.abs(pct).toFixed(1)}% menos coste que EcoDispatch en este escenario.`;
-      }
-      return `EcoDispatch atiende ${e.served} de ${this.events.length}; el óptimo offline atiende ${o.served}.`;
-    }
-
-    decisionComparisonSentence(){
-      const e=this.lastDecisions.eco,g=this.lastDecisions.greedy;
-      if(e&&g&&e.resource&&g.resource&&e.resource!==g.resource)return `EcoDispatch y greedy han elegido recursos distintos: ${e.label} frente a ${g.label}.`;
-      if(e&&e.resource)return `EcoDispatch envía ${e.label} con una ETA de ${e.eta.toFixed(1)} min.`;
-      return "EcoDispatch no ha encontrado un recurso compatible dentro del plazo.";
+      renderRaceBars("day-coverage-bars",r.eco.served,r.greedy.served,r.events.length,v=>v.toFixed(0));
+      renderRaceBars("day-eta-bars",r.eco.meanEta,r.greedy.meanEta,Math.max(r.eco.meanEta,r.greedy.meanEta),v=>v.toFixed(1)+" min",true);
+      renderRaceBars("day-p95-bars",r.eco.p95Eta,r.greedy.p95Eta,Math.max(r.eco.p95Eta,r.greedy.p95Eta),v=>v.toFixed(1)+" min",true);
+      renderRaceBars("day-distance-bars",r.eco.distance,r.greedy.distance,Math.max(r.eco.distance,r.greedy.distance),v=>v.toFixed(0)+" km",true);
     }
   }
 
-  function createStrategyState(resources){
-    return{positions:resources.map(r=>[...r.point]),served:0,unserved:0,cost:0,distance:0,severityDelay:0,history:[]};
+  function placementObjective(demand,bases){
+    return demand.reduce((sum,node)=>sum+node.risk_weight*Math.min(...bases.map(b=>haversineKm(node.geo,b.geo))),0);
   }
 
-  function computePlacement(demand,candidates,k){
-    let best={selected:[],objective:Infinity};
-    for(const subset of combinations(candidates,k)){
-      let total=0;
-      for(const node of demand){
-        let nearest=Infinity;
-        for(const base of subset)nearest=Math.min(nearest,haversineKm(node.geo,base.geo));
-        total+=node.risk_weight*nearest;
-      }
-      if(total<best.objective)best={selected:subset.map(x=>x.name),objective:total};
-    }
-    return best;
-  }
-
-  function combinations(items,k){
-    const result=[];
-    function walk(start,picked){
-      if(picked.length===k){result.push(picked.slice());return;}
-      for(let i=start;i<=items.length-(k-picked.length);i++){picked.push(items[i]);walk(i+1,picked);picked.pop();}
-    }
-    walk(0,[]);return result;
-  }
-
-  function generateIncidents(data,demand,count,random){
-    const weights=demand.map(x=>x.risk_weight),total=weights.reduce((a,b)=>a+b,0);
-    const types=["medical","fire","drone"],bounds=data.geo.bounds,events=[];
+  function generateCrisisBatch(data,demand,count,rng){
+    const pattern=["fire","fire","medical","medical","drone","fire","medical","drone"];
+    const events=[];
     for(let i=0;i<count;i++){
-      let ticket=random()*total,source=demand[0];
-      for(let j=0;j<demand.length;j++){ticket-=weights[j];if(ticket<=0){source=demand[j];break;}}
-      const type=types[Math.floor(random()*types.length)];
-      events.push({
-        name:`S${String(i+1).padStart(2,"0")}`,source:source.name,type,
-        point:[
-          clamp(source.geo[0]+(random()-.5)*.012,bounds.south,bounds.north),
-          clamp(source.geo[1]+(random()-.5)*.014,bounds.west,bounds.east)
-        ],
-        severity:2+random()*3,
-        deadline_min:6+random()*8
-      });
+      const source=weightedDemand(demand,rng);
+      const type=pattern[(i+Math.floor(rng()*pattern.length))%pattern.length];
+      events.push(makeEvent(data,source,type,rng,i,4.5,10.5));
     }
     return events;
   }
 
-  function chooseEcoDetailed(resources,positions,event){
-    const candidates=resources.map((resource,index)=>({index,resource,...evaluate(resource,positions[index],event)}));
-    const feasible=candidates.filter(x=>x.feasible).sort((a,b)=>a.cost-b.cost);
-    return{action:feasible.length?feasible[0].index:null,candidates};
+  function generateDay(data,demand,count,rng){
+    const events=[];
+    for(let i=0;i<count;i++){
+      const source=weightedDemand(demand,rng);
+      const x=rng();
+      const type=x<TYPE_PROBS.medical?"medical":x<TYPE_PROBS.medical+TYPE_PROBS.fire?"fire":"drone";
+      events.push(makeEvent(data,source,type,rng,i,6,14));
+    }
+    return events;
   }
 
-  function chooseGreedy(resources,positions,event){
-    let best=null;
-    resources.forEach((resource,index)=>{
-      const result=evaluate(resource,positions[index],event);
-      if(!result.feasible)return;
-      if(!best||result.distance<best.distance)best={index,...result};
-    });
-    return best?best.index:null;
+  function makeEvent(data,source,type,rng,i,minDeadline,maxDeadline){
+    const b=data.geo.bounds;
+    return{
+      name:"S"+String(i+1).padStart(2,"0"),source:source.name,type,
+      point:[
+        clamp(source.geo[0]+(rng()-.5)*.012,b.south,b.north),
+        clamp(source.geo[1]+(rng()-.5)*.014,b.west,b.east)
+      ],
+      severity:2+rng()*3,
+      deadline_min:minDeadline+rng()*(maxDeadline-minDeadline)
+    };
   }
 
-  function applyAction(resources,state,event,resourceIndex,eventIndex){
-    if(resourceIndex===null||resourceIndex===undefined){
-      state.unserved+=1;state.history.push({eventIndex,resource:null,event:event.name});return{resource:null,eta:NaN};
-    }
-    const resource=resources[resourceIndex],from=[...state.positions[resourceIndex]],result=evaluate(resource,from,event);
-    if(!result.feasible){
-      state.unserved+=1;state.history.push({eventIndex,resource:null,event:event.name});return{resource:null,eta:NaN};
-    }
-    state.positions[resourceIndex]=[...event.point];
-    state.served+=1;state.cost+=result.cost;state.distance+=result.distance;state.severityDelay+=event.severity*result.eta;
-    state.history.push({eventIndex,event:event.name,resource:resource.name,from,to:[...event.point],eta:result.eta,distance:result.distance,cost:result.cost});
-    return{resource:resource.name,label:resource.label||resource.name,icon:resource.icon||"●",eta:result.eta,distance:result.distance,cost:result.cost};
+  function weightedDemand(demand,rng){
+    const total=demand.reduce((s,x)=>s+x.risk_weight,0);
+    let ticket=rng()*total;
+    for(const node of demand){ticket-=node.risk_weight;if(ticket<=0)return node;}
+    return demand[demand.length-1];
   }
 
   function evaluate(resource,from,event){
-    if(!resource.capabilities.includes(event.type))return{feasible:false};
-    const distance=haversineKm(from,event.point),speed=resource.speed_kmh||60,eta=60*distance/speed;
-    if(eta>event.deadline_min)return{feasible:false,distance,eta};
+    if(!resource.capabilities.includes(event.type))return null;
+    const distance=haversineKm(from,event.point);
+    const eta=60*distance/(resource.speed_kmh||60);
+    if(eta>event.deadline_min)return null;
     const emissions=(resource.co2_g_per_km||180)*distance;
-    const cost=event.severity*eta+.0005*emissions+.05*distance;
-    return{feasible:true,distance,eta,cost};
+    return{distance,eta,cost:event.severity*eta+.0005*emissions+.05*distance};
   }
 
-  function exactOfflinePlan(resources,events){
-    const memo=new Map(),choice=new Map(),initial=resources.map(()=>-1);
-    const pointFor=(r,code)=>code<0?resources[r].point:events[code].point;
-    function solve(t,positions){
-      if(t===events.length)return{served:0,cost:0};
-      const key=t+"|"+positions.join(",");if(memo.has(key))return memo.get(key);
-      const skip=solve(t+1,positions);let best={served:skip.served,cost:skip.cost},bestAction=null;
-      for(let r=0;r<resources.length;r++){
-        const result=evaluate(resources[r],pointFor(r,positions[r]),events[t]);if(!result.feasible)continue;
-        const next=positions.slice();next[r]=t;const future=solve(t+1,next);
-        const candidate={served:future.served+1,cost:future.cost+result.cost};
-        if(isBetter(candidate,best)){best=candidate;bestAction=r;}
+  function greedyBatch(resources,events){
+    const used=new Set(),assignments=[];
+    const order=[...events.keys()].sort((a,b)=>events[b].severity-events[a].severity);
+    for(const i of order){
+      let best=null;
+      resources.forEach((r,ri)=>{
+        if(used.has(ri))return;
+        const ev=evaluate(r,r.point,events[i]);
+        if(ev&&(!best||ev.distance<best.eval.distance))best={ri,eval:ev};
+      });
+      if(best){
+        used.add(best.ri);
+        assignments.push({resourceIndex:best.ri,resource:resources[best.ri],incidentIndex:i,event:events[i],...best.eval});
       }
-      memo.set(key,best);choice.set(key,bestAction);return best;
     }
-    solve(0,initial);
-    const plan=[];let positions=initial.slice();
-    for(let t=0;t<events.length;t++){
-      const key=t+"|"+positions.join(","),action=choice.get(key);
-      plan.push(action===undefined?null:action);if(action!==null&&action!==undefined)positions[action]=t;
+    return summarizeAssignments(assignments);
+  }
+
+  function optimalBatch(resources,events){
+    const memo=new Map();
+    function solve(ri,mask){
+      if(ri===resources.length)return{served:0,cost:0,assignments:[]};
+      const key=ri+"|"+mask;if(memo.has(key))return memo.get(key);
+      let best=solve(ri+1,mask);
+      best={served:best.served,cost:best.cost,assignments:best.assignments.slice()};
+      for(let i=0;i<events.length;i++){
+        if(mask&(1<<i))continue;
+        const ev=evaluate(resources[ri],resources[ri].point,events[i]);if(!ev)continue;
+        const fut=solve(ri+1,mask|(1<<i));
+        const cand={
+          served:fut.served+1,
+          cost:fut.cost+ev.cost,
+          assignments:[{resourceIndex:ri,resource:resources[ri],incidentIndex:i,event:events[i],...ev},...fut.assignments]
+        };
+        if(cand.served>best.served||(cand.served===best.served&&cand.cost<best.cost))best=cand;
+      }
+      memo.set(key,best);return best;
     }
-    return plan;
+    return solve(0,0);
   }
 
-  function isBetter(a,b){return a.served>b.served||(a.served===b.served&&a.cost<b.cost-1e-9);}
-
-  function projectPoint(data,point){
-    const b=data.geo.bounds,xMax=8.2,yMax=8.5;
-    return[
-      b.south+(point[1]/yMax)*(b.north-b.south),
-      b.west+(point[0]/xMax)*(b.east-b.west)
-    ];
+  function summarizeAssignments(assignments){
+    return{
+      assignments,
+      served:assignments.length,
+      cost:assignments.reduce((s,x)=>s+x.cost,0),
+      meanEta:assignments.length?assignments.reduce((s,x)=>s+x.eta,0)/assignments.length:0
+    };
   }
 
-  function haversineKm(a,b){
-    const R=6371.0088,lat1=rad(a[0]),lat2=rad(b[0]),dLat=lat2-lat1,dLng=rad(b[1]-a[1]);
-    const h=Math.sin(dLat/2)**2+Math.cos(lat1)*Math.cos(lat2)*Math.sin(dLng/2)**2;
-    return 2*R*Math.asin(Math.min(1,Math.sqrt(h)));
+  function simulateDay(demand,resources,events,policy,lambda){
+    const positions=resources.map(r=>[...r.point]);
+    const etas=[];let served=0,cost=0,distance=0,severityDelay=0;
+    for(const event of events){
+      const currentExposure=policy==="eco"?coverageExposure(demand,resources,positions):0;
+      let best=null;
+      resources.forEach((r,ri)=>{
+        const ev=evaluate(r,positions[ri],event);if(!ev)return;
+        let score=ev.distance;
+        if(policy==="eco"){
+          const next=positions.map(p=>[...p]);next[ri]=[...event.point];
+          const delta=coverageExposure(demand,resources,next)-currentExposure;
+          score=ev.cost+lambda*delta;
+        }
+        if(!best||score<best.score)best={ri,score,ev};
+      });
+      if(!best)continue;
+      positions[best.ri]=[...event.point];
+      served++;cost+=best.ev.cost;distance+=best.ev.distance;severityDelay+=event.severity*best.ev.eta;etas.push(best.ev.eta);
+    }
+    etas.sort((a,b)=>a-b);
+    return{
+      served,cost,distance,severityDelay,
+      meanEta:etas.length?etas.reduce((a,b)=>a+b,0)/etas.length:0,
+      p95Eta:etas.length?etas[Math.min(etas.length-1,Math.floor(.95*(etas.length-1)))]:0
+    };
   }
 
-  function typeInfo(type){return TYPE_INFO[type]||{label:type,icon:"⚠"};}
-  function strategyColor(key){return key==="eco"?"#79f2b0":key==="greedy"?"#79b8ff":"#ffb56b";}
+  function coverageExposure(demand,resources,positions){
+    let total=0;
+    for(const node of demand){
+      for(const [type,prob] of Object.entries(TYPE_PROBS)){
+        let best=Infinity;
+        resources.forEach((r,ri)=>{
+          if(!r.capabilities.includes(type))return;
+          const eta=60*haversineKm(positions[ri],node.geo)/(r.speed_kmh||60);
+          if(eta<best)best=eta;
+        });
+        total+=node.risk_weight*prob*best;
+      }
+    }
+    return total;
+  }
+
+  function renderRaceBars(id,eco,greedy,max,fmt){
+    const root=document.getElementById(id);
+    const scale=Math.max(max,1);
+    root.innerHTML=`
+      <div class="race-line"><span>Eco</span><div><i class="eco-fill" style="width:${eco/scale*100}%"></i></div><b>${fmt(eco)}</b></div>
+      <div class="race-line"><span>Greedy</span><div><i class="greedy-fill" style="width:${greedy/scale*100}%"></i></div><b>${fmt(greedy)}</b></div>`;
+  }
+
+  function drawBaseMap(svg,data,demand,candidates,selected){drawTacticalBase(svg,data,demand);const xy=projector(data,900,520);
+    candidates.forEach(b=>{const [x,y]=xy(b.geo);svg.append(el("rect",{x:x-5,y:y-5,width:10,height:10,rx:2,class:selected.has(b.name)?"base-dot selected":"base-dot"}));svg.append(textNode(x+9,y+4,b.name,selected.has(b.name)?"base-label selected":"base-label"));});
+  }
+
+  function drawCrisisMap(svg,data,demand,candidates,resources,result){
+    drawTacticalBase(svg,data,demand);const xy=projector(data,900,520);
+    resources.forEach(r=>{const [x,y]=xy(r.point);svg.append(el("circle",{cx:x,cy:y,r:11,fill:"#111",stroke:"#79f2b0","stroke-width":2}));svg.append(textNode(x+15,y+4,r.icon||"●","resource-label"));});
+    result.events.forEach((e,i)=>{const [x,y]=xy(e.point),info=typeInfo(e.type);svg.append(el("circle",{cx:x,cy:y,r:12,class:"incident-ring static"}));svg.append(textNode(x+14,y+4,info.icon+" "+e.name,"incident-label"));});
+    result.greedy.assignments.forEach(a=>{const [x1,y1]=xy(a.resource.point),[x2,y2]=xy(a.event.point);svg.append(el("line",{x1,y1,x2,y2,class:"crisis-route greedy-route"}));});
+    result.eco.assignments.forEach(a=>{const [x1,y1]=xy(a.resource.point),[x2,y2]=xy(a.event.point);svg.append(el("line",{x1,y1,x2,y2,class:"crisis-route eco-route"}));});
+  }
+
+  function drawTacticalBase(svg,data,demand){
+    svg.innerHTML="";svg.append(el("rect",{x:0,y:0,width:900,height:520,fill:"#0b1115"}));
+    for(let i=0;i<=8;i++){const x=55+i*805/8;svg.append(el("line",{x1:x,y1:35,x2:x,y2:475,class:"map-grid"}));}
+    for(let i=0;i<=6;i++){const y=35+i*440/6;svg.append(el("line",{x1:55,y1:y,x2:860,y2:y,class:"map-grid"}));}
+    svg.append(el("path",{d:"M100 88 C250 42 465 58 650 105 C805 145 830 302 738 398 C560 455 300 438 126 350 C55 268 42 165 100 88 Z",class:"map-zone"}));
+    const xy=projector(data,900,520);
+    demand.forEach(n=>{const [x,y]=xy(n.geo);svg.append(el("circle",{cx:x,cy:y,r:5+n.risk_weight*2,class:"risk-zone"}));});
+    svg.append(textNode(72,72,"Montes de Málaga","map-label"));
+  }
+
+  function projector(data,W,H){const b=data.geo.bounds,p={l:55,r:40,t:35,b:45};return point=>[
+    p.l+(point[1]-b.west)/(b.east-b.west)*(W-p.l-p.r),
+    H-p.b-(point[0]-b.south)/(b.north-b.south)*(H-p.t-p.b)
+  ];}
+
+  function combinations(items,k){const out=[];function walk(start,picked){if(picked.length===k){out.push(picked.slice());return;}for(let i=start;i<=items.length-(k-picked.length);i++){picked.push(items[i]);walk(i+1,picked);picked.pop();}}walk(0,[]);return out;}
+  function projectPoint(data,point){const b=data.geo.bounds;return[b.south+(point[1]/8.5)*(b.north-b.south),b.west+(point[0]/8.2)*(b.east-b.west)];}
+  function haversineKm(a,b){const R=6371.0088,la1=rad(a[0]),la2=rad(b[0]),dl=la2-la1,dg=rad(b[1]-a[1]);const h=Math.sin(dl/2)**2+Math.cos(la1)*Math.cos(la2)*Math.sin(dg/2)**2;return 2*R*Math.asin(Math.min(1,Math.sqrt(h)));}
   function rad(v){return v*Math.PI/180;}
+  function typeInfo(type){const x=TYPE_INFO[type]||{icon:"⚠",es:type,en:type};return{icon:x.icon,label:I18N.lang==="es"?x.es:x.en};}
+  function resourceLabel(r){return I18N.lang==="es"?(r.label_es||r.label||r.name):(r.label_en||r.label||r.name);}
   function hashString(v){let h=2166136261>>>0;for(let i=0;i<v.length;i++){h^=v.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
   function mulberry32(seed){return function(){let t=seed+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296;};}
   function clamp(v,min,max){return Math.max(min,Math.min(max,v));}
-  function clampInt(v,min,max,fallback){return Number.isFinite(v)?Math.max(min,Math.min(max,Math.round(v))):fallback;}
-  function escapeHtml(v){return String(v).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]));}
   function el(tag,attrs={}){const n=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,String(v));return n;}
   function textNode(x,y,text,cls){const n=el("text",{x,y,class:cls});n.textContent=text;return n;}
+  function escapeHtml(v){return String(v).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]));}
 
-  window.EcoDispatchSimulator={init:data=>new LiveSimulator(data)};
+  window.EcoDispatchResearch={init:data=>new ResearchSuite(data)};
 })();
