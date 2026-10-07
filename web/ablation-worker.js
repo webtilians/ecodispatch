@@ -1,6 +1,6 @@
 // Classic worker keeps the page responsive during 500/1000 paired scenarios.
 self.window=self;
-importScripts('./simulation.js','./ablation-core.js');
+importScripts('./simulation.js?v=0.7.2','./ablation-core.js?v=0.7.2');
 self.onmessage=({data:{config,seed,n}})=>{
   try{
     if(![500,1000].includes(n)||typeof seed!=='string')throw new Error('Invalid experiment configuration');

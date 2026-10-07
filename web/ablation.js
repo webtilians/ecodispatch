@@ -23,7 +23,7 @@
       this.result=null;this.error=false;this.progress={done:0,total:Number($('ab-samples').value)};
       $('ab-results').hidden=true;this.busy(true);this.status();
       try{
-        this.worker=new Worker('./ablation-worker.js');
+        this.worker=new Worker('./ablation-worker.js?v=0.7.2');
         this.worker.onmessage=({data})=>{
           if(data.type==='progress'){this.progress=data;this.status();}
           if(data.type==='complete'){
