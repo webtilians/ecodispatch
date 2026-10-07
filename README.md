@@ -68,3 +68,20 @@ The dashboard shows:
 ```
 
 The Pages workflow redeploys automatically after changes under `web/`.
+
+
+## Live simulator
+
+The public dashboard now includes a reproducible browser simulation.
+
+- Choose a seed and 4–10 incidents.
+- Run, pause or step through incidents.
+- Switch the map between EcoDispatch, greedy and offline views.
+- Compare served incidents, secondary cost and movement distance live.
+- The offline policy is solved exactly by dynamic programming for the generated
+  finite sequence and is used only as a lower-bound benchmark.
+
+The current simulator is deliberately synthetic and sequential. Its assumptions
+are shown on the page so future versions can replace Euclidean distance,
+instant resource availability and single-incident arrival with real road graphs,
+service durations and simultaneous emergency batches.
