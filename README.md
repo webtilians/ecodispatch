@@ -5,7 +5,7 @@ EcoDispatch is a research prototype for allocating scarce mobile resources
 using a hierarchical optimization architecture inspired by recent results in
 metric **k-median**, **maximum matching**, and **k-server**.
 
-## Current architecture (v0.9.1)
+## Current architecture (v1.0)
 
 1. **Pre-positioning** — risk-weighted metric k-median chooses where resources
    should wait before incidents are known.
@@ -278,3 +278,32 @@ Frozen means, SDs and n produce:
 
 The PASS/CONFIRMED conclusion is unchanged. The public Holdout section now
 loads this frozen result by default rather than requiring another simulation.
+
+
+## v1.0 — real-routing benchmark
+
+v1.0 closes the purely straight-line mobility phase without claiming real-world
+operational validation.
+
+A frozen 20×20 OSRM Table matrix (400 directed OD pairs) now supplies real road
+travel duration and route distance over OpenStreetMap data for Málaga / Montes
+de Málaga.
+
+Key boundaries:
+
+- the road-routing layer is real/network-grounded;
+- candidate bases, demand nodes, risk weights, incidents and deadlines remain
+  synthetic;
+- demand nodes with OSRM snap distance >500 m are excluded (D5 and D8);
+- exact risk-weighted road-time placement selects B2 · B3 · B4;
+- ground units use OSRM driving duration directly;
+- the drone uses geodesic direct flight;
+- v1.0 is exploratory and does not reuse the v0.9.1 synthetic confirmation as a
+  confirmatory claim.
+
+Data provenance, licensing, assumptions and reconstruction are documented in
+[`docs/real-routing-v1.0.md`](docs/real-routing-v1.0.md). The public site uses
+the versioned matrix in `web/data/routing-v1.0.json` and never calls OSRM at
+runtime.
+
+OpenStreetMap attribution: © OpenStreetMap contributors, ODbL.
