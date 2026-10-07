@@ -1,5 +1,5 @@
-const currentUrl="./data/current.json?v=0.8.0";
-const timelineUrl="./data/timeline.json?v=0.8.0";
+const currentUrl="./data/current.json?v=0.9.0";
+const timelineUrl="./data/timeline.json?v=0.9.0";
 let timelineData=[];
 
 Promise.all([
@@ -11,6 +11,7 @@ Promise.all([
   renderTimeline();
   window.ecoLab=window.EcoDispatchResearch.init(data);
   window.ecoAblation=window.EcoDispatchAblationUI.init(data);
+  window.ecoHoldout=window.EcoDispatchHoldoutUI.init(data);
   window.ecoMonteCarlo=window.EcoDispatchMonteCarlo.init(data);
 }).catch(error=>{
   console.error(error);
