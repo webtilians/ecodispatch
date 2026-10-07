@@ -102,3 +102,25 @@ Montes de Málaga.
 Road routing is **not** implemented yet. v0.3 uses geodesic distance and resource
 speed. The next research step is a road/track graph so ETA follows real routes
 instead of straight-line distance.
+
+
+## v0.4 — demo visual robusta y en español
+
+La web pública deja de depender de Leaflet/OpenStreetMap para su visualización
+principal. El simulador usa ahora un mapa táctico SVG local, por lo que funciona
+incluso cuando los CDN o las teselas externas no cargan.
+
+Cambios principales:
+
+- interfaz completa en español;
+- mapa táctico local sobre coordenadas reales de Málaga, marcado como esquema no cartográfico;
+- recursos con identidad visual (brigada, ambulancia, dron y unidad móvil);
+- rutas, incidente activo y siguiente incidente visibles en el mapa;
+- explicación textual de cada decisión de EcoDispatch;
+- comparación visual EcoDispatch vs greedy vs óptimo offline;
+- misma reproducibilidad por semilla y mismo benchmark exacto offline para secuencias pequeñas.
+
+Las bases e incidentes siguen siendo sintéticos y la v0.4 todavía calcula ETA
+con distancia geodésica. El siguiente paso matemático/geoespacial será introducir
+rutas reales de carretera/pista sin volver a hacer de un servicio externo una
+dependencia crítica de la demo.
