@@ -1,15 +1,18 @@
-const currentUrl="./data/current.json?v=0.9.0";
-const timelineUrl="./data/timeline.json?v=0.9.0";
+const currentUrl="./data/current.json?v=1.0.0";
+const timelineUrl="./data/timeline.json?v=1.0.0";
+const routingUrl="./data/routing-v1.0.json?v=1.0.0";
 let timelineData=[];
 
 Promise.all([
   fetch(currentUrl).then(r=>{if(!r.ok)throw new Error("current.json");return r.json();}),
-  fetch(timelineUrl).then(r=>{if(!r.ok)throw new Error("timeline.json");return r.json();})
-]).then(([data,timeline])=>{
+  fetch(timelineUrl).then(r=>{if(!r.ok)throw new Error("timeline.json");return r.json();}),
+  fetch(routingUrl).then(r=>{if(!r.ok)throw new Error("routing-v1.0.json");return r.json();})
+]).then(([data,timeline,routing])=>{
   timelineData=timeline;
   setupExperimentTabs();
   renderTimeline();
   window.ecoLab=window.EcoDispatchResearch.init(data);
+  window.ecoRealRouting=window.EcoDispatchRealRoutingUI.init(data,routing);
   window.ecoAblation=window.EcoDispatchAblationUI.init(data);
   window.ecoHoldout=window.EcoDispatchHoldoutUI.init(data);
   window.ecoMonteCarlo=window.EcoDispatchMonteCarlo.init(data);
