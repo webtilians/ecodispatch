@@ -1,6 +1,6 @@
-const currentUrl="./data/current.json?v=1.0.0";
-const timelineUrl="./data/timeline.json?v=1.0.0";
-const routingUrl="./data/routing-v1.0.json?v=1.0.0";
+const currentUrl="./data/current.json?v=1.1.0";
+const timelineUrl="./data/timeline.json?v=1.1.0";
+const routingUrl="./data/routing-v1.0.json?v=1.1.0";
 let timelineData=[];
 
 Promise.all([
@@ -13,6 +13,7 @@ Promise.all([
   renderTimeline();
   window.ecoLab=window.EcoDispatchResearch.init(data);
   window.ecoRealRouting=window.EcoDispatchRealRoutingUI.init(data,routing);
+  window.ecoRealRoutingHoldout=window.EcoDispatchRealRoutingHoldoutUI.init(data,routing);
   window.ecoAblation=window.EcoDispatchAblationUI.init(data);
   window.ecoHoldout=window.EcoDispatchHoldoutUI.init(data);
   window.ecoMonteCarlo=window.EcoDispatchMonteCarlo.init(data);
