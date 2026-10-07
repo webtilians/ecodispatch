@@ -136,3 +136,15 @@ footer{margin-top:86px;padding:27px 0 38px;border-top:1px solid var(--line);disp
 #ablation [hidden]{display:none!important}
 @media(max-width:1000px){.ab-controls{grid-template-columns:1fr 1fr}.ab-controls button:nth-last-child(-n+2){grid-row:auto}}
 @media(max-width:650px){.ab-view-controls{grid-template-columns:1fr}.ab-plot{padding:10px}}
+
+
+/* v0.8 robustness */
+.ab-primary-note{margin:0 0 10px;padding:10px 12px;border-left:3px solid var(--accent);background:rgba(121,242,176,.045);color:var(--muted);font-size:.7rem;line-height:1.5}
+.ab-controls{grid-template-columns:140px 1fr minmax(190px,.6fr) auto auto auto auto}
+#ab-table td small{display:block;margin-top:3px;color:var(--muted);font-size:.58rem;white-space:nowrap}
+#ab-table td strong+small{margin-top:5px}
+#ab-table td:last-child strong,#ab-table td:last-child small{display:block}
+#ab-table td:last-child strong{color:var(--accent);font-size:.84rem}
+#ab-table td:last-child small{white-space:normal}
+@media(max-width:1100px){.ab-controls{grid-template-columns:1fr 1fr 1fr}.ab-controls button{min-width:0}}
+@media(max-width:700px){.ab-controls{grid-template-columns:1fr}}
