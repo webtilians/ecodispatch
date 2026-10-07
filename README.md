@@ -5,7 +5,7 @@ EcoDispatch is a research prototype for allocating scarce mobile resources
 using a hierarchical optimization architecture inspired by recent results in
 metric **k-median**, **maximum matching**, and **k-server**.
 
-## Current architecture (v0.8)
+## Current architecture (v0.9)
 
 1. **Pre-positioning** — risk-weighted metric k-median chooses where resources
    should wait before incidents are known.
@@ -225,3 +225,25 @@ No single lambda is declared best without an explicit utility function.
 [Methodology / Metodología v0.8](docs/ablation-v0.8.md) ·
 [English study](https://webtilians.github.io/ecodispatch/?lang=en#ablation) ·
 [Estudio en español](https://webtilians.github.io/ecodispatch/?lang=es#ablation)
+
+
+## v0.9 — preregistered holdout
+
+v0.9 separates exploration from confirmation. The confirmatory protocol was
+committed **before holdout results** in
+[`docs/holdout-v0.9-preregistered.md`](docs/holdout-v0.9-preregistered.md)
+(commit `017cda8cf011a89794d987ad65658249df60b2f9`).
+
+Frozen primary analysis:
+
+- new seed family: `ecodispatch-holdout-09|normal|day|index`;
+- 1000 paired normal-profile days;
+- `K=10`;
+- primary lambdas `{0.2, 0.35, 0.5, 1}` versus `lambda=0`;
+- primary outcome: paired total-harm difference;
+- confirmation requires mean ΔH < 0, paired bootstrap 95% CI entirely below
+  zero, and a Holm-adjusted two-sided normal-approximation p-value < 0.05;
+- K=5/20 and other metrics remain secondary/exploratory.
+
+The public holdout UI exposes no editable primary parameters. Re-running it is
+deterministic; it cannot create a different seed draw.
