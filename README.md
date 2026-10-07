@@ -5,7 +5,7 @@ EcoDispatch is a research prototype for allocating scarce mobile resources
 using a hierarchical optimization architecture inspired by recent results in
 metric **k-median**, **maximum matching**, and **k-server**.
 
-## Current architecture (v0.7)
+## Current architecture (v0.8)
 
 1. **Pre-positioning** — risk-weighted metric k-median chooses where resources
    should wait before incidents are known.
@@ -199,3 +199,29 @@ The web now compares λ = 0, 0.1, 0.2, 0.35, 0.5, 1, 2 and Greedy on identical n
 La web compara las mismas jornadas para siete lambdas y Greedy, sin selección favorable. Incluye cinco métricas, IC95 pareados, frente de Pareto descriptivo, interfaz ES/EN y exportación completa, conservando Monte Carlo v0.6.
 
 [Methodology / Metodología](docs/ablation-v0.7.md) · [English study](https://webtilians.github.io/ecodispatch/?lang=en#ablation) · [Estudio en español](https://webtilians.github.io/ecodispatch/?lang=es#ablation)
+
+
+## v0.8 — robustness checks
+
+v0.8 makes `lambda=0` the primary ablation reference, so the effect of the
+future-coverage term is isolated from the rest of the EcoDispatch immediate-cost
+policy.
+
+It adds:
+
+- **ETA-greedy** alongside the historical distance-greedy baseline;
+- total harm
+  `H = sum_served(severity*ETA) + K*sum_unserved(severity^2)`, with
+  `K=10` by default and 5/10/20 sensitivity options;
+- paired percentile-bootstrap 95% confidence intervals alongside the existing
+  paired normal-approximation intervals;
+- bootstrap probability of membership in the descriptive coverage/ETA/distance
+  Pareto front;
+- Playwright/Chromium CI that boots the real site, exercises language switching,
+  runs the ablation Web Worker and starts a short Monte Carlo validation.
+
+No single lambda is declared best without an explicit utility function.
+
+[Methodology / Metodología v0.8](docs/ablation-v0.8.md) ·
+[English study](https://webtilians.github.io/ecodispatch/?lang=en#ablation) ·
+[Estudio en español](https://webtilians.github.io/ecodispatch/?lang=es#ablation)
