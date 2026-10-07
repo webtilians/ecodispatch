@@ -9,6 +9,8 @@ on:
       - "tests/**"
       - "docs/**"
       - "README.md"
+      - "package.json"
+      - "playwright.config.cjs"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -37,6 +39,19 @@ jobs:
         run: |
           node tests/ablation.test.cjs
           python -m unittest discover -s tests
+
+      - name: Set up Node for browser integration tests
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Playwright
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Browser integration test
+        run: npm run test:e2e
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
