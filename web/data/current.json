@@ -1,5 +1,5 @@
 {
-  "version": "0.9.1",
+  "version": "1.0",
   "date": "2026-10-07",
   "placement": {
     "selected_bases": [
@@ -310,6 +310,40 @@
         "generated_at": "2026-10-07T21:29:46.627Z",
         "confirmed": true
       }
+    },
+    "real_routing": {
+      "dataset": "malaga-real-routing-v1",
+      "seed": "ecodispatch-real-routing-10",
+      "samples_default": 500,
+      "samples_options": [
+        500,
+        1000
+      ],
+      "max_snap_m": 500,
+      "excluded_demand": [
+        "D5",
+        "D8"
+      ],
+      "selected_bases": [
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "placement_objective_risk_weighted_minutes": 1028.9025,
+      "lambdas": [
+        0,
+        0.2,
+        0.35,
+        0.5,
+        1
+      ],
+      "harm_k": 10,
+      "deadlines_min": {
+        "medical": 90,
+        "fire": 120,
+        "drone": 30
+      },
+      "status": "exploratory_real_routing_not_real_risk"
     }
   }
 }
