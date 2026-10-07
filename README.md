@@ -5,7 +5,7 @@ EcoDispatch is a research prototype for allocating scarce mobile resources
 using a hierarchical optimization architecture inspired by recent results in
 metric **k-median**, **maximum matching**, and **k-server**.
 
-## Current architecture (v0.9)
+## Current architecture (v0.9.1)
 
 1. **Pre-positioning** — risk-weighted metric k-median chooses where resources
    should wait before incidents are known.
@@ -247,3 +247,34 @@ Frozen primary analysis:
 
 The public holdout UI exposes no editable primary parameters. Re-running it is
 deterministic; it cannot create a different seed draw.
+
+
+## v0.9.1 — frozen result and stable tiny p-values
+
+v0.9.1 is a conservative reporting patch. It does **not** change the model,
+holdout seed family, preregistered hypothesis, scenarios, bootstrap samples or
+decision rule.
+
+The real v0.9 holdout result is frozen in compact canonical form at:
+
+- `results/holdout-v0.9.1-summary.json`
+- `results/holdout-v0.9.1-report.md`
+
+The original exported raw JSON had:
+
+- SHA-256: `38b912b0941e4ab8edb9c9da9c7e12d4da4d4c0f3f8b4d82fe911573b3132985`
+- size: `2,868,071` bytes
+- generated at: `2026-10-07T21:29:46.627Z`
+
+The v0.9 implementation displayed extremely small normal-approximation p-values
+as zero because it evaluated `2*(1-Phi(z))`, which loses precision in the far
+tail. v0.9.1 uses a stable complementary-error-function tail calculation.
+Frozen means, SDs and n produce:
+
+- λ=0.2: raw/ Holm p ≈ `3.58e-17`;
+- λ=0.35: raw p ≈ `9.03e-19`, Holm p ≈ `1.81e-18`;
+- λ=0.5: raw p ≈ `3.34e-23`, Holm p ≈ `1.00e-22`;
+- λ=1: raw p ≈ `1.27e-31`, Holm p ≈ `5.07e-31`.
+
+The PASS/CONFIRMED conclusion is unchanged. The public Holdout section now
+loads this frozen result by default rather than requiring another simulation.
