@@ -1,38 +1,245 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "date": "2026-10-07",
   "placement": {
-    "selected_bases": ["B1", "B3", "B7"],
-    "objective": 74.24
+    "selected_bases": [
+      "B3",
+      "B4",
+      "B7"
+    ],
+    "objective": 117.605,
+    "metric": "risk-weighted geodesic km"
   },
   "candidates": [
-    {"name":"B0","point":[0,0]},
-    {"name":"B1","point":[3,1]},
-    {"name":"B2","point":[6,0]},
-    {"name":"B3","point":[1,5]},
-    {"name":"B4","point":[5,5]},
-    {"name":"B5","point":[8,4]},
-    {"name":"B6","point":[2,8]},
-    {"name":"B7","point":[7,8]}
+    {
+      "name": "B0",
+      "point": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "B1",
+      "point": [
+        3,
+        1
+      ]
+    },
+    {
+      "name": "B2",
+      "point": [
+        6,
+        0
+      ]
+    },
+    {
+      "name": "B3",
+      "point": [
+        1,
+        5
+      ]
+    },
+    {
+      "name": "B4",
+      "point": [
+        5,
+        5
+      ]
+    },
+    {
+      "name": "B5",
+      "point": [
+        8,
+        4
+      ]
+    },
+    {
+      "name": "B6",
+      "point": [
+        2,
+        8
+      ]
+    },
+    {
+      "name": "B7",
+      "point": [
+        7,
+        8
+      ]
+    }
   ],
   "demand": [
-    {"name":"D0","point":[0.5,0.5],"risk_weight":4.0},
-    {"name":"D1","point":[2.0,1.2],"risk_weight":2.0},
-    {"name":"D2","point":[5.5,0.8],"risk_weight":3.5},
-    {"name":"D3","point":[7.5,1.5],"risk_weight":1.5},
-    {"name":"D4","point":[1.0,4.5],"risk_weight":5.0},
-    {"name":"D5","point":[3.0,5.0],"risk_weight":2.0},
-    {"name":"D6","point":[5.5,4.8],"risk_weight":4.5},
-    {"name":"D7","point":[8.0,5.0],"risk_weight":2.5},
-    {"name":"D8","point":[1.5,7.5],"risk_weight":3.0},
-    {"name":"D9","point":[4.0,7.0],"risk_weight":1.5},
-    {"name":"D10","point":[6.8,7.8],"risk_weight":4.0},
-    {"name":"D11","point":[8.2,8.5],"risk_weight":2.0}
+    {
+      "name": "D0",
+      "point": [
+        0.5,
+        0.5
+      ],
+      "risk_weight": 4
+    },
+    {
+      "name": "D1",
+      "point": [
+        2,
+        1.2
+      ],
+      "risk_weight": 2
+    },
+    {
+      "name": "D2",
+      "point": [
+        5.5,
+        0.8
+      ],
+      "risk_weight": 3.5
+    },
+    {
+      "name": "D3",
+      "point": [
+        7.5,
+        1.5
+      ],
+      "risk_weight": 1.5
+    },
+    {
+      "name": "D4",
+      "point": [
+        1,
+        4.5
+      ],
+      "risk_weight": 5
+    },
+    {
+      "name": "D5",
+      "point": [
+        3,
+        5
+      ],
+      "risk_weight": 2
+    },
+    {
+      "name": "D6",
+      "point": [
+        5.5,
+        4.8
+      ],
+      "risk_weight": 4.5
+    },
+    {
+      "name": "D7",
+      "point": [
+        8,
+        5
+      ],
+      "risk_weight": 2.5
+    },
+    {
+      "name": "D8",
+      "point": [
+        1.5,
+        7.5
+      ],
+      "risk_weight": 3
+    },
+    {
+      "name": "D9",
+      "point": [
+        4,
+        7
+      ],
+      "risk_weight": 1.5
+    },
+    {
+      "name": "D10",
+      "point": [
+        6.8,
+        7.8
+      ],
+      "risk_weight": 4
+    },
+    {
+      "name": "D11",
+      "point": [
+        8.2,
+        8.5
+      ],
+      "risk_weight": 2
+    }
   ],
   "resources": [
-    {"name":"R0","point":[3,1],"capabilities":["medical","fire"],"speed_kmh":75,"co2_g_per_km":210},
-    {"name":"R1","point":[3,1],"capabilities":["medical"],"speed_kmh":70,"co2_g_per_km":170},
-    {"name":"R2","point":[1,5],"capabilities":["fire","drone"],"speed_kmh":65,"co2_g_per_km":190},
-    {"name":"R3","point":[7,8],"capabilities":["medical","drone"],"speed_kmh":80,"co2_g_per_km":160}
-  ]
+    {
+      "name": "R0",
+      "point": [
+        1,
+        5
+      ],
+      "capabilities": [
+        "medical",
+        "fire"
+      ],
+      "speed_kmh": 75,
+      "co2_g_per_km": 210
+    },
+    {
+      "name": "R1",
+      "point": [
+        1,
+        5
+      ],
+      "capabilities": [
+        "medical"
+      ],
+      "speed_kmh": 70,
+      "co2_g_per_km": 170
+    },
+    {
+      "name": "R2",
+      "point": [
+        5,
+        5
+      ],
+      "capabilities": [
+        "fire",
+        "drone"
+      ],
+      "speed_kmh": 65,
+      "co2_g_per_km": 190
+    },
+    {
+      "name": "R3",
+      "point": [
+        7,
+        8
+      ],
+      "capabilities": [
+        "medical",
+        "drone"
+      ],
+      "speed_kmh": 80,
+      "co2_g_per_km": 160
+    }
+  ],
+  "geo": {
+    "mode": "real-map-synthetic-events",
+    "center": [
+      36.8258889,
+      -4.3832417
+    ],
+    "zoom": 12,
+    "bounds": {
+      "south": 36.76,
+      "north": 36.87,
+      "west": -4.46,
+      "east": -4.3
+    },
+    "anchor": {
+      "name": "Las Contadoras",
+      "point": [
+        36.8258889,
+        -4.3832417
+      ],
+      "source": "Junta de Andalucía"
+    },
+    "disclaimer": "Synthetic bases and incidents projected over real Málaga geography. They are not operational locations."
+  }
 }
