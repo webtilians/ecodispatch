@@ -11,6 +11,7 @@
       $('ab-json').onclick=()=>this.download('json',JSON.stringify(this.result,null,2),'application/json');
       $('ab-csv').onclick=()=>this.download('csv',EcoDispatchAblation.csv(this.result),'text/csv;charset=utf-8');
       window.addEventListener('languagechange',()=>{this.status();this.render();});
+      this.busy(false);
     }
     busy(value){
       ['ab-run','ab-seed','ab-samples'].forEach(id=>$(id).disabled=value);
@@ -94,7 +95,8 @@
         const dot=make('circle',{cx,cy,r:p.id===this.selected?10:7,fill:p.pareto?'#79f2b0':'#9badbe',stroke:p.id===this.selected?'#ffffff':'#18252f','stroke-width':3,tabindex:0,role:'button','aria-label':label+' · '+(p.pareto?t('front'):t('dominated'))});
         const title=document.createElementNS(NS,'title');title.textContent=label+' · '+EcoDispatchAblation.metrics.map(k=>metricLabel(k)+': '+fmt(p.absolute[k].mean)).join(' · ');dot.append(title);
         dot.onclick=()=>this.choose(p.id);dot.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();this.choose(p.id);}};
-        make('text',{x:cx+13,y:cy-10,fill:'#dce7ed','font-size':13},label);
+        const labelLeft=p.id==='0.2';
+        make('text',{x:cx+(labelLeft?-13:13),y:cy-10,'text-anchor':labelLeft?'end':'start',fill:'#dce7ed','font-size':13},label);
       }
       $('ab-front').textContent=t('front')+': '+this.result.summary.filter(p=>p.pareto).map(p=>p.id==='greedy'?'Greedy':'λ '+p.id).join(' · ');
     }
