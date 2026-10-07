@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="EcoDispatch — open research into risk-aware resource allocation for emergency response.">
   <title>EcoDispatch — Research Lab</title>
-  <link rel="stylesheet" href="./styles.css?v=0.9.1">
+  <link rel="stylesheet" href="./styles.css?v=1.0.0">
 </head>
 <body>
   <header class="topbar">
@@ -14,6 +14,7 @@
       <span><strong>EcoDispatch</strong><small data-i18n="brand.subtitle">Laboratorio abierto de investigación</small></span>
     </a>
     <nav>
+      <a href="#real-routing" data-i18n="rr.nav">Routing real</a>
       <a href="#lab" data-i18n="nav.lab">Experimentos</a>
       <a href="#results" data-i18n="nav.results">Resultados</a>
       <a href="#ablation" data-i18n="ab.nav">Lambda</a>
@@ -39,7 +40,7 @@
           cómo asignarlos cuando llegan varios incidentes a la vez y cómo mantener buena cobertura durante una jornada completa.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="#lab" data-i18n="hero.cta">Ejecutar banco de pruebas</a>
+          <a class="button primary" href="#real-routing" data-i18n="hero.cta">Ver routing real</a>
           <a class="button" href="#research" data-i18n="hero.method">Ver metodología</a>
         </div>
       </div>
@@ -159,6 +160,70 @@
           </article>
         </div>
       </section>
+    </section>
+
+    <section id="real-routing" class="section">
+      <div class="section-heading">
+        <div><p class="eyebrow" data-i18n="rr.eyebrow"></p><h2 data-i18n="rr.title"></h2></div>
+        <p data-i18n="rr.intro"></p>
+      </div>
+
+      <div class="rr-facts">
+        <article class="metric"><span data-i18n="rr.matrix"></span><strong id="rr-pairs">—</strong><small data-i18n="rr.matrixSub"></small></article>
+        <article class="metric"><span data-i18n="rr.eligible"></span><strong id="rr-eligible">—</strong><small data-i18n="rr.eligibleSub"></small></article>
+        <article class="metric"><span data-i18n="rr.placement"></span><strong id="rr-bases">—</strong><small id="rr-objective">—</small></article>
+        <article class="metric"><span data-i18n="rr.generated"></span><strong id="rr-generated">—</strong><small data-i18n="rr.static"></small></article>
+      </div>
+
+      <div class="experiment-grid rr-grid">
+        <article class="panel map-panel">
+          <div class="panel-head"><div><span class="panel-kicker" data-i18n="rr.mapKicker"></span><strong data-i18n="rr.mapTitle"></strong></div><span class="method-pill">OSRM · OSM</span></div>
+          <div class="map-stage"><svg id="rr-map" viewBox="0 0 900 520"></svg></div>
+          <div class="rr-attribution">
+            <span>© OpenStreetMap contributors · ODbL · routing: OSRM</span>
+            <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OSM license ↗</a>
+          </div>
+        </article>
+        <article class="panel result-panel rr-provenance">
+          <div class="result-hero compact"><span data-i18n="rr.real"></span><strong>400 OD</strong><p data-i18n="rr.realCopy"></p></div>
+          <div class="explain-box"><strong data-i18n="rr.excludedTitle"></strong><p id="rr-excluded">—</p></div>
+          <div class="explain-box"><strong data-i18n="rr.syntheticTitle"></strong><p data-i18n="rr.syntheticCopy"></p></div>
+          <div class="explain-box"><strong data-i18n="rr.modeTitle"></strong><p data-i18n="rr.modeCopy"></p></div>
+        </article>
+      </div>
+
+      <article class="panel monte-controls rr-controls">
+        <label><span data-i18n="mc.samples"></span><select id="rr-samples"><option value="500" selected>500</option><option value="1000">1000</option></select></label>
+        <label><span data-i18n="mc.seed"></span><input id="rr-seed" value="ecodispatch-real-routing-10" maxlength="80"></label>
+        <button id="rr-run" class="button primary" type="button" data-i18n="rr.run"></button>
+        <button id="rr-json" class="button" type="button" disabled>JSON</button>
+        <button id="rr-csv" class="button" type="button" disabled>CSV</button>
+      </article>
+      <div class="mc-progress">
+        <div class="mc-progress-track"><div id="rr-progress-bar"></div></div>
+        <span id="rr-status" role="status" aria-live="polite" data-i18n="rr.ready"></span>
+      </div>
+
+      <div id="rr-results" hidden>
+        <div class="panel ab-table-wrap">
+          <table id="rr-table">
+            <caption data-i18n="rr.tableHelp"></caption>
+            <thead><tr>
+              <th data-i18n="ab.policy"></th><th data-i18n="ab.served"></th><th data-i18n="ab.meanEta"></th><th data-i18n="ab.p95Eta"></th>
+              <th data-i18n="ab.distance"></th><th data-i18n="rr.co2"></th><th data-i18n="ab.totalHarm"></th><th data-i18n="rr.deltaH"></th>
+            </tr></thead>
+            <tbody id="rr-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <article class="panel mc-method rr-method">
+        <strong data-i18n="rr.methodTitle"></strong>
+        <p data-i18n="rr.method1"></p>
+        <p data-i18n="rr.method2"></p>
+        <p data-i18n="rr.method3"></p>
+        <p><a href="https://github.com/webtilians/ecodispatch/blob/master/docs/real-routing-v1.0.md" target="_blank" rel="noreferrer" data-i18n="rr.docs"></a></p>
+      </article>
     </section>
 
     <section id="ablation" class="section">
@@ -338,12 +403,14 @@
 
   <footer><span data-i18n="footer">EcoDispatch · open research prototype</span><a href="https://github.com/webtilians/ecodispatch">GitHub</a></footer>
 
-  <script src="./i18n.js?v=0.9.1"></script>
-  <script src="./simulation.js?v=0.9.1"></script>
-  <script src="./ablation-core.js?v=0.9.1"></script>
-  <script src="./ablation.js?v=0.9.1"></script>
-  <script src="./holdout-core.js?v=0.9.1"></script>
-  <script src="./holdout.js?v=0.9.1"></script>
-  <script src="./app.js?v=0.9.1"></script>
+  <script src="./i18n.js?v=1.0.0"></script>
+  <script src="./simulation.js?v=1.0.0"></script>
+  <script src="./ablation-core.js?v=1.0.0"></script>
+  <script src="./ablation.js?v=1.0.0"></script>
+  <script src="./real-routing-core.js?v=1.0.0"></script>
+  <script src="./real-routing.js?v=1.0.0"></script>
+  <script src="./holdout-core.js?v=1.0.0"></script>
+  <script src="./holdout.js?v=1.0.0"></script>
+  <script src="./app.js?v=1.0.0"></script>
 </body>
 </html>
