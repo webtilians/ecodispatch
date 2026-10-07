@@ -3,297 +3,193 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="EcoDispatch: simulador visual de asignación inteligente de recursos ante emergencias.">
-  <title>EcoDispatch — Simulador visual</title>
+  <meta name="description" content="EcoDispatch — open research into risk-aware resource allocation for emergency response.">
+  <title>EcoDispatch — Research Lab</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#top" aria-label="Inicio de EcoDispatch">
+    <a class="brand" href="#top">
       <span class="brand-mark">ED</span>
-      <span><strong>EcoDispatch</strong><small>Laboratorio de investigación</small></span>
+      <span><strong>EcoDispatch</strong><small data-i18n="brand.subtitle">Laboratorio abierto de investigación</small></span>
     </a>
-    <nav aria-label="Navegación principal">
-      <a href="#simulador">Simulador</a>
-      <a href="#comparativa">Comparativa</a>
-      <a href="#evolucion">Evolución</a>
+    <nav>
+      <a href="#lab" data-i18n="nav.lab">Experimentos</a>
+      <a href="#results" data-i18n="nav.results">Resultados</a>
+      <a href="#research" data-i18n="nav.research">Investigación</a>
+      <a href="#evolution" data-i18n="nav.evolution">Evolución</a>
       <a href="https://github.com/webtilians/ecodispatch">GitHub ↗</a>
     </nav>
+    <div class="lang-switch" aria-label="Language">
+      <button type="button" data-lang="es">ES</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
   </header>
 
   <main id="top">
     <section class="hero compact-hero">
       <div class="hero-copy">
-        <p class="eyebrow">INVESTIGACIÓN ABIERTA · v0.4</p>
-        <h1>Ver cómo decide un sistema de emergencias <span>en tiempo real.</span></h1>
-        <p class="lede">
-          EcoDispatch compara tres formas de responder al mismo escenario:
-          una política sensible al riesgo, una estrategia codiciosa que manda
-          el recurso más cercano y un óptimo offline que conoce todo el futuro.
+        <p class="eyebrow" data-i18n="hero.eyebrow">INVESTIGACIÓN ABIERTA · v0.5</p>
+        <h1 data-i18n-html="hero.title">¿Cuánta capacidad desperdiciamos por <span>asignar mal</span> los recursos?</h1>
+        <p class="lede" data-i18n="hero.lede">
+          EcoDispatch separa el problema en tres capas: dónde colocar recursos antes de una emergencia,
+          cómo asignarlos cuando llegan varios incidentes a la vez y cómo mantener buena cobertura durante una jornada completa.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="#simulador">Iniciar simulación</a>
-          <a class="button" href="#evolucion">Ver evolución del proyecto</a>
+          <a class="button primary" href="#lab" data-i18n="hero.cta">Ejecutar banco de pruebas</a>
+          <a class="button" href="#research" data-i18n="hero.method">Ver metodología</a>
         </div>
       </div>
-
-      <div class="hero-system" aria-label="Cómo funciona EcoDispatch">
-        <div class="pipeline-node"><span>01</span><strong>Riesgo</strong><small>¿Dónde es más probable que ocurra daño?</small></div>
+      <div class="hero-system">
+        <div class="pipeline-node"><span>01</span><strong data-i18n="pipe.placement">Preposicionamiento</strong><small data-i18n="pipe.placementSub">k-median ponderado por riesgo</small></div>
         <div class="pipeline-arrow">↓</div>
-        <div class="pipeline-node"><span>02</span><strong>Preposicionamiento</strong><small>Elegimos dónde esperar antes del incidente</small></div>
+        <div class="pipeline-node"><span>02</span><strong data-i18n="pipe.crisis">Crisis simultánea</strong><small data-i18n="pipe.crisisSub">cobertura máxima + coste mínimo</small></div>
         <div class="pipeline-arrow">↓</div>
-        <div class="pipeline-node"><span>03</span><strong>Despacho</strong><small>Elegimos qué recurso enviar y por qué</small></div>
+        <div class="pipeline-node"><span>03</span><strong data-i18n="pipe.day">Jornada completa</strong><small data-i18n="pipe.daySub">política online sensible a cobertura futura</small></div>
         <div class="pipeline-arrow">↓</div>
-        <div class="pipeline-node"><span>04</span><strong>Benchmark</strong><small>Comparamos contra greedy y óptimo offline</small></div>
+        <div class="pipeline-node"><span>04</span><strong data-i18n="pipe.measure">Medir</strong><small data-i18n="pipe.measureSub">cobertura, ETA, P95, distancia y daño</small></div>
       </div>
     </section>
 
-    <section id="metrics" class="metric-grid" aria-label="Métricas principales">
-      <article class="metric"><span>Cobertura EcoDispatch</span><strong id="metric-coverage">0/0</strong><small>incidentes atendidos</small></article>
-      <article class="metric"><span>Eco / óptimo</span><strong id="metric-ratio">—</strong><small>coste relativo</small></article>
-      <article class="metric"><span>Objetivo k-median</span><strong id="metric-kmedian">—</strong><small>riesgo × distancia</small></article>
-      <article class="metric"><span>Bases seleccionadas</span><strong id="metric-bases">—</strong><small>posición preventiva</small></article>
+    <section class="metric-grid" id="results">
+      <article class="metric"><span data-i18n="summary.placement">Preposicionamiento</span><strong id="summary-placement">—</strong><small data-i18n="summary.placementSub">vs despliegue medio posible</small></article>
+      <article class="metric"><span data-i18n="summary.crisis">Crisis simultánea</span><strong id="summary-crisis">—</strong><small data-i18n="summary.crisisSub">incidentes extra cubiertos</small></article>
+      <article class="metric"><span data-i18n="summary.day">Jornada completa</span><strong id="summary-day">—</strong><small data-i18n="summary.daySub">diferencia de cobertura</small></article>
+      <article class="metric"><span data-i18n="summary.seed">Semilla</span><strong id="summary-seed">—</strong><small data-i18n="summary.seedSub">experimento reproducible</small></article>
     </section>
 
-    <section id="simulador" class="section">
+    <section id="lab" class="section">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">SIMULADOR VISUAL · MÁLAGA</p>
-          <h2>Un incidente. Tres decisiones.</h2>
+          <p class="eyebrow" data-i18n="lab.eyebrow">BANCO DE PRUEBAS v0.5</p>
+          <h2 data-i18n="lab.title">Tres experimentos. Tres fuentes distintas de eficiencia.</h2>
         </div>
-        <p>
-          Los puntos usan coordenadas reales de Málaga, pero las bases y los
-          incidentes son sintéticos. El mapa táctico es un esquema local estable:
-          no depende de mapas externos y por eso siempre carga.
+        <p data-i18n="lab.copy">
+          No buscamos una cifra única. Queremos aislar qué mejora viene de colocar mejor,
+          cuál viene de asignar globalmente y cuál viene de conservar cobertura futura.
         </p>
       </div>
 
-      <article class="panel simulator-controls" aria-label="Controles de simulación">
+      <article class="panel suite-controls">
         <label>
-          <span>Semilla del escenario</span>
-          <input id="sim-seed" type="text" value="malaga-v04" maxlength="40" aria-describedby="seed-help">
-          <small id="seed-help">Misma semilla = mismos incidentes.</small>
+          <span data-i18n="controls.seed">Semilla</span>
+          <input id="research-seed" type="text" value="open-research-05" maxlength="48">
+          <small data-i18n="controls.seedHelp">Misma semilla = mismos escenarios.</small>
         </label>
         <label>
-          <span>Nº de incidentes</span>
-          <input id="sim-count" type="number" min="4" max="10" step="1" value="8">
-        </label>
-        <label>
-          <span>Velocidad</span>
-          <select id="sim-speed">
-            <option value="1600">Lenta</option>
-            <option value="900" selected>Normal</option>
-            <option value="380">Rápida</option>
+          <span data-i18n="controls.profile">Perfil</span>
+          <select id="research-profile">
+            <option value="normal" data-i18n="controls.normal">Normal</option>
+            <option value="stress" selected data-i18n="controls.stress">Stress test</option>
           </select>
+          <small data-i18n="controls.profileHelp">Stress busca conflictos difíciles de asignación y los etiqueta como tales.</small>
         </label>
-        <div class="control-actions">
-          <button id="sim-generate" class="button" type="button">Nuevo escenario</button>
-          <button id="sim-play" class="button primary" type="button">▶ Ejecutar</button>
-          <button id="sim-step" class="button" type="button">Paso</button>
-          <button id="sim-reset" class="button ghost" type="button">Reiniciar</button>
-        </div>
+        <button id="run-suite" class="button primary suite-run" type="button" data-i18n="controls.run">▶ Ejecutar los 3 experimentos</button>
       </article>
 
-      <div class="scene-strip" aria-live="polite">
-        <div class="scene-status">
-          <span id="scene-badge" class="scene-badge ready">PREPARADO</span>
-          <div>
-            <strong id="scene-title">Escenario generado y listo</strong>
-            <p id="scene-copy">Pulsa «Ejecutar» para ver cómo responden las tres políticas al mismo incidente.</p>
-          </div>
-        </div>
-        <div class="scene-progress-wrap">
-          <div class="scene-progress-track"><div id="scene-progress-bar"></div></div>
-          <span id="sim-progress">0 / 8</span>
-        </div>
+      <div class="experiment-selector" role="tablist">
+        <button class="experiment-tab active" data-experiment="placement"><span>01</span><strong data-i18n="tabs.placement">Preposicionamiento</strong><small data-i18n="tabs.placementSub">¿Dónde esperar?</small></button>
+        <button class="experiment-tab" data-experiment="crisis"><span>02</span><strong data-i18n="tabs.crisis">Crisis simultánea</strong><small data-i18n="tabs.crisisSub">¿Quién atiende a quién?</small></button>
+        <button class="experiment-tab" data-experiment="day"><span>03</span><strong data-i18n="tabs.day">Jornada completa</strong><small data-i18n="tabs.daySub">¿Qué decisión deja mejor el sistema?</small></button>
       </div>
 
-      <div class="experiment-grid live-grid">
-        <article class="panel map-panel">
-          <div class="panel-head map-head">
-            <div>
-              <span class="panel-kicker">Mapa táctico</span>
-              <strong id="map-strategy-title">Vista EcoDispatch</strong>
+      <section class="experiment-pane active" data-pane="placement">
+        <div class="experiment-grid">
+          <article class="panel map-panel">
+            <div class="panel-head"><div><span class="panel-kicker" data-i18n="placement.mapKicker">MAPA DE RIESGO</span><strong data-i18n="placement.mapTitle">Bases elegidas por k-median</strong></div><span class="method-pill" data-i18n="placement.method">exacto · 56 combinaciones</span></div>
+            <div class="map-stage"><svg id="placement-map" viewBox="0 0 900 520"></svg><div class="map-corner-note"><strong>Montes de Málaga</strong><span data-i18n="map.note">coordenadas reales · esquema no cartográfico</span></div></div>
+          </article>
+          <article class="panel result-panel">
+            <div class="result-hero"><span data-i18n="placement.bigLabel">Reducción de exposición ponderada</span><strong id="placement-improvement">—</strong><p data-i18n="placement.bigCopy">frente al promedio de todas las configuraciones posibles de 3 bases.</p></div>
+            <div class="result-kpis">
+              <div><span data-i18n="placement.opt">EcoDispatch</span><strong id="placement-opt">—</strong><small data-i18n="placement.optSub">objetivo ponderado</small></div>
+              <div><span data-i18n="placement.avg">Despliegue medio</span><strong id="placement-avg">—</strong><small data-i18n="placement.avgSub">media de 56 configuraciones</small></div>
+              <div><span data-i18n="placement.bases">Bases óptimas</span><strong id="placement-bases">—</strong><small>k = 3</small></div>
             </div>
-            <div class="strategy-tabs" role="group" aria-label="Estrategia mostrada en el mapa">
-              <button type="button" class="strategy-tab active" data-view="eco">EcoDispatch</button>
-              <button type="button" class="strategy-tab" data-view="greedy">Greedy</button>
-              <button type="button" class="strategy-tab" data-view="offline">Óptimo</button>
-            </div>
-          </div>
+            <div class="explain-box"><strong data-i18n="placement.whyTitle">¿Dónde aparece la eficiencia?</strong><p data-i18n="placement.why">No crea más brigadas: reduce la distancia esperada entre los recursos y las zonas donde el riesgo ponderado es mayor.</p></div>
+          </article>
+        </div>
+      </section>
 
-          <div class="map-stage">
-            <svg id="scenario-map" viewBox="0 0 900 560" role="img" aria-label="Mapa táctico de la simulación"></svg>
-            <div class="map-corner-note">
-              <strong>Montes de Málaga</strong>
-              <span>Coordenadas reales · esquema no cartográfico</span>
+      <section class="experiment-pane" data-pane="crisis">
+        <div class="stress-banner" id="crisis-stress-banner"><strong data-i18n="crisis.stressTitle">STRESS TEST DE ASIGNACIÓN</strong><span data-i18n="crisis.stressCopy">El generador busca un escenario con conflicto real entre capacidades. No representa el promedio diario.</span></div>
+        <div class="experiment-grid">
+          <article class="panel map-panel">
+            <div class="panel-head"><div><span class="panel-kicker" data-i18n="crisis.mapKicker">INCIDENTES SIMULTÁNEOS</span><strong data-i18n="crisis.mapTitle">Asignación global de una flota limitada</strong></div><span class="method-pill" data-i18n="crisis.method">matching exacto pequeño</span></div>
+            <div class="map-stage"><svg id="crisis-map" viewBox="0 0 900 520"></svg></div>
+          </article>
+          <article class="panel result-panel">
+            <div class="duel">
+              <div class="duel-side greedy"><span>Greedy</span><strong id="crisis-greedy-cover">—</strong><small data-i18n="crisis.covered">incidentes cubiertos</small></div>
+              <div class="duel-vs">VS</div>
+              <div class="duel-side eco"><span>EcoDispatch</span><strong id="crisis-eco-cover">—</strong><small data-i18n="crisis.covered">incidentes cubiertos</small></div>
             </div>
-          </div>
+            <div class="result-hero compact"><span data-i18n="crisis.bigLabel">Recursos aprovechados mejor</span><strong id="crisis-delta">—</strong><p id="crisis-story">—</p></div>
+            <div class="result-kpis two">
+              <div><span data-i18n="crisis.greedyCost">Coste Greedy</span><strong id="crisis-greedy-cost">—</strong></div>
+              <div><span data-i18n="crisis.ecoCost">Coste EcoDispatch</span><strong id="crisis-eco-cost">—</strong></div>
+            </div>
+            <div id="crisis-assignments" class="assignment-list"></div>
+          </article>
+        </div>
+      </section>
 
-          <div class="map-footer">
-            <div class="legend">
-              <span><i class="dot risk"></i>Zona de riesgo</span>
-              <span><i class="dot selected"></i>Base elegida</span>
-              <span><i class="dot incident"></i>Incidente</span>
-              <span><i class="dot resource"></i>Recurso</span>
+      <section class="experiment-pane" data-pane="day">
+        <div class="stress-banner" id="day-stress-banner"><strong data-i18n="day.stressTitle">STRESS TEST ONLINE</strong><span data-i18n="day.stressCopy">En modo stress se busca una jornada donde mantener cobertura futura importe. Está etiquetado para no confundirlo con rendimiento promedio.</span></div>
+        <div class="experiment-grid">
+          <article class="panel day-visual">
+            <div class="panel-head"><div><span class="panel-kicker" data-i18n="day.visualKicker">120 INCIDENTES SECUENCIALES</span><strong data-i18n="day.visualTitle">Greedy vs política online sensible a riesgo</strong></div><span class="method-pill" data-i18n="day.method">sin conocer el futuro</span></div>
+            <div class="day-race">
+              <div class="day-metric-row"><span data-i18n="day.coverage">Cobertura</span><div id="day-coverage-bars"></div></div>
+              <div class="day-metric-row"><span data-i18n="day.meanEta">ETA medio</span><div id="day-eta-bars"></div></div>
+              <div class="day-metric-row"><span data-i18n="day.p95">ETA P95</span><div id="day-p95-bars"></div></div>
+              <div class="day-metric-row"><span data-i18n="day.distance">Distancia</span><div id="day-distance-bars"></div></div>
             </div>
-            <span class="geo-disclaimer">Eventos y bases simulados</span>
-          </div>
-        </article>
+          </article>
+          <article class="panel result-panel">
+            <div class="result-hero"><span data-i18n="day.bigLabel">Diferencia de cobertura</span><strong id="day-cover-delta">—</strong><p id="day-story">—</p></div>
+            <div class="result-kpis two">
+              <div><span>EcoDispatch</span><strong id="day-eco-served">—</strong><small id="day-eco-eta">—</small></div>
+              <div><span>Greedy</span><strong id="day-greedy-served">—</strong><small id="day-greedy-eta">—</small></div>
+            </div>
+            <div class="explain-box"><strong data-i18n="day.whyTitle">La diferencia clave</strong><p data-i18n="day.why">Greedy minimiza el viaje actual. EcoDispatch añade una penalización por dejar mal cubierta la distribución futura del riesgo.</p></div>
+          </article>
+        </div>
+      </section>
+    </section>
 
-        <article class="panel event-panel">
-          <div class="panel-head event-head">
-            <div>
-              <span class="panel-kicker">Qué está ocurriendo</span>
-              <strong id="event-name">Sin incidente activo</strong>
-            </div>
-            <span id="event-type" class="event-type">—</span>
-          </div>
-
-          <div class="event-hero">
-            <div id="event-icon" class="event-icon">◎</div>
-            <div>
-              <div class="severity-row">
-                <span>Gravedad</span>
-                <div class="severity-track"><div id="severity-fill"></div></div>
-                <strong id="severity-value">—</strong>
-              </div>
-              <p id="event-detail">El escenario está preparado. Ejecuta la simulación para empezar.</p>
-            </div>
-          </div>
-
-          <div class="decision-story">
-            <span class="story-label">DECISIÓN DE ECODISPATCH</span>
-            <strong id="decision-story-title">Todavía no hay decisión.</strong>
-            <p id="decision-story-copy">Cuando llegue un incidente, aquí explicaremos qué recurso se envía y por qué.</p>
-          </div>
-
-          <div class="decision-grid">
-            <div class="decision eco">
-              <span>EcoDispatch</span>
-              <strong id="decision-eco">—</strong>
-              <small id="decision-eco-detail">riesgo + ETA + distancia</small>
-            </div>
-            <div class="decision greedy">
-              <span>Greedy</span>
-              <strong id="decision-greedy">—</strong>
-              <small>recurso factible más cercano</small>
-            </div>
-            <div class="decision offline">
-              <span>Óptimo offline</span>
-              <strong id="decision-offline">—</strong>
-              <small>conoce toda la secuencia futura</small>
-            </div>
-          </div>
-
-          <div class="queue-head"><span>Cola de incidentes</span><span id="queue-count">0 eventos</span></div>
-          <div id="event-queue" class="event-queue"></div>
-        </article>
+    <section id="research" class="section">
+      <div class="section-heading">
+        <div><p class="eyebrow" data-i18n="research.eyebrow">CONTEXTO MATEMÁTICO</p><h2 data-i18n="research.title">De resultados teóricos a experimentos medibles.</h2></div>
+        <p data-i18n="research.copy">La web distingue deliberadamente entre el resultado matemático publicado y nuestra aplicación experimental.</p>
       </div>
-
-      <div class="strategy-scoreboard" id="strategy-scoreboard" aria-live="polite">
-        <article class="strategy-card eco" data-strategy="eco">
-          <div class="strategy-title"><span class="strategy-dot"></span><strong>EcoDispatch</strong><small>online · sensible al riesgo</small></div>
-          <div class="strategy-kpis">
-            <div><span>Atendidos</span><b id="eco-served">0/0</b></div>
-            <div><span>Coste</span><b id="eco-cost">0.00</b></div>
-            <div><span>Recorrido</span><b id="eco-distance">0.00 km</b></div>
-          </div>
-        </article>
-        <article class="strategy-card greedy" data-strategy="greedy">
-          <div class="strategy-title"><span class="strategy-dot"></span><strong>Greedy</strong><small>online · el más cercano</small></div>
-          <div class="strategy-kpis">
-            <div><span>Atendidos</span><b id="greedy-served">0/0</b></div>
-            <div><span>Coste</span><b id="greedy-cost">0.00</b></div>
-            <div><span>Recorrido</span><b id="greedy-distance">0.00 km</b></div>
-          </div>
-        </article>
-        <article class="strategy-card offline" data-strategy="offline">
-          <div class="strategy-title"><span class="strategy-dot"></span><strong>Óptimo offline</strong><small>benchmark · conoce el futuro</small></div>
-          <div class="strategy-kpis">
-            <div><span>Atendidos</span><b id="offline-served">0/0</b></div>
-            <div><span>Coste</span><b id="offline-cost">0.00</b></div>
-            <div><span>Recorrido</span><b id="offline-distance">0.00 km</b></div>
-          </div>
-        </article>
+      <div class="research-grid">
+        <article class="panel research-card"><span>#125</span><strong>Metric k-median</strong><p data-i18n="research.kmedian">Inspira la capa de preposicionamiento: elegir dónde deben esperar los recursos.</p></article>
+        <article class="panel research-card"><span>#120</span><strong>Maximum-cardinality matching</strong><p data-i18n="research.matching">Inspira la prioridad de cubrir el máximo número de incidentes antes de minimizar el coste secundario.</p></article>
+        <article class="panel research-card"><span>#110</span><strong>k-server</strong><p data-i18n="research.kserver">Inspira el problema online: cada movimiento cambia la posición desde la que responderás al futuro.</p></article>
+      </div>
+      <div class="independence-note">
+        <p data-i18n="research.disclaimer">EcoDispatch es un prototipo independiente. Está inspirado por resultados matemáticos públicos de OpenAI, pero no está afiliado, financiado ni respaldado por OpenAI.</p>
+        <a href="https://github.com/openai/math" target="_blank" rel="noreferrer" data-i18n="research.link">Repositorio público de matemáticas de OpenAI ↗</a>
       </div>
     </section>
 
-    <section id="comparativa" class="section">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">COMPARATIVA VIVA</p>
-          <h2>¿Quién está tomando mejores decisiones?</h2>
-        </div>
-        <p>
-          Menor coste es mejor, siempre que la cobertura sea comparable.
-          El óptimo offline no es desplegable: sirve únicamente como límite inferior.
-        </p>
-      </div>
-
-      <article class="panel comparison-panel">
-        <div class="race-header">
-          <span>Coste acumulado</span>
-          <strong id="benchmark-headline">Todavía no hay resultados.</strong>
-        </div>
-
-        <div class="comparison-row">
-          <div class="comparison-label"><span><i class="mini-dot eco"></i>EcoDispatch</span><strong id="bar-eco-value">0.00</strong></div>
-          <div class="bar-track"><div id="bar-eco" class="bar eco-bar"></div></div>
-        </div>
-        <div class="comparison-row">
-          <div class="comparison-label"><span><i class="mini-dot greedy"></i>Greedy</span><strong id="bar-greedy-value">0.00</strong></div>
-          <div class="bar-track"><div id="bar-greedy" class="bar greedy-bar"></div></div>
-        </div>
-        <div class="comparison-row">
-          <div class="comparison-label"><span><i class="mini-dot offline"></i>Óptimo offline</span><strong id="bar-offline-value">0.00</strong></div>
-          <div class="bar-track"><div id="bar-offline" class="bar offline-bar"></div></div>
-        </div>
-
-        <div class="benchmark-summary">
-          <p id="benchmark-copy">Las tres políticas parten exactamente de las mismas posiciones iniciales.</p>
-          <div class="verdict-grid">
-            <div><span>Eco vs Greedy</span><strong id="verdict-greedy">—</strong></div>
-            <div><span>Eco vs Óptimo</span><strong id="verdict-offline">—</strong></div>
-            <div><span>Cobertura</span><strong id="verdict-coverage">—</strong></div>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <section id="evolucion" class="section">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">CONSTRUIR EN PÚBLICO</p>
-          <h2>Evolución del proyecto</h2>
-        </div>
-        <p>Cada versión deja constancia de qué ha cambiado y qué estamos midiendo.</p>
-      </div>
+    <section id="evolution" class="section">
+      <div class="section-heading"><div><p class="eyebrow" data-i18n="evolution.eyebrow">BUILD IN PUBLIC</p><h2 data-i18n="evolution.title">Evolución del proyecto</h2></div><p data-i18n="evolution.copy">Cada versión deja una huella reproducible de qué cambió y qué aprendimos.</p></div>
       <div id="timeline" class="timeline"></div>
     </section>
 
     <section class="section">
       <article class="panel methodology">
-        <div>
-          <p class="eyebrow">LÍMITE DEL MODELO</p>
-          <h2>Un laboratorio matemático, no un servicio de emergencias.</h2>
-        </div>
-        <p>
-          La v0.4 usa coordenadas geográficas reales de Málaga, pero el mapa mostrado
-          es deliberadamente esquemático y las bases/incidentes son sintéticos.
-          Los tiempos aún se calculan con distancia geodésica y velocidad del recurso.
-          Las siguientes versiones introducirán rutas reales, duración de servicio,
-          incidentes simultáneos y datos de riesgo reales.
-        </p>
+        <div><p class="eyebrow" data-i18n="limits.eyebrow">LÍMITES</p><h2 data-i18n="limits.title">Banco de pruebas, no sistema operativo real.</h2></div>
+        <p data-i18n="limits.copy">Los incidentes, bases y perfiles de riesgo son sintéticos sobre coordenadas reales de Málaga. Los stress tests buscan deliberadamente casos difíciles; la web los etiqueta para no presentarlos como rendimiento medio. Las rutas reales, tiempos de servicio e incidentes simultáneos con datos reales llegarán en versiones posteriores.</p>
       </article>
     </section>
   </main>
 
-  <footer>
-    <span>EcoDispatch · prototipo abierto de investigación</span>
-    <a href="https://github.com/webtilians/ecodispatch">Código fuente</a>
-  </footer>
+  <footer><span data-i18n="footer">EcoDispatch · open research prototype</span><a href="https://github.com/webtilians/ecodispatch">GitHub</a></footer>
 
+  <script src="./i18n.js"></script>
   <script src="./simulation.js"></script>
   <script src="./app.js"></script>
 </body>
