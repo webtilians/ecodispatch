@@ -1,5 +1,5 @@
 {
-  "version": "0.4",
+  "version": "0.5",
   "date": "2026-10-07",
   "placement": {
     "selected_bases": [
@@ -181,7 +181,9 @@
         "fire"
       ],
       "speed_kmh": 55,
-      "co2_g_per_km": 230
+      "co2_g_per_km": 230,
+      "label_es": "Brigada Alfa",
+      "label_en": "Alpha Brigade"
     },
     {
       "name": "A-01",
@@ -196,7 +198,9 @@
         "medical"
       ],
       "speed_kmh": 65,
-      "co2_g_per_km": 185
+      "co2_g_per_km": 185,
+      "label_es": "Ambulancia Sierra",
+      "label_en": "Sierra Ambulance"
     },
     {
       "name": "D-01",
@@ -212,7 +216,9 @@
         "drone"
       ],
       "speed_kmh": 80,
-      "co2_g_per_km": 15
+      "co2_g_per_km": 15,
+      "label_es": "Dron Cóndor",
+      "label_en": "Condor Drone"
     },
     {
       "name": "U-01",
@@ -228,7 +234,9 @@
         "drone"
       ],
       "speed_kmh": 60,
-      "co2_g_per_km": 155
+      "co2_g_per_km": 155,
+      "label_es": "Unidad Eco",
+      "label_en": "Eco Unit"
     }
   ],
   "geo": {
@@ -253,5 +261,11 @@
       "source": "Junta de Andalucía"
     },
     "disclaimer": "Coordenadas reales de Málaga; mapa táctico esquemático. Bases e incidentes simulados."
+  },
+  "research": {
+    "day_incidents": 120,
+    "online_lambda": 0.35,
+    "crisis_incidents": 6,
+    "placement_k": 3
   }
 }
