@@ -3,130 +3,183 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="EcoDispatch research dashboard — visual experiments in risk-aware resource placement and dispatch.">
-  <title>EcoDispatch — Research Dashboard</title>
+  <meta name="description" content="EcoDispatch live research simulator — compare risk-aware dispatch against greedy and an exact finite offline optimum.">
+  <title>EcoDispatch — Live Research Simulator</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="#top" aria-label="EcoDispatch home">
       <span class="brand-mark">ED</span>
-      <span>
-        <strong>EcoDispatch</strong>
-        <small>Research Lab</small>
-      </span>
+      <span><strong>EcoDispatch</strong><small>Research Lab</small></span>
     </a>
     <nav aria-label="Main navigation">
-      <a href="#experiment">Experiment</a>
-      <a href="#metrics">Metrics</a>
+      <a href="#simulator">Simulator</a>
+      <a href="#benchmark">Benchmark</a>
       <a href="#evolution">Evolution</a>
       <a href="https://github.com/webtilians/ecodispatch">GitHub ↗</a>
     </nav>
   </header>
 
   <main id="top">
-    <section class="hero">
+    <section class="hero compact-hero">
       <div class="hero-copy">
-        <p class="eyebrow">OPEN RESEARCH · v0.1</p>
-        <h1>Allocating resources <span>before</span> the emergency happens.</h1>
+        <p class="eyebrow">OPEN RESEARCH · v0.2</p>
+        <h1>A dispatch system you can <span>watch think.</span></h1>
         <p class="lede">
-          EcoDispatch combines risk-weighted k-median, feasible matching and
-          online k-server benchmarks to study how mobile resources can be
-          positioned and dispatched more efficiently.
+          Generate a reproducible emergency sequence and watch three policies
+          solve exactly the same scenario: EcoDispatch, nearest-resource greedy,
+          and an exact offline optimum that knows the finite future.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="#experiment">View current experiment</a>
-          <a class="button" href="#evolution">See evolution</a>
+          <a class="button primary" href="#simulator">Run the simulator</a>
+          <a class="button" href="#evolution">See the research log</a>
         </div>
       </div>
       <div class="hero-system" aria-label="Optimization pipeline">
-        <div class="pipeline-node">
-          <span>01</span><strong>Risk model</strong><small>Where can harm occur?</small>
-        </div>
+        <div class="pipeline-node"><span>01</span><strong>Generate</strong><small>Seeded risk-weighted incidents</small></div>
         <div class="pipeline-arrow">↓</div>
-        <div class="pipeline-node">
-          <span>02</span><strong>Pre-position</strong><small>Weighted k-median</small>
-        </div>
+        <div class="pipeline-node"><span>02</span><strong>Compete</strong><small>Same events, three policies</small></div>
         <div class="pipeline-arrow">↓</div>
-        <div class="pipeline-node">
-          <span>03</span><strong>Dispatch</strong><small>Coverage first, cost second</small>
-        </div>
+        <div class="pipeline-node"><span>03</span><strong>Measure</strong><small>Coverage, delay, distance, cost</small></div>
         <div class="pipeline-arrow">↓</div>
-        <div class="pipeline-node">
-          <span>04</span><strong>Benchmark</strong><small>Online vs offline optimum</small>
-        </div>
+        <div class="pipeline-node"><span>04</span><strong>Repeat</strong><small>Same seed = same experiment</small></div>
       </div>
     </section>
 
-    <section id="metrics" class="metric-grid" aria-label="Current metrics">
-      <article class="metric"><span>Coverage</span><strong id="metric-coverage">—</strong><small>incidents served</small></article>
-      <article class="metric"><span>Online / optimum</span><strong id="metric-ratio">—</strong><small>empirical movement ratio</small></article>
-      <article class="metric"><span>k-median objective</span><strong id="metric-kmedian">—</strong><small>risk-weighted distance</small></article>
-      <article class="metric"><span>Selected bases</span><strong id="metric-bases">—</strong><small>preventive locations</small></article>
+    <section id="metrics" class="metric-grid" aria-label="Live metrics">
+      <article class="metric"><span>Eco coverage</span><strong id="metric-coverage">0/0</strong><small>processed incidents served</small></article>
+      <article class="metric"><span>Eco / offline cost</span><strong id="metric-ratio">—</strong><small>when coverage is equal</small></article>
+      <article class="metric"><span>k-median objective</span><strong id="metric-kmedian">—</strong><small>preventive placement</small></article>
+      <article class="metric"><span>Selected bases</span><strong id="metric-bases">—</strong><small>starting positions</small></article>
     </section>
 
-    <section id="experiment" class="section">
+    <section id="simulator" class="section">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">CURRENT SYNTHETIC EXPERIMENT</p>
-          <h2>What the optimizer is doing</h2>
+          <p class="eyebrow">LIVE SYNTHETIC SIMULATION</p>
+          <h2>Same world. Different decisions.</h2>
         </div>
         <p>
-          Larger grey circles represent higher risk demand. Selected bases are
-          highlighted. Dispatch lines connect available resources to incidents.
+          Incidents arrive sequentially. EcoDispatch minimizes a severity-aware
+          secondary cost among feasible resources; greedy chooses the nearest
+          feasible resource; offline solves the whole finite sequence exactly.
         </p>
       </div>
 
-      <div class="experiment-grid">
+      <article class="panel simulator-controls" aria-label="Simulation controls">
+        <label>
+          <span>Seed</span>
+          <input id="sim-seed" type="text" value="ecodispatch-02" maxlength="40">
+        </label>
+        <label>
+          <span>Incidents</span>
+          <input id="sim-count" type="number" min="4" max="10" step="1" value="8">
+        </label>
+        <label>
+          <span>Speed</span>
+          <select id="sim-speed">
+            <option value="1500">Slow</option>
+            <option value="850" selected>Normal</option>
+            <option value="350">Fast</option>
+          </select>
+        </label>
+        <div class="control-actions">
+          <button id="sim-generate" class="button" type="button">New scenario</button>
+          <button id="sim-play" class="button primary" type="button">Run</button>
+          <button id="sim-step" class="button" type="button">Step</button>
+          <button id="sim-reset" class="button ghost" type="button">Reset</button>
+        </div>
+      </article>
+
+      <div class="strategy-scoreboard" id="strategy-scoreboard" aria-live="polite">
+        <article class="strategy-card eco" data-strategy="eco">
+          <div class="strategy-title"><span class="strategy-dot"></span><strong>EcoDispatch</strong><small>risk-aware online</small></div>
+          <div class="strategy-stats"><span><b id="eco-served">0/0</b> served</span><span><b id="eco-cost">0.00</b> cost</span><span><b id="eco-distance">0.00</b> km</span></div>
+        </article>
+        <article class="strategy-card greedy" data-strategy="greedy">
+          <div class="strategy-title"><span class="strategy-dot"></span><strong>Greedy</strong><small>nearest feasible</small></div>
+          <div class="strategy-stats"><span><b id="greedy-served">0/0</b> served</span><span><b id="greedy-cost">0.00</b> cost</span><span><b id="greedy-distance">0.00</b> km</span></div>
+        </article>
+        <article class="strategy-card offline" data-strategy="offline">
+          <div class="strategy-title"><span class="strategy-dot"></span><strong>Offline optimum</strong><small>exact finite future</small></div>
+          <div class="strategy-stats"><span><b id="offline-served">0/0</b> served</span><span><b id="offline-cost">0.00</b> cost</span><span><b id="offline-distance">0.00</b> km</span></div>
+        </article>
+      </div>
+
+      <div class="experiment-grid live-grid">
         <article class="panel map-panel">
-          <div class="panel-head">
+          <div class="panel-head map-head">
             <div>
-              <span class="panel-kicker">Scenario map</span>
-              <strong>Placement + dispatch</strong>
+              <span class="panel-kicker">Live map</span>
+              <strong id="map-strategy-title">EcoDispatch view</strong>
             </div>
-            <div class="legend" aria-label="Map legend">
-              <span><i class="dot demand"></i>Risk</span>
-              <span><i class="dot base"></i>Candidate</span>
-              <span><i class="dot selected"></i>Selected</span>
-              <span><i class="dot incident"></i>Incident</span>
+            <div class="strategy-tabs" role="group" aria-label="Map strategy">
+              <button type="button" class="strategy-tab active" data-view="eco">Eco</button>
+              <button type="button" class="strategy-tab" data-view="greedy">Greedy</button>
+              <button type="button" class="strategy-tab" data-view="offline">Offline</button>
             </div>
           </div>
-          <svg id="scenario-map" viewBox="0 0 820 560" role="img" aria-label="EcoDispatch synthetic scenario"></svg>
+          <svg id="scenario-map" viewBox="0 0 820 560" role="img" aria-label="EcoDispatch live synthetic scenario"></svg>
+          <div class="map-footer">
+            <div class="legend">
+              <span><i class="dot demand"></i>Risk</span>
+              <span><i class="dot selected"></i>Selected base</span>
+              <span><i class="dot incident"></i>Current incident</span>
+              <span><i class="dot resource"></i>Resource</span>
+            </div>
+            <span id="sim-progress">Ready</span>
+          </div>
         </article>
 
-        <article class="panel">
+        <article class="panel event-panel">
           <div class="panel-head">
-            <div>
-              <span class="panel-kicker">Assignments</span>
-              <strong>Current dispatch</strong>
-            </div>
+            <div><span class="panel-kicker">Current event</span><strong id="event-name">Waiting to run</strong></div>
+            <span id="event-type" class="event-type">—</span>
           </div>
-          <div id="dispatch-list" class="dispatch-list" aria-live="polite"></div>
+          <div id="event-detail" class="event-detail">
+            Generate or run a scenario to begin.
+          </div>
+          <div class="decision-grid">
+            <div><span>EcoDispatch</span><strong id="decision-eco">—</strong></div>
+            <div><span>Greedy</span><strong id="decision-greedy">—</strong></div>
+            <div><span>Offline</span><strong id="decision-offline">—</strong></div>
+          </div>
+          <div class="queue-head"><span>Incident queue</span><span id="queue-count">0 events</span></div>
+          <div id="event-queue" class="event-queue"></div>
         </article>
       </div>
     </section>
 
-    <section class="section">
+    <section id="benchmark" class="section">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">BENCHMARK</p>
-          <h2>Online movement vs knowing the future</h2>
+          <p class="eyebrow">LIVE BENCHMARK</p>
+          <h2>What does foresight buy?</h2>
         </div>
         <p>
-          The offline optimum sees the entire request sequence in advance.
-          EcoDispatch uses it only as a research baseline.
+          Offline is not deployable: it knows every future incident. It is a
+          lower-bound benchmark. If EcoDispatch approaches it without future
+          information, the online policy is improving.
         </p>
       </div>
-      <article class="panel benchmark-panel">
-        <div class="bar-row">
-          <div class="bar-label"><span>Online baseline</span><strong id="online-value">—</strong></div>
-          <div class="bar-track"><div id="online-bar" class="bar online"></div></div>
+      <article class="panel comparison-panel">
+        <div class="comparison-row">
+          <div class="comparison-label"><span>EcoDispatch</span><strong id="bar-eco-value">0.00</strong></div>
+          <div class="bar-track"><div id="bar-eco" class="bar eco-bar"></div></div>
         </div>
-        <div class="bar-row">
-          <div class="bar-label"><span>Offline optimum</span><strong id="offline-value">—</strong></div>
-          <div class="bar-track"><div id="offline-bar" class="bar offline"></div></div>
+        <div class="comparison-row">
+          <div class="comparison-label"><span>Greedy</span><strong id="bar-greedy-value">0.00</strong></div>
+          <div class="bar-track"><div id="bar-greedy" class="bar greedy-bar"></div></div>
         </div>
-        <p id="benchmark-copy" class="benchmark-copy"></p>
+        <div class="comparison-row">
+          <div class="comparison-label"><span>Offline optimum</span><strong id="bar-offline-value">0.00</strong></div>
+          <div class="bar-track"><div id="bar-offline" class="bar offline-bar"></div></div>
+        </div>
+        <div class="benchmark-summary">
+          <strong id="benchmark-headline">Run a scenario to compare policies.</strong>
+          <p id="benchmark-copy">All three policies start from exactly the same resource positions.</p>
+        </div>
       </article>
     </section>
 
@@ -136,25 +189,21 @@
           <p class="eyebrow">BUILD IN PUBLIC</p>
           <h2>Evolution log</h2>
         </div>
-        <p>
-          Each milestone can include metrics, notes and a screenshot. This is
-          the visual history of how the research changes over time.
-        </p>
+        <p>Every milestone can carry its own screenshot, metrics and research notes.</p>
       </div>
       <div id="timeline" class="timeline"></div>
     </section>
 
     <section class="section">
       <article class="panel methodology">
-        <div>
-          <p class="eyebrow">WHY THIS EXISTS</p>
-          <h2>From theorem to measurable experiment.</h2>
-        </div>
+        <div><p class="eyebrow">MODEL BOUNDARY</p><h2>A benchmark, not an emergency service.</h2></div>
         <p>
-          The goal is not to claim that a new theorem instantly solves emergency
-          response. The goal is to create a reproducible test bed where each
-          mathematical idea can be implemented, compared against baselines and
-          kept only when it produces a measurable improvement.
+          This simulator is sequential and synthetic. Travel uses Euclidean
+          distance, resources become immediately available after service, and the
+          exact offline optimum is restricted to at most ten generated incidents.
+          These assumptions are explicit so later versions can replace them one
+          by one with road graphs, service durations, simultaneous incidents and
+          real risk data.
         </p>
       </article>
     </section>
@@ -165,6 +214,7 @@
     <a href="https://github.com/webtilians/ecodispatch">Source code</a>
   </footer>
 
+  <script src="./simulation.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>
