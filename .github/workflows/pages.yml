@@ -5,7 +5,10 @@ on:
     branches: ["master"]
     paths:
       - "web/**"
-      - "tests/ablation.test.cjs"
+      - "src/**"
+      - "tests/**"
+      - "docs/**"
+      - "README.md"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
