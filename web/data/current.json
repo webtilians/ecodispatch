@@ -1,5 +1,5 @@
 {
-  "version": "0.8",
+  "version": "0.9",
   "date": "2026-10-07",
   "placement": {
     "selected_bases": [
@@ -288,6 +288,21 @@
       "lambda0",
       "eta-greedy",
       "distance-greedy"
-    ]
+    ],
+    "holdout": {
+      "prereg_commit": "017cda8cf011a89794d987ad65658249df60b2f9",
+      "seed": "ecodispatch-holdout-09",
+      "n": 1000,
+      "harm_k": 10,
+      "bootstrap_replicates": 500,
+      "primary_lambdas": [
+        0.2,
+        0.35,
+        0.5,
+        1
+      ],
+      "alpha": 0.05,
+      "multiplicity": "Holm"
+    }
   }
 }
