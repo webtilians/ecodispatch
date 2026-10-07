@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="EcoDispatch — open research into risk-aware resource allocation for emergency response.">
   <title>EcoDispatch — Research Lab</title>
-  <link rel="stylesheet" href="./styles.css?v=0.8.0">
+  <link rel="stylesheet" href="./styles.css?v=0.9.0">
 </head>
 <body>
   <header class="topbar">
@@ -17,6 +17,7 @@
       <a href="#lab" data-i18n="nav.lab">Experimentos</a>
       <a href="#results" data-i18n="nav.results">Resultados</a>
       <a href="#ablation" data-i18n="ab.nav">Lambda</a>
+      <a href="#holdout" data-i18n="ho.nav">Holdout</a>
       <a href="#validation" data-i18n="nav.validation">Validación</a>
       <a href="#research" data-i18n="nav.research">Investigación</a>
       <a href="#evolution" data-i18n="nav.evolution">Evolución</a>
@@ -31,7 +32,7 @@
   <main id="top">
     <section class="hero compact-hero">
       <div class="hero-copy">
-        <p class="eyebrow" data-i18n="hero.eyebrow">INVESTIGACIÓN ABIERTA · v0.8</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">INVESTIGACIÓN ABIERTA · v0.9</p>
         <h1 data-i18n-html="hero.title">¿Cuánta capacidad desperdiciamos por <span>asignar mal</span> los recursos?</h1>
         <p class="lede" data-i18n="hero.lede">
           EcoDispatch separa el problema en tres capas: dónde colocar recursos antes de una emergencia,
@@ -187,6 +188,59 @@
       </article>
     </section>
 
+    <section id="holdout" class="section">
+      <div class="section-heading">
+        <div><p class="eyebrow" data-i18n="ho.eyebrow"></p><h2 data-i18n="ho.title"></h2></div>
+        <p data-i18n="ho.intro"></p>
+      </div>
+
+      <article class="panel holdout-lock">
+        <div><span data-i18n="ho.seedLabel"></span><strong id="ho-seed">—</strong></div>
+        <div><span data-i18n="ho.daysLabel"></span><strong id="ho-n">—</strong></div>
+        <div><span>K</span><strong id="ho-k">—</strong></div>
+        <div><span data-i18n="ho.lambdaLabel"></span><strong id="ho-lambdas">—</strong></div>
+        <div><span data-i18n="ho.preregLabel"></span><strong id="ho-prereg-commit">—</strong></div>
+      </article>
+      <p class="holdout-frozen" data-i18n="ho.frozen"></p>
+      <div class="holdout-actions">
+        <button id="ho-run" class="button primary" type="button" data-i18n="ho.run"></button>
+        <button id="ho-json" class="button" type="button" disabled>JSON</button>
+        <button id="ho-csv" class="button" type="button" disabled>CSV</button>
+        <a class="button" href="https://github.com/webtilians/ecodispatch/blob/master/docs/holdout-v0.9-preregistered.md" target="_blank" rel="noreferrer" data-i18n="ho.preregLink"></a>
+      </div>
+      <div class="mc-progress">
+        <div class="mc-progress-track"><div id="ho-progress-bar"></div></div>
+        <span id="ho-status" role="status" aria-live="polite"></span>
+      </div>
+
+      <div id="ho-results" hidden>
+        <article class="panel holdout-summary">
+          <div id="ho-verdict" class="holdout-verdict">—</div>
+          <p id="ho-verdict-copy"></p>
+          <p data-i18n="ho.rule"></p>
+        </article>
+
+        <div class="panel ab-table-wrap">
+          <table id="ho-table">
+            <caption data-i18n="ho.tableHelp"></caption>
+            <thead><tr>
+              <th>λ</th><th>ΔH</th><th data-i18n="ho.bootstrapCi"></th><th>p</th><th data-i18n="ho.holmP"></th><th data-i18n="ho.result"></th><th>Δ coverage</th><th>Δ ETA</th><th>Δ km</th>
+            </tr></thead>
+            <tbody id="ho-table-body"></tbody>
+          </table>
+        </div>
+
+        <article class="panel holdout-sensitivity">
+          <h3 data-i18n="ho.sensitivityTitle"></h3>
+          <p data-i18n="ho.sensitivityCopy"></p>
+          <div class="ab-table-wrap"><table>
+            <thead><tr><th>K</th><th>λ</th><th>ΔH</th><th data-i18n="ho.bootstrapCi"></th></tr></thead>
+            <tbody id="ho-sensitivity-body"></tbody>
+          </table></div>
+        </article>
+      </div>
+    </section>
+
     <section id="validation" class="section">
       <div class="section-heading">
         <div>
@@ -284,10 +338,12 @@
 
   <footer><span data-i18n="footer">EcoDispatch · open research prototype</span><a href="https://github.com/webtilians/ecodispatch">GitHub</a></footer>
 
-  <script src="./i18n.js?v=0.8.0"></script>
-  <script src="./simulation.js?v=0.8.0"></script>
-  <script src="./ablation-core.js?v=0.8.0"></script>
-  <script src="./ablation.js?v=0.8.0"></script>
-  <script src="./app.js?v=0.8.0"></script>
+  <script src="./i18n.js?v=0.9.0"></script>
+  <script src="./simulation.js?v=0.9.0"></script>
+  <script src="./ablation-core.js?v=0.9.0"></script>
+  <script src="./ablation.js?v=0.9.0"></script>
+  <script src="./holdout-core.js?v=0.9.0"></script>
+  <script src="./holdout.js?v=0.9.0"></script>
+  <script src="./app.js?v=0.9.0"></script>
 </body>
 </html>
