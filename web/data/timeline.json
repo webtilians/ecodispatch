@@ -30,8 +30,8 @@
     "screenshot": null,
     "title_es": "Simulación visual en español + mapa siempre disponible",
     "description_es": "Se elimina la dependencia crítica de mapas externos. La demo usa un mapa táctico local sobre coordenadas reales, recursos visuales, narrativa de decisiones y una comparativa más intuitiva para explicar qué ocurre en cada incidente.",
-    "title_en": "Simulación visual en español + mapa siempre disponible",
-    "description_en": "Se elimina la dependencia crítica de mapas externos. La demo usa un mapa táctico local sobre coordenadas reales, recursos visuales, narrativa de decisiones y una comparativa más intuitiva para explicar qué ocurre en cada incidente."
+    "title_en": "Visual simulation in Spanish + always-available map",
+    "description_en": "The external-map dependency was removed. The demo uses a local tactical map over real coordinates, visual resources, decision narration and a clearer comparison of each response policy."
   },
   {
     "version": "v0.3",
@@ -47,8 +47,8 @@
     "screenshot": null,
     "title_es": "Geografía real de Málaga",
     "description_es": "El simulador pasa a usar coordenadas reales de Málaga y los Montes de Málaga. El k-median se recalcula en kilómetros geodésicos; incidentes y bases continúan siendo sintéticos.",
-    "title_en": "Geografía real de Málaga",
-    "description_en": "El simulador pasa a usar coordenadas reales de Málaga y los Montes de Málaga. El k-median se recalcula en kilómetros geodésicos; incidentes y bases continúan siendo sintéticos."
+    "title_en": "Real Málaga geography",
+    "description_en": "The simulator moved onto real Málaga / Montes de Málaga coordinates. k-median is recomputed in geodesic kilometres while incidents and bases remain explicitly synthetic."
   },
   {
     "version": "v0.2",
@@ -64,8 +64,8 @@
     "screenshot": null,
     "title_es": "Simulador vivo reproducible",
     "description_es": "Generación determinista por semilla, movimiento de recursos y comparación entre EcoDispatch, greedy y un óptimo offline exacto para secuencias finitas.",
-    "title_en": "Simulador vivo reproducible",
-    "description_en": "Generación determinista por semilla, movimiento de recursos y comparación entre EcoDispatch, greedy y un óptimo offline exacto para secuencias finitas."
+    "title_en": "Reproducible live simulator",
+    "description_en": "Seeded incident generation, moving resources and live comparison between EcoDispatch, greedy and an exact finite offline optimum for small sequences."
   },
   {
     "version": "v0.1",
@@ -81,7 +81,7 @@
     "screenshot": null,
     "title_es": "Núcleo matemático + primer dashboard",
     "description_es": "Primer prototipo integrado con k-median ponderado, despacho lexicográfico y benchmark k-server offline para pequeñas instancias.",
-    "title_en": "Núcleo matemático + primer dashboard",
-    "description_en": "Primer prototipo integrado con k-median ponderado, despacho lexicográfico y benchmark k-server offline para pequeñas instancias."
+    "title_en": "Mathematical core + first dashboard",
+    "description_en": "First integrated prototype with weighted k-median, lexicographic dispatch and a small-instance offline k-server benchmark."
   }
 ]
