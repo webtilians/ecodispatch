@@ -1,5 +1,5 @@
 self.window=self;
-importScripts('./simulation.js?v=0.9.0','./ablation-core.js?v=0.9.0','./holdout-core.js?v=0.9.0');
+importScripts('./simulation.js?v=0.9.1','./ablation-core.js?v=0.9.1','./holdout-core.js?v=0.9.1');
 
 self.onmessage=({data})=>{
   try{
