@@ -1,5 +1,5 @@
 {
-  "version": "0.9",
+  "version": "0.9.1",
   "date": "2026-10-07",
   "placement": {
     "selected_bases": [
@@ -302,7 +302,14 @@
         1
       ],
       "alpha": 0.05,
-      "multiplicity": "Holm"
+      "multiplicity": "Holm",
+      "frozen_result": {
+        "summary": "./data/holdout-v0.9.1-frozen.json",
+        "raw_sha256": "38b912b0941e4ab8edb9c9da9c7e12d4da4d4c0f3f8b4d82fe911573b3132985",
+        "raw_bytes": 2868071,
+        "generated_at": "2026-10-07T21:29:46.627Z",
+        "confirmed": true
+      }
     }
   }
 }
