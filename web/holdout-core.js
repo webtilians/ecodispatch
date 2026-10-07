@@ -17,18 +17,31 @@
     referenceLambda:0
   });
 
-  function normalCdf(x){
-    // Abramowitz-Stegun erf approximation; sufficient for confirmatory z p-values.
-    const sign=x<0?-1:1,z=Math.abs(x)/Math.sqrt(2),t=1/(1+.3275911*z);
-    const erf=1-(((((1.061405429*t-1.453152027)*t+1.421413741)*t-.284496736)*t+.254829592)*t)*Math.exp(-z*z);
-    return .5*(1+sign*erf);
+  function erfc(x){
+    // Stable complementary-error-function approximation (Numerical Recipes).
+    // Unlike 2*(1-Phi(z)), this does not lose tiny tail probabilities to
+    // catastrophic cancellation for the z-scores observed in the holdout.
+    const z=Math.abs(x),t=1/(1+.5*z);
+    const ans=t*Math.exp(
+      -z*z-1.26551223+
+      t*(1.00002368+
+      t*(.37409196+
+      t*(.09678418+
+      t*(-.18628806+
+      t*(.27886807+
+      t*(-1.13520398+
+      t*(1.48851587+
+      t*(-.82215223+
+      t*.17087277))))))))
+    );
+    return x>=0?ans:2-ans;
   }
 
   function twoSidedNormalP(mean,sd,n){
     if(!Number.isFinite(mean)||!Number.isFinite(sd)||!n)return null;
     if(sd===0)return mean===0?1:0;
     const z=Math.abs(mean)/(sd/Math.sqrt(n));
-    return Math.max(0,Math.min(1,2*(1-normalCdf(z))));
+    return Math.max(0,Math.min(1,erfc(z/Math.SQRT2)));
   }
 
   function holm(entries,alpha=.05){
@@ -109,7 +122,7 @@
   function finish(data,rows,seed=protocol.seed){
     const analysis=analyze(rows,seed);
     return {
-      version:'0.9',
+      version:'0.9.1',
       modelVersion:'0.8-frozen',
       profile:'normal',
       confirmatory:true,
@@ -156,5 +169,5 @@
     return lines.map(r=>r.map(q).join(',')).join('\r\n');
   }
 
-  globalThis.EcoDispatchHoldout={protocol,normalCdf,twoSidedNormalP,holm,analyze,finish,csv,harmAtK};
+  globalThis.EcoDispatchHoldout={protocol,erfc,twoSidedNormalP,holm,analyze,finish,csv,harmAtK};
 })();
