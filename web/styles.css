@@ -91,3 +91,35 @@ footer{margin-top:86px;padding:27px 0 38px;border-top:1px solid var(--line);disp
 .independence-note{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-top:12px;padding:14px 17px;border:1px solid var(--line);border-radius:12px;background:#0b1014}.independence-note p{margin:0;max-width:830px;color:var(--muted);font-size:.7rem;line-height:1.55}.independence-note a{color:var(--accent);font-size:.7rem;white-space:nowrap}
 @media(max-width:900px){.topbar{gap:.6rem}.lang-switch{margin-left:auto}.suite-controls{grid-template-columns:1fr 1fr}.suite-run{grid-column:1/-1}.experiment-selector,.research-grid{grid-template-columns:1fr}.independence-note{align-items:flex-start;flex-direction:column}}
 @media(max-width:650px){.suite-controls{grid-template-columns:1fr}.experiment-selector{grid-template-columns:1fr}.assignment-row{grid-template-columns:70px 1fr}.assignment-eco{grid-column:2}.result-kpis,.result-kpis.two{grid-template-columns:1fr}.result-kpis>div{border-right:0;border-bottom:1px solid var(--line)}.duel{grid-template-columns:1fr 30px 1fr}}
+
+
+/* v0.6 Monte Carlo validation */
+.monte-controls{display:grid;grid-template-columns:150px 1fr auto auto auto;gap:12px;align-items:end;padding:17px}
+.monte-controls label>span{display:block;margin-bottom:6px;color:var(--muted);font-size:.68rem;font-weight:750}
+.monte-controls input,.monte-controls select{width:100%;height:44px;border:1px solid var(--line);border-radius:10px;background:#0b1014;color:var(--text);padding:0 11px}
+.monte-controls button:disabled{opacity:.45;cursor:not-allowed}
+.mc-progress{display:flex;align-items:center;gap:12px;margin:12px 0 16px}
+.mc-progress-track{height:9px;flex:1;border-radius:999px;background:#202a32;overflow:hidden}
+.mc-progress-track>div{height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,var(--accent),var(--blue));transition:width .2s}
+.mc-progress>span{min-width:140px;text-align:right;color:var(--muted);font-size:.68rem}
+.mc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.mc-card{min-width:0}
+.mc-hero{padding:22px;border-bottom:1px solid var(--line);background:linear-gradient(130deg,rgba(121,242,176,.045),transparent)}
+.mc-hero>span,.mc-hero>strong,.mc-hero>small{display:block}
+.mc-hero>span{color:var(--muted);font-size:.67rem}
+.mc-hero>strong{margin:5px 0;font-size:clamp(2rem,4vw,3.8rem);letter-spacing:-.045em;color:var(--accent)}
+.mc-hero>small{color:#74858f;font-size:.66rem}
+.mc-stats{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
+.mc-stats.second{border-top:0}
+.mc-stats>div{padding:13px;border-right:1px solid var(--line)}
+.mc-stats>div:last-child{border-right:0}
+.mc-stats span,.mc-stats strong,.mc-stats small{display:block}
+.mc-stats span,.mc-stats small{color:var(--muted);font-size:.6rem}
+.mc-stats strong{margin:4px 0;font-size:.9rem}
+.histogram{height:130px;display:flex;align-items:flex-end;gap:3px;padding:18px 16px 14px;background:#0b1014}
+.histogram i{flex:1;min-width:2px;border-radius:3px 3px 0 0;opacity:.9}
+.hist-pos{background:var(--accent)}.hist-neg{background:var(--danger)}.hist-zero{background:var(--warn)}
+.mc-method{margin-top:14px;padding:16px 18px}
+.mc-method strong{font-size:.8rem}.mc-method p{margin:6px 0 0;color:var(--muted);font-size:.7rem;line-height:1.55}
+@media(max-width:1000px){.monte-controls{grid-template-columns:1fr 1fr auto}.monte-controls button:nth-last-child(-n+2){grid-row:2}.mc-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.monte-controls{grid-template-columns:1fr}.mc-progress{align-items:flex-start;flex-direction:column}.mc-progress>span{text-align:left}.mc-stats,.mc-stats.second{grid-template-columns:1fr}.mc-stats>div{border-right:0;border-bottom:1px solid var(--line)}}
