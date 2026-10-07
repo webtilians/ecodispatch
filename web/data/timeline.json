@@ -1,5 +1,21 @@
 [
   {
+    "version": "v0.6",
+    "date": "7 Oct 2026",
+    "title_es": "Validación científica: objetivo lexicográfico + Monte Carlo",
+    "description_es": "La crisis prioriza gravedad total cubierta, luego número de incidentes y finalmente coste secundario. Añadimos validación Monte Carlo normal de 500/1000 semillas con IC95, percentiles y exportación JSON/CSV.",
+    "title_en": "Scientific validation: lexicographic objective + Monte Carlo",
+    "description_en": "Crisis optimization now prioritizes total severity covered, then incident count, then secondary cost. We add normal-profile Monte Carlo validation over 500/1000 seeds with 95% confidence intervals, quantiles and JSON/CSV export.",
+    "tags": [
+      "v0.6",
+      "Monte Carlo",
+      "95% CI",
+      "severity",
+      "validation"
+    ],
+    "screenshot": null
+  },
+  {
     "version": "v0.5",
     "date": "7 Oct 2026",
     "title_es": "Banco de pruebas: colocación, matching y jornada online",
