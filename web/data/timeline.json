@@ -1,5 +1,35 @@
 [
   {
+    "version": "v1.0",
+    "date": "2026-10-07",
+    "title_es": "Routing real OSM/OSRM sobre Málaga",
+    "title_en": "Real OSM/OSRM routing over Málaga",
+    "description_es": "Sustituimos la distancia geodésica terrestre por una matriz estática de 400 rutas reales OSM/OSRM. El riesgo y los incidentes siguen siendo sintéticos; v1.0 es un benchmark exploratorio de movilidad real.",
+    "description_en": "Ground straight-line travel is replaced by a static 400-pair OSM/OSRM road-routing matrix. Risk and incidents remain synthetic; v1.0 is an exploratory real-mobility benchmark.",
+    "tags": [
+      "v1.0",
+      "OSRM",
+      "OpenStreetMap",
+      "real routing",
+      "Málaga"
+    ],
+    "tags_es": [
+      "v1.0",
+      "OSRM",
+      "OpenStreetMap",
+      "routing real",
+      "Málaga"
+    ],
+    "tags_en": [
+      "v1.0",
+      "OSRM",
+      "OpenStreetMap",
+      "real routing",
+      "Málaga"
+    ],
+    "screenshot": null
+  },
+  {
     "version": "v0.9.1",
     "date": "2026-10-07",
     "title_es": "Resultado holdout congelado + p-values estables",
