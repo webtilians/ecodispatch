@@ -1,4 +1,9 @@
-# EcoDispatch v0.1 — Mathematical specification
+# EcoDispatch — Mathematical specification (current through v0.7)
+
+This document defines the **current canonical objectives** used by EcoDispatch.
+Historical versions used a different crisis ordering; since v0.6 the crisis
+objective is severity-first. The browser model, Python validation core, tests,
+and this specification are intended to stay aligned.
 
 ## 1. Slow layer: risk-weighted k-median
 
@@ -12,76 +17,126 @@ We minimize
 min_{S subset F, |S| <= k} sum_j w_j min_{f in S} d(j,f)
 ```
 
-For v0.1, small instances are solved exactly by enumeration. The long-term
-solver target is the deterministic `(1 + 2/e + epsilon)` approximation proved
-in OpenAI math result #125 for metric k-median.
+Small instances are solved exactly by enumeration. OpenAI math result #125 is
+relevant to the long-term scalable metric k-median layer; the current exact
+enumeration is a validation oracle, not an implementation of that approximation
+algorithm.
 
-## 2. Fast layer: feasible dispatch
+## 2. Fast layer: simultaneous crisis dispatch
 
-For resources `R` and incidents `I`, an edge `(r, i)` is feasible only if the
-resource has the required capability and can arrive before the deadline.
+For resources `R` and incidents `I`, an edge `(r, i)` is feasible only if
+the resource has the required capability and can arrive before the incident
+deadline.
 
-Primary objective:
+Let `x_ri in {0,1}` indicate that resource `r` is assigned to incident `i`.
+Each resource and incident may appear in at most one assignment.
+
+EcoDispatch uses the following **lexicographic objective**:
+
+### Tier 1 — maximize total severity covered
+
+```text
+maximize sum_{r,i} severity_i * x_ri
+```
+
+This prevents a cheaper solution from appearing better merely because it leaves
+a more severe incident unserved.
+
+### Tier 2 — maximize number of incidents served
+
+Among solutions tied on total covered severity:
 
 ```text
 maximize sum_{r,i} x_ri
 ```
 
-subject to one incident per resource and one resource per incident.
+### Tier 3 — minimize secondary response cost
 
-Among maximum-cardinality assignments, EcoDispatch minimizes
+Among solutions tied on tiers 1 and 2:
 
 ```text
-sum_{r,i} x_ri * (
+minimize sum_{r,i} x_ri * (
   alpha * severity_i * ETA_ri
   + beta * CO2_ri
   + gamma * distance_ri
 )
 ```
 
-This is intentionally lexicographic: coverage first, harm/cost second.
-OpenAI result #120 is relevant to the first step (maximum-cardinality
-matching), not by itself to the weighted secondary objective.
+The current prototype uses `alpha=1`, `beta=0.0005`, and `gamma=0.05`.
 
-## 3. Online movement benchmark
+OpenAI result #120 concerns maximum-cardinality matching and motivates the
+matching layer. The **severity-first priority and weighted secondary objective
+are EcoDispatch application-level extensions**; they should not be attributed
+to result #120.
 
-For pure sequential k-server experiments, the movement cost is
+The Python function `dispatch_lexicographic` and the browser crisis optimizer
+implement this same ordering on small instances.
+
+## 3. Sequential online policy
+
+For a feasible resource `r` responding to incident `i`, the current online
+EcoDispatch policy evaluates
+
+```text
+score(r, i) =
+  severity_i * ETA_ri
+  + 0.0005 * emissions_g
+  + 0.05 * distance_km
+  + lambda * (exposure_after - exposure_before)
+```
+
+where exposure is the fixed risk-weighted expected ETA of the nearest capable
+resource across demand nodes and incident types.
+
+The policy does **not** know future incidents. `lambda=0` is immediate-cost
+EcoDispatch and is not equivalent to nearest-distance Greedy.
+
+v0.7 studies
+
+```text
+lambda in {0, 0.1, 0.2, 0.35, 0.5, 1, 2}
+```
+
+on paired normal-profile days. See `docs/ablation-v0.7.md`.
+
+OpenAI result #110 motivates the online resource-movement problem, but the
+current potential policy is an EcoDispatch experiment and does not inherit the
+paper's theoretical competitive guarantee.
+
+## 4. Small k-server benchmark
+
+For pure finite k-server experiments, movement cost is
 
 ```text
 C_T = sum_t d(q_{s_t}(t-1), request_t)
 ```
 
-The prototype computes the exact offline optimum on small finite instances and
-reports an empirical competitive ratio:
+and the prototype can compute an exact offline optimum on small instances:
 
 ```text
 rho_T = C_online / OPT_T
 ```
 
-OpenAI result #110 proves an `O(log^2(k+1))` randomized k-server guarantee on
-arbitrary metrics. Its released uniform construction is currently better
-viewed as a theoretical benchmark for EcoDispatch than as a production
-emergency-response implementation.
+This remains a benchmark layer rather than the production dispatch policy.
 
-## 4. Research mapping
+## 5. Research mapping
 
-- **#125 metric k-median** -> preventive resource placement.
-- **#120 maximum cardinality matching** -> maximum simultaneous feasible coverage.
-- **#110 k-server** -> online movement benchmark and future policy layer.
+- **OpenAI #125 metric k-median** → preventive placement inspiration.
+- **OpenAI #120 maximum-cardinality matching** → simultaneous matching
+  inspiration; EcoDispatch adds severity-first and weighted-cost priorities.
+- **OpenAI #110 k-server** → online movement inspiration and benchmark;
+  EcoDispatch's current online policy is not that released algorithm.
 
-## 5. Next experiment: wildfire response
+## 6. Current model limitations
 
-Use real or simulated wildfire data with:
+The public experiments are synthetic. They use real Málaga coordinates but
+geodesic travel distances, fixed resource speeds, a fixed fleet and risk map,
+instant availability after service in the sequential model, and no calibrated
+real-world emergency data.
 
-- grid cells / ignition locations as demand nodes;
-- risk weight = ignition probability × ecological/human loss;
-- candidate bases = ranger stations, water points, drone bases;
-- resources = brigades, tankers, drones;
-- incidents = ignition events;
-- metric = road/track travel time for vehicles and flight-time metric for drones.
-
-Evaluate mean ETA, p95 ETA, fraction served within deadline, severity-weighted
-response delay, distance, emissions, and online/offline movement ratio.
+Stress tests are demonstrations and are excluded from Monte Carlo inference.
+The normal-profile validation and lambda ablation are reproducible synthetic
+benchmarks, not evidence of real-world operational effectiveness.
 
 ## References
 
