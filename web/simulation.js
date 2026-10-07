@@ -279,15 +279,17 @@
     return a.cost<b.cost-eps;
   }
 
-  function simulateDay(demand,resources,events,policy,lambda){
+  function simulateDay(demand,resources,events,policy,lambda,options={}){
     const positions=resources.map(r=>[...r.point]);
-    const etas=[];let served=0,cost=0,distance=0,severityDelay=0;
+    const harmK=Number.isFinite(options.harmK)?options.harmK:10;
+    const etas=[];let served=0,cost=0,distance=0,severityDelay=0,totalHarm=0;
     for(const event of events){
       const currentExposure=policy==="eco"?coverageExposure(demand,resources,positions):0;
       let best=null;
       resources.forEach((r,ri)=>{
         const ev=evaluate(r,positions[ri],event);if(!ev)return;
         let score=ev.distance;
+        if(policy==="eta-greedy")score=ev.eta;
         if(policy==="eco"){
           const next=positions.map(p=>[...p]);next[ri]=[...event.point];
           const delta=coverageExposure(demand,resources,next)-currentExposure;
@@ -295,13 +297,18 @@
         }
         if(!best||score<best.score)best={ri,score,ev};
       });
-      if(!best)continue;
+      if(!best){
+        totalHarm+=harmK*event.severity*event.severity;
+        continue;
+      }
       positions[best.ri]=[...event.point];
-      served++;cost+=best.ev.cost;distance+=best.ev.distance;severityDelay+=event.severity*best.ev.eta;etas.push(best.ev.eta);
+      const servedHarm=event.severity*best.ev.eta;
+      served++;cost+=best.ev.cost;distance+=best.ev.distance;
+      severityDelay+=servedHarm;totalHarm+=servedHarm;etas.push(best.ev.eta);
     }
     etas.sort((a,b)=>a-b);
     return{
-      served,cost,distance,severityDelay,
+      served,cost,distance,severityDelay,totalHarm,
       meanEta:etas.length?etas.reduce((a,b)=>a+b,0)/etas.length:0,
       p95Eta:etas.length?etas[Math.min(etas.length-1,Math.floor(.95*(etas.length-1)))]:0
     };
