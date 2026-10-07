@@ -1,0 +1,479 @@
+{
+  "version": "0.9.1",
+  "resultType": "frozen-holdout-summary",
+  "modelVersion": "0.8-frozen",
+  "profile": "normal",
+  "confirmatory": true,
+  "sourceArtifact": {
+    "filename": "ecodispatch-v0.9-holdout.json",
+    "sha256": "38b912b0941e4ab8edb9c9da9c7e12d4da4d4c0f3f8b4d82fe911573b3132985",
+    "bytes": 2868071,
+    "generatedAt": "2026-10-07T21:29:46.627Z",
+    "rawResultVersion": "0.9",
+    "note": "No scenarios were rerun. v0.9.1 recomputes only the normal-tail p-values from the frozen mean/sd/n using a numerically stable tail calculation."
+  },
+  "preregistration": {
+    "path": "docs/holdout-v0.9-preregistered.md",
+    "commit": "017cda8cf011a89794d987ad65658249df60b2f9",
+    "frozenBeforeResults": true
+  },
+  "protocol": {
+    "seed": "ecodispatch-holdout-09",
+    "seedPattern": "ecodispatch-holdout-09|normal|day|index",
+    "n": 1000,
+    "incidentsPerDay": 120,
+    "harmK": 10,
+    "bootstrapReplicates": 500,
+    "primaryLambdas": [
+      0.2,
+      0.35,
+      0.5,
+      1
+    ],
+    "referenceLambda": 0,
+    "alpha": 0.05,
+    "multiplicity": "Holm correction across four primary total-harm comparisons",
+    "confirmationRule": "At least one preregistered lambda: mean DeltaH < 0; paired bootstrap 95% CI upper < 0; Holm-adjusted two-sided normal p < 0.05",
+    "selection": "none",
+    "historicalDevelopmentSeedExcluded": "ecodispatch-mc-06"
+  },
+  "analysis": {
+    "primary": [
+      {
+        "id": "0.2",
+        "lambda": 0.2,
+        "harm": {
+          "n": 1000,
+          "mean": -82.64920494554723,
+          "sd": 310.1901866949698,
+          "ciLow": -101.87499190221088,
+          "ciHigh": -63.42341798888357,
+          "bootstrap": {
+            "b": 500,
+            "n": 1000,
+            "ciLow": -100.78930533664781,
+            "ciHigh": -65.1410318125531
+          }
+        },
+        "rawP": 3.5832461760302455e-17,
+        "holmP": 3.5832461760302455e-17,
+        "holmReject": true,
+        "pass": true,
+        "secondary": {
+          "served": {
+            "mean": 0.644,
+            "ciLow": 0.4991889879476976,
+            "ciHigh": 0.7888110120523024,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": 0.4999,
+              "ciHigh": 0.78505
+            }
+          },
+          "meanEta": {
+            "mean": -0.024234028388170882,
+            "ciLow": -0.035808372452859547,
+            "ciHigh": -0.012659684323482221,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": -0.03542886691005472,
+              "ciHigh": -0.013291164833321831
+            }
+          },
+          "p95Eta": {
+            "mean": -0.08154301625046805,
+            "ciLow": -0.11107546875854925,
+            "ciHigh": -0.05201056374238684,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": -0.10804509897723368,
+              "ciHigh": -0.053861368166779715
+            }
+          },
+          "distance": {
+            "mean": -1.2656123431483415,
+            "ciLow": -2.9633208544348655,
+            "ciHigh": 0.4320961681381825,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": -2.8299265283482176,
+              "ciHigh": 0.45750593239519616
+            }
+          },
+          "severityDelay": {
+            "mean": -1.781419840664073,
+            "ciLow": -6.837018741395553,
+            "ciHigh": 3.274179060067407,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": -6.906342989273413,
+              "ciHigh": 3.688890659431195
+            }
+          }
+        }
+      },
+      {
+        "id": "0.35",
+        "lambda": 0.35,
+        "harm": {
+          "n": 1000,
+          "mean": -93.91053779024234,
+          "sd": 335.691420631501,
+          "ciLow": -114.7169076016367,
+          "ciHigh": -73.10416797884798,
+          "bootstrap": {
+            "b": 500,
+            "n": 1000,
+            "ciLow": -116.20152271714758,
+            "ciHigh": -75.39749252521256
+          }
+        },
+        "rawP": 9.026404055946589e-19,
+        "holmP": 1.8052808111893178e-18,
+        "holmReject": true,
+        "pass": true,
+        "secondary": {
+          "served": {
+            "mean": 0.853,
+            "ciLow": 0.6978048699411155,
+            "ciHigh": 1.0081951300588845,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": 0.693425,
+              "ciHigh": 0.994
+            }
+          },
+          "meanEta": {
+            "mean": -0.0022114458247222296,
+            "ciLow": -0.014703879374536976,
+            "ciHigh": 0.010280987725092517,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": -0.014464139565486029,
+              "ciHigh": 0.010098918312924263
+            }
+          },
+          "p95Eta": {
+            "mean": -0.04899389463990252,
+            "ciLow": -0.08232393325842027,
+            "ciHigh": -0.015663856021384773,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": -0.08386880709870617,
+              "ciHigh": -0.016178233398616813
+            }
+          },
+          "distance": {
+            "mean": 1.581962144254951,
+            "ciLow": -0.2613587555182666,
+            "ciHigh": 3.4252830440281685,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": -0.4456694219928494,
+              "ciHigh": 3.513599062510674
+            }
+          },
+          "severityDelay": {
+            "mean": 8.645896074404465,
+            "ciLow": 3.1991613055060917,
+            "ciHigh": 14.092630843302839,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": 2.2878957089164267,
+              "ciHigh": 14.436961392715821
+            }
+          }
+        }
+      },
+      {
+        "id": "0.5",
+        "lambda": 0.5,
+        "harm": {
+          "n": 1000,
+          "mean": -109.42496992476458,
+          "sd": 348.75320906686824,
+          "ciLow": -131.0409177708707,
+          "ciHigh": -87.80902207865846,
+          "bootstrap": {
+            "b": 500,
+            "n": 1000,
+            "ciLow": -132.17079847905418,
+            "ciHigh": -88.39615854012587
+          }
+        },
+        "rawP": 3.340719103492223e-23,
+        "holmP": 1.0022157310476669e-22,
+        "holmReject": true,
+        "pass": true,
+        "secondary": {
+          "served": {
+            "mean": 1.046,
+            "ciLow": 0.8854881985248036,
+            "ciHigh": 1.2065118014751965,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": 0.896,
+              "ciHigh": 1.22805
+            }
+          },
+          "meanEta": {
+            "mean": 0.012425268398959275,
+            "ciLow": -0.0008864087804998089,
+            "ciHigh": 0.02573694557841836,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": 0.0005788184019929189,
+              "ciHigh": 0.025472660979799236
+            }
+          },
+          "p95Eta": {
+            "mean": -0.019099429263983017,
+            "ciLow": -0.05407358937165631,
+            "ciHigh": 0.015874730843690274,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": -0.05266774969194235,
+              "ciHigh": 0.013485561026856772
+            }
+          },
+          "distance": {
+            "mean": 3.154615855087056,
+            "ciLow": 1.2177583792736346,
+            "ciHigh": 5.091473330900477,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": 1.199625439375238,
+              "ciHigh": 5.024055878176923
+            }
+          },
+          "severityDelay": {
+            "mean": 16.59544664220012,
+            "ciLow": 10.847250446656334,
+            "ciHigh": 22.343642837743907,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": 11.018338971990042,
+              "ciHigh": 21.87912502866855
+            }
+          }
+        }
+      },
+      {
+        "id": "1",
+        "lambda": 1,
+        "harm": {
+          "n": 1000,
+          "mean": -134.38879394374715,
+          "sd": 363.21070139724753,
+          "ciLow": -156.9008264482142,
+          "ciHigh": -111.8767614392801,
+          "bootstrap": {
+            "b": 500,
+            "n": 1000,
+            "ciLow": -156.36946131881885,
+            "ciHigh": -112.91403199248518
+          }
+        },
+        "rawP": 1.2670473030712248e-31,
+        "holmP": 5.068189212284899e-31,
+        "holmReject": true,
+        "pass": true,
+        "secondary": {
+          "served": {
+            "mean": 1.399,
+            "ciLow": 1.2290179299380586,
+            "ciHigh": 1.5689820700619415,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": 1.235,
+              "ciHigh": 1.564525
+            }
+          },
+          "meanEta": {
+            "mean": 0.06833053596479897,
+            "ciLow": 0.053422620749975974,
+            "ciHigh": 0.08323845117962198,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": 0.05459347993314921,
+              "ciHigh": 0.08249710096126465
+            }
+          },
+          "p95Eta": {
+            "mean": 0.23390444684248418,
+            "ciLow": 0.1942137557038584,
+            "ciHigh": 0.27359513798110996,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": 0.1983881051317109,
+              "ciHigh": 0.2752817380030808
+            }
+          },
+          "distance": {
+            "mean": 7.7477867209090325,
+            "ciLow": 5.638245713069445,
+            "ciHigh": 9.85732772874862,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": 5.636567646667218,
+              "ciHigh": 9.862431847984155
+            }
+          },
+          "severityDelay": {
+            "mean": 42.63405885583915,
+            "ciLow": 36.30642403570667,
+            "ciHigh": 48.96169367597163,
+            "bootstrap": {
+              "b": 500,
+              "n": 1000,
+              "ciLow": 36.099804056845876,
+              "ciHigh": 48.86625669721089
+            }
+          }
+        }
+      }
+    ],
+    "confirmed": true,
+    "passingLambdas": [
+      0.2,
+      0.35,
+      0.5,
+      1
+    ],
+    "sensitivity": [
+      {
+        "k": 5,
+        "policies": [
+          {
+            "lambda": 0.2,
+            "harm": {
+              "n": 1000,
+              "mean": -42.21531239310597,
+              "bootstrap": {
+                "b": 500,
+                "n": 1000,
+                "ciLow": -51.93772477477247,
+                "ciHigh": -33.32834191841094
+              }
+            }
+          },
+          {
+            "lambda": 0.35,
+            "harm": {
+              "n": 1000,
+              "mean": -42.63232085791879,
+              "bootstrap": {
+                "b": 500,
+                "n": 1000,
+                "ciLow": -53.276642438941465,
+                "ciHigh": -33.44526032674015
+              }
+            }
+          },
+          {
+            "lambda": 0.5,
+            "harm": {
+              "n": 1000,
+              "mean": -46.41476164128231,
+              "bootstrap": {
+                "b": 500,
+                "n": 1000,
+                "ciLow": -58.79602323704169,
+                "ciHigh": -34.80575955163493
+              }
+            }
+          },
+          {
+            "lambda": 1,
+            "harm": {
+              "n": 1000,
+              "mean": -45.877367543953774,
+              "bootstrap": {
+                "b": 500,
+                "n": 1000,
+                "ciLow": -56.95885950453737,
+                "ciHigh": -34.815393203709434
+              }
+            }
+          }
+        ]
+      },
+      {
+        "k": 20,
+        "policies": [
+          {
+            "lambda": 0.2,
+            "harm": {
+              "n": 1000,
+              "mean": -163.51699005043133,
+              "bootstrap": {
+                "b": 500,
+                "n": 1000,
+                "ciLow": -202.87711090904426,
+                "ciHigh": -124.0586002597499
+              }
+            }
+          },
+          {
+            "lambda": 0.35,
+            "harm": {
+              "n": 1000,
+              "mean": -196.46697165488797,
+              "bootstrap": {
+                "b": 500,
+                "n": 1000,
+                "ciLow": -241.6218702690163,
+                "ciHigh": -150.1803728828998
+              }
+            }
+          },
+          {
+            "lambda": 0.5,
+            "harm": {
+              "n": 1000,
+              "mean": -235.4453864917297,
+              "bootstrap": {
+                "b": 500,
+                "n": 1000,
+                "ciLow": -281.7191213805526,
+                "ciHigh": -187.87279595171827
+              }
+            }
+          },
+          {
+            "lambda": 1,
+            "harm": {
+              "n": 1000,
+              "mean": -311.4116467433338,
+              "bootstrap": {
+                "b": 500,
+                "n": 1000,
+                "ciLow": -351.6620136124657,
+                "ciHigh": -266.4873816684144
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
