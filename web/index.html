@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="EcoDispatch — open research into risk-aware resource allocation for emergency response.">
   <title>EcoDispatch — Research Lab</title>
-  <link rel="stylesheet" href="./styles.css?v=1.0.0">
+  <link rel="stylesheet" href="./styles.css?v=1.1.0">
 </head>
 <body>
   <header class="topbar">
@@ -15,6 +15,7 @@
     </a>
     <nav>
       <a href="#real-routing" data-i18n="rr.nav">Routing real</a>
+      <a href="#real-routing-holdout" data-i18n="rh.nav">Holdout routing</a>
       <a href="#lab" data-i18n="nav.lab">Experimentos</a>
       <a href="#results" data-i18n="nav.results">Resultados</a>
       <a href="#ablation" data-i18n="ab.nav">Lambda</a>
@@ -226,6 +227,77 @@
       </article>
     </section>
 
+    <section id="real-routing-holdout" class="section">
+      <div class="section-heading">
+        <div><p class="eyebrow" data-i18n="rh.eyebrow"></p><h2 data-i18n="rh.title"></h2></div>
+        <p data-i18n="rh.intro"></p>
+      </div>
+
+      <article class="panel holdout-lock rh-lock">
+        <div><span data-i18n="rh.seedLabel"></span><strong id="rh-seed">—</strong></div>
+        <div><span data-i18n="rh.daysLabel"></span><strong id="rh-n">—</strong></div>
+        <div><span>K</span><strong id="rh-k">—</strong></div>
+        <div><span data-i18n="rh.lambdaLabel"></span><strong id="rh-lambdas">—</strong></div>
+        <div><span data-i18n="rh.datasetLabel"></span><strong id="rh-dataset">—</strong></div>
+        <div><span data-i18n="rh.basesLabel"></span><strong id="rh-bases">—</strong></div>
+        <div><span data-i18n="rh.preregLabel"></span><strong id="rh-prereg-commit">—</strong></div>
+      </article>
+
+      <p class="holdout-frozen" data-i18n="rh.frozen"></p>
+      <div class="holdout-actions">
+        <button id="rh-run" class="button primary" type="button" data-i18n="rh.run"></button>
+        <button id="rh-json" class="button" type="button" disabled>JSON</button>
+        <button id="rh-csv" class="button" type="button" disabled>CSV</button>
+        <a class="button" href="https://github.com/webtilians/ecodispatch/blob/master/docs/real-routing-holdout-v1.1-preregistered.md" target="_blank" rel="noreferrer" data-i18n="rh.preregLink"></a>
+      </div>
+      <div class="mc-progress">
+        <div class="mc-progress-track"><div id="rh-progress-bar"></div></div>
+        <span id="rh-status" role="status" aria-live="polite"></span>
+      </div>
+
+      <div id="rh-results" hidden>
+        <article class="panel holdout-summary">
+          <div id="rh-verdict" class="holdout-verdict">—</div>
+          <p id="rh-verdict-copy"></p>
+          <p data-i18n="rh.rule"></p>
+        </article>
+
+        <div class="panel ab-table-wrap">
+          <table id="rh-table">
+            <caption data-i18n="rh.tableHelp"></caption>
+            <thead><tr>
+              <th>λ</th>
+              <th>ΔH</th>
+              <th data-i18n="rh.bootstrapCi"></th>
+              <th>p</th>
+              <th data-i18n="rh.holmP"></th>
+              <th data-i18n="rh.result"></th>
+              <th>Δ coverage</th>
+              <th>Δ ETA</th>
+              <th>Δ P95</th>
+              <th>Δ km</th>
+              <th>Δ CO₂</th>
+            </tr></thead>
+            <tbody id="rh-table-body"></tbody>
+          </table>
+        </div>
+
+        <article class="panel holdout-sensitivity">
+          <h3 data-i18n="rh.baselinesTitle"></h3>
+          <p data-i18n="rh.baselinesCopy"></p>
+          <div class="ab-table-wrap">
+            <table>
+              <thead><tr>
+                <th data-i18n="ab.policy"></th>
+                <th>Δ coverage</th><th>Δ ETA</th><th>Δ P95</th><th>Δ km</th><th>Δ CO₂</th><th>ΔH</th>
+              </tr></thead>
+              <tbody id="rh-baseline-body"></tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="ablation" class="section">
       <div class="section-heading"><h2 data-i18n="ab.title"></h2><p data-i18n="ab.intro"></p></div>
       <article class="panel monte-controls ab-controls">
@@ -403,14 +475,16 @@
 
   <footer><span data-i18n="footer">EcoDispatch · open research prototype</span><a href="https://github.com/webtilians/ecodispatch">GitHub</a></footer>
 
-  <script src="./i18n.js?v=1.0.0"></script>
-  <script src="./simulation.js?v=1.0.0"></script>
-  <script src="./ablation-core.js?v=1.0.0"></script>
-  <script src="./ablation.js?v=1.0.0"></script>
-  <script src="./real-routing-core.js?v=1.0.0"></script>
-  <script src="./real-routing.js?v=1.0.0"></script>
-  <script src="./holdout-core.js?v=1.0.0"></script>
-  <script src="./holdout.js?v=1.0.0"></script>
-  <script src="./app.js?v=1.0.0"></script>
+  <script src="./i18n.js?v=1.1.0"></script>
+  <script src="./simulation.js?v=1.1.0"></script>
+  <script src="./ablation-core.js?v=1.1.0"></script>
+  <script src="./ablation.js?v=1.1.0"></script>
+  <script src="./real-routing-core.js?v=1.1.0"></script>
+  <script src="./real-routing.js?v=1.1.0"></script>
+  <script src="./real-routing-holdout-core.js?v=1.1.0"></script>
+  <script src="./real-routing-holdout.js?v=1.1.0"></script>
+  <script src="./holdout-core.js?v=1.1.0"></script>
+  <script src="./holdout.js?v=1.1.0"></script>
+  <script src="./app.js?v=1.1.0"></script>
 </body>
 </html>
