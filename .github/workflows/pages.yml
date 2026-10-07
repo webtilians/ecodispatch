@@ -5,6 +5,7 @@ on:
     branches: ["master"]
     paths:
       - "web/**"
+      - "tests/ablation.test.cjs"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -26,6 +27,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate paired study, model regression, translations and syntax
+        run: |
+          node tests/ablation.test.cjs
+          python -m unittest discover -s tests
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

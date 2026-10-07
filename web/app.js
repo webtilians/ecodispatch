@@ -10,6 +10,7 @@ Promise.all([
   setupExperimentTabs();
   renderTimeline();
   window.ecoLab=window.EcoDispatchResearch.init(data);
+  window.ecoAblation=window.EcoDispatchAblationUI.init(data);
   window.ecoMonteCarlo=window.EcoDispatchMonteCarlo.init(data);
 }).catch(error=>{
   console.error(error);
@@ -41,7 +42,7 @@ function renderTimeline(){
       : `<div class="screenshot">${escapeHtml(I18N.t("dynamic.timelineShot"))}</div>`;
     wrapper.innerHTML=`
       <div class="timeline-meta"><strong>${escapeHtml(item.version)}</strong><span>${escapeHtml(item.date)}</span></div>
-      <div class="timeline-card"><div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(description)}</p><div class="timeline-tags">${(item.tags||[]).map(tag=>`<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div></div>${image}</div>`;
+      <div class="timeline-card"><div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(description)}</p><div class="timeline-tags">${(item["tags_"+lang]||item.tags||[]).map(tag=>`<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div></div>${image}</div>`;
     root.appendChild(wrapper);
   });
 }

@@ -527,7 +527,7 @@
   }
 
   function signed(v,digits){return(v>0?"+":"")+v.toFixed(digits);}
-  function ciText(s,suffix=""){return"95% CI ["+signed(s.ciLow,2)+", "+signed(s.ciHigh,2)+"]"+suffix;}
+  function ciText(s,suffix=""){return(I18N.lang==="es"?"IC95 [":"95% CI [")+signed(s.ciLow,2)+", "+signed(s.ciHigh,2)+"]"+suffix;}
   function quantileText(s){return s.p5.toFixed(1)+" / "+s.median.toFixed(1)+" / "+s.p95.toFixed(1);}
   function setStat(id,text){const el=document.getElementById(id);if(el)el.textContent=text;}
 
@@ -557,4 +557,14 @@
 
   window.EcoDispatchResearch={init:data=>new ResearchSuite(data)};
   window.EcoDispatchMonteCarlo={init:data=>new MonteCarloValidation(data)};
+  // Shared, unchanged v0.6 primitives for the paired v0.7 experiment and tests.
+  window.EcoDispatchEngine={simulateDay,generateDay,hashString,mulberry32,describe,
+    setup(data){
+      const suite=Object.create(ResearchSuite.prototype);
+      suite.data=data;
+      suite.geoCandidates=data.candidates.map(x=>({...x,geo:projectPoint(data,x.point)}));
+      suite.geoDemand=data.demand.map(x=>({...x,geo:projectPoint(data,x.point)}));
+      return {demand:suite.geoDemand,resources:suite.makeResources(suite.runPlacement().selected)};
+    }
+  };
 })();

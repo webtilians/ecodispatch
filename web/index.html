@@ -16,6 +16,7 @@
     <nav>
       <a href="#lab" data-i18n="nav.lab">Experimentos</a>
       <a href="#results" data-i18n="nav.results">Resultados</a>
+      <a href="#ablation" data-i18n="ab.nav">Lambda</a>
       <a href="#validation" data-i18n="nav.validation">Validación</a>
       <a href="#research" data-i18n="nav.research">Investigación</a>
       <a href="#evolution" data-i18n="nav.evolution">Evolución</a>
@@ -30,7 +31,7 @@
   <main id="top">
     <section class="hero compact-hero">
       <div class="hero-copy">
-        <p class="eyebrow" data-i18n="hero.eyebrow">INVESTIGACIÓN ABIERTA · v0.6</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">INVESTIGACIÓN ABIERTA · v0.7</p>
         <h1 data-i18n-html="hero.title">¿Cuánta capacidad desperdiciamos por <span>asignar mal</span> los recursos?</h1>
         <p class="lede" data-i18n="hero.lede">
           EcoDispatch separa el problema en tres capas: dónde colocar recursos antes de una emergencia,
@@ -80,8 +81,8 @@
         <label>
           <span data-i18n="controls.profile">Perfil</span>
           <select id="research-profile">
-            <option value="normal" data-i18n="controls.normal">Normal</option>
-            <option value="stress" selected data-i18n="controls.stress">Stress test</option>
+            <option selected value="normal" data-i18n="controls.normal">Normal</option>
+            <option value="stress" data-i18n="controls.stress">Stress test</option>
           </select>
           <small data-i18n="controls.profileHelp">Stress busca conflictos difíciles de asignación y los etiqueta como tales.</small>
         </label>
@@ -157,6 +158,31 @@
           </article>
         </div>
       </section>
+    </section>
+
+    <section id="ablation" class="section">
+      <div class="section-heading"><h2 data-i18n="ab.title"></h2><p data-i18n="ab.intro"></p></div>
+      <article class="panel monte-controls ab-controls">
+        <label><span data-i18n="mc.samples"></span><select id="ab-samples"><option value="500" selected>500</option><option value="1000">1000</option></select></label>
+        <label><span data-i18n="mc.seed"></span><input id="ab-seed" value="ecodispatch-mc-06" maxlength="80"></label>
+        <button id="ab-run" class="button primary" data-i18n="ab.run"></button>
+        <button id="ab-cancel" class="button" disabled data-i18n="ab.cancel"></button>
+        <button id="ab-json" class="button" disabled>JSON</button><button id="ab-csv" class="button" disabled>CSV</button>
+      </article>
+      <p id="ab-status" role="status" aria-live="polite" data-i18n="ab.ready"></p>
+      <div id="ab-results" hidden>
+        <div class="panel monte-controls ab-view-controls">
+          <label><span data-i18n="ab.reference"></span><select id="ab-reference"><option value="zero" data-i18n="ab.zero"></option><option value="greedy">Greedy</option></select></label>
+          <label><span data-i18n="ab.axis"></span><select id="ab-axis"><option value="meanEta" data-i18n="ab.meanEta"></option><option value="distance" data-i18n="ab.distance"></option></select></label>
+        </div>
+        <article class="panel ab-plot"><h3 id="ab-front"></h3><p data-i18n="ab.chartHelp"></p><svg id="ab-chart" viewBox="0 0 820 440" role="group" aria-labelledby="ab-front"></svg><p id="ab-detail" aria-live="polite"></p></article>
+        <div class="panel ab-table-wrap"><table id="ab-table"></table></div>
+      </div>
+      <article class="panel mc-method">
+        <h3 data-i18n="ab.method"></h3>
+        <p data-i18n="ab.method1"></p><p data-i18n="ab.method2"></p><p data-i18n="ab.method3"></p><p data-i18n="ab.method4"></p><p data-i18n="ab.method5"></p>
+        <p><a href="https://github.com/webtilians/ecodispatch/blob/master/docs/ablation-v0.7.md" data-i18n="ab.docs"></a></p>
+      </article>
     </section>
 
     <section id="validation" class="section">
@@ -258,6 +284,8 @@
 
   <script src="./i18n.js"></script>
   <script src="./simulation.js"></script>
+  <script src="./ablation-core.js"></script>
+  <script src="./ablation.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>

@@ -1,5 +1,32 @@
 [
   {
+    "version": "v0.7",
+    "date": "2026-10-07",
+    "title_es": "Ablación pareada de lambda y frente de Pareto",
+    "title_en": "Paired lambda ablation and Pareto front",
+    "description_es": "Siete valores de lambda y Greedy comparten 500/1000 jornadas normales. Cinco métricas, IC95 de diferencias pareadas, frente descriptivo de cobertura/ETA/distancia y exportación completa JSON/CSV. La validación v0.6 se conserva.",
+    "description_en": "Seven lambda values and Greedy share 500/1000 normal days. Five metrics, paired-difference 95% CIs, descriptive coverage/ETA/distance Pareto front and full JSON/CSV exports. v0.6 validation is preserved.",
+    "tags": [
+      "v0.7",
+      "lambda",
+      "Pareto",
+      "ES/EN"
+    ],
+    "screenshot": null,
+    "tags_es": [
+      "v0.7",
+      "lambda",
+      "Pareto",
+      "ES/EN"
+    ],
+    "tags_en": [
+      "v0.7",
+      "lambda",
+      "Pareto",
+      "ES/EN"
+    ]
+  },
+  {
     "version": "v0.6",
     "date": "7 Oct 2026",
     "title_es": "Validación científica: objetivo lexicográfico + Monte Carlo",
@@ -13,7 +40,21 @@
       "severity",
       "validation"
     ],
-    "screenshot": null
+    "screenshot": null,
+    "tags_es": [
+      "v0.6",
+      "Monte Carlo",
+      "IC95",
+      "gravedad",
+      "validación"
+    ],
+    "tags_en": [
+      "v0.6",
+      "Monte Carlo",
+      "95% CI",
+      "severity",
+      "validation"
+    ]
   },
   {
     "version": "v0.5",
@@ -29,7 +70,21 @@
       "stress test",
       "ES/EN"
     ],
-    "screenshot": null
+    "screenshot": null,
+    "tags_es": [
+      "k-median",
+      "matching",
+      "online",
+      "stress test",
+      "ES/EN"
+    ],
+    "tags_en": [
+      "k-median",
+      "matching",
+      "online",
+      "stress test",
+      "ES/EN"
+    ]
   },
   {
     "version": "v0.4",
@@ -47,7 +102,21 @@
     "title_es": "Simulación visual en español + mapa siempre disponible",
     "description_es": "Se elimina la dependencia crítica de mapas externos. La demo usa un mapa táctico local sobre coordenadas reales, recursos visuales, narrativa de decisiones y una comparativa más intuitiva para explicar qué ocurre en cada incidente.",
     "title_en": "Visual simulation in Spanish + always-available map",
-    "description_en": "The external-map dependency was removed. The demo uses a local tactical map over real coordinates, visual resources, decision narration and a clearer comparison of each response policy."
+    "description_en": "The external-map dependency was removed. The demo uses a local tactical map over real coordinates, visual resources, decision narration and a clearer comparison of each response policy.",
+    "tags_es": [
+      "español",
+      "UX",
+      "visualización",
+      "alternativa local",
+      "narrativa"
+    ],
+    "tags_en": [
+      "Spanish",
+      "UX",
+      "visualization",
+      "local fallback",
+      "narrative"
+    ]
   },
   {
     "version": "v0.3",
@@ -64,7 +133,19 @@
     "title_es": "Geografía real de Málaga",
     "description_es": "El simulador pasa a usar coordenadas reales de Málaga y los Montes de Málaga. El k-median se recalcula en kilómetros geodésicos; incidentes y bases continúan siendo sintéticos.",
     "title_en": "Real Málaga geography",
-    "description_en": "The simulator moved onto real Málaga / Montes de Málaga coordinates. k-median is recomputed in geodesic kilometres while incidents and bases remain explicitly synthetic."
+    "description_en": "The simulator moved onto real Málaga / Montes de Málaga coordinates. k-median is recomputed in geodesic kilometres while incidents and bases remain explicitly synthetic.",
+    "tags_es": [
+      "Málaga",
+      "geografía",
+      "haversine",
+      "simulación"
+    ],
+    "tags_en": [
+      "Málaga",
+      "geography",
+      "haversine",
+      "simulation"
+    ]
   },
   {
     "version": "v0.2",
@@ -81,7 +162,19 @@
     "title_es": "Simulador vivo reproducible",
     "description_es": "Generación determinista por semilla, movimiento de recursos y comparación entre EcoDispatch, greedy y un óptimo offline exacto para secuencias finitas.",
     "title_en": "Reproducible live simulator",
-    "description_en": "Seeded incident generation, moving resources and live comparison between EcoDispatch, greedy and an exact finite offline optimum for small sequences."
+    "description_en": "Seeded incident generation, moving resources and live comparison between EcoDispatch, greedy and an exact finite offline optimum for small sequences.",
+    "tags_es": [
+      "simulación",
+      "programación dinámica",
+      "benchmark",
+      "visual"
+    ],
+    "tags_en": [
+      "simulation",
+      "dynamic programming",
+      "benchmark",
+      "visual"
+    ]
   },
   {
     "version": "v0.1",
@@ -98,6 +191,18 @@
     "title_es": "Núcleo matemático + primer dashboard",
     "description_es": "Primer prototipo integrado con k-median ponderado, despacho lexicográfico y benchmark k-server offline para pequeñas instancias.",
     "title_en": "Mathematical core + first dashboard",
-    "description_en": "First integrated prototype with weighted k-median, lexicographic dispatch and a small-instance offline k-server benchmark."
+    "description_en": "First integrated prototype with weighted k-median, lexicographic dispatch and a small-instance offline k-server benchmark.",
+    "tags_es": [
+      "k-median",
+      "matching",
+      "k-server",
+      "dashboard"
+    ],
+    "tags_en": [
+      "k-median",
+      "matching",
+      "k-server",
+      "dashboard"
+    ]
   }
 ]

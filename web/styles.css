@@ -123,3 +123,16 @@ footer{margin-top:86px;padding:27px 0 38px;border-top:1px solid var(--line);disp
 .mc-method strong{font-size:.8rem}.mc-method p{margin:6px 0 0;color:var(--muted);font-size:.7rem;line-height:1.55}
 @media(max-width:1000px){.monte-controls{grid-template-columns:1fr 1fr auto}.monte-controls button:nth-last-child(-n+2){grid-row:2}.mc-grid{grid-template-columns:1fr}}
 @media(max-width:650px){.monte-controls{grid-template-columns:1fr}.mc-progress{align-items:flex-start;flex-direction:column}.mc-progress>span{text-align:left}.mc-stats,.mc-stats.second{grid-template-columns:1fr}.mc-stats>div{border-right:0;border-bottom:1px solid var(--line)}}
+/* v0.7 paired lambda study */
+.ab-controls{grid-template-columns:110px 1fr repeat(4,auto)}
+.ab-view-controls{grid-template-columns:1fr 1fr}
+.ab-plot{padding:20px;margin:16px 0}.ab-plot svg{width:100%;display:block}
+.ab-plot p,#ab-status{color:var(--muted);font-size:.8rem;line-height:1.6}
+.ab-table-wrap{overflow-x:auto}#ab-table{width:100%;border-collapse:collapse;font-size:.75rem}
+#ab-table caption{text-align:left;padding:16px;color:var(--muted)}
+#ab-table th,#ab-table td{padding:14px 10px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+#ab-table small{display:block;color:var(--muted);margin-top:5px}#ab-table .ab-selected{background:#193329}
+#ab-chart circle{cursor:pointer}#ab-chart circle:focus{outline:2px solid white}
+#ablation [hidden]{display:none!important}
+@media(max-width:1000px){.ab-controls{grid-template-columns:1fr 1fr}.ab-controls button:nth-last-child(-n+2){grid-row:auto}}
+@media(max-width:650px){.ab-view-controls{grid-template-columns:1fr}.ab-plot{padding:10px}}

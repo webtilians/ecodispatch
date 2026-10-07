@@ -180,3 +180,11 @@ JSON or CSV.
 
 This remains a synthetic research benchmark, not evidence of real-world
 emergency-response performance.
+
+## v0.7 — Paired lambda ablation / Ablación pareada de lambda
+
+The web now compares λ = 0, 0.1, 0.2, 0.35, 0.5, 1, 2 and Greedy on identical normal-profile days (500 by default, 1000 optional). It reports coverage, mean ETA, mean daily P95, distance and severity-weighted delay, with paired 95% CIs against λ=0 and Greedy, a descriptive three-objective Pareto front, interactive ES/EN views and full JSON/CSV exports. No single best lambda is assumed. The v0.6 Monte Carlo remains available.
+
+La web compara las mismas jornadas para siete lambdas y Greedy, sin selección favorable. Incluye cinco métricas, IC95 pareados, frente de Pareto descriptivo, interfaz ES/EN y exportación completa, conservando Monte Carlo v0.6.
+
+[Methodology / Metodología](docs/ablation-v0.7.md) · [English study](https://webtilians.github.io/ecodispatch/?lang=en#ablation) · [Estudio en español](https://webtilians.github.io/ecodispatch/?lang=es#ablation)
