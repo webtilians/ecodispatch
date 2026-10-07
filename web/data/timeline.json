@@ -1,25 +1,39 @@
 [
   {
+    "version": "v0.4",
+    "date": "7 oct 2026",
+    "title": "Simulación visual en español + mapa siempre disponible",
+    "description": "Se elimina la dependencia crítica de mapas externos. La demo usa un mapa táctico local sobre coordenadas reales, recursos visuales, narrativa de decisiones y una comparativa más intuitiva para explicar qué ocurre en cada incidente.",
+    "tags": [
+      "español",
+      "UX",
+      "visualización",
+      "fallback local",
+      "narrativa"
+    ],
+    "screenshot": null
+  },
+  {
     "version": "v0.3",
-    "date": "7 Oct 2026",
-    "title": "Real Málaga geography",
-    "description": "The live simulator now runs over a real OpenStreetMap view of Málaga and Montes de Málaga. k-median is recomputed in geodesic kilometres; incidents and bases remain explicitly synthetic while Las Contadoras provides an official geographic anchor.",
+    "date": "7 oct 2026",
+    "title": "Geografía real de Málaga",
+    "description": "El simulador pasa a usar coordenadas reales de Málaga y los Montes de Málaga. El k-median se recalcula en kilómetros geodésicos; incidentes y bases continúan siendo sintéticos.",
     "tags": [
       "Málaga",
-      "OpenStreetMap",
+      "geografía",
       "haversine",
-      "geospatial"
+      "simulación"
     ],
     "screenshot": null
   },
   {
     "version": "v0.2",
-    "date": "7 Oct 2026",
-    "title": "Live reproducible simulator",
-    "description": "Seeded incident generation, animated resource movement and live comparison between EcoDispatch, nearest-feasible greedy and an exact finite offline optimum computed by dynamic programming.",
+    "date": "7 oct 2026",
+    "title": "Simulador vivo reproducible",
+    "description": "Generación determinista por semilla, movimiento de recursos y comparación entre EcoDispatch, greedy y un óptimo offline exacto para secuencias finitas.",
     "tags": [
-      "simulation",
-      "dynamic programming",
+      "simulación",
+      "programación dinámica",
       "benchmark",
       "visual"
     ],
@@ -27,9 +41,9 @@
   },
   {
     "version": "v0.1",
-    "date": "7 Oct 2026",
-    "title": "Mathematical core + first visual dashboard",
-    "description": "First integrated prototype: exact small-instance risk-weighted k-median, lexicographic feasible dispatch, offline k-server benchmark and a public dashboard prepared for visual experiment tracking.",
+    "date": "7 oct 2026",
+    "title": "Núcleo matemático + primer dashboard",
+    "description": "Primer prototipo integrado con k-median ponderado, despacho lexicográfico y benchmark k-server offline para pequeñas instancias.",
     "tags": [
       "k-median",
       "matching",
