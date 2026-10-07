@@ -1,5 +1,5 @@
-const currentUrl="./data/current.json?v=0.7.2";
-const timelineUrl="./data/timeline.json?v=0.7.2";
+const currentUrl="./data/current.json?v=0.8.0";
+const timelineUrl="./data/timeline.json?v=0.8.0";
 let timelineData=[];
 
 Promise.all([
