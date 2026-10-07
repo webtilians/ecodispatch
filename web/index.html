@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="EcoDispatch live research simulator — compare risk-aware dispatch against greedy and an exact finite offline optimum.">
   <title>EcoDispatch — Live Research Simulator</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -24,12 +25,10 @@
   <main id="top">
     <section class="hero compact-hero">
       <div class="hero-copy">
-        <p class="eyebrow">OPEN RESEARCH · v0.2</p>
+        <p class="eyebrow">OPEN RESEARCH · v0.3</p>
         <h1>A dispatch system you can <span>watch think.</span></h1>
         <p class="lede">
-          Generate a reproducible emergency sequence and watch three policies
-          solve exactly the same scenario: EcoDispatch, nearest-resource greedy,
-          and an exact offline optimum that knows the finite future.
+          Run reproducible emergency sequences over a real map of Málaga and watch three policies solve the same synthetic scenario: EcoDispatch, nearest-resource greedy, and an exact finite offline optimum.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#simulator">Run the simulator</a>
@@ -57,7 +56,7 @@
     <section id="simulator" class="section">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">LIVE SYNTHETIC SIMULATION</p>
+          <p class="eyebrow">LIVE GEO SIMULATION · MÁLAGA</p>
           <h2>Same world. Different decisions.</h2>
         </div>
         <p>
@@ -120,7 +119,7 @@
               <button type="button" class="strategy-tab" data-view="offline">Offline</button>
             </div>
           </div>
-          <svg id="scenario-map" viewBox="0 0 820 560" role="img" aria-label="EcoDispatch live synthetic scenario"></svg>
+          <div id="scenario-map" role="application" aria-label="EcoDispatch simulation on a real OpenStreetMap map of Málaga"></div>
           <div class="map-footer">
             <div class="legend">
               <span><i class="dot demand"></i>Risk</span>
@@ -129,6 +128,7 @@
               <span><i class="dot resource"></i>Resource</span>
             </div>
             <span id="sim-progress">Ready</span>
+            <span class="geo-disclaimer">Real geography · synthetic bases/incidents</span>
           </div>
         </article>
 
@@ -198,9 +198,7 @@
       <article class="panel methodology">
         <div><p class="eyebrow">MODEL BOUNDARY</p><h2>A benchmark, not an emergency service.</h2></div>
         <p>
-          This simulator is sequential and synthetic. Travel uses Euclidean
-          distance, resources become immediately available after service, and the
-          exact offline optimum is restricted to at most ten generated incidents.
+          This simulator is sequential and synthetic. v0.3 uses real Málaga geography and geodesic distance, but not yet road routing; resources become immediately available after service, and the exact offline optimum is restricted to at most ten generated incidents.
           These assumptions are explicit so later versions can replace them one
           by one with road graphs, service durations, simultaneous incidents and
           real risk data.
@@ -214,6 +212,7 @@
     <a href="https://github.com/webtilians/ecodispatch">Source code</a>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="./simulation.js"></script>
   <script src="./app.js"></script>
 </body>
