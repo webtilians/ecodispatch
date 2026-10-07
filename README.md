@@ -149,3 +149,34 @@ them as stress tests. Those results are not presented as average-case performanc
 The site also states explicitly that EcoDispatch is an independent prototype
 inspired by public OpenAI mathematics results and is not affiliated with or
 endorsed by OpenAI.
+
+
+## v0.6 — scientific validation
+
+v0.6 addresses two problems found while auditing v0.5.
+
+### Crisis objective
+
+The simultaneous-crisis optimizer no longer treats an unserved severe incident
+as cost-free. Its exact lexicographic objective is now:
+
+1. maximize total severity covered;
+2. maximize number of incidents served;
+3. minimize secondary response cost among solutions tied on (1) and (2).
+
+This prevents a lower-cost solution from looking better merely because it drops
+a more severe incident.
+
+### Monte Carlo validation
+
+The public dashboard now includes a normal-profile Monte Carlo benchmark with
+500 scenarios by default and an optional 1000-scenario run. Stress-test search
+is explicitly excluded from this aggregate validation.
+
+For crisis and full-day experiments the browser reports means, empirical
+P5/P50/P95 values, win/loss frequencies, and 95% confidence intervals for mean
+differences (normal approximation). Raw per-scenario results can be exported as
+JSON or CSV.
+
+This remains a synthetic research benchmark, not evidence of real-world
+emergency-response performance.
