@@ -1,5 +1,5 @@
 {
-  "version": "0.5",
+  "version": "0.6",
   "date": "2026-10-07",
   "placement": {
     "selected_bases": [
@@ -266,6 +266,16 @@
     "day_incidents": 120,
     "online_lambda": 0.35,
     "crisis_incidents": 6,
-    "placement_k": 3
+    "placement_k": 3,
+    "monte_carlo_default": 500,
+    "monte_carlo_options": [
+      500,
+      1000
+    ],
+    "crisis_objective": [
+      "maximize_severity_covered",
+      "maximize_incidents_served",
+      "minimize_secondary_cost"
+    ]
   }
 }
