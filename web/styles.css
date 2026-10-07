@@ -162,3 +162,12 @@ footer{margin-top:86px;padding:27px 0 38px;border-top:1px solid var(--line);disp
 .holdout-sensitivity{margin-top:14px;padding:18px}.holdout-sensitivity h3{margin-top:0}.holdout-sensitivity>p{color:var(--muted);font-size:.7rem}
 #ho-table th,#ho-table td{white-space:nowrap}
 @media(max-width:900px){.holdout-lock{grid-template-columns:1fr 1fr}.holdout-lock>div{border-bottom:1px solid var(--line)}}
+/* v1.0 real-routing benchmark */
+.rr-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.rr-grid{margin-bottom:14px}.rr-attribution{display:flex;justify-content:space-between;gap:12px;padding:9px 14px;border-top:1px solid var(--line);color:var(--muted);font-size:.62rem}.rr-attribution a{color:var(--accent)}
+.rr-provenance .explain-box{margin-top:12px}.rr-controls{grid-template-columns:150px 1fr auto auto auto}
+.rr-node{fill:rgba(121,242,176,.6);stroke:#9ff5c3;stroke-width:1.5}.rr-node.excluded{fill:rgba(255,103,103,.16);stroke:var(--danger);stroke-width:2}.rr-x{stroke:var(--danger);stroke-width:2.5}
+.rr-method{margin-top:14px}.rr-method p{color:var(--muted);font-size:.7rem;line-height:1.55}
+#rr-table th,#rr-table td{white-space:nowrap}
+@media(max-width:900px){.rr-facts{grid-template-columns:1fr 1fr}.rr-controls{grid-template-columns:1fr 1fr}.rr-controls button{min-width:0}}
+@media(max-width:650px){.rr-facts,.rr-controls{grid-template-columns:1fr}.rr-attribution{flex-direction:column}}
