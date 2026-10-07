@@ -10,6 +10,7 @@ Promise.all([
   setupExperimentTabs();
   renderTimeline();
   window.ecoLab=window.EcoDispatchResearch.init(data);
+  window.ecoMonteCarlo=window.EcoDispatchMonteCarlo.init(data);
 }).catch(error=>{
   console.error(error);
   document.querySelectorAll("svg").forEach(svg=>svg.innerHTML='<text x="50%" y="50%" text-anchor="middle" fill="#92a0aa">Data unavailable</text>');
