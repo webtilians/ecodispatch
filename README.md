@@ -5,7 +5,7 @@ EcoDispatch is a research prototype for allocating scarce mobile resources
 using a hierarchical optimization architecture inspired by recent results in
 metric **k-median**, **maximum matching**, and **k-server**.
 
-## Current architecture (v1.0)
+## Current architecture (v1.1)
 
 1. **Pre-positioning** — risk-weighted metric k-median chooses where resources
    should wait before incidents are known.
@@ -307,3 +307,35 @@ the versioned matrix in `web/data/routing-v1.0.json` and never calls OSRM at
 runtime.
 
 OpenStreetMap attribution: © OpenStreetMap contributors, ODbL.
+
+
+## v1.1 — preregistered real-routing holdout
+
+v1.1 turns the exploratory v1.0 real-routing result into a new independent
+confirmatory test.
+
+The protocol was committed **before any v1.1 holdout result** in
+[`docs/real-routing-holdout-v1.1-preregistered.md`](docs/real-routing-holdout-v1.1-preregistered.md)
+(commit `691a85c96afa497fc8c2f42386d1d12c00a4ff5a`).
+
+Frozen primary analysis:
+
+- routing dataset: `malaga-real-routing-v1`;
+- routing Git blob: `4fbfaf903988f896fd3c6e49099141a6dd810c75`;
+- snap gate: <=500 m, excluding D5 and D8;
+- placement: B2 · B3 · B4;
+- new seed family: `ecodispatch-real-routing-holdout-11|day|index`;
+- historical v1.0 seed `ecodispatch-real-routing-10` excluded;
+- 1000 paired operating days;
+- `K=10`;
+- primary lambdas `{0.2, 0.35, 0.5, 1}` versus `lambda=0`;
+- primary outcome: paired total-harm difference;
+- individual PASS requires mean ΔH < 0, paired bootstrap 95% CI entirely below
+  zero, and Holm-adjusted two-sided paired normal p < 0.05;
+- the family hypothesis is CONFIRMED if at least one primary lambda passes.
+
+Coverage, ETA, P95, distance, approximate CO2 and greedy baselines are secondary
+and cannot redefine confirmation.
+
+Automated tests are prohibited from using the real holdout seed. CI may execute
+the worker only with `ci-real-routing-holdout-*` seeds.
