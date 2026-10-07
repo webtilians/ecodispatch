@@ -1,10 +1,28 @@
 [
   {
+    "version": "v0.3",
+    "date": "7 Oct 2026",
+    "title": "Real Málaga geography",
+    "description": "The live simulator now runs over a real OpenStreetMap view of Málaga and Montes de Málaga. k-median is recomputed in geodesic kilometres; incidents and bases remain explicitly synthetic while Las Contadoras provides an official geographic anchor.",
+    "tags": [
+      "Málaga",
+      "OpenStreetMap",
+      "haversine",
+      "geospatial"
+    ],
+    "screenshot": null
+  },
+  {
     "version": "v0.2",
     "date": "7 Oct 2026",
     "title": "Live reproducible simulator",
     "description": "Seeded incident generation, animated resource movement and live comparison between EcoDispatch, nearest-feasible greedy and an exact finite offline optimum computed by dynamic programming.",
-    "tags": ["simulation", "dynamic programming", "benchmark", "visual"],
+    "tags": [
+      "simulation",
+      "dynamic programming",
+      "benchmark",
+      "visual"
+    ],
     "screenshot": null
   },
   {
@@ -12,7 +30,12 @@
     "date": "7 Oct 2026",
     "title": "Mathematical core + first visual dashboard",
     "description": "First integrated prototype: exact small-instance risk-weighted k-median, lexicographic feasible dispatch, offline k-server benchmark and a public dashboard prepared for visual experiment tracking.",
-    "tags": ["k-median", "matching", "k-server", "dashboard"],
+    "tags": [
+      "k-median",
+      "matching",
+      "k-server",
+      "dashboard"
+    ],
     "screenshot": null
   }
 ]
