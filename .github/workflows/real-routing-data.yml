@@ -1,0 +1,57 @@
+name: Build v1.0 real-routing dataset
+
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - "scripts/fetch_real_routing.py"
+      - ".github/workflows/real-routing-data.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "real-routing-data"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch one static OSRM table
+        run: python scripts/fetch_real_routing.py
+
+      - name: Validate generated JSON
+        run: |
+          python - <<'PY'
+          import json
+          p="web/data/routing-v1.0.json"
+          d=json.load(open(p, encoding="utf-8"))
+          n=len(d["points"])
+          assert n == 20
+          assert len(d["durations_s"]) == n
+          assert len(d["distances_m"]) == n
+          assert all(len(r)==n for r in d["durations_s"])
+          assert all(len(r)==n for r in d["distances_m"])
+          assert all(d["durations_s"][i][i] == 0 for i in range(n))
+          assert all(d["distances_m"][i][i] == 0 for i in range(n))
+          print("validated", n*n, "OD pairs")
+          PY
+
+      - name: Commit versioned routing dataset
+        run: |
+          if git diff --quiet -- web/data/routing-v1.0.json; then
+            echo "No routing-data change"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add web/data/routing-v1.0.json
+          git commit -m "Generate v1.0 real-routing matrix from OSRM"
+          git push
