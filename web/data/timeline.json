@@ -1,0 +1,10 @@
+[
+  {
+    "version": "v0.1",
+    "date": "7 Oct 2026",
+    "title": "Mathematical core + first visual dashboard",
+    "description": "First integrated prototype: exact small-instance risk-weighted k-median, lexicographic feasible dispatch, offline k-server benchmark and a public dashboard prepared for visual experiment tracking.",
+    "tags": ["k-median", "matching", "k-server", "dashboard"],
+    "screenshot": null
+  }
+]
