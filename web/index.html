@@ -16,6 +16,7 @@
     <nav>
       <a href="#lab" data-i18n="nav.lab">Experimentos</a>
       <a href="#results" data-i18n="nav.results">Resultados</a>
+      <a href="#validation" data-i18n="nav.validation">Validación</a>
       <a href="#research" data-i18n="nav.research">Investigación</a>
       <a href="#evolution" data-i18n="nav.evolution">Evolución</a>
       <a href="https://github.com/webtilians/ecodispatch">GitHub ↗</a>
@@ -29,7 +30,7 @@
   <main id="top">
     <section class="hero compact-hero">
       <div class="hero-copy">
-        <p class="eyebrow" data-i18n="hero.eyebrow">INVESTIGACIÓN ABIERTA · v0.5</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">INVESTIGACIÓN ABIERTA · v0.6</p>
         <h1 data-i18n-html="hero.title">¿Cuánta capacidad desperdiciamos por <span>asignar mal</span> los recursos?</h1>
         <p class="lede" data-i18n="hero.lede">
           EcoDispatch separa el problema en tres capas: dónde colocar recursos antes de una emergencia,
@@ -43,7 +44,7 @@
       <div class="hero-system">
         <div class="pipeline-node"><span>01</span><strong data-i18n="pipe.placement">Preposicionamiento</strong><small data-i18n="pipe.placementSub">k-median ponderado por riesgo</small></div>
         <div class="pipeline-arrow">↓</div>
-        <div class="pipeline-node"><span>02</span><strong data-i18n="pipe.crisis">Crisis simultánea</strong><small data-i18n="pipe.crisisSub">cobertura máxima + coste mínimo</small></div>
+        <div class="pipeline-node"><span>02</span><strong data-i18n="pipe.crisis">Crisis simultánea</strong><small data-i18n="pipe.crisisSub">gravedad cubierta → cobertura → coste</small></div>
         <div class="pipeline-arrow">↓</div>
         <div class="pipeline-node"><span>03</span><strong data-i18n="pipe.day">Jornada completa</strong><small data-i18n="pipe.daySub">política online sensible a cobertura futura</small></div>
         <div class="pipeline-arrow">↓</div>
@@ -61,7 +62,7 @@
     <section id="lab" class="section">
       <div class="section-heading">
         <div>
-          <p class="eyebrow" data-i18n="lab.eyebrow">BANCO DE PRUEBAS v0.5</p>
+          <p class="eyebrow" data-i18n="lab.eyebrow">BANCO DE PRUEBAS v0.6</p>
           <h2 data-i18n="lab.title">Tres experimentos. Tres fuentes distintas de eficiencia.</h2>
         </div>
         <p data-i18n="lab.copy">
@@ -156,6 +157,72 @@
           </article>
         </div>
       </section>
+    </section>
+
+    <section id="validation" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow" data-i18n="mc.eyebrow">VALIDACIÓN MONTE CARLO · v0.6</p>
+          <h2 data-i18n="mc.title">Una captura no demuestra nada. Cientos de escenarios empiezan a hacerlo.</h2>
+        </div>
+        <p data-i18n="mc.copy">Estas simulaciones usan el perfil normal, sin buscar casos favorables. Resumimos la distribución completa de diferencias EcoDispatch − Greedy.</p>
+      </div>
+
+      <article class="panel monte-controls">
+        <label>
+          <span data-i18n="mc.samples">Escenarios</span>
+          <select id="mc-samples">
+            <option value="500" selected>500</option>
+            <option value="1000">1000</option>
+          </select>
+        </label>
+        <label>
+          <span data-i18n="mc.seed">Semilla base</span>
+          <input id="mc-seed" type="text" value="ecodispatch-mc-06" maxlength="48">
+        </label>
+        <button id="mc-run" class="button primary" type="button" data-i18n="mc.run">▶ Ejecutar validación</button>
+        <button id="mc-export-json" class="button" type="button" disabled>JSON</button>
+        <button id="mc-export-csv" class="button" type="button" disabled>CSV</button>
+      </article>
+
+      <div class="mc-progress">
+        <div class="mc-progress-track"><div id="mc-progress-bar"></div></div>
+        <span id="mc-progress-text" data-i18n="mc.ready">Preparado</span>
+      </div>
+
+      <div class="mc-grid">
+        <article class="panel mc-card">
+          <div class="panel-head"><div><span class="panel-kicker" data-i18n="mc.crisisKicker">CRISIS SIMULTÁNEA</span><strong data-i18n="mc.crisisTitle">Matching con prioridad clínica/ecológica</strong></div></div>
+          <div class="mc-hero"><span data-i18n="mc.severityDiff">Δ gravedad cubierta media</span><strong id="mc-crisis-severity">—</strong><small id="mc-crisis-severity-ci">—</small></div>
+          <div class="mc-stats">
+            <div><span data-i18n="mc.coverDiff">Δ cobertura</span><strong id="mc-crisis-cover">—</strong><small id="mc-crisis-cover-ci">—</small></div>
+            <div><span data-i18n="mc.winRate">Eco gana gravedad</span><strong id="mc-crisis-win">—</strong><small data-i18n="mc.ofScenarios">de escenarios</small></div>
+            <div><span>P5 / P50 / P95</span><strong id="mc-crisis-quantiles">—</strong><small data-i18n="mc.severityUnits">gravedad</small></div>
+          </div>
+          <div id="mc-crisis-hist" class="histogram"></div>
+        </article>
+
+        <article class="panel mc-card">
+          <div class="panel-head"><div><span class="panel-kicker" data-i18n="mc.dayKicker">JORNADA COMPLETA</span><strong data-i18n="mc.dayTitle">120 incidentes · política online</strong></div></div>
+          <div class="mc-hero"><span data-i18n="mc.dayCover">Δ cobertura media</span><strong id="mc-day-cover">—</strong><small id="mc-day-cover-ci">—</small></div>
+          <div class="mc-stats">
+            <div><span data-i18n="mc.etaDiff">Δ ETA medio</span><strong id="mc-day-eta">—</strong><small id="mc-day-eta-ci">—</small></div>
+            <div><span data-i18n="mc.p95Diff">Δ ETA P95</span><strong id="mc-day-p95">—</strong><small id="mc-day-p95-ci">—</small></div>
+            <div><span data-i18n="mc.distanceDiff">Δ distancia</span><strong id="mc-day-distance">—</strong><small id="mc-day-distance-ci">—</small></div>
+          </div>
+          <div class="mc-stats second">
+            <div><span data-i18n="mc.coverWin">Eco gana cobertura</span><strong id="mc-day-win">—</strong></div>
+            <div><span data-i18n="mc.coverLose">Eco pierde cobertura</span><strong id="mc-day-lose">—</strong></div>
+            <div><span>P5 / P50 / P95</span><strong id="mc-day-quantiles">—</strong></div>
+          </div>
+          <div id="mc-day-hist" class="histogram"></div>
+        </article>
+      </div>
+
+      <article class="panel mc-method">
+        <strong data-i18n="mc.methodTitle">Cómo leer estos resultados</strong>
+        <p data-i18n="mc.methodCopy">Cada escenario se genera de forma independiente a partir de una semilla reproducible. El intervalo mostrado es un IC del 95 % para la media (aproximación normal). P5/P50/P95 describen la distribución empírica. Los stress tests de arriba no entran en esta validación.</p>
+      </article>
     </section>
 
     <section id="research" class="section">
