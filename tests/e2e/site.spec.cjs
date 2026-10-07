@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test('v0.8 boots, translates, runs worker and short validation', async ({ page }) => {
+test('v0.9 boots, translates, runs exploratory and isolated holdout workers', async ({ page }) => {
   const critical=[];
   page.on('pageerror', error=>critical.push('pageerror: '+error.message));
   page.on('console', msg=>{
@@ -32,6 +32,28 @@ test('v0.8 boots, translates, runs worker and short validation', async ({ page }
   });
   await page.locator('#mc-run').click();
   await expect(page.locator('#mc-export-json')).toBeEnabled({timeout:120000});
+
+  await expect(page.locator('#ho-seed')).toHaveText('ecodispatch-holdout-09');
+  await expect(page.locator('#ho-n')).toHaveText('1000');
+  await expect(page.locator('#ho-k')).toHaveText('10');
+  await expect(page.locator('#holdout input, #holdout select')).toHaveCount(0);
+
+  // Never consume the real holdout seed in CI. Exercise the real worker with a CI-only seed.
+  const holdoutResult=await page.evaluate(()=>new Promise((resolve,reject)=>{
+    const worker=new Worker('./holdout-worker.js?v=0.9.0');
+    worker.onmessage=({data})=>{
+      if(data.type==='complete'){worker.terminate();resolve(data.result);}
+      if(data.type==='error'){worker.terminate();reject(new Error(data.message));}
+    };
+    fetch('./data/current.json?v=0.9.0').then(r=>r.json()).then(config=>{
+      worker.postMessage({config,testMode:true,seed:'ci-holdout-browser',n:10});
+    }).catch(reject);
+  }));
+  expect(holdoutResult.version).toBe('0.9');
+  expect(holdoutResult.protocol.seed).toBe('ci-holdout-browser');
+  await page.evaluate(result=>{window.ecoHoldout.result=result;window.ecoHoldout.render();},holdoutResult);
+  await expect(page.locator('#ho-results')).toBeVisible();
+  await expect(page.locator('#ho-table-body tr')).toHaveCount(4);
 
   expect(critical).toEqual([]);
 });
