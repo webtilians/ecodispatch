@@ -1,5 +1,35 @@
 [
   {
+    "version": "v1.1",
+    "date": "2026-10-08",
+    "title_es": "Holdout pre-registrado sobre routing real",
+    "title_en": "Preregistered holdout on real routing",
+    "description_es": "Congelamos antes de calcular resultados la matriz OSRM/OSM v1.0, bases B2/B3/B4, 1000 jornadas, K=10, λ={0.2,0.35,0.5,1}, referencia λ=0 y regla PASS/FAIL con bootstrap + Holm. CI usa semillas separadas.",
+    "description_en": "Before computing results we freeze the v1.0 OSRM/OSM matrix, bases B2/B3/B4, 1000 days, K=10, λ={0.2,0.35,0.5,1}, λ=0 reference and a bootstrap + Holm PASS/FAIL rule. CI uses separate seeds.",
+    "tags": [
+      "v1.1",
+      "real-routing holdout",
+      "preregistration",
+      "Holm",
+      "OSRM"
+    ],
+    "tags_es": [
+      "v1.1",
+      "holdout routing real",
+      "pre-registro",
+      "Holm",
+      "OSRM"
+    ],
+    "tags_en": [
+      "v1.1",
+      "real-routing holdout",
+      "preregistration",
+      "Holm",
+      "OSRM"
+    ],
+    "screenshot": null
+  },
+  {
     "version": "v1.0",
     "date": "2026-10-07",
     "title_es": "Routing real OSM/OSRM sobre Málaga",
