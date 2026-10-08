@@ -1,0 +1,2953 @@
+<?xml version='1.0' encoding="UTF-8" standalone="no" ?>
+<WMS_Capabilities version="1.3.0"  xmlns="http://www.opengis.net/wms"   xmlns:sld="http://www.opengis.net/sld"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xmlns:ms="http://mapserver.gis.umn.edu/mapserver"   xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0"   xmlns:inspire_vs="http://inspire.ec.europa.eu/schemas/inspire_vs/1.0"   xsi:schemaLocation="http://www.opengis.net/wms http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd  http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/sld_capabilities.xsd  http://inspire.ec.europa.eu/schemas/inspire_vs/1.0  http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd http://mapserver.gis.umn.edu/mapserver https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;service=WMS&amp;version=1.3.0&amp;request=GetSchemaExtension">
+<Service>
+  <Name>WMS</Name>
+  <Title>REDIAM. WMS Áreas recorridas por el fuego obtenidas mediante Teledetección (1975 - Actualidad) </Title>
+  <Abstract>Servicio WMS correspondiente a las áreas recorridas por el fuego en los incendios ocurridos entre las campañas de 1975 y actualidad. Delimitaciones obtenidas sobre imágenes de satélite con técnicas de Teledetección. Nodo de la Red de Información Ambiental de Andalucía. Junta de Andalucía.  Integrado en la Infraestructura de Datos Espaciales de Andalucía, siguiendo las directrices del Sistema Cartográfico de Andalucía.</Abstract>
+  <KeywordList>
+      <Keyword>WMS</Keyword>
+      <Keyword> REDIAM</Keyword>
+      <Keyword> servidor de mapas en red</Keyword>
+      <Keyword> Andalucía</Keyword>
+      <Keyword> Medio Ambiente</Keyword>
+      <Keyword> Andalucía</Keyword>
+      <Keyword> incendios forestales</Keyword>
+      <Keyword> áreas recorridas por el fuego</Keyword>
+      <Keyword> teledetección</Keyword>
+      <Keyword vocabulary="ISO">infoMapAccessService</Keyword>
+  </KeywordList>
+  <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.juntadeandalucia.es/medioambiente/rediam"/>
+  <ContactInformation>
+    <ContactPersonPrimary>
+      <ContactPerson>--</ContactPerson>
+      <ContactOrganization>Consejería de Sostenibilidad y Medio Ambiente. Junta de Andalucía</ContactOrganization>
+    </ContactPersonPrimary>
+      <ContactPosition>author</ContactPosition>
+    <ContactAddress>
+        <AddressType>Dirección postal</AddressType>
+        <Address>Avda. Manuel Siurot,50</Address>
+        <City>Sevilla</City>
+        <StateOrProvince>Sevilla</StateOrProvince>
+        <PostCode>41071</PostCode>
+        <Country>Spain</Country>
+    </ContactAddress>
+  <ContactElectronicMailAddress>rediam.atiende.csmaea@juntadeandalucia.es</ContactElectronicMailAddress>
+  </ContactInformation>
+  <Fees>Gratuito</Fees>
+  <AccessConstraints>Este servicio se puede usar de modo libre y gratuito siempre que se mencione a los autores y propietarios de la información</AccessConstraints>
+  <MaxWidth>4096</MaxWidth>
+  <MaxHeight>4096</MaxHeight>
+</Service>
+
+<Capability>
+  <Request>
+    <GetCapabilities>
+      <Format>text/xml</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetCapabilities>
+    <GetMap>
+      <Format>image/png</Format>
+      <Format>image/jpeg</Format>
+      <Format>image/png; mode=8bit</Format>
+      <Format>image/vnd.jpeg-png</Format>
+      <Format>image/vnd.jpeg-png8</Format>
+      <Format>application/x-pdf</Format>
+      <Format>image/svg+xml</Format>
+      <Format>image/tiff</Format>
+      <Format>application/vnd.mapbox-vector-tile</Format>
+      <Format>application/x-protobuf</Format>
+      <Format>application/json</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetMap>
+    <GetFeatureInfo>
+      <Format>text/html</Format>
+      <Format>application/vnd.ogc.gml</Format>
+      <Format>text/plain</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetFeatureInfo>
+    <sld:DescribeLayer>
+      <Format>text/xml</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </sld:DescribeLayer>
+    <sld:GetLegendGraphic>
+      <Format>image/png</Format>
+      <Format>image/jpeg</Format>
+      <Format>image/png; mode=8bit</Format>
+      <Format>image/vnd.jpeg-png</Format>
+      <Format>image/vnd.jpeg-png8</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </sld:GetLegendGraphic>
+    <ms:GetStyles>
+      <Format>text/xml</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </ms:GetStyles>
+  </Request>
+  <Exception>
+    <Format>XML</Format>
+    <Format>INIMAGE</Format>
+    <Format>BLANK</Format>
+  </Exception>
+  <sld:UserDefinedSymbolization SupportSLD="1" UserLayer="0" UserStyle="1" RemoteWFS="0" InlineFeature="0" RemoteWCS="0"/>
+  <inspire_vs:ExtendedCapabilities>
+    <inspire_common:MetadataUrl xsi:type="inspire_common:resourceLocatorType">
+      <inspire_common:URL>https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/d9f6819a4f765ddb347a752dc4099b84e7861cf8/formatters/xsl-view?root=div&amp;view=advanced</inspire_common:URL>
+      <inspire_common:MediaType>application/vnd.ogc.csw.GetRecordByIdResponse_xml</inspire_common:MediaType>
+    </inspire_common:MetadataUrl>
+    <inspire_common:SupportedLanguages>
+      <inspire_common:DefaultLanguage><inspire_common:Language>spa</inspire_common:Language></inspire_common:DefaultLanguage>
+    </inspire_common:SupportedLanguages>
+    <inspire_common:ResponseLanguage><inspire_common:Language>spa</inspire_common:Language></inspire_common:ResponseLanguage>
+  </inspire_vs:ExtendedCapabilities>
+  <Layer queryable="1">
+    <Name>REDIAM</Name>
+    <Title>REDIAM. WMS Áreas recorridas por el fuego obtenidas mediante Teledetección (1975 - Actualidad) </Title>
+    <Abstract>Servicio WMS correspondiente a las áreas recorridas por el fuego en los incendios ocurridos entre las campañas de 1975 y actualidad. Delimitaciones obtenidas sobre imágenes de satélite con técnicas de Teledetección. Nodo de la Red de Información Ambiental de Andalucía. Junta de Andalucía.  Integrado en la Infraestructura de Datos Espaciales de Andalucía, siguiendo las directrices del Sistema Cartográfico de Andalucía.</Abstract>
+    <KeywordList>
+        <Keyword>WMS</Keyword>
+        <Keyword> REDIAM</Keyword>
+        <Keyword> servidor de mapas en red</Keyword>
+        <Keyword> Andalucía</Keyword>
+        <Keyword> Medio Ambiente</Keyword>
+        <Keyword> Andalucía</Keyword>
+        <Keyword> incendios forestales</Keyword>
+        <Keyword> áreas recorridas por el fuego</Keyword>
+        <Keyword> teledetección</Keyword>
+        <Keyword vocabulary="ISO">infoMapAccessService</Keyword>
+    </KeywordList>
+    <CRS>EPSG:3042</CRS>
+    <CRS>EPSG:25830</CRS>
+    <CRS>EPSG:25829</CRS>
+    <CRS>EPSG:23030</CRS>
+    <CRS>EPSG:32629</CRS>
+    <CRS>EPSG:32630</CRS>
+    <CRS>EPSG:3785</CRS>
+    <CRS>EPSG:3857</CRS>
+    <CRS>EPSG:4230</CRS>
+    <CRS>EPSG:4258</CRS>
+    <CRS>EPSG:4326</CRS>
+    <CRS>CRS:84</CRS>
+    <CRS>EPSG:900913</CRS>
+    <EX_GeographicBoundingBox>
+        <westBoundLongitude>-7.945201</westBoundLongitude>
+        <eastBoundLongitude>-1.282553</eastBoundLongitude>
+        <southBoundLatitude>35.137579</southBoundLatitude>
+        <northBoundLatitude>39.547020</northBoundLatitude>
+    </EX_GeographicBoundingBox>
+    <BoundingBox CRS="EPSG:3042"
+                minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+    <BoundingBox CRS="EPSG:25830"
+                minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+    <BoundingBox CRS="EPSG:25829"
+                minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+    <BoundingBox CRS="EPSG:23030"
+                minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+    <BoundingBox CRS="EPSG:32629"
+                minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+    <BoundingBox CRS="EPSG:32630"
+                minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+    <BoundingBox CRS="EPSG:3785"
+                minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+    <BoundingBox CRS="EPSG:3857"
+                minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+    <BoundingBox CRS="EPSG:4230"
+                minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+    <BoundingBox CRS="EPSG:4258"
+                minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+    <BoundingBox CRS="EPSG:4326"
+                minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+    <BoundingBox CRS="CRS:84"
+                minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+    <BoundingBox CRS="EPSG:900913"
+                minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+<!-- WARNING: Some mandatory elements for 'MetadataURL' are missing in this context. -->
+    <Style>
+       <Name>default</Name>
+       <Title>default</Title>
+       <LegendURL width="218" height="1255">
+          <Format>image/png</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=REDIAM&amp;format=image/png&amp;STYLE=default"/>
+       </LegendURL>
+    </Style>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>historico_incendios</Name>
+        <Title>Area afectada  (Histórico)     </Title>
+        <Abstract>Áreas recorridas por el fuego en los incendios ocurridos entre 1975-actualidad, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="185" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=historico_incendios&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2023</Name>
+        <Title>Area afectada (campaña 2023)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2023, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2023&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2022</Name>
+        <Title>Area afectada (campaña 2022)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2022, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2022&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2021</Name>
+        <Title>Area afectada (campaña 2021)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2021, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2021&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2020</Name>
+        <Title>Area afectada (campaña 2020)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2020, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2020&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2019</Name>
+        <Title>Area afectada (campaña 2019)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2019, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2019&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2018</Name>
+        <Title>Area afectada (campaña 2018)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2018, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2018&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2017</Name>
+        <Title>Area afectada (campaña 2017)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2017, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2017&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2016</Name>
+        <Title>Area afectada (campaña 2016)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2016, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2016&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2015</Name>
+        <Title>Area afectada (campaña 2015)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2015, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2015&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2014</Name>
+        <Title>Area afectada (campaña 2014)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2014, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2014&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2013</Name>
+        <Title>Area afectada (campaña 2013)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2013, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2013&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2012</Name>
+        <Title>Area afectada (campaña 2012)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2012, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2012&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2011</Name>
+        <Title>Area afectada (campaña 2011)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2011, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2011&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2010</Name>
+        <Title>Area afectada (campaña 2010)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2010, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2010&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2009</Name>
+        <Title>Area afectada (campaña 2009)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2009, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2009&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2008</Name>
+        <Title>Area afectada (campaña 2008)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2008, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2008&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2007</Name>
+        <Title>Area afectada (campaña 2007)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2007, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2007&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2006</Name>
+        <Title>Area afectada (campaña 2006)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2006, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2006&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2005</Name>
+        <Title>Area afectada (campaña 2005)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2005, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2005&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2004</Name>
+        <Title>Area afectada (campaña 2004)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2004, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2004&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2003</Name>
+        <Title>Area afectada (campaña 2003)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2003, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2003&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2002</Name>
+        <Title>Area afectada (campaña 2002)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2002, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2002&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2001</Name>
+        <Title>Area afectada (campaña 2001)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2001, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2001&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_2000</Name>
+        <Title>Area afectada (campaña 2000)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2000, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_2000&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1999</Name>
+        <Title>Area afectada (campaña 1999)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1999, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1999&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1998</Name>
+        <Title>Area afectada (campaña 1998)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1998, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1998&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1997</Name>
+        <Title>Area afectada (campaña 1997)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1997, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1997&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1996</Name>
+        <Title>Area afectada (campaña 1996)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1996, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1996&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1995</Name>
+        <Title>Area afectada (campaña 1995)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1995, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1995&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1994</Name>
+        <Title>Area afectada (campaña 1994)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1994, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1994&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1993</Name>
+        <Title>Area afectada (campaña 1993)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1993, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1993&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1992</Name>
+        <Title>Area afectada (campaña 1992)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1992, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1992&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1991</Name>
+        <Title>Area afectada (campaña 1991)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1991, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1991&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1990</Name>
+        <Title>Area afectada (campaña 1990)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1990, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1990&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1989</Name>
+        <Title>Area afectada (campaña 1989)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1989, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1989&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1988</Name>
+        <Title>Area afectada (campaña 1988)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1988, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1988&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1987</Name>
+        <Title>Area afectada (campaña 1987)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1987, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1987&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1986</Name>
+        <Title>Area afectada (campaña 1986)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1986, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1986&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1985</Name>
+        <Title>Area afectada (campaña 1985)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1985, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1985&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1984</Name>
+        <Title>Area afectada (campaña 1984)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1984, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1984&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1983</Name>
+        <Title>Area afectada (campaña 1983)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1983, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1983&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1982</Name>
+        <Title>Area afectada (campaña 1982)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1982, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1982&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1981</Name>
+        <Title>Area afectada (campaña 1981)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1981, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1981&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1980</Name>
+        <Title>Area afectada (campaña 1980)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1980, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1980&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1979</Name>
+        <Title>Area afectada (campaña 1979)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1979, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1979&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1978</Name>
+        <Title>Area afectada (campaña 1978)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1978, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1978&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1977</Name>
+        <Title>Area afectada (campaña 1977)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1977, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1977&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1976</Name>
+        <Title>Area afectada (campaña 1976)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1976, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1976&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>areas_afectadas_1975</Name>
+        <Title>Area afectada (campaña 1975)       </Title>
+        <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1975, delimitados mediante técnicas de teledetección por imágenes de satélites.   </Abstract>
+        <KeywordList>
+            <Keyword>Incendios</Keyword>
+            <Keyword> perímetros histórico</Keyword>
+            <Keyword> montes</Keyword>
+        </KeywordList>
+        <CRS>EPSG:3042</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>-7.945201</westBoundLongitude>
+            <eastBoundLongitude>-1.282553</eastBoundLongitude>
+            <southBoundLatitude>35.137579</southBoundLatitude>
+            <northBoundLatitude>39.547020</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3042"
+                    minx="3.8983e+06" miny="74359" maxx="4.37748e+06" maxy="647596" />
+        <BoundingBox CRS="EPSG:25830"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:25829"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:23030"
+                    minx="74340.1" miny="3.89836e+06" maxx="647710" maxy="4.37769e+06" />
+        <BoundingBox CRS="EPSG:32629"
+                    minx="590767" miny="3.88911e+06" maxx="1.19434e+06" maxy="4.40462e+06" />
+        <BoundingBox CRS="EPSG:32630"
+                    minx="74359" miny="3.8983e+06" maxx="647596" maxy="4.37748e+06" />
+        <BoundingBox CRS="EPSG:3785"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="35.137579" miny="-7.943810" maxx="39.548221" maxy="-1.281318" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="35.137579" miny="-7.945201" maxx="39.547020" maxy="-1.282553" />
+        <BoundingBox CRS="CRS:84"
+                    minx="-7.945201" miny="35.137579" maxx="-1.282553" maxy="39.547020" />
+        <BoundingBox CRS="EPSG:900913"
+                    minx="-884456" miny="4.18259e+06" maxx="-142773" maxy="4.80033e+06" />
+        <MetadataURL type="ISO19115:2003">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://portalrediam.cica.es/geonetwork/srv/spa/catalog.search#/metadata/0b9aa872-ad3d-4e30-941a-40a9968be6b0/formatters/xsl-view?root=div&amp;view=advanced"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="218" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_historico_areas_recorridas_fuego?language=spa&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=areas_afectadas_1975&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+  </Layer>
+</Capability>
+</WMS_Capabilities>

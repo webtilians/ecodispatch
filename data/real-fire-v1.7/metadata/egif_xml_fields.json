@@ -1,0 +1,1826 @@
+{
+  "count": 7496,
+  "years": {
+    "1968": 20,
+    "1969": 24,
+    "1970": 53,
+    "1971": 33,
+    "1972": 50,
+    "1973": 98,
+    "1974": 116,
+    "1975": 88,
+    "1976": 72,
+    "1977": 92,
+    "1978": 115,
+    "1979": 118,
+    "1980": 197,
+    "1981": 244,
+    "1982": 273,
+    "1983": 236,
+    "1984": 201,
+    "1985": 335,
+    "1986": 173,
+    "1987": 143,
+    "1988": 163,
+    "1989": 245,
+    "1990": 388,
+    "1991": 351,
+    "1992": 399,
+    "1993": 280,
+    "1994": 346,
+    "1995": 198,
+    "1996": 68,
+    "1997": 109,
+    "1998": 108,
+    "1999": 73,
+    "2000": 86,
+    "2001": 77,
+    "2002": 121,
+    "2003": 97,
+    "2004": 119,
+    "2005": 120,
+    "2006": 80,
+    "2007": 80,
+    "2008": 76,
+    "2009": 97,
+    "2010": 54,
+    "2011": 72,
+    "2012": 76,
+    "2013": 99,
+    "2014": 88,
+    "2015": 83,
+    "2016": 71,
+    "2017": 98,
+    "2018": 55,
+    "2019": 104,
+    "2020": 73,
+    "2021": 71,
+    "2022": 98,
+    "2023": 92
+  },
+  "provinces": {
+    "29": 7496
+  },
+  "detection_min": "1968-01-01T20:00:00",
+  "detection_max": "2023-12-16T15:35:00",
+  "fields": [
+    {
+      "path": "Pif/idpif",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "577974"
+    },
+    {
+      "path": "Pif/numeroparte",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_comun",
+      "occurrences": 7496,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_comun/idpif",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "577974"
+    },
+    {
+      "path": "Pif/pif_comun/numeroparte",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_comun/anio",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968"
+    },
+    {
+      "path": "Pif/pif_comun/idestadopif",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "4"
+    },
+    {
+      "path": "Pif/pif_comun/idestadocampaniaprovincia",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "0"
+    },
+    {
+      "path": "Pif/pif_comun/probabilidadignicion",
+      "occurrences": 6533,
+      "nonempty": 6533,
+      "example": "0"
+    },
+    {
+      "path": "Pif/pif_comun/idpeligro",
+      "occurrences": 6834,
+      "nonempty": 6834,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_localizacion",
+      "occurrences": 7496,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_localizacion/numeroparte",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_localizacion/idcomunidad",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "4"
+    },
+    {
+      "path": "Pif/pif_localizacion/idprovincia",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "29"
+    },
+    {
+      "path": "Pif/pif_localizacion/idmunicipio",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "0"
+    },
+    {
+      "path": "Pif/pif_localizacion/nummunicipiosafectados",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_tiempos",
+      "occurrences": 7496,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_tiempos/numeroparte",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_tiempos/deteccion",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968-01-01T20:00:00"
+    },
+    {
+      "path": "Pif/pif_tiempos/llegadapmt",
+      "occurrences": 7496,
+      "nonempty": 6700,
+      "example": "1968-03-26T00:00:00"
+    },
+    {
+      "path": "Pif/pif_tiempos/llegadapmae",
+      "occurrences": 7496,
+      "nonempty": 1722,
+      "example": "1975-08-24T00:00:00"
+    },
+    {
+      "path": "Pif/pif_tiempos/llegadapbh",
+      "occurrences": 7496,
+      "nonempty": 779,
+      "example": "2005-01-13T11:00:00"
+    },
+    {
+      "path": "Pif/pif_tiempos/llegadapac",
+      "occurrences": 7496,
+      "nonempty": 33,
+      "example": "2016-08-19T18:41:00"
+    },
+    {
+      "path": "Pif/pif_tiempos/controlado",
+      "occurrences": 7496,
+      "nonempty": 3035,
+      "example": "1990-07-22T19:30:00"
+    },
+    {
+      "path": "Pif/pif_tiempos/extinguido",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968-01-02T02:00:00"
+    },
+    {
+      "path": "Pif/pif_deteccion",
+      "occurrences": 7496,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_deteccion/numeroparte",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_deteccion/primeranotificaciondesde112",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "False"
+    },
+    {
+      "path": "Pif/pif_deteccion/iddetectadopor",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "3"
+    },
+    {
+      "path": "Pif/pif_deteccion/RelIniciadoJuntoAPif",
+      "occurrences": 7633,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_deteccion/RelIniciadoJuntoAPif/idpif",
+      "occurrences": 7633,
+      "nonempty": 7633,
+      "example": "577974"
+    },
+    {
+      "path": "Pif/pif_deteccion/RelIniciadoJuntoAPif/numeroparte",
+      "occurrences": 7633,
+      "nonempty": 7633,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_deteccion/RelIniciadoJuntoAPif/idiniciadojuntoa",
+      "occurrences": 7633,
+      "nonempty": 7633,
+      "example": "3"
+    },
+    {
+      "path": "Pif/pif_causa",
+      "occurrences": 7496,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_causa/numeroparte",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_causa/idcausa",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "240"
+    },
+    {
+      "path": "Pif/pif_causa/idcertidumbrecausa",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "2"
+    },
+    {
+      "path": "Pif/pif_causa/idcausante",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "2"
+    },
+    {
+      "path": "Pif/pif_causa/idclasedia",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_condiciones",
+      "occurrences": 7496,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_condiciones/numeroparte",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_condiciones/idestacionmeteorologica",
+      "occurrences": 7412,
+      "nonempty": 7412,
+      "example": "0"
+    },
+    {
+      "path": "Pif/pif_condiciones/hora",
+      "occurrences": 7496,
+      "nonempty": 1176,
+      "example": "1900-01-01T17:00:00"
+    },
+    {
+      "path": "Pif/pif_condiciones/RelModeloCombustionPif",
+      "occurrences": 10531,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_condiciones/RelModeloCombustionPif/idpif",
+      "occurrences": 10531,
+      "nonempty": 10531,
+      "example": "577974"
+    },
+    {
+      "path": "Pif/pif_condiciones/RelModeloCombustionPif/numeroparte",
+      "occurrences": 10531,
+      "nonempty": 10531,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_condiciones/RelModeloCombustionPif/idmodelocombustion",
+      "occurrences": 10531,
+      "nonempty": 10531,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_propagacion",
+      "occurrences": 7496,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_propagacion/numeroparte",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_propagacion/RelTipoFuegoPif",
+      "occurrences": 8067,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_propagacion/RelTipoFuegoPif/idpif",
+      "occurrences": 8067,
+      "nonempty": 8067,
+      "example": "577974"
+    },
+    {
+      "path": "Pif/pif_propagacion/RelTipoFuegoPif/numeroparte",
+      "occurrences": 8067,
+      "nonempty": 8067,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_propagacion/RelTipoFuegoPif/idtipofuego",
+      "occurrences": 8067,
+      "nonempty": 8067,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_medios",
+      "occurrences": 7496,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_medios/numeroparte",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_medios/actuaronmediosestatales",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "False"
+    },
+    {
+      "path": "Pif/pif_medios/RelTransportePersonalPif",
+      "occurrences": 8989,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_medios/RelTransportePersonalPif/idpif",
+      "occurrences": 8989,
+      "nonempty": 8989,
+      "example": "577974"
+    },
+    {
+      "path": "Pif/pif_medios/RelTransportePersonalPif/numeroparte",
+      "occurrences": 8989,
+      "nonempty": 8989,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_medios/RelTransportePersonalPif/idtransportepersonal",
+      "occurrences": 8989,
+      "nonempty": 8989,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_medios/RelGrupoMedioRetardantePif",
+      "occurrences": 7505,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_medios/RelGrupoMedioRetardantePif/idpif",
+      "occurrences": 7505,
+      "nonempty": 7505,
+      "example": "577974"
+    },
+    {
+      "path": "Pif/pif_medios/RelGrupoMedioRetardantePif/numeroparte",
+      "occurrences": 7505,
+      "nonempty": 7505,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_medios/RelGrupoMedioRetardantePif/idgrupomedioretardante",
+      "occurrences": 7505,
+      "nonempty": 7505,
+      "example": "3"
+    },
+    {
+      "path": "Pif/pif_tecnicas",
+      "occurrences": 7496,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_tecnicas/numeroparte",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_tecnicas/RelAtaquePif",
+      "occurrences": 7719,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_tecnicas/RelAtaquePif/idpif",
+      "occurrences": 7719,
+      "nonempty": 7719,
+      "example": "577974"
+    },
+    {
+      "path": "Pif/pif_tecnicas/RelAtaquePif/numeroparte",
+      "occurrences": 7719,
+      "nonempty": 7719,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_tecnicas/RelAtaquePif/idataque",
+      "occurrences": 7719,
+      "nonempty": 7719,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_perdidas",
+      "occurrences": 7496,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_perdidas/numeroparte",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_perdidas/RelPerdidaMontePif",
+      "occurrences": 6904,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_perdidas/RelPerdidaMontePif/idpif",
+      "occurrences": 6904,
+      "nonempty": 6904,
+      "example": "577974"
+    },
+    {
+      "path": "Pif/pif_perdidas/RelPerdidaMontePif/numeroparte",
+      "occurrences": 6904,
+      "nonempty": 6904,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_perdidas/RelPerdidaMontePif/idtitularidadmonte",
+      "occurrences": 6904,
+      "nonempty": 6904,
+      "example": "4"
+    },
+    {
+      "path": "Pif/pif_perdidas/RelPerdidaMontePif/superficiearbolada",
+      "occurrences": 6904,
+      "nonempty": 6904,
+      "example": "0.0000"
+    },
+    {
+      "path": "Pif/pif_perdidas/RelPerdidaMontePif/superficienoarbolada",
+      "occurrences": 6904,
+      "nonempty": 6904,
+      "example": "14.0000"
+    },
+    {
+      "path": "Pif/pif_perdidas/superficiearboladatotal",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "0.0000"
+    },
+    {
+      "path": "Pif/pif_perdidas/superficienoarboladatotal",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "14.0000"
+    },
+    {
+      "path": "Pif/pif_incidencias",
+      "occurrences": 7496,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_incidencias/numeroparte",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_incidencias/afectozonasinterfazurbanoforestal",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "False"
+    },
+    {
+      "path": "Pif/pif_incidencias/afectoespacionnatprot",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "False"
+    },
+    {
+      "path": "Pif/pif_incidencias/afectozar",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "False"
+    },
+    {
+      "path": "Pif/pif_incidencias/afectotierraagrariarefores",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "False"
+    },
+    {
+      "path": "Pif/pif_anexo",
+      "occurrences": 7496,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_anexo/numeroparte",
+      "occurrences": 7496,
+      "nonempty": 7496,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/pif_anexo/idporcentajeautoregenerable",
+      "occurrences": 7471,
+      "nonempty": 7471,
+      "example": "0"
+    },
+    {
+      "path": "Pif/pif_anexo/idefectovidasilvestre",
+      "occurrences": 7458,
+      "nonempty": 7458,
+      "example": "0"
+    },
+    {
+      "path": "Pif/pif_anexo/idriesgoerosion",
+      "occurrences": 7459,
+      "nonempty": 7459,
+      "example": "0"
+    },
+    {
+      "path": "Pif/pif_anexo/idalteracionpaisaje",
+      "occurrences": 7459,
+      "nonempty": 7459,
+      "example": "0"
+    },
+    {
+      "path": "Pif/pif_anexo/idefectoeneconomia",
+      "occurrences": 7458,
+      "nonempty": 7458,
+      "example": "0"
+    },
+    {
+      "path": "Pif/ParteMonte",
+      "occurrences": 7901,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/ParteMonte/idpif",
+      "occurrences": 7901,
+      "nonempty": 7901,
+      "example": "577974"
+    },
+    {
+      "path": "Pif/ParteMonte/numeroparte",
+      "occurrences": 7901,
+      "nonempty": 7901,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/ParteMonte/idpartemonte",
+      "occurrences": 7901,
+      "nonempty": 7901,
+      "example": "1"
+    },
+    {
+      "path": "Pif/ParteMonte/anio",
+      "occurrences": 7901,
+      "nonempty": 7901,
+      "example": "1968"
+    },
+    {
+      "path": "Pif/ParteMonte/idcomunidad",
+      "occurrences": 7901,
+      "nonempty": 7901,
+      "example": "4"
+    },
+    {
+      "path": "Pif/ParteMonte/idprovincia",
+      "occurrences": 7901,
+      "nonempty": 7901,
+      "example": "29"
+    },
+    {
+      "path": "Pif/ParteMonte/idmunicipio",
+      "occurrences": 7901,
+      "nonempty": 7901,
+      "example": "0"
+    },
+    {
+      "path": "Pif/ParteMonte/idcomarcaisla",
+      "occurrences": 7901,
+      "nonempty": 7901,
+      "example": "2900"
+    },
+    {
+      "path": "Pif/ParteMonte/idtitularidadmonte",
+      "occurrences": 7901,
+      "nonempty": 7901,
+      "example": "3"
+    },
+    {
+      "path": "Pif/ParteMonte/idcatalogomonte",
+      "occurrences": 7901,
+      "nonempty": 7901,
+      "example": "57084"
+    },
+    {
+      "path": "Pif/ParteMonte/iddemanialmonte",
+      "occurrences": 7901,
+      "nonempty": 7901,
+      "example": "4"
+    },
+    {
+      "path": "Pif/ParteMonte/esconsorciado",
+      "occurrences": 7901,
+      "nonempty": 7901,
+      "example": "False"
+    },
+    {
+      "path": "Pif/ParteMonte/esprotector",
+      "occurrences": 7901,
+      "nonempty": 7901,
+      "example": "False"
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoArboladoHerbaceoParteMonte",
+      "occurrences": 1801,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoArboladoHerbaceoParteMonte/idpif",
+      "occurrences": 1801,
+      "nonempty": 1801,
+      "example": "577974"
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoArboladoHerbaceoParteMonte/numeroparte",
+      "occurrences": 1801,
+      "nonempty": 1801,
+      "example": "1968290001"
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoArboladoHerbaceoParteMonte/idpartemonte",
+      "occurrences": 1801,
+      "nonempty": 1801,
+      "example": "1"
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoArboladoHerbaceoParteMonte/idnoarboladoherbaceo",
+      "occurrences": 1801,
+      "nonempty": 1801,
+      "example": "2"
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoArboladoHerbaceoParteMonte/superficie",
+      "occurrences": 1801,
+      "nonempty": 1801,
+      "example": "14.0000"
+    },
+    {
+      "path": "Pif/ParteMonte/RelArboladoAfectadoParteMonte",
+      "occurrences": 2638,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/ParteMonte/RelArboladoAfectadoParteMonte/idpif",
+      "occurrences": 2638,
+      "nonempty": 2638,
+      "example": "577975"
+    },
+    {
+      "path": "Pif/ParteMonte/RelArboladoAfectadoParteMonte/numeroparte",
+      "occurrences": 2638,
+      "nonempty": 2638,
+      "example": "1968290006"
+    },
+    {
+      "path": "Pif/ParteMonte/RelArboladoAfectadoParteMonte/idpartemonte",
+      "occurrences": 2638,
+      "nonempty": 2638,
+      "example": "1"
+    },
+    {
+      "path": "Pif/ParteMonte/RelArboladoAfectadoParteMonte/estadomasaf",
+      "occurrences": 2638,
+      "nonempty": 2638,
+      "example": "True"
+    },
+    {
+      "path": "Pif/ParteMonte/RelArboladoAfectadoParteMonte/estadomasal",
+      "occurrences": 2638,
+      "nonempty": 2638,
+      "example": "True"
+    },
+    {
+      "path": "Pif/ParteMonte/RelArboladoAfectadoParteMonte/estadomasamb",
+      "occurrences": 2638,
+      "nonempty": 2638,
+      "example": "False"
+    },
+    {
+      "path": "Pif/ParteMonte/RelArboladoAfectadoParteMonte/estadomasar",
+      "occurrences": 2638,
+      "nonempty": 2638,
+      "example": "False"
+    },
+    {
+      "path": "Pif/ParteMonte/RelArboladoAfectadoParteMonte/idespecie",
+      "occurrences": 2638,
+      "nonempty": 2638,
+      "example": "72"
+    },
+    {
+      "path": "Pif/ParteMonte/RelArboladoAfectadoParteMonte/superficie",
+      "occurrences": 2601,
+      "nonempty": 2601,
+      "example": "0.2000"
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoArboladoLeniosoParteMonte",
+      "occurrences": 5080,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoArboladoLeniosoParteMonte/idpif",
+      "occurrences": 5080,
+      "nonempty": 5080,
+      "example": "577975"
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoArboladoLeniosoParteMonte/numeroparte",
+      "occurrences": 5080,
+      "nonempty": 5080,
+      "example": "1968290006"
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoArboladoLeniosoParteMonte/idpartemonte",
+      "occurrences": 5080,
+      "nonempty": 5080,
+      "example": "1"
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoArboladoLeniosoParteMonte/idnoarboladolenioso",
+      "occurrences": 5080,
+      "nonempty": 5080,
+      "example": "2"
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoArboladoLeniosoParteMonte/superficie",
+      "occurrences": 5080,
+      "nonempty": 5080,
+      "example": "1.8000"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte",
+      "occurrences": 2770,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/idpif",
+      "occurrences": 2770,
+      "nonempty": 2770,
+      "example": "577975"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/numeroparte",
+      "occurrences": 2770,
+      "nonempty": 2770,
+      "example": "1968290006"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/idpartemonte",
+      "occurrences": 2770,
+      "nonempty": 2770,
+      "example": "1"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/esestadomasabl",
+      "occurrences": 2770,
+      "nonempty": 2770,
+      "example": "False"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/esestadomasaf1",
+      "occurrences": 2770,
+      "nonempty": 2770,
+      "example": "False"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/esestadomasaf2",
+      "occurrences": 2770,
+      "nonempty": 2770,
+      "example": "False"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/esestadomasalf",
+      "occurrences": 2770,
+      "nonempty": 2770,
+      "example": "True"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/esestadomasamb",
+      "occurrences": 2770,
+      "nonempty": 2770,
+      "example": "False"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/esestadomasar",
+      "occurrences": 2770,
+      "nonempty": 2770,
+      "example": "False"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/idespecie",
+      "occurrences": 2770,
+      "nonempty": 2770,
+      "example": "72"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/idfactorcalculoperdida",
+      "occurrences": 2770,
+      "nonempty": 2770,
+      "example": "361894"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/superficie",
+      "occurrences": 2763,
+      "nonempty": 2763,
+      "example": "0.2000"
+    },
+    {
+      "path": "Pif/pif_condiciones/tempmaxima",
+      "occurrences": 2013,
+      "nonempty": 2013,
+      "example": "17"
+    },
+    {
+      "path": "Pif/pif_condiciones/humrelativa",
+      "occurrences": 2003,
+      "nonempty": 2003,
+      "example": "51"
+    },
+    {
+      "path": "Pif/pif_condiciones/velocidadviento",
+      "occurrences": 1997,
+      "nonempty": 1997,
+      "example": "102"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioPersonalPif",
+      "occurrences": 22720,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioPersonalPif/idpif",
+      "occurrences": 22720,
+      "nonempty": 22720,
+      "example": "577977"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioPersonalPif/numeroparte",
+      "occurrences": 22720,
+      "nonempty": 22720,
+      "example": "1968290282"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioPersonalPif/idmediopersonalext",
+      "occurrences": 22720,
+      "nonempty": 22720,
+      "example": "3"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioPersonalPif/idtitularidadmedio",
+      "occurrences": 22720,
+      "nonempty": 22720,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioPersonalPif/numero",
+      "occurrences": 22720,
+      "nonempty": 22720,
+      "example": "48"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioPesadoPif",
+      "occurrences": 6212,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioPesadoPif/idpif",
+      "occurrences": 6212,
+      "nonempty": 6212,
+      "example": "577977"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioPesadoPif/numeroparte",
+      "occurrences": 6212,
+      "nonempty": 6212,
+      "example": "1968290282"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioPesadoPif/idmediopesado",
+      "occurrences": 6212,
+      "nonempty": 6212,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioPesadoPif/idtitularidadmedio",
+      "occurrences": 6212,
+      "nonempty": 6212,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioPesadoPif/numero",
+      "occurrences": 6212,
+      "nonempty": 6212,
+      "example": "1"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/edad",
+      "occurrences": 2045,
+      "nonempty": 2045,
+      "example": "30"
+    },
+    {
+      "path": "Pif/ParteMonte/conaprovechamientototal",
+      "occurrences": 1548,
+      "nonempty": 1548,
+      "example": "1"
+    },
+    {
+      "path": "Pif/ParteMonte/daniosconaprovechamiento",
+      "occurrences": 2662,
+      "nonempty": 2662,
+      "example": "1"
+    },
+    {
+      "path": "Pif/ParteMonte/daniossinaprovechamiento",
+      "occurrences": 1363,
+      "nonempty": 1363,
+      "example": "1"
+    },
+    {
+      "path": "Pif/ParteMonte/sinaprovechamientototal",
+      "occurrences": 1623,
+      "nonempty": 1623,
+      "example": "2"
+    },
+    {
+      "path": "Pif/ParteMonte/totalperdidas",
+      "occurrences": 4329,
+      "nonempty": 4329,
+      "example": "3"
+    },
+    {
+      "path": "Pif/ParteMonte/RelOtraPerdidaParteMonte",
+      "occurrences": 2754,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/ParteMonte/RelOtraPerdidaParteMonte/idpif",
+      "occurrences": 2754,
+      "nonempty": 2754,
+      "example": "577977"
+    },
+    {
+      "path": "Pif/ParteMonte/RelOtraPerdidaParteMonte/numeroparte",
+      "occurrences": 2754,
+      "nonempty": 2754,
+      "example": "1968290282"
+    },
+    {
+      "path": "Pif/ParteMonte/RelOtraPerdidaParteMonte/idpartemonte",
+      "occurrences": 2754,
+      "nonempty": 2754,
+      "example": "2"
+    },
+    {
+      "path": "Pif/ParteMonte/RelOtraPerdidaParteMonte/idaprovechamiento",
+      "occurrences": 2754,
+      "nonempty": 2754,
+      "example": "2"
+    },
+    {
+      "path": "Pif/ParteMonte/RelOtraPerdidaParteMonte/perdidas",
+      "occurrences": 2754,
+      "nonempty": 2754,
+      "example": "7"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/volumencomercial",
+      "occurrences": 706,
+      "nonempty": 706,
+      "example": "7108"
+    },
+    {
+      "path": "Pif/ParteMonte/perjuiciosconaprovechamiento",
+      "occurrences": 1257,
+      "nonempty": 1257,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_deteccion/idvigilantefijo",
+      "occurrences": 3348,
+      "nonempty": 3348,
+      "example": "0"
+    },
+    {
+      "path": "Pif/ParteMonte/RelArboladoAfectadoParteMonte/fcc",
+      "occurrences": 1743,
+      "nonempty": 1743,
+      "example": "50"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/porcentajeocupacion",
+      "occurrences": 1681,
+      "nonempty": 1681,
+      "example": "50"
+    },
+    {
+      "path": "Pif/ParteMonte/perjuiciossinaprovechamiento",
+      "occurrences": 1254,
+      "nonempty": 1254,
+      "example": "21"
+    },
+    {
+      "path": "Pif/pif_causa/idmotivacion",
+      "occurrences": 1591,
+      "nonempty": 1591,
+      "example": "400"
+    },
+    {
+      "path": "Pif/pif_localizacion/hoja",
+      "occurrences": 7197,
+      "nonempty": 7197,
+      "example": "0406"
+    },
+    {
+      "path": "Pif/pif_localizacion/cuadricula",
+      "occurrences": 7197,
+      "nonempty": 7197,
+      "example": "H08"
+    },
+    {
+      "path": "Pif/ParteMonte/gastosextincion",
+      "occurrences": 2741,
+      "nonempty": 2741,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_tecnicas/RelTipoAtaqueIndirectoPif",
+      "occurrences": 282,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_tecnicas/RelTipoAtaqueIndirectoPif/idpif",
+      "occurrences": 282,
+      "nonempty": 282,
+      "example": "596843"
+    },
+    {
+      "path": "Pif/pif_tecnicas/RelTipoAtaqueIndirectoPif/numeroparte",
+      "occurrences": 282,
+      "nonempty": 282,
+      "example": "1975291407"
+    },
+    {
+      "path": "Pif/pif_tecnicas/RelTipoAtaqueIndirectoPif/idtipoataqueindirecto",
+      "occurrences": 282,
+      "nonempty": 282,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioAereoPif",
+      "occurrences": 2840,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioAereoPif/idpif",
+      "occurrences": 2840,
+      "nonempty": 2840,
+      "example": "596887"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioAereoPif/numeroparte",
+      "occurrences": 2840,
+      "nonempty": 2840,
+      "example": "1975293292"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioAereoPif/idmedioaereo",
+      "occurrences": 2840,
+      "nonempty": 2840,
+      "example": "2"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioAereoPif/idtitularidadmedio",
+      "occurrences": 2840,
+      "nonempty": 2840,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioAereoPif/numero",
+      "occurrences": 2840,
+      "nonempty": 2840,
+      "example": "2"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/volumenparaaprovechar",
+      "occurrences": 621,
+      "nonempty": 621,
+      "example": "1100"
+    },
+    {
+      "path": "Pif/pif_condiciones/diasultimalluvia",
+      "occurrences": 1075,
+      "nonempty": 1075,
+      "example": "138"
+    },
+    {
+      "path": "Pif/pif_perdidas/RelVictimaPif",
+      "occurrences": 81,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_perdidas/RelVictimaPif/idpif",
+      "occurrences": 81,
+      "nonempty": 81,
+      "example": "632766"
+    },
+    {
+      "path": "Pif/pif_perdidas/RelVictimaPif/numeroparte",
+      "occurrences": 81,
+      "nonempty": 81,
+      "example": "1981296204"
+    },
+    {
+      "path": "Pif/pif_perdidas/RelVictimaPif/idconsecuenciapersona",
+      "occurrences": 81,
+      "nonempty": 81,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_perdidas/RelVictimaPif/idtipovictima",
+      "occurrences": 81,
+      "nonempty": 81,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_perdidas/RelVictimaPif/numero",
+      "occurrences": 81,
+      "nonempty": 81,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_localizacion/idcomarcaisla",
+      "occurrences": 5903,
+      "nonempty": 5903,
+      "example": "2902"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioAereoPif/descargas",
+      "occurrences": 2185,
+      "nonempty": 2185,
+      "example": "5"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/preciomediomadera",
+      "occurrences": 497,
+      "nonempty": 497,
+      "example": "6.6100"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorCalculoPerdidaParteMonte/preciomediomaderaquemada",
+      "occurrences": 495,
+      "nonempty": 495,
+      "example": "4.8100"
+    },
+    {
+      "path": "Pif/pif_medios/RelMedioAereoPif/brigadastrans",
+      "occurrences": 1585,
+      "nonempty": 1585,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_medios/RelRetardantePif",
+      "occurrences": 1238,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_medios/RelRetardantePif/idpif",
+      "occurrences": 1238,
+      "nonempty": 1238,
+      "example": "702988"
+    },
+    {
+      "path": "Pif/pif_medios/RelRetardantePif/numeroparte",
+      "occurrences": 1238,
+      "nonempty": 1238,
+      "example": "1989290882"
+    },
+    {
+      "path": "Pif/pif_medios/RelRetardantePif/idretardante",
+      "occurrences": 1238,
+      "nonempty": 1238,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_perdidas/superficienoarboladaagricola",
+      "occurrences": 1503,
+      "nonempty": 1503,
+      "example": "67.0000"
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoForestalAfectadoParteMonte",
+      "occurrences": 1120,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoForestalAfectadoParteMonte/idpif",
+      "occurrences": 1120,
+      "nonempty": 1120,
+      "example": "720296"
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoForestalAfectadoParteMonte/numeroparte",
+      "occurrences": 1120,
+      "nonempty": 1120,
+      "example": "1990290049"
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoForestalAfectadoParteMonte/idpartemonte",
+      "occurrences": 1120,
+      "nonempty": 1120,
+      "example": "1"
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoForestalAfectadoParteMonte/idnoforestal",
+      "occurrences": 1120,
+      "nonempty": 1120,
+      "example": "1"
+    },
+    {
+      "path": "Pif/ParteMonte/RelNoForestalAfectadoParteMonte/superficie",
+      "occurrences": 1120,
+      "nonempty": 1120,
+      "example": "67.0000"
+    },
+    {
+      "path": "Pif/pif_condiciones/direccionviento",
+      "occurrences": 1702,
+      "nonempty": 1702,
+      "example": "315"
+    },
+    {
+      "path": "Pif/pif_localizacion/paraje",
+      "occurrences": 2235,
+      "nonempty": 2235,
+      "example": "TINAONES BAJO"
+    },
+    {
+      "path": "Pif/pif_deteccion/RelTipoAreaIniciadoPif",
+      "occurrences": 1079,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_deteccion/RelTipoAreaIniciadoPif/idpif",
+      "occurrences": 1079,
+      "nonempty": 1079,
+      "example": "864026"
+    },
+    {
+      "path": "Pif/pif_deteccion/RelTipoAreaIniciadoPif/numeroparte",
+      "occurrences": 1079,
+      "nonempty": 1079,
+      "example": "1998290001"
+    },
+    {
+      "path": "Pif/pif_deteccion/RelTipoAreaIniciadoPif/idtipoarea",
+      "occurrences": 1079,
+      "nonempty": 1079,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_localizacion/huso",
+      "occurrences": 1941,
+      "nonempty": 1941,
+      "example": "30"
+    },
+    {
+      "path": "Pif/pif_localizacion/x",
+      "occurrences": 1939,
+      "nonempty": 1939,
+      "example": "303922"
+    },
+    {
+      "path": "Pif/pif_localizacion/y",
+      "occurrences": 1939,
+      "nonempty": 1939,
+      "example": "4072962"
+    },
+    {
+      "path": "Pif/pif_localizacion/latitud",
+      "occurrences": 1939,
+      "nonempty": 1939,
+      "example": "36.7821866972236"
+    },
+    {
+      "path": "Pif/pif_localizacion/longitud",
+      "occurrences": 1939,
+      "nonempty": 1939,
+      "example": "-5.19731023904186"
+    },
+    {
+      "path": "Pif/pif_incidencias/RelIncidenciasProtecCivilPif",
+      "occurrences": 250,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_incidencias/RelIncidenciasProtecCivilPif/idpif",
+      "occurrences": 250,
+      "nonempty": 250,
+      "example": "884556"
+    },
+    {
+      "path": "Pif/pif_incidencias/RelIncidenciasProtecCivilPif/numeroparte",
+      "occurrences": 250,
+      "nonempty": 250,
+      "example": "1999290058"
+    },
+    {
+      "path": "Pif/pif_incidencias/RelIncidenciasProtecCivilPif/idincidenciaproteccivil",
+      "occurrences": 250,
+      "nonempty": 250,
+      "example": "2"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorProductoOtrosParteMonte",
+      "occurrences": 22,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorProductoOtrosParteMonte/idpif",
+      "occurrences": 22,
+      "nonempty": 22,
+      "example": "985167"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorProductoOtrosParteMonte/numeroparte",
+      "occurrences": 22,
+      "nonempty": 22,
+      "example": "2004290016"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorProductoOtrosParteMonte/idpartemonte",
+      "occurrences": 22,
+      "nonempty": 22,
+      "example": "1"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorProductoOtrosParteMonte/idtipoproducto",
+      "occurrences": 22,
+      "nonempty": 22,
+      "example": "1"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorProductoOtrosParteMonte/sx",
+      "occurrences": 22,
+      "nonempty": 22,
+      "example": "0.3000"
+    },
+    {
+      "path": "Pif/pif_anexo/RelAsociadoPif",
+      "occurrences": 23,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_anexo/RelAsociadoPif/idpif",
+      "occurrences": 23,
+      "nonempty": 23,
+      "example": "1007221"
+    },
+    {
+      "path": "Pif/pif_anexo/RelAsociadoPif/numeroparte",
+      "occurrences": 23,
+      "nonempty": 23,
+      "example": "2005290003"
+    },
+    {
+      "path": "Pif/pif_anexo/RelAsociadoPif/numeroparteasociado",
+      "occurrences": 23,
+      "nonempty": 23,
+      "example": "2005290002"
+    },
+    {
+      "path": "Pif/pif_anexo/RelEspacioProtegidoPif",
+      "occurrences": 342,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_anexo/RelEspacioProtegidoPif/idpif",
+      "occurrences": 342,
+      "nonempty": 342,
+      "example": "1007221"
+    },
+    {
+      "path": "Pif/pif_anexo/RelEspacioProtegidoPif/numeroparte",
+      "occurrences": 342,
+      "nonempty": 342,
+      "example": "2005290003"
+    },
+    {
+      "path": "Pif/pif_anexo/RelEspacioProtegidoPif/idespacioprotegido",
+      "occurrences": 342,
+      "nonempty": 342,
+      "example": "ES617008"
+    },
+    {
+      "path": "Pif/pif_anexo/RelEspacioProtegidoPif/idtipoespacioprotegido",
+      "occurrences": 342,
+      "nonempty": 342,
+      "example": "70"
+    },
+    {
+      "path": "Pif/pif_anexo/RelEspacioProtegidoPif/superficiearbolada",
+      "occurrences": 246,
+      "nonempty": 246,
+      "example": "0.8000"
+    },
+    {
+      "path": "Pif/pif_anexo/RelEspacioProtegidoPif/superficielenosa",
+      "occurrences": 288,
+      "nonempty": 288,
+      "example": "0.0100"
+    },
+    {
+      "path": "Pif/pif_anexo/RelEspacioProtegidoPif/superficieherbacea",
+      "occurrences": 199,
+      "nonempty": 199,
+      "example": "20.8000"
+    },
+    {
+      "path": "Pif/pif_anexo/RelEspacioProtegidoPif/superficienoforestal",
+      "occurrences": 184,
+      "nonempty": 184,
+      "example": "0.0000"
+    },
+    {
+      "path": "Pif/pif_causa/diastormenta",
+      "occurrences": 663,
+      "nonempty": 663,
+      "example": "0"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorRentaParteMonte",
+      "occurrences": 10,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorRentaParteMonte/idpif",
+      "occurrences": 10,
+      "nonempty": 10,
+      "example": "1067795"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorRentaParteMonte/numeroparte",
+      "occurrences": 10,
+      "nonempty": 10,
+      "example": "2009290002"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorRentaParteMonte/idpartemonte",
+      "occurrences": 10,
+      "nonempty": 10,
+      "example": "1"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorRentaParteMonte/idtiporenta",
+      "occurrences": 10,
+      "nonempty": 10,
+      "example": "2"
+    },
+    {
+      "path": "Pif/ParteMonte/RelFactorRentaParteMonte/sr",
+      "occurrences": 10,
+      "nonempty": 10,
+      "example": "0.2500"
+    },
+    {
+      "path": "Pif/pif_localizacion/identidadmenor",
+      "occurrences": 956,
+      "nonempty": 956,
+      "example": "5"
+    },
+    {
+      "path": "Pif/pif_localizacion/puntosinicioincendio",
+      "occurrences": 662,
+      "nonempty": 662,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_localizacion/iddatum",
+      "occurrences": 662,
+      "nonempty": 662,
+      "example": "2"
+    },
+    {
+      "path": "Pif/pif_deteccion/iniciadojuntootros",
+      "occurrences": 472,
+      "nonempty": 472,
+      "example": "finca forestal"
+    },
+    {
+      "path": "Pif/pif_causa/idgradoresponsabilidad",
+      "occurrences": 662,
+      "nonempty": 662,
+      "example": "2"
+    },
+    {
+      "path": "Pif/pif_causa/idinvestigacioncausa",
+      "occurrences": 662,
+      "nonempty": 662,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_causa/idautorizacionactividad",
+      "occurrences": 662,
+      "nonempty": 662,
+      "example": "2"
+    },
+    {
+      "path": "Pif/pif_causa/causaotros",
+      "occurrences": 9,
+      "nonempty": 9,
+      "example": "TRABAJO FORESTALES"
+    },
+    {
+      "path": "Pif/pif_perdidas/superficienoarboladaotras",
+      "occurrences": 662,
+      "nonempty": 662,
+      "example": "0.0000"
+    },
+    {
+      "path": "Pif/pif_incidencias/idnivelgravedadmaximo",
+      "occurrences": 662,
+      "nonempty": 662,
+      "example": "0"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif",
+      "occurrences": 39,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/idpif",
+      "occurrences": 39,
+      "nonempty": 39,
+      "example": "569452"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/numeroparte",
+      "occurrences": 39,
+      "nonempty": 39,
+      "example": "2016290002"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/idespecie1",
+      "occurrences": 28,
+      "nonempty": 28,
+      "example": "23"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/idestado1",
+      "occurrences": 28,
+      "nonempty": 28,
+      "example": "3"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/idtesela",
+      "occurrences": 39,
+      "nonempty": 39,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/idteselamfe",
+      "occurrences": 39,
+      "nonempty": 39,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/idtipoestructural",
+      "occurrences": 39,
+      "nonempty": 39,
+      "example": "1"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/idtipoformacionarborea",
+      "occurrences": 39,
+      "nonempty": 39,
+      "example": "23"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/idtipoformacionarboreafcc",
+      "occurrences": 39,
+      "nonempty": 39,
+      "example": "80"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/ocupacionespecie1",
+      "occurrences": 28,
+      "nonempty": 28,
+      "example": "80"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/superficie",
+      "occurrences": 39,
+      "nonempty": 39,
+      "example": "0.1400"
+    },
+    {
+      "path": "Pif/ParteMonte/propietario",
+      "occurrences": 663,
+      "nonempty": 663,
+      "example": "PARTICULAR"
+    },
+    {
+      "path": "Pif/ParteMonte/valoracionambientaltotal",
+      "occurrences": 754,
+      "nonempty": 754,
+      "example": "0"
+    },
+    {
+      "path": "Pif/pif_deteccion/detectadoporotros",
+      "occurrences": 27,
+      "nonempty": 27,
+      "example": "112"
+    },
+    {
+      "path": "Pif/ParteMonte/cup",
+      "occurrences": 91,
+      "nonempty": 91,
+      "example": "18"
+    },
+    {
+      "path": "Pif/pif_incidencias/afectadourbanoforestalsi",
+      "occurrences": 144,
+      "nonempty": 144,
+      "example": "2"
+    },
+    {
+      "path": "Pif/pif_causa/motivacionotros",
+      "occurrences": 17,
+      "nonempty": 17,
+      "example": "SIN DATOS"
+    },
+    {
+      "path": "Pif/pif_incidencias/fechadeclaracionnivelmaximo",
+      "occurrences": 10,
+      "nonempty": 7,
+      "example": "2018-07-21T19:30:00"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/idespecie2",
+      "occurrences": 9,
+      "nonempty": 9,
+      "example": "66"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/idespecie3",
+      "occurrences": 7,
+      "nonempty": 7,
+      "example": "95"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/idestado2",
+      "occurrences": 9,
+      "nonempty": 9,
+      "example": "3"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/idestado3",
+      "occurrences": 7,
+      "nonempty": 7,
+      "example": "3"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/ocupacionespecie2",
+      "occurrences": 9,
+      "nonempty": 9,
+      "example": "3"
+    },
+    {
+      "path": "Pif/pif_anexo/RelTeselaAfectadaPif/ocupacionespecie3",
+      "occurrences": 7,
+      "nonempty": 7,
+      "example": "2"
+    },
+    {
+      "path": "Pif/pif_condiciones/RelModeloCombustionCampoPif",
+      "occurrences": 355,
+      "nonempty": 0,
+      "example": null
+    },
+    {
+      "path": "Pif/pif_condiciones/RelModeloCombustionCampoPif/idpif",
+      "occurrences": 355,
+      "nonempty": 355,
+      "example": "1183224"
+    },
+    {
+      "path": "Pif/pif_condiciones/RelModeloCombustionCampoPif/numeroparte",
+      "occurrences": 355,
+      "nonempty": 355,
+      "example": "2019290011"
+    },
+    {
+      "path": "Pif/pif_condiciones/RelModeloCombustionCampoPif/idmodelocombustion",
+      "occurrences": 355,
+      "nonempty": 355,
+      "example": "4"
+    }
+  ]
+}

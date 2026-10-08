@@ -1,0 +1,908 @@
+[
+  {
+    "file": "perimetros_2008.gpkg",
+    "table": "perim_incendios_2008",
+    "count": 36,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTIZ"
+    ],
+    "samples": [
+      [
+        1,
+        "ALGARINEJO",
+        "Granada",
+        "2008180101",
+        "20080807",
+        "0.000000",
+        "11.930000",
+        "0.000000"
+      ],
+      [
+        2,
+        "AZNALCAZAR",
+        "Sevilla",
+        "2008410097",
+        "20080911",
+        "0.000000",
+        "1.600000",
+        "26.900000"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2009.gpkg",
+    "table": "perim_incendios_2009",
+    "count": 73,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTIZ"
+    ],
+    "samples": [
+      [
+        1,
+        "SARTENEJA (LA)",
+        "Sevilla",
+        "2009410078",
+        "20090719",
+        "0.000000",
+        "0.100000",
+        "101.000000"
+      ],
+      [
+        2,
+        "ABLA",
+        "Almeria",
+        "2009040066",
+        "20090723",
+        "8.190000",
+        "11.840000",
+        "0.000000"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2010.gpkg",
+    "table": "perim_incendios_2010",
+    "count": 26,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTIZ"
+    ],
+    "samples": [
+      [
+        1,
+        "ALMUÑECAR",
+        "Granada",
+        "2010180103",
+        "20101017",
+        "0.000000",
+        "0.000000",
+        "26.320000"
+      ],
+      [
+        2,
+        "ANDUJAR",
+        "Jaen",
+        "2010230024",
+        "20100705",
+        "0.000000",
+        "12.808100",
+        "13.089600"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2011.gpkg",
+    "table": "perim_incendios_2011",
+    "count": 32,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTIZ"
+    ],
+    "samples": [
+      [
+        1,
+        "ADRA",
+        "Almeria",
+        "2011040154",
+        "20111009",
+        "0.000000",
+        "15.540800",
+        "0.000000"
+      ],
+      [
+        2,
+        "AZNALCAZAR",
+        "Sevilla",
+        "2011410068",
+        "20110804",
+        "0.000000",
+        "0.000000",
+        "51.000000"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2012.gpkg",
+    "table": "perim_incendios_2012",
+    "count": 42,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTIZ"
+    ],
+    "samples": [
+      [
+        1,
+        "ADAMUZ",
+        "Cordoba",
+        "2012140006",
+        "20120311",
+        "0.000000",
+        "10.343500",
+        "0.238000"
+      ],
+      [
+        2,
+        "ALMOGIA",
+        "Malaga",
+        "2012290120",
+        "20120715",
+        "2.540000",
+        "20.700000",
+        "5.700000"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2013.gpkg",
+    "table": "perim_incendios_2013",
+    "count": 54,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTIZ"
+    ],
+    "samples": [
+      [
+        1,
+        "ADRA",
+        "Almeria",
+        "2013040009",
+        "20130124",
+        "0.00000000000e+000",
+        "3.00128730000e+001",
+        "0.00000000000e+000"
+      ],
+      [
+        2,
+        "ALAMEDILLA",
+        "Granada",
+        "2013180067",
+        "20130802",
+        "1.26300000000e+001",
+        "1.85500000000e+001",
+        "0.00000000000e+000"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2014.gpkg",
+    "table": "perim_incendios_2014",
+    "count": 49,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTIZ"
+    ],
+    "samples": [
+      [
+        1,
+        "LUCAINENA DE LAS TORRES",
+        "Almeria",
+        "2014040025",
+        "20140216",
+        "0.000000",
+        "13.673750",
+        "0.000000"
+      ],
+      [
+        2,
+        "CARBONERAS",
+        "Almeria",
+        "2014040026",
+        "20140219",
+        "0.000000",
+        "10.850000",
+        "0.000000"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2015.gpkg",
+    "table": "perim_incendios_2015",
+    "count": 47,
+    "columns": [
+      "fid",
+      "geom",
+      "MUNICIPIO",
+      "PROVINCIA",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTIZ"
+    ],
+    "samples": [
+      [
+        1,
+        "LENTEJI",
+        "Granada",
+        "2015180007",
+        "20150224",
+        "0.000000",
+        "13.415000",
+        "0.000000"
+      ],
+      [
+        2,
+        "CANILES",
+        "Granada",
+        "2015180008",
+        "20150306",
+        "13.830000",
+        "0.000000",
+        "0.000000"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2016.gpkg",
+    "table": "perim_incendios_2016",
+    "count": 39,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTIZ"
+    ],
+    "samples": [
+      [
+        1,
+        "ROQUETAS DE MAR",
+        "Almeria",
+        "2016040009",
+        "20160206",
+        "0.000000",
+        "28.810257",
+        "0.000000"
+      ],
+      [
+        2,
+        "ORGIVA",
+        "Granada",
+        "2016180006",
+        "20160207",
+        "1.950000",
+        "132.270000",
+        "0.000000"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2017.gpkg",
+    "table": "perim_incendios_2017",
+    "count": 64,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTIZ"
+    ],
+    "samples": [
+      [
+        1,
+        "SALOBREÑA",
+        "Granada",
+        "2017180042",
+        "20170516",
+        "8.82100",
+        "16.31100",
+        "0.00000"
+      ],
+      [
+        2,
+        "SALOBREÑA",
+        "Granada",
+        "2017180043",
+        "20170518",
+        "0.02800",
+        "36.18800",
+        "0.00000"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2018.gpkg",
+    "table": "perim_incendios_2018",
+    "count": 31,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTIZ"
+    ],
+    "samples": [
+      [
+        1,
+        "ALMERIA",
+        "Almeria",
+        "2018040019",
+        "20180217",
+        "0.00000000000",
+        "17.17570000000",
+        "0.00000000000"
+      ],
+      [
+        2,
+        "FELIX",
+        "Almeria",
+        "2018040051",
+        "20180423",
+        "14.46252990000",
+        "152.72738487200",
+        "8.28057353000"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2019.gpkg",
+    "table": "perim_incendios_2019",
+    "count": 63,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTIZ"
+    ],
+    "samples": [
+      [
+        1,
+        "BERJA",
+        "AlmerIa",
+        "2019040027",
+        "20190417",
+        "0.12000000000",
+        "12.62000000000",
+        "0.12000000000"
+      ],
+      [
+        2,
+        "CUEVAS DEL ALMANZORA",
+        "AlmerIa",
+        "2019040036",
+        "20190525",
+        "0.00000000000",
+        "12.00000000000",
+        "0.00000000000"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2020.gpkg",
+    "table": "perim_incendios_2020",
+    "count": 55,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTI"
+    ],
+    "samples": [
+      [
+        1,
+        "VELEZ DE BENAUDALLA",
+        "Granada",
+        "2020180016",
+        "20200314",
+        "133.58900000000",
+        "0.65800000000",
+        "0.00000000000"
+      ],
+      [
+        2,
+        "LUBRIN",
+        "Almeria",
+        "2020040009",
+        "20200311",
+        "0.00000000000",
+        "13.34468927800",
+        "0.00000000000"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2021.gpkg",
+    "table": "perim_incendios_2021",
+    "count": 65,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTI",
+      "X_INIC",
+      "Y_INIC"
+    ],
+    "samples": [
+      [
+        1,
+        "Nijar",
+        "ALMERÍA",
+        "2021040003",
+        "20210118",
+        "0.00000000000e+000",
+        "2.79650850392e+001",
+        "5.75512000000e-004",
+        "591543",
+        "4084820"
+      ],
+      [
+        2,
+        "Berja",
+        "ALMERÍA",
+        "2021040005",
+        "20210122",
+        "2.07076238089e+002",
+        "3.91555187590e+002",
+        "2.14825861174e+001",
+        "507487",
+        "4082490"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2022.gpkg",
+    "table": "perim_incendios_2022",
+    "count": 58,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTIZ",
+      "X_INIC",
+      "Y_INIC"
+    ],
+    "samples": [
+      [
+        1,
+        "GRANADA",
+        "Granada",
+        "2022180036",
+        "20220529",
+        "4.73712000000e+01",
+        "1.14935000000e+02",
+        "3.42380000000e+00",
+        "4.48075312369e+05",
+        "4.11547866402e+06"
+      ],
+      [
+        2,
+        "JUZCAR",
+        "Málaga",
+        "2022290044",
+        "20220608",
+        "2.74335439261e+03",
+        "1.81018372718e+03",
+        "2.91993919366e+02",
+        "3.08363506641e+05",
+        "4.04934236025e+06"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2023.gpkg",
+    "table": "perim_incendios_2023",
+    "count": 40,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_PASTIZ",
+      "SUP_MATORR",
+      "X_INIC",
+      "Y_INIC"
+    ],
+    "samples": [
+      [
+        1,
+        "TARIFA",
+        "Cádiz",
+        "2023110013",
+        "20230405",
+        "28.298500",
+        "0.000000",
+        "11.698700",
+        "255157.00000000000",
+        "3996780.00000000000"
+      ],
+      [
+        2,
+        "LA LÍNEA DE LA CONCEPCION",
+        "Cádiz",
+        "2023110021",
+        "20230528",
+        "1.240000",
+        "2.565100",
+        "7.487100",
+        "287928.00000000000",
+        "4006360.00000000000"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2024.gpkg",
+    "table": "perim_incendios_2024",
+    "count": 38,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTIZ",
+      "X_INIC",
+      "Y_INIC"
+    ],
+    "samples": [
+      [
+        1,
+        "TURRE",
+        "Almería",
+        "2024040011",
+        "20240207",
+        "0.000000000000000",
+        "18.059999999999999",
+        "0.490000000000000",
+        "5.96812000001e+05",
+        "4.10646999989e+06"
+      ],
+      [
+        2,
+        "ENIX",
+        "Almería",
+        "2024040012",
+        "20240209",
+        "9.160000000000000",
+        "577.340000000000032",
+        "54.299999999999997",
+        "5.39215797902e+05",
+        "4.07867786293e+06"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  },
+  {
+    "file": "perimetros_2025.gpkg",
+    "table": "perim_incendios_2025",
+    "count": 53,
+    "columns": [
+      "fid",
+      "geom",
+      "Municipio",
+      "Provincia",
+      "CODIGO",
+      "FECHA_INC",
+      "SUP_ARBOLA",
+      "SUP_MATORR",
+      "SUP_PASTIZ"
+    ],
+    "samples": [
+      [
+        1,
+        "MONTIZON",
+        "Jaén",
+        "IIFF2025230035",
+        "20250624",
+        "0.00000000000e+00",
+        "1.93064000000e+01",
+        "3.56836000000e+01"
+      ],
+      [
+        2,
+        "UBEDA",
+        "Jaén",
+        "IIFF2025230063",
+        "20250725",
+        "0.00000000000e+00",
+        "6.00000000000e-02",
+        "2.05700000000e+01"
+      ]
+    ],
+    "srs": [
+      [
+        "ETRS89 / UTM zone 30N (N-E)",
+        3042,
+        "EPSG",
+        3042,
+        "PROJCS[\"ETRS89 / UTM zone 30N (N-E)\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-3],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"3042\"]]",
+        null
+      ]
+    ],
+    "integrity": "ok"
+  }
+]

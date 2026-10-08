@@ -1,0 +1,12 @@
+{
+  "original_files": 37,
+  "original_bytes": 190845748,
+  "hashes_verified": true,
+  "perimeter_wfs_counts_match": true,
+  "perimeter_features": 865,
+  "egif_malaga_pifs": 7496,
+  "egif_malaga_actual_years": "1968-2023",
+  "egif_malaga_with_lat_lon": 1939,
+  "history_gpkg_latest_layer": "incendios_historico_2025_06",
+  "history_gpkg_latest_layer_features": 2780
+}
