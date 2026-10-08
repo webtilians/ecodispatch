@@ -1,0 +1,218 @@
+{
+  "dataset": "aemet-malaga-spatial-hazard-v1.3",
+  "version": "1.3",
+  "source": {
+    "publisher": "AEMET",
+    "url": "https://www.aemet.es/es/api-eltiempo/incendios/download",
+    "documentation": "https://www.aemet.es/es/eltiempo/prediccion/incendios/ayuda",
+    "license_url": "https://www.aemet.es/es/nota_legal",
+    "reuse": "© AEMET. Reproduction and use authorized with attribution to AEMET.",
+    "retrieved_at_utc": "2026-10-08T15:40:05Z",
+    "retrieval_time_precision": "second (local download completion; not model time)",
+    "archive": "data/spatial-hazard-v1.3/aemet-20261007.tar.gz",
+    "archive_sha256": "a0816b24fcfe981163d2f00706c411124ef89b67dde42e9ec45cf061ec09983c",
+    "member": "down_20261007_peligro_p_D01.tif",
+    "raster_sha256": "3acf9899447eff7c4cb5d48d94e1b4f5ae860157399248ffd5e426e550688e03",
+    "legend_sha256": "02f567f784c9bc0b72b98d3d4e242a4b3677934c019ac6249deb3153fa22f3db",
+    "model_time_utc": "2026-10-07T12:00:00Z",
+    "valid_time_utc": "2026-10-08T12:00:00Z",
+    "lead_hours": 24,
+    "variable": "Danger level",
+    "tags": {
+      "CAMPO": "Peligro",
+      "coords_unit": "degrees_east / degrees_north",
+      "ESCALA": "{\"Producto\":\"RIESGO\",\"Lista RGBA\":[{\"Valores\":[\"0\"],\"RGBA\":[\"0,0,255,125\"]},{\"Valores\":[\"1\"],\"RGBA\":[\"75,150,227,255\"]},{\"Valores\":[\"2\"],\"RGBA\":[\"81,209,246,255\"]},{\"Valores\":[\"3\"],\"RGBA\":[\"87,229,32,255\"]},{\"Valores\":[\"4\"],\"RGBA\":[\"249,251,47,255\"]},{\"Valores\":[\"5\"],\"RGBA\":[\"239,133,4,255\"]},{\"Valores\":[\"6\"],\"RGBA\":[\"245,35,0,255\"]},{\"Valores\":[\"255\"],\"RGBA\":[\"100,100,100,150\"]}]}",
+      "FUENTE": "Aemet",
+      "institution": "Agencia Estatal de Meteorología (AEMET)",
+      "long_name": "Danger level",
+      "Model": "European Centre for Medium-Range Weather Forecasts (ECMWF)",
+      "model_time": "2026-10-07T12:00:00",
+      "region": "Iberian Peninsula and Balearic Islands",
+      "short_name": "peligro",
+      "source": "Model",
+      "time_unit": "Coordinated Universal Time (UTC)",
+      "UNIDADES": "El peligro de incendio se estratifica en seis niveles de peligro (muy bajo, bajo, moderado, alto, muy alto y extremo)",
+      "USO": "© Aemet. Autorizado el uso de la información y su reproducción citando a Aemet como autora de la misma.",
+      "valid_time": "2026-10-08T12:00:00",
+      "AREA_OR_POINT": "Area"
+    }
+  },
+  "raster": {
+    "crs": "EPSG:4326",
+    "width": 1541,
+    "height": 922,
+    "bands": 1,
+    "dtype": "float32",
+    "transform": [
+      0.009999999999999787,
+      0.0,
+      -10.204999999999998,
+      0.0,
+      -0.00999999999999801,
+      44.21499999999817
+    ],
+    "bounds": [
+      -10.204999999999998,
+      34.995000000000005,
+      5.204999999999673,
+      44.21499999999817
+    ],
+    "pixel_size_degrees": [
+      0.009999999999999787,
+      0.00999999999999801
+    ],
+    "nominal_resolution": "1 km (AEMET); geographic grid 0.01 degrees",
+    "nodata": null,
+    "rejected_codes": [
+      0,
+      255
+    ]
+  },
+  "sampling": {
+    "input_crs": "EPSG:4326",
+    "axis_order": "x=longitude, y=latitude",
+    "method": "Containing pixel, floor inverse affine; no interpolation or resampling",
+    "coordinates": "Original demand coordinates, not road-snapped coordinates",
+    "transformation": "EPSG:4326 to EPSG:4326 identity",
+    "normalization": "None: hazard_weight = source_value; ordinal surrogate only",
+    "classes": {
+      "1": "Muy bajo",
+      "2": "Bajo",
+      "3": "Moderado",
+      "4": "Alto",
+      "5": "Muy alto",
+      "6": "Extremo"
+    }
+  },
+  "routing": {
+    "dataset": "malaga-real-routing-v1",
+    "sha256": "70ded244e34f1708d9c549f3e50fc13e723d5e5319396a397016dad898c3dade",
+    "max_snap_m": 500,
+    "excluded": [
+      "D5",
+      "D8"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "D0",
+      "longitude": -4.4502439,
+      "latitude": 36.7664706,
+      "raster_x": -4.4502439,
+      "raster_y": 36.7664706,
+      "row": 744,
+      "column": 575,
+      "source_value": 1.0,
+      "hazard_weight": 1.0,
+      "label_es": "Muy bajo"
+    },
+    {
+      "id": "D1",
+      "longitude": -4.4209756,
+      "latitude": 36.7755294,
+      "raster_x": -4.4209756,
+      "raster_y": 36.7755294,
+      "row": 743,
+      "column": 578,
+      "source_value": 1.0,
+      "hazard_weight": 1.0,
+      "label_es": "Muy bajo"
+    },
+    {
+      "id": "D2",
+      "longitude": -4.3526829,
+      "latitude": 36.7703529,
+      "raster_x": -4.3526829,
+      "raster_y": 36.7703529,
+      "row": 744,
+      "column": 585,
+      "source_value": 1.0,
+      "hazard_weight": 1.0,
+      "label_es": "Muy bajo"
+    },
+    {
+      "id": "D3",
+      "longitude": -4.3136585,
+      "latitude": 36.7794118,
+      "raster_x": -4.3136585,
+      "raster_y": 36.7794118,
+      "row": 743,
+      "column": 589,
+      "source_value": 1.0,
+      "hazard_weight": 1.0,
+      "label_es": "Muy bajo"
+    },
+    {
+      "id": "D4",
+      "longitude": -4.4404878,
+      "latitude": 36.8182353,
+      "raster_x": -4.4404878,
+      "raster_y": 36.8182353,
+      "row": 739,
+      "column": 576,
+      "source_value": 1.0,
+      "hazard_weight": 1.0,
+      "label_es": "Muy bajo"
+    },
+    {
+      "id": "D6",
+      "longitude": -4.3526829,
+      "latitude": 36.8221176,
+      "raster_x": -4.3526829,
+      "raster_y": 36.8221176,
+      "row": 739,
+      "column": 585,
+      "source_value": 1.0,
+      "hazard_weight": 1.0,
+      "label_es": "Muy bajo"
+    },
+    {
+      "id": "D7",
+      "longitude": -4.3039024,
+      "latitude": 36.8247059,
+      "raster_x": -4.3039024,
+      "raster_y": 36.8247059,
+      "row": 739,
+      "column": 590,
+      "source_value": 2.0,
+      "hazard_weight": 2.0,
+      "label_es": "Bajo"
+    },
+    {
+      "id": "D9",
+      "longitude": -4.3819512,
+      "latitude": 36.8505882,
+      "raster_x": -4.3819512,
+      "raster_y": 36.8505882,
+      "row": 736,
+      "column": 582,
+      "source_value": 1.0,
+      "hazard_weight": 1.0,
+      "label_es": "Muy bajo"
+    },
+    {
+      "id": "D10",
+      "longitude": -4.3273171,
+      "latitude": 36.8609412,
+      "raster_x": -4.3273171,
+      "raster_y": 36.8609412,
+      "row": 735,
+      "column": 587,
+      "source_value": 1.0,
+      "hazard_weight": 1.0,
+      "label_es": "Muy bajo"
+    },
+    {
+      "id": "D11",
+      "longitude": -4.3,
+      "latitude": 36.87,
+      "raster_x": -4.3,
+      "raster_y": 36.87,
+      "row": 734,
+      "column": 590,
+      "source_value": 2.0,
+      "hazard_weight": 2.0,
+      "label_es": "Bajo"
+    }
+  ]
+}

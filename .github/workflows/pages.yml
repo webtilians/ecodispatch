@@ -6,6 +6,11 @@ on:
     paths:
       - "web/**"
       - "src/**"
+      - "data/**"
+      - "scripts/**"
+      - "requirements-spatial.txt"
+      - "package-lock.json"
+      - ".gitattributes"
       - "tests/**"
       - "docs/**"
       - "results/**"
@@ -13,6 +18,8 @@ on:
       - "package.json"
       - "playwright.config.cjs"
       - ".github/workflows/pages.yml"
+  pull_request:
+    branches: ["master"]
   workflow_dispatch:
 
 permissions:
@@ -21,20 +28,34 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "pages-${{ github.ref }}"
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install spatial dependencies
+        run: python -m pip install -r requirements-spatial.txt
+
+      - name: Reproduce frozen spatial extraction and exploratory study offline
+        run: |
+          python scripts/build_spatial_hazard.py
+          node scripts/run_spatial_benchmark.cjs
+          git diff --exit-code -- web/data/spatial-hazard-v1.3.json web/data/spatial-benchmark-v1.3.json results/spatial-hazard-v1.3-rows.json results/spatial-hazard-v1.3-report.md
 
       - name: Validate paired study, model regression, translations and syntax
         run: |
@@ -43,21 +64,26 @@ jobs:
           node tests/real-routing.test.cjs
           node tests/real-routing-holdout.test.cjs
           node tests/real-hazard.test.cjs
+          node tests/spatial-hazard.test.cjs
           python -m unittest discover -s tests
-
-      - name: Set up Node for browser integration tests
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
 
       - name: Install Playwright
         run: |
-          npm install --no-audit --no-fund
+          npm ci --no-audit --no-fund
           npx playwright install --with-deps chromium
 
       - name: Browser integration test
         run: npm run test:e2e
 
+  deploy:
+    needs: validate
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:

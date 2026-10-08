@@ -43,7 +43,7 @@ const annualExpected=+(num(row('Alto').Anual)+num(row('Muy_Alto').Anual)+num(row
 assert.equal(calendar.annual.high_or_worse_pct,annualExpected);
 
 assert.match(calendar.definition.warning,/not incident probabilities/i);
-assert.ok(current.version.startsWith('1.2'));
+assert.ok(Number(current.version.split('.')[0])>=1); // Dashboard may advance; v1.2 dataset stays frozen.
 assert.equal(current.research.real_hazard.integrated_into_dispatch,false);
 assert.equal(current.research.real_hazard.spatial_resolution,'province');
 assert.equal(current.research.real_hazard.dataset_git_blob,'beb7c4659e4580b54c576e38be766292d84b1b72');

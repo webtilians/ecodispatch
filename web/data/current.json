@@ -1,5 +1,5 @@
 {
-  "version": "1.2.1",
+  "version": "1.3",
   "date": "2026-10-08",
   "placement": {
     "selected_bases": [
@@ -410,6 +410,15 @@
         "json_cache": "no-store",
         "reason": "A transient AEMET-layer fetch failure must not invalidate the rest of the dashboard."
       }
+    },
+    "spatial_hazard": {
+      "status": "exploratory",
+      "dataset": "aemet-malaga-spatial-hazard-v1.3",
+      "data": "./data/spatial-hazard-v1.3.json",
+      "result": "./data/spatial-benchmark-v1.3.json",
+      "integrated_into": "fire exposure only",
+      "medical_recon": "synthetic",
+      "confirmatory": false
     }
   }
 }
