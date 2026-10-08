@@ -1,0 +1,25 @@
+{
+  "version": "1.4",
+  "confirmatory": false,
+  "selection": {
+    "rule": "Rank eligible Peninsula danger rasters by distinct node classes descending, class range descending, mean node class descending, validity ascending, model time ascending, raster SHA ascending. Select top 3 plus the v1.3 reference raster if absent. No policy results enter selection.",
+    "top": 3,
+    "reference_member": "down_20261007_peligro_p_D01.tif"
+  },
+  "seed": "ecodispatch-fire-dispatch-14-exploratory-20261008",
+  "days": 1000,
+  "incidents_per_day": 120,
+  "bootstrap_replicates": 500,
+  "lambdas": [0, 0.2, 0.35, 0.5, 1],
+  "harm_k": 10,
+  "deadline_min": 120,
+  "service_minutes": 0,
+  "event_locations": "uniform eligible nodes; independent of hazard",
+  "severity": "uniform [2,5)",
+  "fleet_status": "Experimental modeled fleet and station locations; not official operational resources",
+  "fleet": [
+    {"name": "F-01", "station": "B2", "capabilities": ["fire"], "co2_g_per_km": 230},
+    {"name": "F-02", "station": "B3", "capabilities": ["fire"], "co2_g_per_km": 230},
+    {"name": "F-03", "station": "B4", "capabilities": ["fire"], "co2_g_per_km": 230}
+  ]
+}
