@@ -1,5 +1,35 @@
 [
   {
+    "version": "v1.2",
+    "date": "2026-10-08",
+    "title_es": "Primera capa oficial de peligro: AEMET Málaga 2025",
+    "title_en": "First official hazard layer: AEMET Málaga 2025",
+    "description_es": "Añadimos estadísticas oficiales provinciales del peligro meteorológico de incendios. Julio/agosto alcanzan 87,1% de días Alto+ y agosto 25,81% Extremo. No convertimos esos datos en riesgo espacial ficticio.",
+    "description_en": "We add official province-level fire-weather danger statistics. July/August reach 87.1% High+ days and August 25.81% Extreme. We do not turn those values into fabricated spatial risk.",
+    "tags": [
+      "v1.2",
+      "AEMET",
+      "real hazard",
+      "fire weather",
+      "data grounding"
+    ],
+    "tags_es": [
+      "v1.2",
+      "AEMET",
+      "peligro real",
+      "incendios",
+      "datos oficiales"
+    ],
+    "tags_en": [
+      "v1.2",
+      "AEMET",
+      "real hazard",
+      "fire weather",
+      "official data"
+    ],
+    "screenshot": null
+  },
+  {
     "version": "v1.1.1",
     "date": "2026-10-08",
     "title_es": "Holdout real-routing congelado y publicado",
