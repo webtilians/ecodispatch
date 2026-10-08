@@ -1,5 +1,35 @@
 [
   {
+    "version": "v1.1.1",
+    "date": "2026-10-08",
+    "title_es": "Holdout real-routing congelado y publicado",
+    "title_en": "Frozen and published real-routing holdout",
+    "description_es": "Congelamos el resultado real de 1000 jornadas sin reejecutar escenarios. Las cuatro λ pre-registradas pasan bootstrap + Holm; registramos SHA-256 del JSON bruto y la web carga el resultado oficial por defecto.",
+    "description_en": "We freeze the real 1,000-day result without rerunning scenarios. All four preregistered lambdas pass bootstrap + Holm; the raw JSON SHA-256 is recorded and the dashboard loads the official result by default.",
+    "tags": [
+      "v1.1.1",
+      "frozen result",
+      "real routing",
+      "SHA-256",
+      "Holm"
+    ],
+    "tags_es": [
+      "v1.1.1",
+      "resultado congelado",
+      "routing real",
+      "SHA-256",
+      "Holm"
+    ],
+    "tags_en": [
+      "v1.1.1",
+      "frozen result",
+      "real routing",
+      "SHA-256",
+      "Holm"
+    ],
+    "screenshot": null
+  },
+  {
     "version": "v1.1",
     "date": "2026-10-08",
     "title_es": "Holdout pre-registrado sobre routing real",
