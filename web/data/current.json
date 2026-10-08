@@ -1,5 +1,5 @@
 {
-  "version": "1.2",
+  "version": "1.2.1",
   "date": "2026-10-08",
   "placement": {
     "selected_bases": [
@@ -403,7 +403,13 @@
       "august_high_or_worse_pct": 87.1,
       "august_extreme_pct": 25.81,
       "integrated_into_dispatch": false,
-      "reason_not_integrated": "Province-level danger frequency is not node-level incident probability or spatial risk."
+      "reason_not_integrated": "Province-level danger frequency is not node-level incident probability or spatial risk.",
+      "ui_hotfix": {
+        "version": "1.2.1",
+        "isolated_fetch": true,
+        "json_cache": "no-store",
+        "reason": "A transient AEMET-layer fetch failure must not invalidate the rest of the dashboard."
+      }
     }
   }
 }
