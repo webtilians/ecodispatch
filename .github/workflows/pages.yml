@@ -57,6 +57,12 @@ jobs:
           node scripts/run_spatial_benchmark.cjs
           git diff --exit-code -- web/data/spatial-hazard-v1.3.json web/data/spatial-benchmark-v1.3.json results/spatial-hazard-v1.3-rows.json results/spatial-hazard-v1.3-report.md
 
+      - name: Reproduce locked v1.4 fire experiment offline
+        run: |
+          python scripts/build_fire_snapshots.py
+          node scripts/run_fire_benchmark.cjs
+          git diff --exit-code -- web/data/fire-snapshots-v1.4.json web/data/fire-benchmark-v1.4.json web/data/fire-benchmark-v1.4.csv results/fire-dispatch-v1.4-rows.json results/fire-dispatch-v1.4-report.md
+
       - name: Validate paired study, model regression, translations and syntax
         run: |
           node tests/ablation.test.cjs
@@ -65,6 +71,7 @@ jobs:
           node tests/real-routing-holdout.test.cjs
           node tests/real-hazard.test.cjs
           node tests/spatial-hazard.test.cjs
+          node tests/fire-dispatch.test.cjs
           python -m unittest discover -s tests
 
       - name: Install Playwright

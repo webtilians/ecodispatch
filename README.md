@@ -5,7 +5,38 @@ EcoDispatch is a research prototype for allocating scarce mobile resources
 using a hierarchical optimization architecture inspired by recent results in
 metric **k-median**, **maximum matching**, and **k-server**.
 
-## Current architecture (v1.3)
+## Current release: Fire Dispatch v1.4 (exploratory)
+
+[Open the ES/EN experiment](https://webtilians.github.io/ecodispatch/?lang=es#fire-dispatch) ·
+[Methods](docs/fire-dispatch-v1.4.md) · [Results](results/fire-dispatch-v1.4-report.md) ·
+[Selection rule fixed before comparisons](docs/fire-dispatch-v1.4-selection.md).
+
+Three **modeled** fire brigades at B2/B3/B4 remove v1.3's single-brigade dispatch
+invariance. Real inputs are the frozen OSM/OSRM road matrix and official archived
+AEMET spatial danger classes. Incidents, severity, fleet/stations, emissions and
+zero service times remain synthetic. No operational efficacy claim, preregistration
+or confirmation; v0.x, v1.0/v1.1.1, v1.2 and v1.3 artifacts remain unchanged.
+
+The outcome-independent rule selects three of eight archived Peninsula rasters,
+valid October 8, 9 and 11, 2026. They come from **one October 7 model issue**, not
+independent historical days; future forecasts are not observations. The rolling
+endpoint returned identical archived bytes, and no independent historical archive
+was obtained. Classes stay 1–2 at these sites, with only two distinct selected
+node-class profiles. No dates, gradients or official station data were invented.
+
+Each snapshot has 1,000 paired synthetic replicates × 120 fire incidents and seven
+policies: λ=0, .2, .35, .5, 1, ETA-greedy and distance-greedy. All selected snapshots
+produce dispatch differences, including sensitivity to actual hazard vs uniform
+class 1. This is not a consistent performance gain: higher λ can increase synthetic
+harm. Full metrics, descriptive paired intervals, input identities and exports are
+available in the web section and report. No best λ is selected.
+
+Reproduce with `python scripts/build_fire_snapshots.py` and
+`node scripts/run_fire_benchmark.cjs` after installing `requirements-spatial.txt`.
+CI also rebuilds v1.3, runs all Node/Python/Playwright checks and gates Pages deploy.
+Future acquisitions require a new experiment manifest/version; v1.4 is locked.
+
+## Historical architecture (through v1.3)
 
 1. **Pre-positioning** — risk-weighted metric k-median chooses where resources
    should wait before incidents are known.

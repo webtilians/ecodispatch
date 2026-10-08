@@ -1,5 +1,29 @@
 [
   {
+    "version": "v1.4",
+    "date": "2026-10-08",
+    "title_es": "Fire Dispatch: tres brigadas y varias predicciones AEMET",
+    "title_en": "Fire Dispatch: three brigades and multiple AEMET forecasts",
+    "description_es": "Experimento aislado de incendios: selección por diversidad antes de comparar políticas, tres predicciones oficiales archivadas de una misma salida y eventos sintéticos pareados. Decisiones distintas; sin confirmación ni eficacia operativa.",
+    "description_en": "Isolated fire experiment: diversity selection before policy comparisons, three archived official forecasts from one model issue and paired synthetic events. Different decisions; no confirmation or operational efficacy.",
+    "tags": [
+      "AEMET",
+      "v1.4",
+      "exploratory"
+    ],
+    "tags_es": [
+      "AEMET",
+      "v1.4",
+      "exploratorio"
+    ],
+    "tags_en": [
+      "AEMET",
+      "v1.4",
+      "exploratory"
+    ],
+    "screenshot": null
+  },
+  {
     "version": "v1.3",
     "date": "2026-10-08",
     "title_es": "Peligro espacial AEMET en diez nodos",
