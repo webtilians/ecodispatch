@@ -75,10 +75,10 @@ class FireSnapshotTests(unittest.TestCase):
                 self.assertEqual((ROOT/rel).read_bytes(),original,rel)
         original=json.loads(subprocess.check_output(['git','show',base+':web/data/current.json'],cwd=ROOT))
         current=builder.read(ROOT/'web/data/current.json')
-        current.pop('version');original.pop('version');current['research'].pop('fire_dispatch')
+        current.pop('version');original.pop('version');current['research'].pop('fire_dispatch'); current['research'].pop('temporal_fire')
         self.assertEqual(current,original)
         old_timeline=json.loads(subprocess.check_output(['git','show',base+':web/data/timeline.json'],cwd=ROOT))
-        self.assertEqual(builder.read(ROOT/'web/data/timeline.json')[1:],old_timeline)
+        self.assertEqual(builder.read(ROOT/'web/data/timeline.json')[2:],old_timeline)
 
 if __name__ == '__main__':
     unittest.main()
