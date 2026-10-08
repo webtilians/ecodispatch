@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test('v1.2 boots, translates, runs exploratory and isolated holdout workers', async ({ page }) => {
+test('v1.2.1 boots, translates, runs exploratory and isolated holdout workers', async ({ page }) => {
   const critical=[];
   page.on('pageerror', error=>critical.push('pageerror: '+error.message));
   page.on('console', msg=>{
@@ -61,14 +61,14 @@ test('v1.2 boots, translates, runs exploratory and isolated holdout workers', as
   // Never consume the real v1.1 holdout seed in CI. Exercise the actual worker
   // with its explicit CI-only gate.
   const realHoldoutResult=await page.evaluate(()=>new Promise((resolve,reject)=>{
-    const worker=new Worker('./real-routing-holdout-worker.js?v=1.2.0');
+    const worker=new Worker('./real-routing-holdout-worker.js?v=1.2.1');
     worker.onmessage=({data})=>{
       if(data.type==='complete'){worker.terminate();resolve(data.result);}
       if(data.type==='error'){worker.terminate();reject(new Error(data.message));}
     };
     Promise.all([
-      fetch('./data/current.json?v=1.2.0').then(r=>r.json()),
-      fetch('./data/routing-v1.0.json?v=1.2.0').then(r=>r.json())
+      fetch('./data/current.json?v=1.2.1').then(r=>r.json()),
+      fetch('./data/routing-v1.0.json?v=1.2.1').then(r=>r.json())
     ]).then(([config,routing])=>{
       worker.postMessage({
         config,routing,testMode:true,
@@ -103,12 +103,12 @@ test('v1.2 boots, translates, runs exploratory and isolated holdout workers', as
 
   // Never consume the real holdout seed in CI. Exercise the real worker with a CI-only seed.
   const holdoutResult=await page.evaluate(()=>new Promise((resolve,reject)=>{
-    const worker=new Worker('./holdout-worker.js?v=1.2.0');
+    const worker=new Worker('./holdout-worker.js?v=1.2.1');
     worker.onmessage=({data})=>{
       if(data.type==='complete'){worker.terminate();resolve(data.result);}
       if(data.type==='error'){worker.terminate();reject(new Error(data.message));}
     };
-    fetch('./data/current.json?v=1.2.0').then(r=>r.json()).then(config=>{
+    fetch('./data/current.json?v=1.2.1').then(r=>r.json()).then(config=>{
       worker.postMessage({config,testMode:true,seed:'ci-holdout-browser',n:10});
     }).catch(reject);
   }));
@@ -119,4 +119,15 @@ test('v1.2 boots, translates, runs exploratory and isolated holdout workers', as
   await expect(page.locator('#ho-table-body tr')).toHaveCount(4);
 
   expect(critical).toEqual([]);
+});
+
+
+test('v1.2.1 isolates an AEMET fetch failure from the core dashboard', async ({ page }) => {
+  await page.route('**/data/aemet-malaga-fwi-2025.json*', route=>route.abort());
+  await page.goto('/?lang=en#real-hazard');
+  await expect(page.locator('#hz-chart')).toContainText('AEMET data unavailable');
+  await expect(page.locator('#rr-pairs')).toHaveText('400');
+  await expect(page.locator('#rr-eligible')).toHaveText('10/12');
+  await expect(page.locator('#rr-bases')).toHaveText('B2 · B3 · B4');
+  await expect(page.locator('#placement-map')).not.toContainText('Data unavailable');
 });
