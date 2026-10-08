@@ -24,7 +24,7 @@ class RealRoutingHoldoutProtocolTests(unittest.TestCase):
         cls.holdout = cls.current["research"]["real_routing_holdout"]
 
     def test_preregistered_unrun_protocol(self):
-        self.assertTrue(self.current["version"].startswith("1.2"))
+        self.assertGreaterEqual(int(self.current["version"].split(".")[0]), 1)
         self.assertEqual(self.holdout["status"], "confirmed_frozen")
         self.assertEqual(self.holdout["seed"], "ecodispatch-real-routing-holdout-11")
         self.assertEqual(self.holdout["n"], 1000)

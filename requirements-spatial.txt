@@ -1,0 +1,4 @@
+# Raster and affine implementation pinned for offline spatial reproduction.
+rasterio==1.4.3
+affine==2.4.0
+numpy==1.26.4

@@ -1,5 +1,32 @@
 [
   {
+    "version": "v1.3",
+    "date": "2026-10-08",
+    "title_es": "Peligro espacial AEMET en diez nodos",
+    "title_en": "AEMET spatial hazard at ten nodes",
+    "description_es": "GeoTIFF oficial archivado, muestreo reproducible y benchmark exploratorio con semillas nuevas. Una sola brigada impide cambios en despacho fire: no se afirma eficacia real.",
+    "description_en": "Archived official GeoTIFF, reproducible sampling and exploratory benchmark with fresh seeds. One brigade prevents fire dispatch changes: no real-world efficacy claim.",
+    "tags": [
+      "AEMET",
+      "GeoTIFF",
+      "v1.3",
+      "exploratory"
+    ],
+    "tags_es": [
+      "AEMET",
+      "GeoTIFF",
+      "v1.3",
+      "exploratorio"
+    ],
+    "tags_en": [
+      "AEMET",
+      "GeoTIFF",
+      "v1.3",
+      "exploratory"
+    ],
+    "screenshot": null
+  },
+  {
     "version": "v1.2.1",
     "date": "2026-10-08",
     "title_es": "Carga AEMET aislada y dashboard resistente a fallos",

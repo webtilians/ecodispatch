@@ -1,0 +1,32 @@
+const {test,expect}=require('@playwright/test');
+test('v1.3 spatial source, nodes and exploratory results in ES and EN',async({page})=>{
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('/?lang=es#spatial-hazard');
+ await expect(page.locator('#sh-title')).toHaveText('Peligro espacial v1.3');
+ await expect(page.locator('#sh-nodes tbody tr')).toHaveCount(10);
+ await expect(page.locator('#sh-source')).toContainText('2026-10-08T12:00:00Z');
+ await expect(page.locator('#sh-source')).toContainText('AEMET');
+ await expect(page.locator('#sh-nodes tbody tr').filter({hasText:'D7'})).toContainText('2 / 2');
+ await expect(page.locator('#sh-note')).toContainText('No son probabilidades');
+ await expect(page.locator('#sh-benchmark tbody tr')).toHaveCount(7);
+ await expect(page.locator('#sh-fire-benchmark tbody tr')).toHaveCount(7);
+ await expect(page.locator('#sh-result')).toContainText('una brigada');
+ await page.locator('[data-lang="en"]').click();
+ await expect(page.locator('#sh-title')).toHaveText('Spatial hazard v1.3');
+ await expect(page.locator('#sh-note')).toContainText('not fire probabilities');
+ await expect(page.locator('#sh-nodes tbody tr').first()).toContainText('Very low');
+ await expect(page.locator('#hz-annual-high')).toHaveText('25.21%');
+ expect(errors).toEqual([]);
+ await page.setViewportSize({width:390,height:844});
+ await expect(page.locator('#sh-title')).toBeVisible();
+ await page.locator('#spatial-hazard').screenshot({path:'test-results/spatial-hazard-mobile.png'});
+});
+test('spatial failure is isolated from historical data',async({page})=>{
+ await page.route('**/data/spatial-hazard-v1.3.json',route=>route.fulfill({status:503,body:'unavailable'}));
+ await page.goto('/?lang=en#spatial-hazard');
+ await expect(page.locator('#sh-status')).toContainText('Spatial layer unavailable');
+ await expect(page.locator('#hz-annual-high')).toHaveText('25.21%');
+ await expect(page.locator('#rr-eligible')).toHaveText('10/12');
+ await page.locator('[data-lang="es"]').click();
+ await expect(page.locator('#sh-status')).toContainText('No se pudo cargar');
+});

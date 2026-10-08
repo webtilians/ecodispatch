@@ -5,7 +5,7 @@ EcoDispatch is a research prototype for allocating scarce mobile resources
 using a hierarchical optimization architecture inspired by recent results in
 metric **k-median**, **maximum matching**, and **k-server**.
 
-## Current architecture (v1.2.1)
+## Current architecture (v1.3)
 
 1. **Pre-positioning** — risk-weighted metric k-median chooses where resources
    should wait before incidents are known.
@@ -402,3 +402,26 @@ single `Promise.all`. One transient failed request invalidated all UI
 initialization. v1.2.1 separates the AEMET and core loading paths, uses
 `cache: "no-store"` for versioned JSON, and confines an AEMET failure to the
 AEMET section only. The scientific data and v1.1.1 frozen result are unchanged.
+
+
+## v1.3 — real-routing + real fire-hazard spatial benchmark
+
+Official AEMET 1 km nominal GeoTIFF, valid 2026-10-08 12:00 UTC, sampled at
+all ten eligible Málaga nodes. Original ordinal classes and archived source bytes
+are preserved; no conversion to incident probability and no normalization.
+Only the fire exposure term uses these weights; medical/recon and incident
+sampling remain synthetic. Historical engines/datasets/results stay unchanged.
+
+The new exploratory study compares all five lambdas and both greedy baselines
+on 1,000 fresh paired synthetic days, with aggregate and fire-only metrics.
+**One fire brigade means the real hazard cannot change fire assignments.**
+Outcomes equal the synthetic-weight control on the same new seeds. This is an
+integration result, not evidence of real-world efficacy or a reused holdout.
+
+- [Source, transformations, limitations and reproduction](docs/spatial-hazard-v1.3.md)
+- [Results: coverage, ETA, P95, km, CO2 and totalHarm](results/spatial-hazard-v1.3-report.md)
+- [Spatial dataset](web/data/spatial-hazard-v1.3.json)
+- [Public ES/EN section](https://webtilians.github.io/ecodispatch/?lang=es#spatial-hazard)
+
+Python tests now require `python -m pip install -r requirements-spatial.txt`.
+The full Node/Python/Playwright suite and deterministic offline rebuild gate Pages.
