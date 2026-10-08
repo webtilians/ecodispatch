@@ -57,7 +57,7 @@ class SpatialHazardTests(unittest.TestCase):
             self.assertEqual((ROOT/rel).read_bytes().replace(b'\r\n',b'\n'),old,rel)
         old=json.loads(subprocess.check_output(['git','show',base+':web/data/current.json'],cwd=ROOT))
         new=json.loads((ROOT/'web/data/current.json').read_text(encoding='utf-8'))
-        new.pop('version'); old.pop('version'); new['research'].pop('spatial_hazard'); new['research'].pop('fire_dispatch')
+        new.pop('version'); old.pop('version'); new['research'].pop('spatial_hazard'); new['research'].pop('fire_dispatch'); new['research'].pop('temporal_fire')
         self.assertEqual(new,old)
 
 if __name__ == '__main__':
