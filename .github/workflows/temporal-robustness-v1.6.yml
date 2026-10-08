@@ -1,0 +1,54 @@
+name: Generate v1.6 robustness surface
+
+on:
+  push:
+    branches: ["feature/robustness-v1.6"]
+    paths:
+      - "data/temporal-robustness-v1.6/protocol.json"
+      - "web/temporal-robustness-core.js"
+      - "scripts/run_temporal_robustness_v1_6.cjs"
+      - ".github/workflows/temporal-robustness-v1.6.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: temporal-robustness-v1.6
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Generate fixed-design robustness surface
+        run: node scripts/run_temporal_robustness_v1_6.cjs
+      - name: Validate output shape
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const x=JSON.parse(fs.readFileSync('web/data/temporal-robustness-v1.6.json','utf8'));
+          if(x.version!=='1.6'||x.confirmatory!==false||x.conditions.length!==18)throw Error('bad v1.6 output');
+          for(const c of x.conditions){
+            if(!['low','high'].includes(c.regime)||![45,90,180].includes(c.serviceMinutes))throw Error('bad condition');
+            for(const k of ['10','60','120'])if(!c.harm[k])throw Error('missing K '+k);
+          }
+          console.log('v1.6 shape OK');
+          NODE
+      - name: Commit generated artifacts
+        run: |
+          if [ -z "$(git status --porcelain -- web/data/temporal-robustness-v1.6.json web/data/temporal-robustness-v1.6.csv results/temporal-robustness-v1.6-report.md)" ]; then
+            echo "No generated changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add web/data/temporal-robustness-v1.6.json web/data/temporal-robustness-v1.6.csv results/temporal-robustness-v1.6-report.md
+          git commit -m "Generate fixed-design v1.6 robustness results"
+          git push
