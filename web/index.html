@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="EcoDispatch — open research into risk-aware resource allocation for emergency response.">
   <title>EcoDispatch — Research Lab</title>
-  <link rel="stylesheet" href="./styles.css?v=1.5">
+  <link rel="stylesheet" href="./styles.css?v=1.6">
   <link rel="stylesheet" href="./fire-dispatch.css?v=1.4">
 </head>
 <body>
@@ -15,7 +15,10 @@
       <span><strong>EcoDispatch</strong><small data-i18n="brand.subtitle">Laboratorio abierto de investigación</small></span>
     </a>
     <nav>
-      <a href="#temporal-fire">Temporal Fire v1.5</a>\n      <a href="#fire-dispatch">Fire Dispatch v1.4</a>
+      <a href="#temporal-robustness">Robustness v1.6</a>
+      <a href="#temporal-robustness">Robustness v1.6</a>
+      <a href="#temporal-fire">Temporal Fire v1.5</a>
+      <a href="#fire-dispatch">Fire Dispatch v1.4</a>
       <a id="sh-nav" href="#spatial-hazard">Peligro espacial v1.3</a>
       <a href="#real-hazard" data-i18n="hz.nav">Peligro AEMET</a>
       <a href="#real-routing" data-i18n="rr.nav">Routing real</a>
@@ -45,7 +48,7 @@
           cómo asignarlos cuando llegan varios incidentes a la vez y cómo mantener buena cobertura durante una jornada completa.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="#temporal-fire" data-i18n="hero.cta">Ver routing real</a>
+          <a class="button primary" href="#temporal-robustness" data-i18n="hero.cta">Ver routing real</a>
           <a class="button" href="#research" data-i18n="hero.method">Ver metodología</a>
         </div>
       </div>
@@ -165,6 +168,54 @@
           </article>
         </div>
       </section>
+    </section>
+
+    <section id="temporal-robustness" class="section">
+      <div class="section-heading">
+        <div><p class="eyebrow">TEMPORAL ROBUSTNESS · v1.6</p><h2>Temporal Fire Robustness v1.6</h2></div>
+        <p data-tr="intro"></p>
+      </div>
+      <p class="tr-scope" data-tr="scope"></p>
+
+      <div class="tr-controls panel">
+        <label><span data-tr="k"></span><select id="tr-k" disabled></select></label>
+        <label><span data-tr="policy"></span><select id="tr-policy" disabled></select></label>
+        <a class="button" href="./data/temporal-robustness-v1.6.csv" download data-tr="csv"></a>
+      </div>
+      <p id="tr-status" role="status" aria-live="polite"></p>
+
+      <div class="rr-facts tr-facts">
+        <article class="metric"><span data-tr="negative"></span><strong id="tr-neg">—</strong><small>bootstrap 95%</small></article>
+        <article class="metric"><span data-tr="inconclusive"></span><strong id="tr-inc">—</strong><small>18 cells</small></article>
+        <article class="metric"><span data-tr="positive"></span><strong id="tr-pos">—</strong><small>bootstrap 95%</small></article>
+        <article class="metric"><span data-tr="robust"></span><strong id="tr-robust">—</strong><small>snapshot × load</small></article>
+      </div>
+
+      <div class="experiment-grid tr-grid">
+        <article class="panel result-panel">
+          <div class="result-hero compact"><span data-tr="finding"></span><strong>λ = 0.2</strong><p data-tr="findingCopy"></p></div>
+          <div class="explain-box"><strong data-tr="k60"></strong><p data-tr="k60copy"></p></div>
+        </article>
+        <article class="panel result-panel">
+          <div class="explain-box"><strong>45 / 90 / 180 min</strong><p data-tr="detail"></p></div>
+          <div class="explain-box"><strong data-tr="boundary"></strong><p data-tr="boundaryCopy"></p></div>
+        </article>
+      </div>
+
+      <article class="panel">
+        <h3 data-tr="summary"></h3>
+        <div class="ab-table-wrap"><table id="tr-summary"></table></div>
+      </article>
+
+      <article class="panel">
+        <h3 data-tr="detail"></h3>
+        <div class="ab-table-wrap"><table id="tr-detail"></table></div>
+      </article>
+
+      <div class="fd-links">
+        <a href="https://github.com/webtilians/ecodispatch/blob/master/docs/temporal-robustness-v1.6.md" data-tr="methods"></a>
+        <a href="https://github.com/webtilians/ecodispatch/blob/master/docs/temporal-robustness-v1.6-design.md">Fixed design ↗</a>
+      </div>
     </section>
 
     <section id="temporal-fire" class="section">
@@ -611,7 +662,7 @@
 
   <footer><span data-i18n="footer">EcoDispatch · open research prototype</span><a href="https://github.com/webtilians/ecodispatch">GitHub</a></footer>
 
-  <script src="./i18n.js?v=1.5"></script>
+  <script src="./i18n.js?v=1.6"></script>
   <script src="./simulation.js?v=1.2.1"></script>
   <script src="./ablation-core.js?v=1.2.1"></script>
   <script src="./ablation.js?v=1.2.1"></script>
@@ -624,6 +675,7 @@
   <script src="./holdout.js?v=1.2.1"></script>
   <script src="./app.js?v=1.2.1"></script>
   <script src="./spatial-hazard.js?v=1.3"></script>
-  <script src="./fire-dispatch.js?v=1.4"></script>\n  <script src="./temporal-fire.js?v=1.5"></script>
+  <script src="./fire-dispatch.js?v=1.4"></script>\n  <script src="./temporal-robustness.js?v=1.6"></script>
+  <script src="./temporal-fire.js?v=1.5"></script>
 </body>
 </html>
