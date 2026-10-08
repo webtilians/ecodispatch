@@ -1,17 +1,20 @@
-const currentUrl="./data/current.json?v=1.1.1";
-const timelineUrl="./data/timeline.json?v=1.1.1";
-const routingUrl="./data/routing-v1.0.json?v=1.1.1";
+const currentUrl="./data/current.json?v=1.2.0";
+const timelineUrl="./data/timeline.json?v=1.2.0";
+const routingUrl="./data/routing-v1.0.json?v=1.2.0";
+const hazardUrl="./data/aemet-malaga-fwi-2025.json?v=1.2.0";
 let timelineData=[];
 
 Promise.all([
   fetch(currentUrl).then(r=>{if(!r.ok)throw new Error("current.json");return r.json();}),
   fetch(timelineUrl).then(r=>{if(!r.ok)throw new Error("timeline.json");return r.json();}),
-  fetch(routingUrl).then(r=>{if(!r.ok)throw new Error("routing-v1.0.json");return r.json();})
-]).then(([data,timeline,routing])=>{
+  fetch(routingUrl).then(r=>{if(!r.ok)throw new Error("routing-v1.0.json");return r.json();}),
+  fetch(hazardUrl).then(r=>{if(!r.ok)throw new Error("aemet-malaga-fwi-2025.json");return r.json();})
+]).then(([data,timeline,routing,hazard])=>{
   timelineData=timeline;
   setupExperimentTabs();
   renderTimeline();
   window.ecoLab=window.EcoDispatchResearch.init(data);
+  window.ecoRealHazard=window.EcoDispatchRealHazardUI.init(hazard);
   window.ecoRealRouting=window.EcoDispatchRealRoutingUI.init(data,routing);
   window.ecoRealRoutingHoldout=window.EcoDispatchRealRoutingHoldoutUI.init(data,routing);
   window.ecoAblation=window.EcoDispatchAblationUI.init(data);
