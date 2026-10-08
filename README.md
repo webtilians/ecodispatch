@@ -5,7 +5,7 @@ EcoDispatch is a research prototype for allocating scarce mobile resources
 using a hierarchical optimization architecture inspired by recent results in
 metric **k-median**, **maximum matching**, and **k-server**.
 
-## Current architecture (v1.2)
+## Current architecture (v1.2.1)
 
 1. **Pre-positioning** — risk-weighted metric k-median chooses where resources
    should wait before incidents are known.
@@ -390,3 +390,15 @@ them into dispatch decisions.
 
 See [`docs/real-hazard-v1.2.md`](docs/real-hazard-v1.2.md) for provenance,
 transformations and claim boundaries.
+
+
+## v1.2.1 — resilient data loading hotfix
+
+v1.2.1 fixes a dashboard integration failure visible as blank AEMET metrics and
+a global `Data unavailable` SVG fallback.
+
+Previously `app.js` loaded current state, timeline, routing and AEMET through a
+single `Promise.all`. One transient failed request invalidated all UI
+initialization. v1.2.1 separates the AEMET and core loading paths, uses
+`cache: "no-store"` for versioned JSON, and confines an AEMET failure to the
+AEMET section only. The scientific data and v1.1.1 frozen result are unchanged.
