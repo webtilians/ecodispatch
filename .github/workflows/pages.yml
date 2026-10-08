@@ -42,6 +42,7 @@ jobs:
           node tests/holdout.test.cjs
           node tests/real-routing.test.cjs
           node tests/real-routing-holdout.test.cjs
+          node tests/real-hazard.test.cjs
           python -m unittest discover -s tests
 
       - name: Set up Node for browser integration tests
