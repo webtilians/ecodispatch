@@ -1,0 +1,308 @@
+{
+  "version": "1.1.1",
+  "resultType": "frozen-real-routing-holdout-summary",
+  "sourceResultVersion": "1.1",
+  "benchmark": "real-routing-holdout-confirmatory",
+  "confirmatory": true,
+  "sourceArtifact": {
+    "filename": "ecodispatch-v1.1-real-routing-holdout.json",
+    "sha256": "1b63e5a5c5cd14752a6e79871f7be971c642b09e7d45b88c3953f93428454112",
+    "bytes": 2558536,
+    "generatedAt": "2026-10-08T08:49:14.774Z",
+    "note": "No scenarios were rerun. This compact result was copied from the user-exported v1.1 holdout JSON."
+  },
+  "preregistration": {
+    "path": "docs/real-routing-holdout-v1.1-preregistered.md",
+    "commit": "691a85c96afa497fc8c2f42386d1d12c00a4ff5a",
+    "frozenBeforeResults": true
+  },
+  "protocol": {
+    "seed": "ecodispatch-real-routing-holdout-11",
+    "seedPattern": "ecodispatch-real-routing-holdout-11|day|index",
+    "n": 1000,
+    "incidentsPerDay": 120,
+    "harmK": 10,
+    "bootstrapReplicates": 500,
+    "primaryLambdas": [
+      0.2,
+      0.35,
+      0.5,
+      1
+    ],
+    "referenceLambda": 0,
+    "alpha": 0.05,
+    "multiplicity": "Holm correction across four primary total-harm comparisons",
+    "confirmationRule": "At least one preregistered lambda: mean DeltaH < 0; paired bootstrap 95% CI upper < 0; Holm-adjusted two-sided paired normal p < 0.05",
+    "selection": "none",
+    "historicalExploratorySeedExcluded": "ecodispatch-real-routing-10"
+  },
+  "dataset": {
+    "id": "malaga-real-routing-v1",
+    "gitBlobSha": "4fbfaf903988f896fd3c6e49099141a6dd810c75",
+    "generatedAt": "2026-10-07T22:07:45.400761+00:00",
+    "maxSnapM": 500,
+    "eligibleDemand": [
+      "D0",
+      "D1",
+      "D2",
+      "D3",
+      "D4",
+      "D6",
+      "D7",
+      "D9",
+      "D10",
+      "D11"
+    ],
+    "excludedDemand": [
+      {
+        "id": "D5",
+        "snapDistanceM": 1021.387586
+      },
+      {
+        "id": "D8",
+        "snapDistanceM": 778.3645671
+      }
+    ],
+    "placement": {
+      "bases": [
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "objectiveRiskWeightedMinutes": 1028.9025000000001
+    },
+    "routingProfile": "OSRM driving",
+    "source": {
+      "routing_engine": "OSRM",
+      "endpoint_host": "router.project-osrm.org",
+      "service": "table/v1/driving",
+      "network_data": "OpenStreetMap",
+      "osm_license": "ODbL"
+    }
+  },
+  "assumptions": {
+    "risk": "synthetic v0.x weights",
+    "incidents": "synthetic, sampled only on frozen eligible demand nodes",
+    "roadMovement": "frozen OSRM driving duration/distance matrix",
+    "droneMovement": "geodesic direct flight at configured drone speed",
+    "serviceDuration": "zero / instantaneous availability after each sequential incident",
+    "claimScope": "confirmatory inside frozen real-routing simulator; not real-world efficacy"
+  },
+  "analysis": {
+    "primary": [
+      {
+        "lambda": 0.2,
+        "harm": {
+          "mean": -29.841341685721012,
+          "ciLow": -43.37128923793724,
+          "ciHigh": -16.311394133504784,
+          "bootstrap": {
+            "b": 500,
+            "n": 1000,
+            "ciLow": -45.029501349756536,
+            "ciHigh": -16.6885335858163
+          }
+        },
+        "rawP": 0.000015396990775447267,
+        "holmP": 0.000015396990775447267,
+        "holmReject": true,
+        "pass": true,
+        "secondary": {
+          "served": {
+            "mean": 0.146
+          },
+          "meanEta": {
+            "mean": -0.06882788770462656
+          },
+          "p95Eta": {
+            "mean": 0.022479999999999976
+          },
+          "distance": {
+            "mean": -1.8924762366013648
+          },
+          "co2Kg": {
+            "mean": -0.7043346605490239
+          },
+          "severityDelay": {
+            "mean": -11.900750745121258
+          }
+        }
+      },
+      {
+        "lambda": 0.35,
+        "harm": {
+          "mean": -54.13507930672624,
+          "ciLow": -74.32346045088251,
+          "ciHigh": -33.94669816256997,
+          "bootstrap": {
+            "b": 500,
+            "n": 1000,
+            "ciLow": -73.09617473880718,
+            "ciHigh": -34.791703091817105
+          }
+        },
+        "rawP": 1.4743548089994793e-7,
+        "holmP": 2.9487096179989587e-7,
+        "holmReject": true,
+        "pass": true,
+        "secondary": {
+          "served": {
+            "mean": 0.279
+          },
+          "meanEta": {
+            "mean": -0.13382395656712429
+          },
+          "p95Eta": {
+            "mean": 0.17255500000000001
+          },
+          "distance": {
+            "mean": 1.9833794366388484
+          },
+          "co2Kg": {
+            "mean": -0.6451934164504209
+          },
+          "severityDelay": {
+            "mean": -17.558748861260085
+          }
+        }
+      },
+      {
+        "lambda": 0.5,
+        "harm": {
+          "mean": -73.24063959745885,
+          "ciLow": -97.06484992713251,
+          "ciHigh": -49.41642926778519,
+          "bootstrap": {
+            "b": 500,
+            "n": 1000,
+            "ciLow": -96.84652094014271,
+            "ciHigh": -50.62619880143982
+          }
+        },
+        "rawP": 1.686368665236828e-9,
+        "holmP": 6.745474660947312e-9,
+        "holmReject": true,
+        "pass": true,
+        "secondary": {
+          "served": {
+            "mean": 0.367
+          },
+          "meanEta": {
+            "mean": -0.17534912690122806
+          },
+          "p95Eta": {
+            "mean": 0.28851166666666683
+          },
+          "distance": {
+            "mean": 4.766108421675129
+          },
+          "co2Kg": {
+            "mean": -0.5150490596748811
+          },
+          "severityDelay": {
+            "mean": -25.25310916609321
+          }
+        }
+      },
+      {
+        "lambda": 1,
+        "harm": {
+          "mean": -83.45652611740732,
+          "ciLow": -112.06895978027775,
+          "ciHigh": -54.84409245453689,
+          "bootstrap": {
+            "b": 500,
+            "n": 1000,
+            "ciLow": -112.84498891239156,
+            "ciHigh": -55.60912484686123
+          }
+        },
+        "rawP": 1.084766728952304e-8,
+        "holmP": 3.254300186856912e-8,
+        "holmReject": true,
+        "pass": true,
+        "secondary": {
+          "served": {
+            "mean": 0.595
+          },
+          "meanEta": {
+            "mean": -0.1823997029482749
+          },
+          "p95Eta": {
+            "mean": 0.41066666666666685
+          },
+          "distance": {
+            "mean": -7.356990629590553
+          },
+          "co2Kg": {
+            "mean": -1.491607785443864
+          },
+          "severityDelay": {
+            "mean": -6.423363644119329
+          }
+        }
+      }
+    ],
+    "confirmed": true,
+    "passingLambdas": [
+      0.2,
+      0.35,
+      0.5,
+      1
+    ],
+    "baselines": [
+      {
+        "id": "eta-greedy",
+        "versusZero": {
+          "served": {
+            "mean": -0.044
+          },
+          "meanEta": {
+            "mean": 0.007609492911189594
+          },
+          "p95Eta": {
+            "mean": -0.008614999999999939
+          },
+          "distance": {
+            "mean": 1.7634706404830625
+          },
+          "co2Kg": {
+            "mean": 0.43094175760724635
+          },
+          "severityDelay": {
+            "mean": -2.2844092332831023
+          },
+          "totalHarm": {
+            "mean": 3.682198308658175
+          }
+        }
+      },
+      {
+        "id": "distance-greedy",
+        "versusZero": {
+          "served": {
+            "mean": 1.108
+          },
+          "meanEta": {
+            "mean": 0.22469611618923935
+          },
+          "p95Eta": {
+            "mean": 0.40188166666666675
+          },
+          "distance": {
+            "mean": -113.19937744854164
+          },
+          "co2Kg": {
+            "mean": -16.147105699728144
+          },
+          "severityDelay": {
+            "mean": 242.63345552272835
+          },
+          "totalHarm": {
+            "mean": 100.13950879969
+          }
+        }
+      }
+    ]
+  }
+}
