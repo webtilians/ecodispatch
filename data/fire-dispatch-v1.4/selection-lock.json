@@ -1,0 +1,11 @@
+{
+  "selection_rule_commit": "616330d",
+  "catalog_sha256": "15f7a12ffef0d62f5a16ed4a4cc541a4eee09363b05f86ec5f21a9a95aa52a6f",
+  "selected_ids": [
+    "down_20261007_peligro_p_D02-24297c444c84",
+    "down_20261007_peligro_p_D01-3acf9899447e",
+    "down_20261007_peligro_p_D04-7ab3652678c2"
+  ],
+  "stage": "locked before policy implementation and comparison; exploratory, not preregistered",
+  "acquisition_check": "Rolling endpoint returned archive SHA a0816b24fcfe981163d2f00706c411124ef89b67dde42e9ec45cf061ec09983c, identical to v1.3"
+}
