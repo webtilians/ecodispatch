@@ -1,5 +1,35 @@
 [
   {
+    "version": "v1.2.1",
+    "date": "2026-10-08",
+    "title_es": "Carga AEMET aislada y dashboard resistente a fallos",
+    "title_en": "Isolated AEMET loading and failure-resistant dashboard",
+    "description_es": "Se elimina el Promise.all global que podía dejar toda la web en 'Data unavailable' si fallaba una sola petición. La capa AEMET y el núcleo se cargan de forma independiente y los JSON usan no-store.",
+    "description_en": "The global Promise.all that could blank the entire dashboard after one failed request is removed. AEMET and core data now load independently, with no-store JSON fetches.",
+    "tags": [
+      "v1.2.1",
+      "hotfix",
+      "AEMET",
+      "resilience",
+      "cache"
+    ],
+    "tags_es": [
+      "v1.2.1",
+      "hotfix",
+      "AEMET",
+      "resiliencia",
+      "caché"
+    ],
+    "tags_en": [
+      "v1.2.1",
+      "hotfix",
+      "AEMET",
+      "resilience",
+      "cache"
+    ],
+    "screenshot": null
+  },
+  {
     "version": "v1.2",
     "date": "2026-10-08",
     "title_es": "Primera capa oficial de peligro: AEMET Málaga 2025",
