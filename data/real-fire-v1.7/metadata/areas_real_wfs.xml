@@ -1,0 +1,2214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wfs:WFS_Capabilities xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:ms="http://mapserver.gis.umn.edu/mapserver" xmlns="http://www.opengis.net/wfs/2.0" version="2.0.0" xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd">
+  <ows:ServiceIdentification>
+    <ows:Title>REDIAM. WFS Áreas recorridas por el fuego</ows:Title>
+    <ows:Abstract>Servicio WFS correspondiente a las áreas recorridas por el fuego obtenidas mediante Teledetección ocurridos en el territorio andaluz entre los años 1975 y 2017 obtenidos fundamentalmente a partir de tratamiento de imágenes de satélite. La delimitación se obtiene a partir de la cobertura de imágenes de otoño para cada año. Nodo de la Red de Informacion Ambiental de Andalucia. Junta de Andalucia. Integrado en la Infraestructura de Datos Espaciales de Andalucia, siguiendo las directrices del Sistema Cartografico de Andalucia.</ows:Abstract>
+    <ows:Keywords>
+      <ows:Keyword>WFS</ows:Keyword>
+      <ows:Keyword> Andalucia</ows:Keyword>
+      <ows:Keyword> REDIAM</ows:Keyword>
+      <ows:Keyword> Incendios forestales</ows:Keyword>
+      <ows:Keyword> incendios</ows:Keyword>
+      <ows:Keyword> Ortoimágenes</ows:Keyword>
+      <ows:Keyword> Teledetección</ows:Keyword>
+    </ows:Keywords>
+    <ows:ServiceType codeSpace="OGC">WFS</ows:ServiceType>
+    <ows:ServiceTypeVersion>2.0.0</ows:ServiceTypeVersion>
+    <ows:Fees>Gratuito</ows:Fees>
+    <ows:AccessConstraints>Este servicio se puede usar de modo libre y gratuito siempre que se mencione a los autores y propietarios de la informacion</ows:AccessConstraints>
+  </ows:ServiceIdentification>
+  <ows:ServiceProvider>
+    <ows:ProviderName>Consejería de Agricultura, Ganadería, Pesca y Desarrollo Sostenible. Junta de Andalucía</ows:ProviderName>
+    <ows:ProviderSite xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego"/>
+    <ows:ServiceContact>
+      <ows:IndividualName>--</ows:IndividualName>
+      <ows:PositionName>Servicio de Informacion y Analisis Ambiental</ows:PositionName>
+      <ows:ContactInfo>
+        <ows:Phone>
+          <ows:Voice>+34955003400</ows:Voice>
+          <ows:Facsimile>--</ows:Facsimile>
+        </ows:Phone>
+        <ows:Address>
+          <ows:DeliveryPoint>Avda. Manuel Siurot,50</ows:DeliveryPoint>
+          <ows:City>Sevilla</ows:City>
+          <ows:AdministrativeArea>Sevilla</ows:AdministrativeArea>
+          <ows:PostalCode>41071</ows:PostalCode>
+          <ows:Country>Spain</ows:Country>
+          <ows:ElectronicMailAddress>rediam.atiende.cagpds@juntadeandalucia.es</ows:ElectronicMailAddress>
+        </ows:Address>
+        <ows:OnlineResource xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego"/>
+        <ows:HoursOfService>--</ows:HoursOfService>
+        <ows:ContactInstructions>--</ows:ContactInstructions>
+      </ows:ContactInfo>
+      <ows:Role>--</ows:Role>
+    </ows:ServiceContact>
+  </ows:ServiceProvider>
+  <ows:OperationsMetadata>
+    <ows:Operation name="GetCapabilities">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?"/>
+          <ows:Post xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?"/>
+        </ows:HTTP>
+      </ows:DCP>
+      <ows:Parameter name="AcceptVersions">
+        <ows:AllowedValues>
+          <ows:Value>2.0.0</ows:Value>
+          <ows:Value>1.1.0</ows:Value>
+          <ows:Value>1.0.0</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+      <ows:Parameter name="AcceptFormats">
+        <ows:AllowedValues>
+          <ows:Value>text/xml</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+      <ows:Parameter name="Sections">
+        <ows:AllowedValues>
+          <ows:Value>ServiceIdentification</ows:Value>
+          <ows:Value>ServiceProvider</ows:Value>
+          <ows:Value>OperationsMetadata</ows:Value>
+          <ows:Value>FeatureTypeList</ows:Value>
+          <ows:Value>Filter_Capabilities</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+    </ows:Operation>
+    <ows:Operation name="DescribeFeatureType">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?"/>
+          <ows:Post xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?"/>
+        </ows:HTTP>
+      </ows:DCP>
+      <ows:Parameter name="outputFormat">
+        <ows:AllowedValues>
+          <ows:Value>application/gml+xml; version=3.2</ows:Value>
+          <ows:Value>text/xml; subtype=gml/3.2.1</ows:Value>
+          <ows:Value>text/xml; subtype=gml/3.1.1</ows:Value>
+          <ows:Value>text/xml; subtype=gml/2.1.2</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+    </ows:Operation>
+    <ows:Operation name="GetFeature">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?"/>
+          <ows:Post xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?"/>
+        </ows:HTTP>
+      </ows:DCP>
+      <ows:Parameter name="outputFormat">
+        <ows:AllowedValues>
+          <ows:Value>application/gml+xml; version=3.2</ows:Value>
+          <ows:Value>text/xml; subtype=gml/3.2.1</ows:Value>
+          <ows:Value>text/xml; subtype=gml/3.1.1</ows:Value>
+          <ows:Value>text/xml; subtype=gml/2.1.2</ows:Value>
+          <ows:Value>application/vnd.google-earth.gml.xml</ows:Value>
+          <ows:Value>application/json; subtype=geojson</ows:Value>
+          <ows:Value>SHAPEZIP</ows:Value>
+          <ows:Value>application/vnd.google-earth.kml.xml</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+    </ows:Operation>
+    <ows:Operation name="GetPropertyValue">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?"/>
+          <ows:Post xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?"/>
+        </ows:HTTP>
+      </ows:DCP>
+      <ows:Parameter name="outputFormat">
+        <ows:AllowedValues>
+          <ows:Value>application/gml+xml; version=3.2</ows:Value>
+          <ows:Value>text/xml; subtype=gml/3.2.1</ows:Value>
+          <ows:Value>text/xml; subtype=gml/3.1.1</ows:Value>
+          <ows:Value>text/xml; subtype=gml/2.1.2</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+    </ows:Operation>
+    <ows:Operation name="ListStoredQueries">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?"/>
+          <ows:Post xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?"/>
+        </ows:HTTP>
+      </ows:DCP>
+    </ows:Operation>
+    <ows:Operation name="DescribeStoredQueries">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?"/>
+          <ows:Post xlink:type="simple" xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?"/>
+        </ows:HTTP>
+      </ows:DCP>
+    </ows:Operation>
+    <ows:Parameter name="version">
+      <ows:AllowedValues>
+        <ows:Value>2.0.0</ows:Value>
+        <ows:Value>1.1.0</ows:Value>
+        <ows:Value>1.0.0</ows:Value>
+      </ows:AllowedValues>
+    </ows:Parameter>
+    <ows:Constraint name="ImplementsBasicWFS">
+      <ows:NoValues/>
+      <ows:DefaultValue>TRUE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsTransactionalWFS">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsLockingWFS">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="KVPEncoding">
+      <ows:NoValues/>
+      <ows:DefaultValue>TRUE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="XMLEncoding">
+      <ows:NoValues/>
+      <ows:DefaultValue>TRUE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="SOAPEncoding">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsInheritance">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsRemoteResolve">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsResultPaging">
+      <ows:NoValues/>
+      <ows:DefaultValue>TRUE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsStandardJoins">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsSpatialJoins">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsTemporalJoins">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsFeatureVersioning">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ManageStoredQueries">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="PagingIsTransactionSafe">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="CountDefault">
+      <ows:NoValues/>
+      <ows:DefaultValue>5000</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="QueryExpressions">
+      <ows:AllowedValues>
+        <ows:Value>wfs:Query</ows:Value>
+        <ows:Value>wfs:StoredQuery</ows:Value>
+      </ows:AllowedValues>
+    </ows:Constraint>
+  </ows:OperationsMetadata>
+  <FeatureTypeList>
+    <FeatureType>
+      <Name>ms:Area_afectada_historico</Name>
+      <Title>Area afectada (Histórico)</Title>
+      <Abstract>Áreas recorridas por el fuego en los incendios ocurridos entre 1975 - actualidad, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword> perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_historico"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2021</Name>
+      <Title>Area afectada  (campaña 2021)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2021, delimitados mediante técnicas de teledetección por imágenes de satélites. </Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2021"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2020</Name>
+      <Title>Area afectada  (campaña 2020)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2020, delimitados mediante técnicas de teledetección por imágenes de satélites. </Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2020"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2019</Name>
+      <Title>Area afectada  (campaña 2019)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2019, delimitados mediante técnicas de teledetección por imágenes de satélites. </Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2019"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2018</Name>
+      <Title>Area afectada  (campaña 2018)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2018, delimitados mediante técnicas de teledetección por imágenes de satélites. </Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2018"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2017</Name>
+      <Title>Area afectada  (campaña 2017)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2017, delimitados mediante técnicas de teledetección por imágenes de satélites. </Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2017"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2016</Name>
+      <Title>Area afectada  (campaña 2016)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2016, delimitados mediante técnicas de teledetección por imágenes de satélites. </Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2016"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2015</Name>
+      <Title>Area afectada  (campaña 2015)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2015, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2015"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2014</Name>
+      <Title>Area afectada  (campaña 2014)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2014, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2014"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2013</Name>
+      <Title>Area afectada  (campaña 2013)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2013, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2013"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2012</Name>
+      <Title>Area afectada  (campaña 2012)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2012, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2012"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2011</Name>
+      <Title>Area afectada  (campaña 2011)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2011, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2011"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2010</Name>
+      <Title>Area afectada  (campaña 2010)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2010, delimitados mediante técnicas de teledetección por imágenes de satélites</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2010"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectda_2009</Name>
+      <Title>Area afectada  (campaña 2009)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2009, delimitados mediante técnicas de teledetección por imágenes de satélites</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectda_2009"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2008</Name>
+      <Title>Area afectada  (campaña 2008)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2008, delimitados mediante técnicas de teledetección por imágenes de satélites</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2008"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2007</Name>
+      <Title>Area afectada  (campaña 2007)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2007, delimitados mediante técnicas de teledetección por imágenes de satélites</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2007"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2006</Name>
+      <Title>Area afectada  (campaña 2006)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2006, delimitados mediante técnicas de teledetección por imágenes de satélites</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2006"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2005</Name>
+      <Title>Area afectada  (campaña 2005)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2005, delimitados mediante técnicas de teledetección por imágenes de satélites</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2005"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2004</Name>
+      <Title>Area afectada  (campaña 2004)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2004, delimitados mediante técnicas de teledetección por imágenes de satélites  </Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2004"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2003</Name>
+      <Title>Area afectada  (campaña 2003)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2003, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2003"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2002</Name>
+      <Title>Area afectada  (campaña 2002)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2002, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2002"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2001</Name>
+      <Title>Area afectada  (campaña 2001)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2001, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2001"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_2000</Name>
+      <Title>Area afectada  (campaña 2000)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 2000, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_2000"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1999</Name>
+      <Title>Area afectada  (campaña 1999)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1999, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1999"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1998</Name>
+      <Title>Area afectada  (campaña 1998)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1998, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1998"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1997</Name>
+      <Title>Area afectada  (campaña 1997)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1997, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1997"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1996</Name>
+      <Title>Area afectada  (campaña 1996)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1996, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1996"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1995</Name>
+      <Title>Area afectada  (campaña 1995)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1995, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1995"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1994</Name>
+      <Title>Area afectada  (campaña 1994)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1993, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1994"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1993</Name>
+      <Title>Area afectada  (campaña 1993)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1993, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1993"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1992</Name>
+      <Title>Area afectada  (campaña 1992)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1992, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1992"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1991</Name>
+      <Title>Area afectada  (campaña 1991)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1991, delimitados mediante técnicas de teledetección por imágenes de satélites</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1991"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1990</Name>
+      <Title>Area afectada  (campaña 1990)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1990, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1990"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1989</Name>
+      <Title>Area afectada  (campaña 1989)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1989, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1989"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1988</Name>
+      <Title>Area afectada  (campaña 1988)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1988, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1988"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1987</Name>
+      <Title>Area afectada  (campaña 1987)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1987, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1987"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1986</Name>
+      <Title>Area afectada  (campaña 1986)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1986, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1986"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:area_afectada_1985</Name>
+      <Title>Area afectada  (campaña 1985)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1985, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=area_afectada_1985"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1984</Name>
+      <Title>Area afectada  (campaña 1984)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1984, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1984"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1983</Name>
+      <Title>Area afectada  (campaña 1983)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1983, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1983"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1982</Name>
+      <Title>Area afectada  (campaña 1982)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1982, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1982"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1981</Name>
+      <Title>Area afectada  (campaña 1981)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1981, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1981"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1980</Name>
+      <Title>Area afectada  (campaña 1980)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1980, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1980"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1979</Name>
+      <Title>Area afectada  (campaña 1979)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1979, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1979"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1978</Name>
+      <Title>Area afectada  (campaña 1978)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1978, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1978"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1977</Name>
+      <Title>Area afectada  (campaña 1977)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1977, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1977"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1976</Name>
+      <Title>Area afectada  (campaña 1976)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1976, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1976"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:Area_afectada_1975</Name>
+      <Title>Area afectada  (campaña 1975)</Title>
+      <Abstract>Areas recorridas por el fuego en los incendios ocurridos en la campaña 1975, delimitados mediante técnicas de teledetección por imágenes de satélites.</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>WFS</ows:Keyword>
+        <ows:Keyword> Incendios</ows:Keyword>
+        <ows:Keyword>  perímetros histórico</ows:Keyword>
+        <ows:Keyword> montes</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3042</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23030</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32629</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32630</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::900913</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/vnd.google-earth.gml.xml</Format>
+        <Format>application/json; subtype=geojson</Format>
+        <Format>SHAPEZIP</Format>
+        <Format>application/vnd.google-earth.kml.xml</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>-8.060434 35.872355</ows:LowerCorner>
+        <ows:UpperCorner>-1.272081 38.836027</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_area_recorrida_fuego?request=GetMetadata&amp;layer=Area_afectada_1975"/>
+    </FeatureType>
+  </FeatureTypeList>
+  <fes:Filter_Capabilities>
+    <fes:Conformance>
+      <fes:Constraint name="ImplementsQuery">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsAdHocQuery">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsFunctions">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsResourceId">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsMinStandardFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsStandardFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsMinSpatialFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsSpatialFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsMinTemporalFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsTemporalFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsVersionNav">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsSorting">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsExtendedOperators">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsMinimumXPath">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsSchemaElementFunc">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+    </fes:Conformance>
+    <fes:Id_Capabilities>
+      <fes:ResourceIdentifier name="fes:ResourceId"/>
+    </fes:Id_Capabilities>
+    <fes:Scalar_Capabilities>
+      <fes:LogicalOperators/>
+      <fes:ComparisonOperators>
+        <fes:ComparisonOperator name="PropertyIsEqualTo"/>
+        <fes:ComparisonOperator name="PropertyIsNotEqualTo"/>
+        <fes:ComparisonOperator name="PropertyIsLessThan"/>
+        <fes:ComparisonOperator name="PropertyIsGreaterThan"/>
+        <fes:ComparisonOperator name="PropertyIsLessThanOrEqualTo"/>
+        <fes:ComparisonOperator name="PropertyIsGreaterThanOrEqualTo"/>
+        <fes:ComparisonOperator name="PropertyIsLike"/>
+        <fes:ComparisonOperator name="PropertyIsBetween"/>
+      </fes:ComparisonOperators>
+    </fes:Scalar_Capabilities>
+    <fes:Spatial_Capabilities>
+      <fes:GeometryOperands>
+        <fes:GeometryOperand name="gml:Point"/>
+        <fes:GeometryOperand name="gml:MultiPoint"/>
+        <fes:GeometryOperand name="gml:LineString"/>
+        <fes:GeometryOperand name="gml:MultiLineString"/>
+        <fes:GeometryOperand name="gml:Curve"/>
+        <fes:GeometryOperand name="gml:MultiCurve"/>
+        <fes:GeometryOperand name="gml:Polygon"/>
+        <fes:GeometryOperand name="gml:MultiPolygon"/>
+        <fes:GeometryOperand name="gml:Surface"/>
+        <fes:GeometryOperand name="gml:MultiSurface"/>
+        <fes:GeometryOperand name="gml:Box"/>
+        <fes:GeometryOperand name="gml:Envelope"/>
+      </fes:GeometryOperands>
+      <fes:SpatialOperators>
+        <fes:SpatialOperator name="Equals"/>
+        <fes:SpatialOperator name="Disjoint"/>
+        <fes:SpatialOperator name="Touches"/>
+        <fes:SpatialOperator name="Within"/>
+        <fes:SpatialOperator name="Overlaps"/>
+        <fes:SpatialOperator name="Crosses"/>
+        <fes:SpatialOperator name="Intersects"/>
+        <fes:SpatialOperator name="Contains"/>
+        <fes:SpatialOperator name="DWithin"/>
+        <fes:SpatialOperator name="Beyond"/>
+        <fes:SpatialOperator name="BBOX"/>
+      </fes:SpatialOperators>
+    </fes:Spatial_Capabilities>
+    <fes:Temporal_Capabilities>
+      <fes:TemporalOperands>
+        <fes:TemporalOperand name="gml:TimePeriod"/>
+        <fes:TemporalOperand name="gml:TimeInstant"/>
+      </fes:TemporalOperands>
+      <fes:TemporalOperators>
+        <fes:TemporalOperator name="During"/>
+      </fes:TemporalOperators>
+    </fes:Temporal_Capabilities>
+  </fes:Filter_Capabilities>
+</wfs:WFS_Capabilities>

@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    
+    <title>EGIF web - Estad&iacute;stica General de Incendios Forestales</title>
+    <link href="/incendios/Content/logincss?v=t1DRItKx_rZbaSnsMLqgd7N_n2WAeNhNvJsti5Wld9w1" rel="stylesheet"/>
+
+    <script src="/incendios/bundles/modernizr?v=JzM3NpF6dEbkVLIcHRi2kCqk7ZCwBA_bFE26szW8brc1"></script>
+
+</head>
+<body class="page-login">
+    <div class="loginContentWrap">
+        <div class="container-fluid">
+            
+
+
+<style>
+ 
+     .ColorAzulBtn{
+         color:#0094ff !important;
+     }
+
+    .BtnUsr {
+        
+        background-color:#FFF;
+        background-image:url(../Content/img/userConfig.png);
+    }
+    .BtnMain {
+    width:32px;
+    height:32px;  
+    display: inline-block;
+    margin-left:8px;
+    border-radius:6px;
+    border: 1px solid #ddd;
+    overflow:hidden;
+    line-height:80px;
+    background-color:#f1c40f;
+    background-position: center;
+    background-repeat:no-repeat ;
+    cursor: default !important;
+}
+.BtnMain:hover {
+    display: inline-block;
+    transition: 0.3s linear all;
+    border: 1px solid #f2f2f2;
+    -webkit-box-shadow: 3px 3px 2px 0px rgba(102,102,102,0.5);
+    -moz-box-shadow: 3px 3px  2px 0px rgba(102,102,102,0.5);
+    box-shadow: 3px 3px  2px 0px rgba(102,102,102,0.5);
+    cursor: default !important;
+
+}
+.BtnMainDisabled{
+        cursor: not-allowed !important;
+}
+</style>
+
+<div class="row">
+    <div class="col-xs-12">
+        
+        <img src="/incendios/content/img/logo/2021-VICE3bis2.Gob.Web.jpg" style="width:400px; height:85px;" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-10 col-xs-offset-1 text-center">
+    
+        <h3 id="h1Title" data-tit="&#193;rea de Defensa Contra Incendios Forestales" style="height:54px;">&#193;rea de Defensa Contra Incendios Forestales
+</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-1 col-md-10 col-md-offset-1">
+<form action="/incendios/Account/Login?ReturnUrl=%2Fincendios%2FSearch%2FgetCausasIncendio" class="form-horizontal" id="frmLogin" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" value="d2Yuq4KQBihhDqjTE8FaD-9TDXJ7atmGzkvcFGNoRqxbjR708J0ISmPwXdbYYOgUMiXR2SnVorJF_O1yQRNfidZuUx5Yh6RBbspq5eWPPVQ1" />            <div class="form-group">
+                <input class="form-control simple-form-control" data-val="true" data-val-email="The Usuario field is not a valid e-mail address." data-val-required="The Usuario field is required." id="UserName" name="UserName" placeholder="Usuario" type="text" value="" />
+                <i class="fa fa-envelope"></i>
+                <span class="field-validation-valid" data-valmsg-for="UserName" data-valmsg-replace="true"></span>
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" class="form-control simple-form-control" data-val="true" data-val-required="The Password field is required." id="Password" name="Password" placeholder="Contraseña" type="password" />
+                <i class="fa fa-lock"></i>
+                <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+            </div>
+            <div class="form-group text-center">
+                <input data-val="true" data-val-required="The Recuérdame field is required." id="RememberMe" name="RememberMe" type="checkbox" value="true" /><input name="RememberMe" type="hidden" value="false" />
+                <label for="RememberMe">Recu&#233;rdame</label>
+
+                
+             
+            </div>
+            <div class="form-group">
+       
+                <div style="width:100%; display:table;background-color:#EEE; border:1px solid #eee; border-radius:4px;">
+
+                    <div class="text-center chTitle" style="width:99%; background-color:#EEE;  padding:8px; float:left;" id="divEgif" title="Iniciar sesi&oacute;n en Estad&iacute;stica General de Incendios Forestales " data-tit="EGIF web">
+                        
+                        <div data-app="EGIF" style="border-radius:6px;" class="btn btn-default ColorAzulBtn sub">&nbsp;ENTRAR&nbsp;</div>
+                    </div>
+
+                    <div class="text-center chTitle" style="display:none; width:33%; background-color:#EEE;  padding:8px; float:left;" id="divEgif" title="Iniciar sesi&oacute;n en Estad&iacute;stica General de Incendios Forestales (EGIF)" data-tit="EGIF web">
+                        
+                        <div data-app="EGIF" style="border-radius:6px;" class="btn btn-default ColorAzulBtn sub">&nbsp;EGIF&nbsp;</div>
+                    </div>
+
+                    <div style="width:2%;float:left;">&nbsp;</div>
+
+                    <div style="display:none; width:33%; background-color:#EEE; padding:8px; float:left;" id="divPSS" class="text-right chTitle" title="Iniciar sesi&oacute;n en Parte de Sucesos sobre Seguridad" data-tit="Partes de Sucesos sobre Seguridad">
+                        
+                        <div data-app="ParteSucesos" style="border-radius:6px;" class="btn btn-default ColorAzulBtn sub">&nbsp;PSS&nbsp;</div>
+                    </div>
+
+                    
+
+                    <div style="display:none; width:2%;float:left;">&nbsp;</div>
+
+                    <div class="text-center chTitle" style="display:none; width:27%; background-color:#EEE;  padding:2px; float:left;" id="divUsr" title="Iniciar sesi&oacute;n en Gesti&oacute;n de Usuarios" data-tit="Gesti&oacute;n Usuarios">
+                        
+                        <div data-app="GestionUsuarios" style="margin-top:18px;" class="BtnMain BtnUsr sub">&nbsp;</div>
+                        <input type="hidden"  name="App" id="App" value="EGIF" />
+                    </div>
+                </div>
+                
+
+                <span style="background-color:#EEE; border-radius:4px; margin-top:2px; color:#ff0000; padding:10px; display:none">
+                    <span>
+                        <img src="/incendios/Content/img/NoPermitido.png" />
+                    </span>
+                <span>
+                    &nbsp;<small>  </small>
+                </span>
+                </span>
+            </div>
+</form>        </div>
+    </div>
+
+            
+        </div>
+    </div> 
+    
+        <script src="/incendios/bundles/jquery?v=FVs3ACwOLIVInrAl5sdzR2jrCDmVOWFbZMY6g6Q0ulE1"></script>
+
+        <script>
+        $(function () {
+            $(".page-login").css("background-image", "url(/incendios/Content/img/bgNew/bg-img-15.jpg)")
+        });
+
+            var defaultTitle = $("#h1Title").attr("data-tit");
+            
+            //cambio del texto principal de la aplicaciÃ³n en funciÃ³n de donde se posicione el mouse...
+            $(".chTitle").hover(function () {
+                $("#h1Title").html($(this).attr("data-tit"));
+                $("#h1Title").fadeIn(200);
+            });
+
+            $(".chTitle").mouseleave(function () {
+                $("#h1Title").html(defaultTitle);
+            });
+
+            $(".sub").click(function () {
+                $("#App").val($(this).attr("data-app"));
+                $("#frmLogin").submit();
+            });
+
+
+        </script>
+
+    
+</body>
+</html>

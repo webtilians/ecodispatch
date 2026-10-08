@@ -1,0 +1,1265 @@
+
+<!DOCTYPE html>
+
+<html >
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="-1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Buscador Partes de Incendios Forestales</title>
+        <link href="/incendios/Content/comuncss?v=NPCROKpIKviqMRbtM2ZrpkWWbo_FO7DpvlhLQ0tZ42A1" rel="stylesheet"/>
+
+        <link href="/incendios/Content/kendo/css?v=6flpwjBcgBHilxpjb_Air_626BNuVHyU5f9mFcYfCqc1" rel="stylesheet"/>
+
+        <link href="/incendios/Content/admincss?v=sfDdPjveF2qIhvpmxPdV9BhaS6c5vtuPEhFygtIVXXE1" rel="stylesheet"/>
+
+        
+        <script src="/incendios/bundles/jquery?v=FVs3ACwOLIVInrAl5sdzR2jrCDmVOWFbZMY6g6Q0ulE1"></script>
+
+        <script src="/incendios/bundles/kendo?v=L2CLwWDixwjK1C6a_RmVzW-qILGWAamzV48lAugM4o01"></script>
+
+        
+        
+        <style>
+           
+
+            .tempus-dominus-widget {
+                z-index: 1050; /* Asegura que el picker estÃ© por encima de otros elementos */
+            }
+        </style>
+
+    </head>
+    <body>
+        <input type="hidden" id="hdd_url_main" value="/incendios/" />  
+        
+
+
+<div class="splash">
+    <div class="color-line"></div> 
+    <div class="splash-title">
+        <h1>EGIF web</h1><p>Estad&#237;stica General de Incendios Forestales</p>
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+        <p> </p>
+    </div>
+</div>
+
+        
+<div id="header">
+    <div class="color-line"></div>
+    <input class="form-control" type="hidden" id="hddEsGestionUsuarios" value="0" />    
+    <input class="form-control" type="hidden" id="hddSuperComunidad" value="" />    
+    <input class="form-control" type="hidden" id="hddSuperProvincias" value="" />    
+    <input class="form-control" type="hidden" id="hddSuperComarca" value="" />    
+    <input type="hidden"
+           value="1968" id="hddIniPartes" />
+    <input type="hidden"
+           value="2026" id="hddFinPartes" />
+    
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalIncicendias">
+        <div class="modal-dialog modal-sm"  role="document">
+            <div class="modal-content" style="min-height:120px;">
+                <div style="padding:10px;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <span style="padding-left:40px; font-size:large">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;
+
+                    Incidencias
+                </span> &nbsp;<span class="azul" style="font-size:large" id="spancamp">
+                </span>
+
+                <div class="modal-body">
+                    
+                    Remitir al buz&#243;n de correo siguiente:<br> <b>bzn-egif@miteco.es</b>
+
+                </div>
+
+            </div><!-- /.modal-content -->
+            
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade"  role="dialog" id="modalAyuda">
+        <div class="modal-dialog modal-lg" role="dialog" style="width:550px;">
+            <div class="modal-content" style="min-height:120px; ">
+                <div style="padding:10px;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <span style="padding-left:40px; font-size:large">
+                    <i class="fa fa-info-circle fa-1x" aria-hidden="true" ></i>&nbsp;
+                    Documentaci&#243;n Egif Web
+                </span> &nbsp;<span class="azul" style="font-size:large" id="spancamp">
+                </span>
+
+                <div class="modal-body">
+                    <div class="fondoDivCabeceraSin fondoBlanco identado20 BottomDott" style="width: 100%">
+                        Descarga formulario  PIF 
+                        <a href="/incendios/Content/templates/PARTE_IF.pdf" target="_blank">
+                            <i class="fa fa-arrow-circle-o-down grisCCC" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="row"></div>
+                    <div class="fondoDivCabeceraSin fondoBlanco identado20 BottomDott" style="width: 100%">
+                        Descarga instrucciones formulario  PIF
+                        <a href="/incendios/Content/templates/InstruccionesEGIFW_2011_v Parte 3.6.pdf" target="_blank">
+                            <i class="fa fa-arrow-circle-o-down grisCCC" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="row"></div>
+                    <div class="row"></div>
+                    <div class="fondoDivCabeceraSin fondoBlanco identado20 BottomDott" style="width: 100%">
+                        Exportar XML resultado de la b&#250;squeda (Pif/Monte)
+                        <a href="/incendios/Content/templates/exportarAccess280819.pdf" target="_blank">
+                            <i class="fa fa-arrow-circle-o-down grisCCC" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="row"></div>
+
+                        <div class="fondoDivCabeceraSin fondoBlanco identado20 BottomDott" style="width: 100%">
+                            Plantilla Access de importaci&oacute;n XML (30-01-2026)
+                            <a href="/incendios/Content/templates/PlantillaEgifWebDetalle.zip" target="_blank">
+                                <i class="fa fa-arrow-circle-o-down grisCCC" aria-hidden="true"></i>
+                            </a>
+                        </div>
+
+
+                    
+                </div>
+
+            </div><!-- /.modal-content -->
+            
+        </div><!-- /.modal-dialog -->
+    </div>
+
+
+
+    <div class="row">
+        <section class="col-sm-4">
+            
+                        
+            <img src="/incendios/content/img/logo/2021-VICE3bis2.Gob.Web.jpg" style="margin-top:1px; width:400px; height:81px;" title="Ministerio de Agricultura y Pesca, Alimentaci&#243;n y Medio Ambiente"/>
+        </section>
+        <section class="col-sm-8">
+            <h3 >
+                <label ><small> Estad&#237;stica General de Incendios Forestales</small></label>
+                <strong class="amarillo">EGIF</strong>
+                <small class="amarillo">web</small>
+
+                <a href="#" title=Incidencias class="label label-popupnumber modalIncicendias"><i class="fa fa-envelope small"></i></a>
+
+                <span title="Descarga formulario  PIF" style="margin-left:5px;">
+
+                   
+                    <a href="#" title=Ayuda class="modalAyuda"><i class="fa fa-info-circle"></i></a>
+                    
+                    
+                </span>
+                <span title="Descarga instrucciones formulario  PIF" style="margin-left:8px;">
+                    
+                </span>
+                
+                <span id="sversion" class="bottom-right" data-lit1="Medici&oacute;n &Aacute;rea" data-lit2="Medici&oacute;n">v 2.32.0</span>
+            </h3>
+            <nav role="navigation" class="col-sm-7">
+               <!-- btn Home-->
+                <div style="float: left;">
+                </div>
+
+                
+                <!-- btn Search parte-->
+                
+                <!-- btn Search parte de monte-->
+
+                <!-- btn Cuadros-->
+                
+
+                
+
+
+
+
+            </nav>
+
+        </section>
+    </div>
+</div><!--header-->
+
+               
+               
+        
+
+<link href="/incendios/bundles/visorcss?v=Sh2GDeOKBikR6U47WPRPFTek7fZHbUB5Zu0nKM-bB0g1" rel="stylesheet"/>
+
+
+
+
+<div class="container">
+
+    
+
+    <!--Botones de cambio de Vistas-->
+    <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-9 col-lg-10">&nbsp;</div>
+        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2" style="border-left:2px solid #f2f2f2">
+            <div style="float:left; padding:2px 4px 2px 4px;">
+                <h5> <a class="fa fa-arrows-v BtnVistaSearch cl_Oculta" id="btnVista_Search_tabla" aria-hidden="true" data-toggle="collapse" href="#divOcultar" aria-expanded="false" aria-controls="divOcultar" title="Plegar / Desplegar Criterios de b&#250;squeda"></a></h5>
+
+            </div>
+            <div style="float:left; padding:2px 4px 2px 4px;">
+                <h5> <i class="fa fa-list BtnVistaSearch" id="btnVista_Search_listado" aria-hidden="true" title="Vista Tabla"></i></h5>
+            </div>
+            <div style="float:left;padding:2px 4px 2px 4px;">
+                <h5> <i class="fa fa-th-large BtnVistaSearch" id="btnVista_Search_modulo" aria-hidden="true" title="Vista M&oacute;dulo"></i></h5>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div id="divAlert_Search" style="display:none;" class="Alert_ScrollNP"></div>
+
+    
+
+
+    
+
+<form action="/incendios/Search/Publico" enctype="multipart/form-data" id="formBusqueda" method="post"><!--Buscador - Criterios de Busqueda display:none; -->
+        <div style="background-color: #fff; padding:2px; border-radius:4px; border:1px solid #ccc;">
+
+            <div class="TitleBuscador">
+                
+                Buscador Partes de Incendios Forestales
+                &nbsp;<i class="fa fa-fire" style="color:orange;"></i>&nbsp;&nbsp;&nbsp;
+                <span id="sWait" style="float:right; margin-right:80px;" class="CargandoDatos"></span>
+
+              
+            </div>
+
+            <div id="primeralinea" style="padding:6px; padding-bottom:2px; margin-top:3px;" >
+                <!-- Criterios : NÂº parte, estado parte y perimetro -- Buscador -->
+                <div class="row" >
+
+                    <div class="col-lg-3 col-md-3 col-sm-6  col-xs-12">
+
+                        <div style="width:100%; float:left; ">
+                            <div class="fondoModulosSearch">
+
+                                <div class="form-group">
+                                    <label for="txtNumAnioDesde">A&#241;o Parte</label>
+                                    <span class="IcoDelete" style="float:right; margin-right:0px; margin-top:-3px" id="btnCleanSlider" title=Borrar>&nbsp;</span>
+                                    <span id="span_txtNumAnio" style="display:none;" class="NoPermitido">&nbsp;</span>
+
+                                    <div style="width:100%; height:34px;">
+                                        <div style="width:50%; float:left;padding-right:3px">
+                                            <input class="form-control KeyNumOnly" type="text" data-errorspan="span_txtNumAnio" id="txtNumAnioDesde" name="txtNumAnioDesde" maxlength="4">
+                                        </div>
+                                        <div style="width:50%; float:left;padding-left:3px">
+                                            <input class="form-control KeyNumOnly" type="text" data-errorspan="span_txtNumAnio" id="txtNumAnioHasta" name="txtNumAnioHasta" maxlength="4">
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+
+                                <div class="form-group">
+                                    <div id="slider-range"></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" >
+                      
+                       
+                        
+                       
+                    </div>
+
+
+
+                    <div class="col-lg-3 col-md-3 col-sm-6  col-xs-12">
+
+                        <label>&nbsp;</label>
+                        <div class=" text-right">
+
+                            &nbsp;&nbsp;
+                            <i class="fa fa-clone" title="Numero de Registros a Mostrar" aria-hidden="true"></i>
+                            &nbsp;&nbsp;
+
+
+                            <select id="cbxNumPaginas" name="cbxNumPaginas" style="border-radius:6px; padding:0px 6px;">
+                                        <option value="12">12</option>
+                                        <option value="24">24</option>
+                                        <option value="50">50</option>
+                                        <option value="100" selected>100</option>
+
+                            </select>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class="fa-stack " style="color:#ffd800;cursor:pointer;" id="BorrarAll" title="Borrar Criterios de B&#250;squeda">
+                                <i class="fa fa-square-o fa-stack-2x"></i>
+                                <i class="fa fa-eraser fa-stack-1x"></i>
+                            </span>
+                           
+                            <span class="pull-right" style="padding-left:12px;">
+                                <input type="submit" class="btn btn-primary btn-sm btn-submitt " id="btnBusqueda" value="Buscar" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div id="divOcultar" class="divNuevoParte in">
+
+
+                <div class="divContenedor_Main" id="divCriBusqueda" style="background-color:#fff; padding:5px;">
+
+
+
+                    <div class="row">
+
+                        <div class="col-lg-11 col-md-11 col-sm-11  col-xs-11 text-right">
+
+
+
+                            <input type="hidden" style="width:50px;" name="hdd_CCAA" id="hdd_CCAA" placeholder="CCAA" />
+                            <input type="hidden" style="width:50px;" name="hdd_Prov" id="hdd_Prov" placeholder="Prov" />
+
+                            <input type="hidden" style="width:50px;" name="hdd_Municipio" id="hdd_Municipio" placeholder="Muni" />
+                            <input type="hidden" style="width:50px;" name="hdd_Comarca" id="hdd_Comarca" placeholder="Comarca" />
+
+                            <input type="hidden" style="width:50px;" name="hdd_soypm" value="0" id="hdd_soypm" placeholder="" />
+                            <input type="hidden" style="width:50px;" name="hdd_ca2" id="hdd_ca2" placeholder="" />
+                            <input type="hidden" style="width:50px;" name="hdd_pr2" id="hdd_pr2" placeholder="" />
+                            <input type="hidden" style="width:50px;" name="hdd_pr2Aux" id="hdd_pr2Aux" placeholder="" />
+                            <input type="hidden" style="width:50px;" name="hdd_mu2" id="hdd_mu2" placeholder="" />
+                            <input type="hidden" style="width:50px;" name="hdd_mu2Aux" id="hdd_mu2Aux" placeholder="" />
+                            <input type="hidden" style="width:50px;" name="hdd_co2" id="hdd_co2" placeholder="" />
+                            <input type="hidden" style="width:50px;" name="hdd_co2Aux" id="hdd_co2Aux" placeholder="" />
+                            <input type="hidden" id="hdd_URL_getMunicipiosMulti" value=/incendios/ParteIncendioForestal/MunicipiosByProvinciasIdMultiseleccion />
+
+                            <input type="hidden" style="width:50px;" name="hdd_EstadoPif" id="hdd_EstadoPif" placeholder="Estados Pif" />
+
+                            <input type="hidden" style="width:50px;" name="hdd_ListEspProt" id="hdd_ListEspProt" placeholder="Espacios Protegidos" />
+
+                            <input type="hidden" style="width:50px;" name="hdd_Causa" id="hdd_Causa" placeholder="Causa" />
+                            
+                            <input type="hidden" style="width:50px;" name="hdd_GrupoCausa" id="hdd_GrupoCausa" placeholder="GrupoCausa" />
+
+                            <input type="hidden" style="width:50px;" name="hdd_SubGrupoCausa" id="hdd_SubGrupoCausa" placeholder="Sub GrupoCausa" />
+
+
+                            <input type="hidden" style="width:50px;" name="hdd_Motivacion" id="hdd_Motivacion" placeholder="Motiv" />
+
+                            <input type="hidden" style="width:50px;" name="hdd_MiscelaneaCausa" id="hdd_MiscelaneaCausa" placeholder="Misc Causa" />
+
+                            <input type="hidden" style="width:50px;" name="hdd_FechasIncendio" id="hdd_FechasIncendio" placeholder="Fechas in" />
+
+                            <input type="hidden" style="width:50px;" name="hdd_TipoMedios" id="hdd_TipoMedios" placeholder="Tipo medios" />
+
+
+
+
+                            <input type="hidden" id="hdd_URL_getComunidades" value=/incendios/ParteIncendioForestal/GetComunidadesAutonomasPublico />
+                            <input type="hidden" id="hdd_URL_getProvincias" value=/incendios/ParteIncendioForestal/ProvinciasByCCAAIdPublico />
+                            <input type="hidden" id="hdd_URL_getMunicipios" value=/incendios/ParteIncendioForestal/MunicipiosByProvinciasIdPublico />
+                            <input type="hidden" id="hdd_URL_getComarcas" value=/incendios/ParteIncendioForestal/ComarcasIslasByProvinciaIdPublico />
+
+                            <input type="hidden" id="hdd_URL_getEstados" value=/incendios/ParteIncendioForestal/getCodEstadoPifs />
+                        
+
+                            <input type="hidden" id="hdd_URL_getMotivacion" value=/incendios/Search/getCodMotivacion />
+                            <input type="hidden" id="hdd_URL_getCausas" value=/incendios/Search/getCausasIncendio />
+                            <input type="hidden" id="hdd_URL_getGrupoCausa" value=/incendios/Search/getGrupoCausasIncendio />
+                            <input type="hidden" id="hdd_URL_getSubGrupoCausa" value=/incendios/Search/getSubGrupoCausasIncendio />
+
+                            <input type="hidden" id="hdd_URL_getMiscelaneaCausas" value=/incendios/Search/getMiscelaneaCausasIncendio />
+
+                            <input type="hidden" id="hdd_URL_getMunicipiosByComarcas" value=/incendios/ParteIncendioForestal/MunicipiosByComarcasIslasId />
+                            
+                            <input type="hidden" id="hdd_URL_getComarcasByMunicipios" value=/incendios/ParteIncendioForestal/ComarcasIslasByMunicipioId />
+                            
+                            <input type="hidden" id="hdd_URL_getEspProt" value=/incendios/Search/getEspacProtegidos />
+
+                         
+                            <input type="hidden" name="egif_pin" id="egif_pin" value="p9H0H5Vv+jFnbvMv00qPG+zTRZ7ZxdaVskuQE+vYzMI=" />   
+                         
+                        </div>
+
+                    </div>
+
+
+
+
+                        <!-- Criterios : CCAA, Provincias, Comarcas,  municipios-->
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-3 col-sm-6  col-xs-12">
+                            <div class="form-group">
+                                <label for="cbxCCAA_Common2">Comunidad Aut&#243;noma</label>
+                                
+                                <select id="cbxCCAA_Common2" name="cbxCCAA_Common2" class="chosen-select" multiple data-placeholder="- - -"></select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6  col-xs-12" style="padding-left:0px;">
+                            <div class="form-group">
+                                <label for="cbxProvincias_Common2">Provincia</label>
+                                                                
+                                <div id="idProvinciaCargando">
+                                    <select id="cbxProvincias_Common2" name="cbxProvincias_Common2" class="chosen-select" multiple data-placeholder="- - -"></select>
+                                </div>
+                                <span id="sWait2" style="display:none;" class="CargandoDatos"></span>
+                            </div>
+                        </div>
+
+                       
+
+                        <div class="col-lg-3 col-md-3 col-sm-6  col-xs-12" style="padding-left:0px;">
+                            <div class="form-group">
+                                    <label for="cbxMunicipios_Common2">Municipio</label>
+                                
+                                    <select id="cbxMunicipios_Common2" name="cbxMunicipios_Common2" class="chosen-select" multiple data-placeholder="- - -"></select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6  col-xs-12" style="padding-left:0px;">
+
+                            <div class="form-group">
+                                <label for="cbxComarcas_Common2">Comarca / Isla</label>
+                                
+                                <select id="cbxComarcas_Common2" name="cbxComarcas_Common2" class="chosen-select" multiple data-placeholder="- - -"></select>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                   
+
+
+                
+                 
+                     
+
+                            <div class="row">&nbsp;</div>
+
+                           
+
+                        </div>
+
+            </div>
+
+        </div>
+   <!-- PaginaciÃ³n Superior ..-->
+        <div class="row" style="display:none;">
+            <div class="col-md-4 text-right" style="padding:28px; padding-right:5px;">
+
+
+                                
+
+               <div class="row" style="display:none;">
+                   <div class="col-md-12">
+                       
+
+                          
+                   </div>
+               </div>
+          
+                <div class="row" >
+                    <div class="col-md-12 text-left" >
+                        <label class="btn btn-info modalExportacionDatos" style="font-size:xx-small; " id="idExportacionDatos">EXPORTACI&#211;N DE DATOS</label>
+                        &nbsp;
+                                                
+                    </div>
+                </div>
+                
+               
+
+                <span id="sWaitExcel" style="display:none;" class="CargandoDatosExcel" > ... Generando</span>
+                    
+</div>
+            <div class="col-md-3 text-center" style="padding:28px;"> 
+
+                <span class="azul" style=""><strong >0 </strong> PIFs encontrados</span>
+
+            </div>
+
+            <div class="col-md-5" >
+                <div class="pagination-container"><ul class="pagination"></ul></div>
+
+
+            </div>
+      </div>
+    <!-- FIN PaginaciÃ³n Superior ..-->
+        <div style="margin-bottom:10px; margin-left:400px;">
+            <div id="sWaitModalVisor" class="row" style="text-align:center; display:none;">
+                <span class="CargandoDatos2">Por favor espere ... Cargando Datos.</span>
+            </div>
+        </div>
+<!-- OrdenaciÃ³n de la tabla -->
+        <div class="divContenedor_Main">
+        
+            <div class="fondoDivCabecera fondoBorde_O fondoGris Negrita" style="width: 20%">
+                <i class="fa fa-file-picture-o" style="margin-left:0px;" aria-hidden="true"></i>
+                &nbsp;&nbsp;
+                <a class="btnWait linkOrden" href="/incendios/Search/PublicoPag?sortOrder=NumeroParte" title="Ordena resultados por Número de Parte">Parte</a>
+                -
+                <a class="btnWait linkOrden" href="/incendios/Search/PublicoPag?sortOrder=Estado" title="Ordena resultados por Estado de parte">Estado</a>
+            </div>
+            <div class="fondoDivCabecera fondoBorde_medio fondoGris Negrita" style="width: 15%">
+                <i class="fa fa-object-group" style="margin-left:0px;" aria-hidden="true"></i>
+                &nbsp;
+                <a class="btnWait linkOrden" href="/incendios/Search/PublicoPag?sortOrder=SuperfTotal" title="Ordena resultados por Superficie Total">S. Total</a>  
+                &nbsp;
+                <a class="btnWait linkOrden glyphicon glyphicon-tree-deciduous" href="/incendios/Search/PublicoPag?sortOrder=SuperfArbolada" title="Ordena resultados por superficie Arbolada"> </a>
+                &nbsp;
+                <a class="btnWait linkOrden glyphicon glyphicon-grain" href="/incendios/Search/PublicoPag?sortOrder=SuperfNoArbolada" title="Ordena resultados por superficie No Arbolada"> </a>
+                &nbsp;
+                <a class="btnWait linkOrden glyphicon glyphicon-home" href="/incendios/Search/PublicoPag?sortOrder=SuperfNoForeestal" title="Ordena resultados por superficie No Forestal"> </a>
+            </div>
+            <div class="fondoDivCabecera fondoBorde_medio fondoGris Negrita" style="width: 20%">
+                <i class="fa fa-map-marker" style="margin-left:0px;" aria-hidden="true"></i>
+                &nbsp;&nbsp;
+                <a class="btnWait linkOrden" href="/incendios/Search/PublicoPag?sortOrder=MunicipioId" title="Ordena resultados por Localización (Municipio) del Incendio">Localizaci&#243;n</a>
+            </div>
+            <div class="fondoDivCabecera fondoBorde_medio fondoGris Negrita" style="width: 15%">
+                <i class="fa fa-hourglass-end" style="margin-left:0px;" aria-hidden="true"></i>
+                &nbsp;&nbsp;
+                <a class="btnWait linkOrden" href="/incendios/Search/PublicoPag?sortOrder=Tiempos" title="Ordena resultados por Tiempos (detección) del Incendio">Tiempos</a>
+            </div>
+            <div class="fondoDivCabecera fondoBorde_R fondoGris Negrita" style="width: 25%">
+                <i class="fa fa-fire" style="margin-left:-20px;" aria-hidden="true"></i>
+                &nbsp;&nbsp;
+                <a class="btnWait linkOrden" href="/incendios/Search/PublicoPag?sortOrder=Causa" title="Ordena resultados por Causa del Incendio">Causas</a>
+                -
+                <a class="btnWait linkOrden" href="/incendios/Search/PublicoPag?sortOrder=Motivacion" title="Ordena resultados por motivación del Incendio">Motivaci&#243;n</a>
+            </div>
+        </div>
+<!-- Vista de tabla -->
+    <div class="divContenedor_Main" id="div_VistaTabla">
+</div>
+<!-- Vista de mÃ³dulo -->
+            <div class="divContenedor_Main" id="div_VistaModulo">
+                <div class="row">
+                </div>
+
+                </div>
+<!-- PaginaciÃ³n Inferior ..-->
+        <div id='Paging' style="text-align: center; padding:10px;">
+            
+            <span class="azul" style="padding-left:20px"><strong>0</strong> PIFs encontrados</span>
+
+
+
+
+
+            <br />
+
+
+
+            <div class="pagination-container"><ul class="pagination"></ul></div>
+
+
+        </div>
+    <!-- FIN PaginaciÃ³n Inferior ..-->
+</form>        <!-- end formBusqueda -->
+
+    </div>
+
+
+    <input type="hidden" id="hdd_id_EP" />
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalEP">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div style="padding:10px;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <span style="padding-left:40px;">ESPACIOS PROTEGIDOS afectados en PIF </span> <span class="Negrita" id="spanIdPif"></span>
+
+                <div class="modal-body">
+
+                    <div id="sWaitModal" class="row" style="text-align:center">
+                        <span class="CargandoDatos2">Por favor espere ... Cargando Datos.</span>
+                    </div>
+
+                    <div id="divModalEP">
+                        &nbsp;
+                    </div>
+
+                    <div class="divModal_MainTD text-center" id="divCanvasEP" style="margin-left:50px; display:none">
+                        <div style="width:390px; height:390px;">
+                            <canvas id="Canvas_EP" width="390" height="390"></canvas>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+<div id="ContenedorVisorModal"></div>
+<!-- Modal ayuda PDF  ModalHelpExcell -->
+
+    
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalExportacionDatos">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" style="min-height:320px; min-width: 250px; ">
+                <div style="padding:10px;">
+                    <input type="hidden" id="hddPifTotal" value="0" />
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <input name="__RequestVerificationToken" type="hidden" value="y9VkoTXLAjEzMDE5i-lpth1BDJXAx37sYr0bcoH7sKaUGEKZ7u5I4YkCoHrF0h4aUFwHPEYh7VbQEaipMjoUd324YAJvBAOsykkOru93EPE1" />
+                </div>
+                <span style="padding-left:15px; font-size:large">
+                    
+                    Exportaci&#243;n de datos desde resultados de b&#250;squedas:
+                </span> &nbsp; &nbsp; 0 Pifs <span class="azul" style="font-size:large" id="spancamp">
+                </span>
+
+                <div class="modal-body">
+                    
+                    <div class="row" style="padding-bottom:10px;">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+                            <span class="fa-stack verdeOscuro"  >
+                                <i class="fa fa-square-o fa-stack-2x"></i>
+                                <i class="fa fa-list-alt fa-stack-1x"></i>
+                            </span>
+                        </div>
+                        <div class="col-lg-10" style="padding-top:4px; padding-left:0px;">
+                            Exportar el resultado de la B&#250;squeda (resumen) a archivo Excel
+                        </div>
+                        <div class="col-lg-1 text-right"  style="padding-left:20px; padding-right:0px">
+                            <div class="divchkKendoBackg BtnVistaSearch cl_Oculta csExportacion csExpR" style="width: auto; padding-left: 12px;">
+                                <input class="k-radio" id="idTipoExportacionExcelResumen" name="exportacinoTipo_R" type="radio" value="r">
+                                <label class="k-radio-label" style="font-weight:bold;" for="idTipoExportacionExcelResumen">&nbsp;</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row csBloqueExportacion" id="BE_Resumen" style="margin-top:-10px; margin-bottom:10px;">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-4" style="padding-top:4px; padding-left:0px;">
+                            Regitros por bloques de exportaci&oacute;n
+
+                        </div>
+                        <div class="col-lg-7" style="padding-left:30px; padding-right:0px">
+                            <div style="padding-top:2px; float:left;">
+                                <button class="azul c_menos_bloqueXLS" data-idcampo="c_bloque_maximoXLS_R" style="padding-left:3px; padding-right:3px; " title="Diez miles">
+                                    <i class="fa fa-minus" aria-hidden="true" style="margin-top:3px;"></i>
+
+                                </button>
+                            </div>
+                            <input class='form-control bloqueXls' type="number" id="c_bloque_maximoXLS_R" style="width:105px; height: 30px; float: left;" max="100000" value="100000" />
+                            <div style="padding-top:2px; float: left;">
+                                <button class="azul c_mas_bloqueXls" data-idcampo="c_bloque_maximoXLS_R" style="padding-left:3px; padding-right:3px; " title="Diez miles">
+                                    <i class="fa fa-plus" aria-hidden="true" style="margin-top:3px;"></i>
+
+                                </button>
+                            </div>
+                            <div style="margin-top:5px;"><span style="font-size:10px;margin-left:5px; ">Min. 10.000 y Max. 100.000 </span></div>
+                        </div>
+                    </div>
+
+
+                    <div class="row csBloqueExportacion" id="BE_Campos" style="margin-top:-10px; margin-bottom:10px; display:none;">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-4" style="padding-top:4px; padding-left:0px;">
+                            Tiempo m&aacute;ximo de proceso en servidor 
+
+                        </div>
+                        <div class="col-lg-7" style="padding-left:30px; padding-right:0px">
+                            
+                            <input class='form-control cs_intervalo' type="number" id="c_intervalo_c" name="c_intervalo_c" style="width:110px; height: 30px; float: left;" value="150" />
+                            
+                            <div style="margin-top:5px;"><span style="font-size:10px;margin-left:5px; ">M&iacute;nimo 60 y M&aacute;ximo 180 segundos </span></div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="row csBloqueExportacion" id="BE_Montes" style="margin-top:-10px; margin-bottom:10px;">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-4" style="padding-top:4px; padding-left:0px;">
+                            Regitros por bloques de exportaci&oacute;n
+
+                        </div>
+                        <div class="col-lg-7" style="padding-left:30px; padding-right:0px">
+                            <div style="padding-top:2px; float:left;">
+                                <button class="azul c_menos_bloqueXLS" data-idcampo="c_bloque_maximoXLS_M" style="padding-left:3px; padding-right:3px; " title="Diez miles">
+                                    <i class="fa fa-minus" aria-hidden="true" style="margin-top:3px;"></i>
+
+                                </button>
+                            </div>
+                            <input class='form-control bloqueXls' type="number" id="c_bloque_maximoXLS_M" style="width:105px; height: 30px; float: left;" max="100000" value="100000" />
+                            <div style="padding-top:2px; float: left;">
+                                <button class="azul c_mas_bloqueXls" data-idcampo="c_bloque_maximoXLS_M" style="padding-left:3px; padding-right:3px; " title="Diez miles">
+                                    <i class="fa fa-plus" aria-hidden="true" style="margin-top:3px;"></i>
+
+                                </button>
+                            </div>
+                            <div style="margin-top:5px;"><span style="font-size:10px;margin-left:5px; ">Min. 10.000 y Max. 100.000 </span></div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-bottom:10px;">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+                            <span class="fa-stack grisXml" >
+                                <i class="fa fa-square-o fa-stack-2x"></i>
+                                <i class="fa fa-file-code-o fa-stack-1x"></i>
+                            </span>
+                        </div>
+                        <div class="col-lg-10" style="padding-top:4px; padding-left:0px;">
+                            Exportar XML resultado de la b&#250;squeda (Pif/Monte)
+                            <span id="btnExportarDatosFullxml3" class="fondopopupcolorinfo" style="width:40px;">
+                                &nbsp;
+                                <a id="btnHelpExport" href="/incendios/Content/templates/exportAccess.pdf" style="width:14px" target="_blank">
+                                    <span class="azul"  >
+                                        <i class="fa fa-info"></i>
+                                    </span>
+                                </a>
+                                &nbsp;
+                            </span>
+                        </div>
+                        <div class="col-lg-1 text-right" style="padding-left:20px; padding-right:0px">
+                            <div class="divchkKendoBackg BtnVistaSearch cl_Oculta csExportacion csExpX" style="width: auto; padding-left:12px;">
+                                <input class="k-radio" id="idTipoExportacionXML" name="exportacinoTipo_R" type="radio" value="x">
+                                <label class="k-radio-label" style="font-weight:bold;" for="idTipoExportacionXML">&nbsp;</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row" >
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-4" style="padding-top:4px; padding-left:0px;">
+                            Regitros por bloques de exportaci&oacute;n
+
+                        </div>
+                        <div class="col-lg-7" style="padding-left:30px; padding-right:0px">
+                            <div style="padding-top:2px; float:left;">
+                                <button class="azul csBloqueXml" id="c_menos_bloqueXml" disabled style="padding-left:3px; padding-right:3px; " title="Cinco mil">
+                                    <i class="fa fa-minus" aria-hidden="true" style="margin-top:3px;"></i>
+
+                                </button>
+                            </div>
+                            <input class='form-control csBloqueXml' type="number" id="c_bloque_maximoXml" disabled name="c_bloque_maximoXml" style="width:105px; height: 30px; float: left;" max="50000" value="40000" />
+                            <div style="padding-top:2px; float: left;">
+                                <button class="azul csBloqueXml" id="c_mas_bloqueXml" disabled style="padding-left:3px; padding-right:3px; " title="Cinco mil">
+                                    <i class="fa fa-plus" aria-hidden="true" style="margin-top:3px;"></i>
+
+                                </button>
+                            </div>
+                            <div style="margin-top:5px;"><span style="font-size:10px;margin-left:5px; ">Min. 10.000 y Max. 50.000 </span></div>
+                        </div>
+                    </div>
+
+                    <div class="row" >
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-10" style="padding-top:4px; padding-left:0px;">
+                            Seleccione los cap&#237;tulos a exportar:
+
+                        </div>
+                        <div class="col-lg-1 text-right" style="padding-left:30px; padding-right:0px">
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-10 text-left" style="padding-top:4px; padding-left:0px;">
+                            <div class="divchkKendoBackg" style="width: auto;">
+                                <input class="k-checkbox" id="xmlTODOS_id" name="xmlcapitulos_T" type="checkbox" value="1">
+                                <label class="k-checkbox-label" style="font-weight:bold;" for="xmlTODOS_id">TODOS</label>
+                                <input name="xmlTODOS_id" type="hidden" value="false">
+                            </div>
+
+                        </div>
+                        <div class="col-lg-1 text-right" style="padding-left:30px; padding-right:0px">
+
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-bottom:5px;">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-10" style="padding-top:4px; padding-left:0px;">
+                            Cap&#237;tulos del Parte de incendio:
+
+                        </div>
+                        <div class="col-lg-1 text-right" style="padding-left:30px; padding-right:0px">
+
+                        </div>
+                    </div>                                        
+
+                    <div class="row" style="padding-bottom:0px; padding-top:0px;">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-10" style="padding-top:0px; padding-left:0px;">
+                            <div class="row" >
+
+                                <div class="form-group">
+
+                                    <div class="col-lg-3 text-left">
+                                        <div class="divchkKendoBackg" style="width: auto;">
+                                            <input class="k-checkbox" id="xmlLocalizacion_id" name="xmlcapitulos_" type="checkbox" value="1"><label class="k-checkbox-label" for="xmlLocalizacion_id">Localizaci&#243;n</label><input name="xmlLocalizacion_id" type="hidden" value="false">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 text-left">
+                                        <div class="divchkKendoBackg" style="width: auto;">
+                                            <input class="k-checkbox" id="xmlTiempos_id" name="xmlcapitulos_" type="checkbox" value="2"><label class="k-checkbox-label" for="xmlTiempos_id">Tiempos</label><input name="xmlTiempos_id" type="hidden" value="false">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3  text-left">
+                                        <div class="divchkKendoBackg" style="width: auto;">
+                                            <input class="k-checkbox" id="xmlDeteccion_id" name="xmlcapitulos_" type="checkbox" value="3"><label class="k-checkbox-label" for="xmlDeteccion_id">Detecci&#243;n</label><input name="xmlDeteccion_id" type="hidden" value="false">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 text-left">
+                                        <div class="divchkKendoBackg" style="width: auto;">
+                                            <input class="k-checkbox" id="xmlCausas_id" name="xmlcapitulos_" type="checkbox" value="4"><label class="k-checkbox-label" for="xmlCausas_id">Causas</label><input name="xmlCausas_id" type="hidden" value="false">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-1 text-right" style="padding-left:30px; padding-right:0px">
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-bottom:0px; padding-top:0px;">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-10" style="padding-top:0px; padding-left:0px;">
+                            <div class="row" >
+
+                                <div class="form-group">
+
+                                    <div class="col-lg-3 text-left">
+                                        <div class="divchkKendoBackg" style="width: auto;">
+                                            <input class="k-checkbox" id="xmlCondiciones_id" name="xmlcapitulos_" type="checkbox" value="1"><label class="k-checkbox-label" for="xmlCondiciones_id">Condiciones de Peligro</label><input name="xmlCondiciones_id" type="hidden" value="false">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 text-left">
+                                        <div class="divchkKendoBackg" style="width: auto;">
+                                            <input class="k-checkbox" id="xmlPropagacion_id" name="xmlcapitulos_" type="checkbox" value="2"><label class="k-checkbox-label" for="xmlPropagacion_id">Propagaci&#243;n</label><input name="xmlPropagacion_id" type="hidden" value="false">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3  text-left">
+                                        <div class="divchkKendoBackg" style="width: auto;">
+                                            <input class="k-checkbox" id="xmlMedios_id" name="xmlcapitulos_" type="checkbox" value="3"><label class="k-checkbox-label" for="xmlMedios_id">Medios</label><input name="xmlMedios_id" type="hidden" value="false">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 text-left">
+                                        <div class="divchkKendoBackg" style="width: auto;">
+                                            <input class="k-checkbox" id="xmlTecnicas_id" name="xmlcapitulos_" type="checkbox" value="4"><label class="k-checkbox-label" for="xmlTecnicas_id">T&#233;cnicas</label><input name="xmlTecnicas_id" type="hidden" value="false">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-1 text-right" style="padding-left:30px; padding-right:0px">
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-bottom:5px; padding-top:0px;">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-10" style="padding-top:0px; padding-left:0px;">
+                            <div class="row" >
+
+                                <div class="form-group">
+
+                                    <div class="col-lg-3 text-left">
+                                        <div class="divchkKendoBackg" style="width: auto;">
+                                            <input class="k-checkbox" id="xmlPerdidas_id" name="xmlcapitulos_" type="checkbox" value="1"><label class="k-checkbox-label" for="xmlPerdidas_id">P&#233;rdidas</label><input name="xmlPerdidas_id" type="hidden" value="false">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 text-left">
+                                        <div class="divchkKendoBackg" style="width: auto;">
+                                            <input class="k-checkbox" id="xmlIncidencias_id" name="xmlcapitulos_" type="checkbox" value="2"><label class="k-checkbox-label" for="xmlIncidencias_id">Incidencias</label><input name="xmlIncidencias_id" type="hidden" value="false">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3  text-left">
+                                        <div class="divchkKendoBackg" style="width: auto;">
+                                            <input class="k-checkbox" id="xmlAnexo_id" name="xmlcapitulos_" type="checkbox" value="3"><label class="k-checkbox-label" for="xmlAnexo_id">Anexo</label><input name="xmlAnexo_id" type="hidden" value="false">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 text-left">
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-1 text-right" style="padding-left:30px; padding-right:0px">
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-bottom:5px;">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-10" style="padding-top:4px; padding-left:0px;">
+                            Cap&#237;tulos del Parte de Montes:
+
+                        </div>
+                        <div class="col-lg-1 text-right" style="padding-left:30px; padding-right:0px">
+
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-bottom:0px; padding-top:0px;">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-10" style="padding-top:0px; padding-left:0px;">
+                            <div class="row">
+
+                                <div class="form-group">
+
+                                    <div class="col-lg-5 text-left">
+                                        <div class="divchkKendoBackg" style="width: auto;">
+                                            <input class="k-checkbox" id="xmlPMLocalizacion_id" name="xmlcapitulos_" type="checkbox" value="1">
+                                            <label class="k-checkbox-label" for="xmlPMLocalizacion_id">Localizaci&#243;n y datos particulares del monte</label>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-7 text-left">
+                                        <div class="divchkKendoBackg" style="width: auto;">
+                                            <input class="k-checkbox" id="xmlPMCaracterizacion_id" name="xmlcapitulos_" type="checkbox" value="2">
+                                            <label class="k-checkbox-label" for="xmlPMCaracterizacion_id">Caracterizaci&#243;n de las superficies recorridas por el fuego</label>
+                                            
+                                        </div>
+                                    </div>
+
+                                   
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-1 text-right" style="padding-left:30px; padding-right:0px">
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-bottom:0px; padding-top:0px;">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-10" style="padding-top:0px; padding-left:0px;">
+                            <div class="row">
+
+                                <div class="form-group">
+
+                                    <div class="col-lg-4 text-left">
+                                        <div class="divchkKendoBackg" style="width: auto;">
+                                            <input class="k-checkbox" id="xmlPMFactores_id" name="xmlcapitulos_" type="checkbox" value="1">
+                                            <label class="k-checkbox-label" for="xmlPMFactores_id">Factores del c&#225;lculo de p&#233;rdidas</label>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-5 text-left">
+                                        <div class="divchkKendoBackg" style="width: auto;">
+                                            <input class="k-checkbox" id="xmlPMPerdidas_id" name="xmlcapitulos_" type="checkbox" value="2">
+                                            <label class="k-checkbox-label" for="xmlPMPerdidas_id">Valoraci&#243;n de p&#233;rdidas econ&#243;micas</label>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 text-left">
+                                        
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-1 text-right" style="padding-left:30px; padding-right:0px">
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="row csBloqueExportacion" id="BE_Effis" style="margin-top:-10px; margin-bottom:10px;">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-4" style="padding-top:4px; padding-left:0px;">
+                            Regitros por bloques de exportaci&oacute;n
+
+                        </div>
+                        <div class="col-lg-7" style="padding-left:30px; padding-right:0px">
+                            <div style="padding-top:2px; float:left;">
+                                <button class="azul c_menos_bloqueXLS" data-idcampo="c_bloque_maximoXLS_E" style="padding-left:3px; padding-right:3px; " title="Diez miles">
+                                    <i class="fa fa-minus" aria-hidden="true" style="margin-top:3px;"></i>
+
+                                </button>
+                            </div>
+                            <input class='form-control bloqueXls' type="number" id="c_bloque_maximoXLS_E" style="width:105px; height: 30px; float: left;" max="100000" value="100000" />
+                            <div style="padding-top:2px; float: left;">
+                                <button class="azul c_mas_bloqueXls" data-idcampo="c_bloque_maximoXLS_E" style="padding-left:3px; padding-right:3px; " title="Diez miles">
+                                    <i class="fa fa-plus" aria-hidden="true" style="margin-top:3px;"></i>
+
+                                </button>
+                            </div>
+                            <div style="margin-top:5px;"><span style="font-size:10px;margin-left:5px; ">Min. 10.000 y Max. 100.000 </span></div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="row csBloqueExportacion" id="BE_Coord" style="margin-top:-10px; margin-bottom:10px;">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-4" style="padding-top:4px; padding-left:0px;">
+                            Regitros por bloques de exportaci&oacute;n
+
+                        </div>
+                        <div class="col-lg-7" style="padding-left:30px; padding-right:0px">
+                            <div style="padding-top:2px; float:left;">
+                                <button class="azul c_menos_bloqueSH" data-idcampo="c_bloque_maximoCoord" data-rango="10000" style="padding-left:3px; padding-right:3px; " title="Diez miles">
+                                    <i class="fa fa-minus" aria-hidden="true" style="margin-top:3px;"></i>
+
+                                </button>
+                            </div>
+                            <input class='form-control bloqueSH' type="number" id="c_bloque_maximoCoord" style="width:105px; height: 30px; float: left;" min="100000" max="0" value="0" />
+                            <div style="padding-top:2px; float: left;">
+                                <button class="azul c_mas_bloqueSH" data-idcampo="c_bloque_maximoCoord" data-rango="10000" style="padding-left:3px; padding-right:3px; " title="Diez miles">
+                                    <i class="fa fa-plus" aria-hidden="true" style="margin-top:3px;"></i>
+
+                                </button>
+                            </div>
+                            <div style="margin-top:5px;"><span style="font-size:10px;margin-left:5px; ">Min. 100.000 </span></div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="row csBloqueExportacion" id="BE_Peri" style="margin-top:-10px; margin-bottom:10px;">
+                        <div class="col-lg-1 text-center" style="padding-right:0px;">
+
+                        </div>
+                        <div class="col-lg-4" style="padding-top:4px; padding-left:0px;">
+                            Regitros por bloques de exportaci&oacute;n
+
+                        </div>
+                        <div class="col-lg-7" style="padding-left:30px; padding-right:0px">
+                            <div style="padding-top:2px; float:left;">
+                                <button class="azul c_menos_bloqueSH" data-idcampo="c_bloque_maximoPeri" data-rango="100" style="padding-left:3px; padding-right:3px; " title="Cien">
+                                    <i class="fa fa-minus" aria-hidden="true" style="margin-top:3px;"></i>
+
+                                </button>
+                            </div>
+                            <input class='form-control bloqueSH' type="number" id="c_bloque_maximoPeri" style="width:105px; height: 30px; float: left;" min="250" max="20000" value="10000" />
+                            <div style="padding-top:2px; float: left;">
+                                <button class="azul c_mas_bloqueSH" data-idcampo="c_bloque_maximoPeri" data-rango="100" style="padding-left:3px; padding-right:3px; " title="Cien">
+                                    <i class="fa fa-plus" aria-hidden="true" style="margin-top:3px;"></i>
+
+                                </button>
+                            </div>
+                            <div style="margin-top:5px;"><span style="font-size:10px;margin-left:5px; ">Min. 250 y Max. 20.000 </span></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="divAlert_Exportacion" style="display:none;" class="Alert_ScrollNP"></div>
+
+                <div class="modal-footer">
+
+
+                    <div class="row">
+
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:left;">
+                           
+                            <label style="font-size: small; color:green; margin-left:10px; margin-right:10px; float:left; display:none;" id="btnWaitExportaciones">
+                                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                                Procesando ...
+                            </label>
+
+                            <label style="font-size: small; color:red; margin-left:10px; margin-right:10px; float:left; display:none;" id="btnCancelExportaciones">
+                                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                                Cancelando ...
+                            </label>
+
+                            <div class="row">
+                                <div class="col-lg-8" id="DescargaFicherosParcial" style="padding-right:0px; margin-top:-14px; display:none;">
+                                    <label style="font-size:12px; font-style:italic;">Selecione descarga</label>
+                                    <select id="cbxDescargaExportaciones" class="form-control" ></select>
+                                </div>
+                                <div class="col-lg-4">
+                                    <a id="btnDescargaXmlCapitulos" href="/incendios/Search/DescargaZipXml" data-actionX="/incendios/Search/DescargaZipXml"  style="display:none;">
+                                        <span class="btn btn-primary btn-sm btn-busqueda" style="cursor:pointer;">
+                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                            Descargar
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            
+
+                        </div>
+
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+
+                            <span id="lblXmlPorcentaje" style="font-size:12px; color:#005794; display:none;">
+                                0 % 
+                            </span>
+                        </div>
+
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-right">
+
+                                                        
+                            
+                            <label id="btnExportarDatosFullxmlCapitulosZip" style="display:none;" data-busqueda="" data-actionX="/incendios/Search/Public_XmlZip" data-actionRM="/incendios/Search/Public_XlsxZip" >
+                                <span class="btn btn-primary btn-sm btn-busqueda" style="cursor:pointer;">
+                                    Exportar 
+                                </span>
+                            </label>
+
+                            
+
+                            <button id="btnCancelarZip" style="display:none;" class="btn btn-danger">
+                                Cancelar
+                            </button>
+                            
+                           
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div><!-- /.modal-content -->
+            
+        </div><!-- /.modal-dialog -->
+    </div>
+        
+<div class="modal fade" id="ModalHelpExcell" tabindex="-1" role="dialog"> 
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div style="width:96%; padding:10px; padding-bottom:20px" class="text-right rojo">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div style="width:96%; padding:1%;" class="text-center">
+                    
+                </div>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+        
+        <div id="modalIndex" class="modal fade" tabindex="-1" role="dialog">
+    
+    <div class="modal-dialog" role="document">
+        
+        
+
+
+<div class="splash">
+    <div class="color-line"></div> 
+    <div class="splash-title">
+        <h1>EGIF web</h1><p>Estad&#237;stica General de Incendios Forestales</p>
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+        <p> </p>
+    </div>
+</div>
+
+        <div class="modal-content" id="modalIndexmodalcontent"> 
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+        
+        <script src="/incendios/bundles/layoutcomunjs?v=OtDFQZwhqlbyWRF5nNkrRMoNXk2QBikgRxbcRQeoZ3k1"></script>
+
+        <script>
+            var appRoot = "/incendios/";
+        </script>
+        
+       <script src="/incendios/bundles/ParteIncendioForestal/SearchPublico?v=Ptfy6cSiPjYcqVhUa6GfEuhbYO_oU4msqc1aSMAS5r41"></script>
+
+       <script src="/incendios/bundles/visor?v=tOc5pD3jubfCJwK44X4IRpK_UCCCpMGSvttw0p_IFBY1"></script>
+;
+    
+</body> 
+</html>

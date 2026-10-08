@@ -1,0 +1,172 @@
+{
+  "incendios-forestales/TTL/Spain_Collection.ttl": {
+    "size": 76439415,
+    "predicates": {
+      "rdfs:label": 1,
+      "rdfs:comment": 1,
+      "prov:hadMember": 1
+    },
+    "examples": {
+      "rdfs:label": "rdfs:label \"Colección de incendios forestales de España\" ;",
+      "rdfs:comment": "rdfs:comment \"Colección que contiene todas las entidades de Incendios Forestales de España con su información y geometrías.\" ;",
+      "prov:hadMember": "prov:hadMember <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/Coleccion/ColeccionIncendiosForestalesEspaña/1983020377>,"
+    },
+    "fire_count": 0,
+    "min_id": null,
+    "max_id": null,
+    "malaga_ids": 0
+  },
+  "incendios-forestales/TTL/Spain_geom.ttl": {
+    "size": 222239100,
+    "predicates": {
+      "geosparql:hasGeometry": 139262,
+      "geosparql:sfWithin": 139262,
+      "prov:wasMemberOf": 139262,
+      "incendios-forestales:IdIncendio": 139262,
+      "incendios-forestales:tieneSuperficieAgricola": 139262,
+      "incendios-forestales:tieneSuperficieArbolada": 139262,
+      "incendios-forestales:tieneSuperficieForestal": 139262,
+      "incendios-forestales:tieneSuperficieNoArbolada": 139262,
+      "incendios-forestales:tieneSuperficieNoForestal": 139262
+    },
+    "examples": {
+      "geosparql:hasGeometry": "geosparql:hasGeometry <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/Coleccion/ColeccionIncendiosForestalesEspaña/2005010001/Geometria> ;",
+      "geosparql:sfWithin": "geosparql:sfWithin <http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Alava>,",
+      "prov:wasMemberOf": "prov:wasMemberOf <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/Año/2005> ;",
+      "incendios-forestales:IdIncendio": "incendios-forestales:IdIncendio \"2005010001\"^^xsd:string ;",
+      "incendios-forestales:tieneSuperficieAgricola": "incendios-forestales:tieneSuperficieAgricola <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/SuperficieAgricola/nan> ;",
+      "incendios-forestales:tieneSuperficieArbolada": "incendios-forestales:tieneSuperficieArbolada <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/SuperficieForestal/SuperficieArbolada/0.0> ;",
+      "incendios-forestales:tieneSuperficieForestal": "incendios-forestales:tieneSuperficieForestal <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/SuperficieForestal/0.08> ;",
+      "incendios-forestales:tieneSuperficieNoArbolada": "incendios-forestales:tieneSuperficieNoArbolada <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/SuperficieForestal/SuperficieNoArbolada/0.08> ;",
+      "incendios-forestales:tieneSuperficieNoForestal": "incendios-forestales:tieneSuperficieNoForestal <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/SuperficieNoForestal/nan> ."
+    },
+    "fire_count": 139262,
+    "min_id": "2005010001",
+    "max_id": "2015510001",
+    "malaga_ids": 925
+  },
+  "incendios-forestales/TTL/Spain_geom_pre2005.ttl": {
+    "size": 117565964,
+    "predicates": {
+      "geosparql:sfWithin": 82929,
+      "prov:wasMemberOf": 82929,
+      "incendios-forestales:IdIncendio": 82929,
+      "incendios-forestales:tieneSuperficieAgricola": 82929,
+      "incendios-forestales:tieneSuperficieArbolada": 82929,
+      "incendios-forestales:tieneSuperficieForestal": 82929,
+      "incendios-forestales:tieneSuperficieNoArbolada": 82929,
+      "incendios-forestales:tieneSuperficieNoForestal": 82929
+    },
+    "examples": {
+      "geosparql:sfWithin": "geosparql:sfWithin <http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Alava>,",
+      "prov:wasMemberOf": "prov:wasMemberOf <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/Año/1998> ;",
+      "incendios-forestales:IdIncendio": "incendios-forestales:IdIncendio \"1998010010\"^^xsd:string ;",
+      "incendios-forestales:tieneSuperficieAgricola": "incendios-forestales:tieneSuperficieAgricola <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/SuperficieAgricola/nan> ;",
+      "incendios-forestales:tieneSuperficieArbolada": "incendios-forestales:tieneSuperficieArbolada <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/SuperficieForestal/SuperficieArbolada/0.0> ;",
+      "incendios-forestales:tieneSuperficieForestal": "incendios-forestales:tieneSuperficieForestal <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/SuperficieForestal/8.7> ;",
+      "incendios-forestales:tieneSuperficieNoArbolada": "incendios-forestales:tieneSuperficieNoArbolada <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/SuperficieForestal/SuperficieNoArbolada/8.7> ;",
+      "incendios-forestales:tieneSuperficieNoForestal": "incendios-forestales:tieneSuperficieNoForestal <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/SuperficieNoForestal/None> ."
+    },
+    "fire_count": 82929,
+    "min_id": "1998010010",
+    "max_id": "2004500202",
+    "malaga_ids": 352
+  },
+  "incendios-forestales/TTL/Spain_Municipios.csv.ttl": {
+    "size": 2602039,
+    "predicates": {
+      "esadm:codigoINE": 8131,
+      "esadm:provincia": 8131,
+      "geonames:officialName": 8131
+    },
+    "examples": {
+      "esadm:codigoINE": "esadm:codigoINE \"001\"^^xsd:string ;",
+      "esadm:provincia": "esadm:provincia <http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Alava> ;",
+      "geonames:officialName": "geonames:officialName \"Alegría-Dulantzi\"^^xsd:string ."
+    },
+    "fire_count": 0,
+    "min_id": null,
+    "max_id": null,
+    "malaga_ids": 0
+  },
+  "incendios-forestales/TTL/Spain_nogeom.ttl": {
+    "size": 407264966,
+    "predicates": {
+      "geosparql:sfWithin": 287402,
+      "prov:wasMemberOf": 287402,
+      "incendios-forestales:IdIncendio": 287402,
+      "incendios-forestales:tieneSuperficieAgricola": 287402,
+      "incendios-forestales:tieneSuperficieArbolada": 287402,
+      "incendios-forestales:tieneSuperficieForestal": 287402,
+      "incendios-forestales:tieneSuperficieNoArbolada": 287402,
+      "incendios-forestales:tieneSuperficieNoForestal": 287402
+    },
+    "examples": {
+      "geosparql:sfWithin": "geosparql:sfWithin <http://datos.gob.es/recurso/sector-publico/territorio/Provincia/Albacete>,",
+      "prov:wasMemberOf": "prov:wasMemberOf <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/Año/1983> ;",
+      "incendios-forestales:IdIncendio": "incendios-forestales:IdIncendio \"1983020377\"^^xsd:string ;",
+      "incendios-forestales:tieneSuperficieAgricola": "incendios-forestales:tieneSuperficieAgricola <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/SuperficieAgricola/nan> ;",
+      "incendios-forestales:tieneSuperficieArbolada": "incendios-forestales:tieneSuperficieArbolada <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/SuperficieForestal/SuperficieArbolada/1.0> ;",
+      "incendios-forestales:tieneSuperficieForestal": "incendios-forestales:tieneSuperficieForestal <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/SuperficieForestal/1.0> ;",
+      "incendios-forestales:tieneSuperficieNoArbolada": "incendios-forestales:tieneSuperficieNoArbolada <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/SuperficieForestal/SuperficieNoArbolada/0.0> ;",
+      "incendios-forestales:tieneSuperficieNoForestal": "incendios-forestales:tieneSuperficieNoForestal <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/SuperficieNoForestal/None> ."
+    },
+    "fire_count": 287402,
+    "min_id": "1983020377",
+    "max_id": "2015400049",
+    "malaga_ids": 3964
+  },
+  "incendios-forestales/TTL/Spain_values.ttl": {
+    "size": 8841799,
+    "predicates": {
+      "rdfs:label": 25289,
+      "qudt:quantityKind": 16576,
+      "qudt:quantityValue": 16576,
+      "qudt:numericValue": 8713,
+      "qudt:unit": 8713
+    },
+    "examples": {
+      "rdfs:label": "rdfs:label \"Quantity: 0.0HA\" ;",
+      "qudt:quantityKind": "qudt:quantityKind <http://qudt.org/vocab/quantitykind/Area> ;",
+      "qudt:quantityValue": "qudt:quantityValue <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/QuantityValue/0.0> .",
+      "qudt:numericValue": "qudt:numericValue \"10.21\"^^xsd:float ;",
+      "qudt:unit": "qudt:unit <http://qudt.org/vocab/unit/HA> ."
+    },
+    "fire_count": 0,
+    "min_id": null,
+    "max_id": null,
+    "malaga_ids": 0
+  },
+  "incendios-forestales/TTL/Spain_wkts.ttl": {
+    "size": 50006686,
+    "predicates": {
+      "geosparql:asWKT": 139262,
+      "malla-espacial:sistemaReferenciaEspacial": 139262
+    },
+    "examples": {
+      "geosparql:asWKT": "geosparql:asWKT \"POINT (42.56865838066257 -2.585751011579194)\"^^geosparql:wktLiteral ;",
+      "malla-espacial:sistemaReferenciaEspacial": "malla-espacial:sistemaReferenciaEspacial <http://www.opengis.net/def/crs/EPSG/0/25830> ."
+    },
+    "fire_count": 0,
+    "min_id": null,
+    "max_id": null,
+    "malaga_ids": 0
+  },
+  "incendios-forestales/TTL/Spain_Years.ttl": {
+    "size": 76445486,
+    "predicates": {
+      "rdfs:label": 33,
+      "time:year": 33,
+      "prov:hadMember": 33
+    },
+    "examples": {
+      "rdfs:label": "rdfs:label \"Año: 1983\" ;",
+      "time:year": "time:year \"1983\"^^xsd:string ;",
+      "prov:hadMember": "prov:hadMember <https://datos.iepnb.es/recurso/sector-publico/medio-ambiente/incendios-forestales/Coleccion/ColeccionIncendiosForestalesEspaña/1983020377>,"
+    },
+    "fire_count": 0,
+    "min_id": null,
+    "max_id": null,
+    "malaga_ids": 0
+  }
+}
