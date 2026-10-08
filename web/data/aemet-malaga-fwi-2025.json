@@ -1,7 +1,7 @@
 {
   "version": "1.2",
   "dataset": "aemet-malaga-fire-weather-2025",
-  "generated_at_utc": "2026-10-08T13:02:10.517240+00:00",
+  "generated_at_utc": "2026-10-08T13:05:21.393362+00:00",
   "scope": {
     "province": "Málaga",
     "year": 2025,
@@ -259,6 +259,119 @@
         }
       ],
       "all_row_count": 250
+    }
+  },
+  "hazard_calendar": {
+    "definition": {
+      "mean_level": "AEMET monthly mean of daily mean danger level",
+      "high_or_worse_pct": "Alto + Muy_Alto + Extremo frequency percentage",
+      "very_high_or_extreme_pct": "Muy_Alto + Extremo frequency percentage",
+      "extreme_pct": "Extremo frequency percentage",
+      "warning": "Province-level weather-danger statistics. These values are not incident probabilities and must not be copied into node-level risk."
+    },
+    "months": [
+      {
+        "month": "jan",
+        "source_month": "Enero",
+        "mean_level": 1.0,
+        "high_or_worse_pct": 0.0,
+        "very_high_or_extreme_pct": 0.0,
+        "extreme_pct": 0.0
+      },
+      {
+        "month": "feb",
+        "source_month": "Febrero",
+        "mean_level": 1.0,
+        "high_or_worse_pct": 0.0,
+        "very_high_or_extreme_pct": 0.0,
+        "extreme_pct": 0.0
+      },
+      {
+        "month": "mar",
+        "source_month": "Marzo",
+        "mean_level": 1.0,
+        "high_or_worse_pct": 0.0,
+        "very_high_or_extreme_pct": 0.0,
+        "extreme_pct": 0.0
+      },
+      {
+        "month": "apr",
+        "source_month": "Abril",
+        "mean_level": 1.0,
+        "high_or_worse_pct": 0.0,
+        "very_high_or_extreme_pct": 0.0,
+        "extreme_pct": 0.0
+      },
+      {
+        "month": "may",
+        "source_month": "Mayo",
+        "mean_level": 1.4,
+        "high_or_worse_pct": 16.13,
+        "very_high_or_extreme_pct": 9.68,
+        "extreme_pct": 0.0
+      },
+      {
+        "month": "jun",
+        "source_month": "Junio",
+        "mean_level": 3.0,
+        "high_or_worse_pct": 60.0,
+        "very_high_or_extreme_pct": 36.67,
+        "extreme_pct": 10.0
+      },
+      {
+        "month": "jul",
+        "source_month": "Julio",
+        "mean_level": 3.5,
+        "high_or_worse_pct": 87.1,
+        "very_high_or_extreme_pct": 54.84,
+        "extreme_pct": 16.13
+      },
+      {
+        "month": "aug",
+        "source_month": "Agosto",
+        "mean_level": 3.9,
+        "high_or_worse_pct": 87.1,
+        "very_high_or_extreme_pct": 74.2,
+        "extreme_pct": 25.81
+      },
+      {
+        "month": "sep",
+        "source_month": "Septiembre",
+        "mean_level": 2.7,
+        "high_or_worse_pct": 50.0,
+        "very_high_or_extreme_pct": 33.33,
+        "extreme_pct": 3.33
+      },
+      {
+        "month": "oct",
+        "source_month": "Octubre",
+        "mean_level": 1.2,
+        "high_or_worse_pct": 0.0,
+        "very_high_or_extreme_pct": 0.0,
+        "extreme_pct": 0.0
+      },
+      {
+        "month": "nov",
+        "source_month": "Noviembre",
+        "mean_level": 1.0,
+        "high_or_worse_pct": 0.0,
+        "very_high_or_extreme_pct": 0.0,
+        "extreme_pct": 0.0
+      },
+      {
+        "month": "dec",
+        "source_month": "Diciembre",
+        "mean_level": 1.0,
+        "high_or_worse_pct": 0.0,
+        "very_high_or_extreme_pct": 0.0,
+        "extreme_pct": 0.0
+      }
+    ],
+    "annual": {
+      "mean_level": 1.8,
+      "high_or_worse_pct": 25.21,
+      "very_high_or_extreme_pct": 17.54,
+      "extreme_pct": 4.66
     }
   }
 }
