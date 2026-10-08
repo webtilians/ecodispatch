@@ -24,14 +24,19 @@ class RealRoutingHoldoutProtocolTests(unittest.TestCase):
         cls.holdout = cls.current["research"]["real_routing_holdout"]
 
     def test_preregistered_unrun_protocol(self):
-        self.assertEqual(self.current["version"], "1.1")
-        self.assertEqual(self.holdout["status"], "preregistered_unrun")
+        self.assertEqual(self.current["version"], "1.1.1")
+        self.assertEqual(self.holdout["status"], "confirmed_frozen")
         self.assertEqual(self.holdout["seed"], "ecodispatch-real-routing-holdout-11")
         self.assertEqual(self.holdout["n"], 1000)
         self.assertEqual(self.holdout["harm_k"], 10)
         self.assertEqual(self.holdout["primary_lambdas"], [0.2, 0.35, 0.5, 1])
         self.assertEqual(self.holdout["selected_bases"], ["B2", "B3", "B4"])
         self.assertEqual(self.holdout["excluded_demand"], ["D5", "D8"])
+        self.assertTrue(self.holdout["frozen_result"]["confirmed"])
+        self.assertEqual(
+            self.holdout["frozen_result"]["raw_sha256"],
+            "1b63e5a5c5cd14752a6e79871f7be971c642b09e7d45b88c3953f93428454112",
+        )
 
     def test_frozen_routing_blob_identity(self):
         self.assertEqual(self.routing["dataset"], "malaga-real-routing-v1")
