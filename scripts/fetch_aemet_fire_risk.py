@@ -73,6 +73,76 @@ def row_mentions_malaga(row: dict[str, str]) -> bool:
     return any(norm(v) == "MALAGA" for v in row.values())
 
 
+MONTHS = [
+    ("Enero", "jan"), ("Febrero", "feb"), ("Marzo", "mar"),
+    ("Abril", "apr"), ("Mayo", "may"), ("Junio", "jun"),
+    ("Julio", "jul"), ("Agosto", "aug"), ("Septiembre", "sep"),
+    ("Octubre", "oct"), ("Noviembre", "nov"), ("Diciembre", "dec"),
+]
+
+
+def number(value: str) -> float:
+    return float(str(value).strip().replace(",", "."))
+
+
+def find_row(rows: list[dict[str, str]], key: str, value: str) -> dict[str, str]:
+    target = norm(value)
+    for row in rows:
+        if norm(row.get(key)) == target:
+            return row
+    raise KeyError(f"Missing row {key}={value}")
+
+
+def build_hazard_calendar(datasets: dict) -> dict:
+    basic = datasets["eimri_estadistica_basica_provincias_2025.csv"]["malaga_rows"]
+    freq = datasets["eimri_frecuencias_provincias_2025.csv"]["malaga_rows"]
+    mean_row = find_row(basic, "Estadisticos", "Media")
+    high = find_row(freq, "Niveles", "Alto")
+    very_high = find_row(freq, "Niveles", "Muy_Alto")
+    extreme = find_row(freq, "Niveles", "Extremo")
+
+    calendar = []
+    for source_name, month_id in MONTHS:
+        high_pct = number(high[source_name])
+        very_high_pct = number(very_high[source_name])
+        extreme_pct = number(extreme[source_name])
+        calendar.append({
+            "month": month_id,
+            "source_month": source_name,
+            "mean_level": number(mean_row[source_name]),
+            "high_or_worse_pct": round(high_pct + very_high_pct + extreme_pct, 2),
+            "very_high_or_extreme_pct": round(very_high_pct + extreme_pct, 2),
+            "extreme_pct": extreme_pct,
+        })
+
+    annual = {
+        "mean_level": number(mean_row["Anual"]),
+        "high_or_worse_pct": round(
+            number(high["Anual"]) + number(very_high["Anual"]) + number(extreme["Anual"]),
+            2,
+        ),
+        "very_high_or_extreme_pct": round(
+            number(very_high["Anual"]) + number(extreme["Anual"]), 2
+        ),
+        "extreme_pct": number(extreme["Anual"]),
+    }
+
+    return {
+        "definition": {
+            "mean_level": "AEMET monthly mean of daily mean danger level",
+            "high_or_worse_pct": "Alto + Muy_Alto + Extremo frequency percentage",
+            "very_high_or_extreme_pct": "Muy_Alto + Extremo frequency percentage",
+            "extreme_pct": "Extremo frequency percentage",
+            "warning": (
+                "Province-level weather-danger statistics. These values are not "
+                "incident probabilities and must not be copied into node-level risk."
+            ),
+        },
+        "months": calendar,
+        "annual": annual,
+    }
+
+
 def main() -> None:
     request = urllib.request.Request(
         URL,
@@ -138,6 +208,7 @@ def main() -> None:
             "matched_rows": total_matches,
         },
         "datasets": datasets,
+        "hazard_calendar": build_hazard_calendar(datasets),
     }
 
     OUTPUT.write_text(
