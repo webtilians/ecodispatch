@@ -1,5 +1,35 @@
 [
   {
+    "version": "v1.6",
+    "date": "2026-10-08",
+    "title_es": "Robustez temporal: servicio × penalización por no atender",
+    "title_en": "Temporal robustness: service time × unserved penalty",
+    "description_es": "Grid fijado antes de resultados: servicio 45/90/180 min y K=10/60/120. λ=.2 no tiene celdas claramente desfavorables pero solo es robusta a servicio en 2/6 grupos; λ=1 es desfavorable en 18/18 celdas con K=60. Sin confirmación.",
+    "description_en": "Grid fixed before outcomes: 45/90/180 min service and K=10/60/120. λ=.2 has no clearly unfavorable cells but is service-robust in only 2/6 groups; λ=1 is unfavorable in all 18 cells at K=60. No confirmation.",
+    "tags": [
+      "v1.6",
+      "robustness",
+      "service time",
+      "harm sensitivity",
+      "AEMET"
+    ],
+    "tags_es": [
+      "v1.6",
+      "robustez",
+      "tiempo de servicio",
+      "sensibilidad H",
+      "AEMET"
+    ],
+    "tags_en": [
+      "v1.6",
+      "robustness",
+      "service time",
+      "harm sensitivity",
+      "AEMET"
+    ],
+    "screenshot": null
+  },
+  {
     "version": "v1.5",
     "date": "2026-10-08",
     "title_es": "Operaciones temporales: brigadas ocupadas, cola y servicio",
