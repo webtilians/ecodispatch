@@ -82,11 +82,20 @@ const row=R.scenario(config,routing,setup,ciSeed,0,{harmK:10});
 assert.equal(row.scenarioSeed,ciSeed+'|day|0');
 assert.ok(!row.scenarioSeed.includes(H.protocol.seed));
 
-// current.json must describe an unrun holdout, not a fabricated result.
+// v1.1.1 freezes the actual user-exported result without rerunning it.
+const frozen=JSON.parse(fs.readFileSync('web/data/real-routing-holdout-v1.1.1-frozen.json','utf8'));
+assert.equal(frozen.sourceArtifact.sha256,'1b63e5a5c5cd14752a6e79871f7be971c642b09e7d45b88c3953f93428454112');
+assert.equal(frozen.sourceArtifact.bytes,2558536);
+assert.equal(frozen.analysis.confirmed,true);
+assert.deepEqual(frozen.analysis.passingLambdas,[.2,.35,.5,1]);
+assert.equal(frozen.analysis.primary[0].harm.mean,-29.841341685721012);
+assert.equal(frozen.analysis.primary[3].harm.mean,-83.45652611740732);
+assert.equal(frozen.analysis.primary[3].holmP,3.254300186856912e-8);
+
 const cfg=config.research.real_routing_holdout;
-assert.equal(cfg.status,'preregistered_unrun');
+assert.equal(cfg.status,'confirmed_frozen');
 assert.equal(cfg.seed,H.protocol.seed);
 assert.equal(cfg.routing_blob_sha,H.protocol.routingBlobSha);
 assert.deepEqual(cfg.primary_lambdas,[.2,.35,.5,1]);
 
-console.log('PASS: v1.1 frozen real-routing protocol, dataset identity, Holm, confirmation rule, baselines and CI seed isolation');
+console.log('PASS: v1.1.1 frozen real-routing result, protocol, dataset identity, Holm, confirmation rule, baselines and CI seed isolation');
