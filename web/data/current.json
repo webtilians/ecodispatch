@@ -1,5 +1,5 @@
 {
-  "version": "1.1.1",
+  "version": "1.2",
   "date": "2026-10-08",
   "placement": {
     "selected_bases": [
@@ -387,6 +387,23 @@
           1
         ]
       }
+    },
+    "real_hazard": {
+      "status": "official_province_level_calibration_only",
+      "dataset": "aemet-malaga-fire-weather-2025",
+      "dataset_git_blob": "beb7c4659e4580b54c576e38be766292d84b1b72",
+      "generated_at": "2026-10-08T13:05:21.393362+00:00",
+      "source": "AEMET",
+      "province": "Málaga",
+      "year": 2025,
+      "spatial_resolution": "province",
+      "annual_high_or_worse_pct": 25.21,
+      "annual_extreme_pct": 4.66,
+      "july_high_or_worse_pct": 87.1,
+      "august_high_or_worse_pct": 87.1,
+      "august_extreme_pct": 25.81,
+      "integrated_into_dispatch": false,
+      "reason_not_integrated": "Province-level danger frequency is not node-level incident probability or spatial risk."
     }
   }
 }
