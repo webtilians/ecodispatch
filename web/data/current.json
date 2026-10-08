@@ -1,5 +1,5 @@
 {
-  "version": "1.1",
+  "version": "1.1.1",
   "date": "2026-10-08",
   "placement": {
     "selected_bases": [
@@ -346,7 +346,7 @@
       "status": "exploratory_real_routing_not_real_risk"
     },
     "real_routing_holdout": {
-      "status": "preregistered_unrun",
+      "status": "confirmed_frozen",
       "prereg_commit": "691a85c96afa497fc8c2f42386d1d12c00a4ff5a",
       "seed": "ecodispatch-real-routing-holdout-11",
       "n": 1000,
@@ -373,7 +373,20 @@
         "D5",
         "D8"
       ],
-      "historical_exploratory_seed_excluded": "ecodispatch-real-routing-10"
+      "historical_exploratory_seed_excluded": "ecodispatch-real-routing-10",
+      "frozen_result": {
+        "summary": "./data/real-routing-holdout-v1.1.1-frozen.json",
+        "raw_sha256": "1b63e5a5c5cd14752a6e79871f7be971c642b09e7d45b88c3953f93428454112",
+        "raw_bytes": 2558536,
+        "generated_at": "2026-10-08T08:49:14.774Z",
+        "confirmed": true,
+        "passing_lambdas": [
+          0.2,
+          0.35,
+          0.5,
+          1
+        ]
+      }
     }
   }
 }
