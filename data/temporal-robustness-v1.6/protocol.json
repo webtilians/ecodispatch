@@ -1,0 +1,76 @@
+{
+  "version": "1.6",
+  "experiment": "Temporal Fire Robustness Surface",
+  "confirmatory": false,
+  "status": "exploratory_robustness_design_fixed_before_outcomes",
+  "base_version": "1.5",
+  "base_design_commit": "1b1a3836503384392565a06703b50d45c14dfd18",
+  "frozen_inputs": {
+    "routing": "web/data/routing-v1.0.json",
+    "hazard_catalog": "web/data/fire-snapshots-v1.4.json",
+    "temporal_protocol": "data/temporal-fire-v1.5/protocol.json",
+    "snapshot_ids": [
+      "down_20261007_peligro_p_D02-24297c444c84",
+      "down_20261007_peligro_p_D01-3acf9899447e",
+      "down_20261007_peligro_p_D04-7ab3652678c2"
+    ],
+    "load_regimes": [
+      "low",
+      "high"
+    ],
+    "fleet": "inherit v1.5 exactly: three modeled fire brigades at B2/B3/B4"
+  },
+  "service_minutes": [
+    45,
+    90,
+    180
+  ],
+  "service_selection_rule": "fixed before v1.6 outcomes as half / baseline / double the v1.5 modeled 90-minute service time; no empirical calibration claim",
+  "harm_k": [
+    10,
+    60,
+    120
+  ],
+  "harm_rule": {
+    "formula": "H_K = sum_served severity*response_delay + K*sum_unserved severity^2",
+    "historical_k": 10,
+    "dominance_safe_k": 60,
+    "rationale": "With deadline=120 min and severity in [2,5), K>=60 guarantees K*s^2 >= s*120 for every allowed severity s, so an unserved event is never scored below a served event solely because response occurred near the deadline.",
+    "conservative_k": 120,
+    "note": "K values are robustness surrogates, not empirically calibrated losses and do not affect dispatch decisions."
+  },
+  "policies": {
+    "reference_lambda": 0,
+    "lambdas": [
+      0,
+      0.2,
+      0.35,
+      0.5,
+      1
+    ],
+    "baselines": [
+      "eta-greedy",
+      "distance-greedy"
+    ]
+  },
+  "simulation": {
+    "days_per_snapshot_load": 1000,
+    "bootstrap_replicates": 500,
+    "seed": "ecodispatch-temporal-robustness-16-exploratory-20261008",
+    "seed_pattern": "ecodispatch-temporal-robustness-16-exploratory-20261008|snapshot|SNAPSHOT_ID|load|REGIME|day|INDEX",
+    "same_events_across_service_times": true,
+    "same_events_across_harm_k": true,
+    "same_events_across_policies": true,
+    "reset_fleet_each_day": true
+  },
+  "robustness_summary": {
+    "cell_definition": "one snapshot × load × service_minutes × harm_k",
+    "negative_cell": "mean paired deltaH < 0 and paired bootstrap 95% CI upper < 0",
+    "positive_cell": "mean paired deltaH > 0 and paired bootstrap 95% CI lower > 0",
+    "inconclusive_cell": "otherwise",
+    "service_robust_for_snapshot_load_k": "all three fixed service times are negative cells for the same lambda",
+    "global_service_robust_at_k": "all six snapshot×load combinations are service-robust for the same lambda",
+    "note": "descriptive robustness labels only; no multiplicity-adjusted confirmation and no best-lambda claim"
+  },
+  "claim_scope": "exploratory robustness of the v1.5 simulator; real frozen OSM/OSRM routing and archived AEMET hazard, but modeled fleet, arrivals, incident locations, severity, service-time scenarios, emissions and harm"
+}

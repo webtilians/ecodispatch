@@ -68,6 +68,11 @@ jobs:
           node scripts/run_temporal_fire_benchmark.cjs
           git diff --exit-code -- web/data/temporal-fire-v1.5.json web/data/temporal-fire-v1.5.csv results/temporal-fire-v1.5-report.md
 
+      - name: Reproduce fixed-design v1.6 robustness surface offline
+        run: |
+          node scripts/run_temporal_robustness_v1_6.cjs
+          git diff --exit-code -- web/data/temporal-robustness-v1.6.json web/data/temporal-robustness-v1.6.csv results/temporal-robustness-v1.6-report.md
+
       - name: Validate paired study, model regression, translations and syntax
         run: |
           node tests/ablation.test.cjs
@@ -78,6 +83,7 @@ jobs:
           node tests/spatial-hazard.test.cjs
           node tests/fire-dispatch.test.cjs
           node tests/temporal-fire.test.cjs
+          node tests/temporal-robustness.test.cjs
           python -m unittest discover -s tests
 
       - name: Install Playwright

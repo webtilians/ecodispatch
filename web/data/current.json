@@ -1,5 +1,5 @@
 {
-  "version": "1.5",
+  "version": "1.6",
   "date": "2026-10-08",
   "placement": {
     "selected_bases": [
@@ -458,6 +458,65 @@
         "harm"
       ],
       "descriptive_result": "lambda 0.2 lowers mean synthetic harm in five of six fixed snapshot/load combinations with bootstrap intervals below zero; lambda 1 worsens harm in all six; no optimal lambda claim"
+    },
+    "temporal_robustness": {
+      "status": "exploratory_fixed_before_outcomes",
+      "confirmatory": false,
+      "design_commit": "494e07b0a72da72669d05527c29c32404e391390",
+      "protocol": "data/temporal-robustness-v1.6/protocol.json",
+      "result": "./data/temporal-robustness-v1.6.json",
+      "service_minutes": [
+        45,
+        90,
+        180
+      ],
+      "harm_k": [
+        10,
+        60,
+        120
+      ],
+      "cells_per_k": 18,
+      "summary": {
+        "lambda_0_2": {
+          "K10": {
+            "negative": 12,
+            "inconclusive": 6,
+            "positive": 0,
+            "service_robust_groups": 2
+          },
+          "K60": {
+            "negative": 12,
+            "inconclusive": 6,
+            "positive": 0,
+            "service_robust_groups": 2
+          },
+          "K120": {
+            "negative": 11,
+            "inconclusive": 7,
+            "positive": 0,
+            "service_robust_groups": 2
+          }
+        },
+        "lambda_1": {
+          "K10": {
+            "negative": 0,
+            "inconclusive": 1,
+            "positive": 17
+          },
+          "K60": {
+            "negative": 0,
+            "inconclusive": 0,
+            "positive": 18
+          },
+          "K120": {
+            "negative": 0,
+            "inconclusive": 1,
+            "positive": 17
+          }
+        }
+      },
+      "conclusion": "lambda 0.2 is directionally favorable but not globally service-robust; lambda 1 is consistently too aggressive across the fixed sensitivity surface",
+      "claim_scope": "internal simulator robustness only; no real-world efficacy"
     }
   }
 }

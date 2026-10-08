@@ -5,7 +5,7 @@ EcoDispatch is a research prototype for allocating scarce mobile resources
 using a hierarchical optimization architecture inspired by recent results in
 metric **k-median**, **maximum matching**, and **k-server**.
 
-## Current release: Temporal Fire Operations v1.5 (exploratory)
+## Current release: Temporal Fire Robustness v1.6 (exploratory)
 
 [Open the ES/EN experiment](https://webtilians.github.io/ecodispatch/?lang=es#fire-dispatch) ·
 [Methods](docs/fire-dispatch-v1.4.md) · [Results](results/fire-dispatch-v1.4-report.md) ·
@@ -497,3 +497,45 @@ now acts in a model where resources genuinely become unavailable.
 Real/frozen layers remain OSM/OSRM routing and archived AEMET hazard. Fleet,
 arrivals, incident locations, severity, service, emissions and harm are modeled.
 No operational-efficacy claim is made.
+
+
+## v1.6 — Temporal Fire Robustness
+
+v1.6 tests whether the v1.5 temporal-fire signal survives a fixed,
+outcome-independent sensitivity surface. The design was committed before
+outcomes in `494e07b0a72da72669d05527c29c32404e391390`.
+
+Fixed sensitivity grid:
+
+- service time: **45 / 90 / 180 min**;
+- harm penalty: **K=10 / 60 / 120**;
+- 3 archived AEMET snapshots × low/high load;
+- 1,000 paired days per snapshot/load/service cell;
+- lambda = 0, .2, .35, .5, 1 plus ETA- and distance-greedy;
+- 500 paired bootstrap resamples.
+
+K=60 is included for a structural reason, not calibration: with a 120-minute
+deadline and severity >=2, it is the minimum K satisfying
+`K*s^2 >= s*120` for every allowed severity, so an unserved event is not scored
+below a deadline-served event solely because of the harm formula. K affects
+evaluation only and never dispatch decisions.
+
+Main descriptive result:
+
+- lambda=.2: at K=60, **12/18 favorable**, 6/18 inconclusive and 0/18
+  unfavorable cells, but only **2/6** snapshot/load groups are favorable under
+  all three service times;
+- lambda=1: at K=60, **18/18 unfavorable** cells.
+
+Therefore the small-lambda signal is directionally robust but **not globally
+service-robust**. v1.6 narrows the claim rather than turning it into confirmation.
+
+- [Fixed design](docs/temporal-robustness-v1.6-design.md)
+- [Methods and interpretation](docs/temporal-robustness-v1.6.md)
+- [Full report](results/temporal-robustness-v1.6-report.md)
+- Result JSON: `web/data/temporal-robustness-v1.6.json`
+- Public section: `#temporal-robustness`
+
+The real/frozen layers remain OSM/OSRM routing and archived AEMET hazard.
+Fleet, arrivals, event locations, severity, service scenarios, emissions and
+harm remain modeled. No operational-efficacy claim is made.
