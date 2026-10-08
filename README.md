@@ -5,7 +5,7 @@ EcoDispatch is a research prototype for allocating scarce mobile resources
 using a hierarchical optimization architecture inspired by recent results in
 metric **k-median**, **maximum matching**, and **k-server**.
 
-## Current architecture (v1.1.1)
+## Current architecture (v1.2)
 
 1. **Pre-positioning** — risk-weighted metric k-median chooses where resources
    should wait before incidents are known.
@@ -364,3 +364,29 @@ All four preregistered lambdas pass the frozen total-harm rule after Holm
 correction. The public real-routing holdout section now loads the frozen result
 by default. The scope remains confirmation inside a simulator with real routing
 but synthetic risk and incidents.
+
+
+## v1.2 — official fire-weather hazard layer
+
+v1.2 adds EcoDispatch's first official hazard dataset without manufacturing
+node-level precision that the source does not provide.
+
+Source: AEMET 2025 province-level meteorological forest-fire danger statistics
+for Málaga, fetched reproducibly from AEMET's annual ZIP and versioned at
+`web/data/aemet-malaga-fwi-2025.json`.
+
+Transparent derived values:
+
+- annual High + Very High + Extreme frequency: **25.21%**;
+- July High-or-worse: **87.10%**;
+- August High-or-worse: **87.10%**;
+- August Extreme: **25.81%**;
+- annual Extreme: **4.66%**.
+
+The layer is temporal/province-wide. These percentages are danger-class
+frequencies, **not wildfire incident probabilities** and not node-specific risk
+weights. Therefore v1.2 displays and validates them separately and does not feed
+them into dispatch decisions.
+
+See [`docs/real-hazard-v1.2.md`](docs/real-hazard-v1.2.md) for provenance,
+transformations and claim boundaries.
