@@ -15,7 +15,7 @@
       <span><strong>EcoDispatch</strong><small data-i18n="brand.subtitle">Laboratorio abierto de investigación</small></span>
     </a>
     <nav>
-      <a href="#fire-dispatch">Fire Dispatch v1.4</a>
+      <a href="#temporal-fire">Temporal Fire v1.5</a>\n      <a href="#fire-dispatch">Fire Dispatch v1.4</a>
       <a id="sh-nav" href="#spatial-hazard">Peligro espacial v1.3</a>
       <a href="#real-hazard" data-i18n="hz.nav">Peligro AEMET</a>
       <a href="#real-routing" data-i18n="rr.nav">Routing real</a>
@@ -45,7 +45,7 @@
           cómo asignarlos cuando llegan varios incidentes a la vez y cómo mantener buena cobertura durante una jornada completa.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="#fire-dispatch" data-i18n="hero.cta">Ver routing real</a>
+          <a class="button primary" href="#temporal-fire" data-i18n="hero.cta">Ver routing real</a>
           <a class="button" href="#research" data-i18n="hero.method">Ver metodología</a>
         </div>
       </div>
@@ -165,6 +165,52 @@
           </article>
         </div>
       </section>
+    </section>
+
+    <section id="temporal-fire" class="section">
+      <div class="section-heading">
+        <div><p class="eyebrow">TEMPORAL FIRE OPERATIONS · v1.5</p><h2>Temporal Fire v1.5</h2></div>
+        <p data-tf="intro"></p>
+      </div>
+      <p class="tf-scope" data-tf="scope"></p>
+      <div class="tf-controls panel">
+        <label><span data-tf="snapshot"></span><select id="tf-snapshot" disabled></select></label>
+        <label><span data-tf="load"></span><select id="tf-load" disabled></select></label>
+        <label><span data-tf="policy"></span><select id="tf-policy" disabled></select></label>
+        <button id="tf-json" class="button" type="button" data-tf="json" disabled></button>
+        <button id="tf-csv" class="button" type="button" data-tf="csv" disabled></button>
+      </div>
+      <p id="tf-status" role="status" aria-live="polite"></p>
+      <p id="tf-source" class="tf-note"></p>
+
+      <div class="rr-facts tf-facts">
+        <article class="metric"><span data-tf="events"></span><strong id="tf-events">—</strong><small>Poisson · 24 h</small></article>
+        <article class="metric"><span data-tf="coverage"></span><strong id="tf-coverage">—</strong><small data-tf="unserved"></small><small id="tf-unserved">—</small></article>
+        <article class="metric"><span data-tf="response"></span><strong id="tf-response">—</strong><small data-tf="wait"></small><small id="tf-wait">—</small></article>
+        <article class="metric"><span data-tf="util"></span><strong id="tf-util">—</strong><small>F-01 · F-02 · F-03</small></article>
+      </div>
+
+      <div class="experiment-grid tf-grid">
+        <article class="panel">
+          <div class="panel-head"><div><span class="panel-kicker" data-tf="occupancy"></span><strong id="tf-policy-label">λ=0</strong></div><span class="method-pill">24 h</span></div>
+          <div id="tf-occupancy" class="tf-occupancy"></div>
+          <div class="explain-box"><strong data-tf="queue"></strong><p data-tf="queueCopy"></p></div>
+        </article>
+        <article class="panel result-panel">
+          <div class="result-hero compact"><span data-tf="finding"></span><strong>λ ≈ 0.2</strong><p data-tf="findingCopy"></p></div>
+          <div class="explain-box"><strong>Design fixed before outcomes</strong><p>12 vs 36 expected fires/24 h · 90 min service · 120 min deadline · three modeled brigades · paired seeds.</p></div>
+          <div class="explain-box"><strong>Claim boundary</strong><p>Road routing and AEMET hazard are real/frozen. Demand, fleet, service time, severity, emissions and harm remain modeled.</p></div>
+        </article>
+      </div>
+
+      <article class="panel">
+        <div class="ab-table-wrap"><table id="tf-results"></table></div>
+        <p id="tf-diagnostics" class="tf-note"></p>
+      </article>
+      <div class="fd-links">
+        <a href="https://github.com/webtilians/ecodispatch/blob/master/docs/temporal-fire-v1.5.md" data-tf="methods"></a>
+        <a href="https://www.aemet.es/es/eltiempo/prediccion/incendios/ayuda" data-tf="source"></a>
+      </div>
     </section>
 
     <section id="fire-dispatch" class="section">
@@ -578,6 +624,6 @@
   <script src="./holdout.js?v=1.2.1"></script>
   <script src="./app.js?v=1.2.1"></script>
   <script src="./spatial-hazard.js?v=1.3"></script>
-  <script src="./fire-dispatch.js?v=1.4"></script>
+  <script src="./fire-dispatch.js?v=1.4"></script>\n  <script src="./temporal-fire.js?v=1.5"></script>
 </body>
 </html>
