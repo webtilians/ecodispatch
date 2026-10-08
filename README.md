@@ -5,7 +5,7 @@ EcoDispatch is a research prototype for allocating scarce mobile resources
 using a hierarchical optimization architecture inspired by recent results in
 metric **k-median**, **maximum matching**, and **k-server**.
 
-## Current release: Fire Dispatch v1.4 (exploratory)
+## Current release: Temporal Fire Operations v1.5 (exploratory)
 
 [Open the ES/EN experiment](https://webtilians.github.io/ecodispatch/?lang=es#fire-dispatch) ·
 [Methods](docs/fire-dispatch-v1.4.md) · [Results](results/fire-dispatch-v1.4-report.md) ·
