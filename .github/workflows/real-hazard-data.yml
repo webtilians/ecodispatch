@@ -1,0 +1,55 @@
+name: Build v1.2 AEMET hazard dataset
+
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - "scripts/fetch_aemet_fire_risk.py"
+      - ".github/workflows/real-hazard-data.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "real-hazard-data"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch official AEMET 2025 fire-weather statistics
+        run: python scripts/fetch_aemet_fire_risk.py
+
+      - name: Validate generated dataset
+        run: |
+          python - <<'PY'
+          import json
+          p="web/data/aemet-malaga-fwi-2025.json"
+          d=json.load(open(p,encoding="utf-8"))
+          assert d["dataset"]=="aemet-malaga-fire-weather-2025"
+          assert d["scope"]["province"]=="Málaga"
+          assert d["scope"]["year"]==2025
+          assert d["scope"]["spatial_resolution"]=="province"
+          assert d["datasets"]
+          assert sum(len(v["malaga_rows"]) for v in d["datasets"].values())>0
+          print("validated", list(d["datasets"]))
+          PY
+
+      - name: Commit versioned hazard dataset
+        run: |
+          if [ -z "$(git status --porcelain -- web/data/aemet-malaga-fwi-2025.json)" ]; then
+            echo "No hazard-data change"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add web/data/aemet-malaga-fwi-2025.json
+          git commit -m "Generate v1.2 Málaga AEMET fire-weather dataset"
+          git push
