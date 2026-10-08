@@ -1,0 +1,102 @@
+{
+  "version": "1.5",
+  "experiment": "Temporal Fire Operations",
+  "confirmatory": false,
+  "status": "exploratory_design_fixed_before_outcomes",
+  "frozen_inputs": {
+    "routing": "web/data/routing-v1.0.json",
+    "hazard_catalog": "web/data/fire-snapshots-v1.4.json",
+    "snapshot_ids": [
+      "down_20261007_peligro_p_D02-24297c444c84",
+      "down_20261007_peligro_p_D01-3acf9899447e",
+      "down_20261007_peligro_p_D04-7ab3652678c2"
+    ],
+    "fleet": [
+      {
+        "name": "F-01",
+        "station": "B2",
+        "capabilities": [
+          "fire"
+        ],
+        "co2_g_per_km": 230
+      },
+      {
+        "name": "F-02",
+        "station": "B3",
+        "capabilities": [
+          "fire"
+        ],
+        "co2_g_per_km": 230
+      },
+      {
+        "name": "F-03",
+        "station": "B4",
+        "capabilities": [
+          "fire"
+        ],
+        "co2_g_per_km": 230
+      }
+    ]
+  },
+  "horizon_minutes": 1440,
+  "arrival_process": {
+    "family": "homogeneous Poisson process via exponential inter-arrival times",
+    "location_sampling": "uniform across the ten routing-eligible demand nodes; independent of AEMET hazard",
+    "regimes": [
+      {
+        "id": "low",
+        "events_per_24h": 12,
+        "mean_interarrival_minutes": 120
+      },
+      {
+        "id": "high",
+        "events_per_24h": 36,
+        "mean_interarrival_minutes": 40
+      }
+    ]
+  },
+  "severity": "uniform [2,5)",
+  "deadline_min": 120,
+  "service_minutes": 90,
+  "queue": {
+    "enabled": true,
+    "discipline": "arrival-order scan: at each event/release/deadline time, dispatch the oldest queued event that has at least one currently free brigade able to arrive before its deadline; repeat until no feasible queued event remains",
+    "occupied_resources_eligible": false,
+    "expiry": "queued incident becomes unserved at arrival_time + deadline_min if not dispatched before expiry",
+    "response_delay": "dispatch_wait + road_travel_eta"
+  },
+  "potential": {
+    "definition": "sum_node AEMET_class(node) * min_brigade(remaining_busy_time + road_ETA(release_position,node))",
+    "busy_resource_position": "assigned incident node after its current service",
+    "hypothetical_move": "candidate brigade release = dispatch_time + road_ETA_to_incident + service_minutes; release position = incident node",
+    "note": "AEMET classes remain ordinal 1..6; no conversion to incident probabilities"
+  },
+  "policies": {
+    "lambdas": [
+      0,
+      0.2,
+      0.35,
+      0.5,
+      1
+    ],
+    "baselines": [
+      "eta-greedy",
+      "distance-greedy"
+    ],
+    "eco_score": "severity * response_delay + 0.0005 * emissions_g + 0.05 * distance_km + lambda * (Phi_after - Phi_before)"
+  },
+  "simulation": {
+    "days_per_snapshot_regime": 1000,
+    "bootstrap_replicates": 500,
+    "seed": "ecodispatch-temporal-fire-15-exploratory-20261008",
+    "seed_pattern": "ecodispatch-temporal-fire-15-exploratory-20261008|snapshot|SNAPSHOT_ID|load|REGIME|day|INDEX",
+    "paired_events_across_policies": true,
+    "reset_fleet_each_day": true
+  },
+  "harm": {
+    "k_unserved": 10,
+    "served": "severity * response_delay_minutes",
+    "unserved": "10 * severity^2"
+  },
+  "claim_scope": "exploratory simulator with real frozen road routing and official AEMET spatial hazard; modeled fleet, synthetic arrivals/severity/service/emissions; not operational efficacy"
+}
