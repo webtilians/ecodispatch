@@ -5,7 +5,7 @@ EcoDispatch is a research prototype for allocating scarce mobile resources
 using a hierarchical optimization architecture inspired by recent results in
 metric **k-median**, **maximum matching**, and **k-server**.
 
-## Current release: Fire Dispatch v1.4 (exploratory)
+## Current release: Temporal Fire Operations v1.5 (exploratory)
 
 [Open the ES/EN experiment](https://webtilians.github.io/ecodispatch/?lang=es#fire-dispatch) ·
 [Methods](docs/fire-dispatch-v1.4.md) · [Results](results/fire-dispatch-v1.4-report.md) ·
@@ -456,3 +456,44 @@ integration result, not evidence of real-world efficacy or a reused holdout.
 
 Python tests now require `python -m pip install -r requirements-spatial.txt`.
 The full Node/Python/Playwright suite and deterministic offline rebuild gate Pages.
+
+
+## v1.5 — Temporal Fire Operations
+
+v1.5 adds the operational constraint deliberately missing from v1.4: **time**.
+The exploratory design was fixed before outcomes in commit
+`1b1a3836503384392565a06703b50d45c14dfd18`.
+
+Each replicate now has a 24-hour clock, homogeneous Poisson fire arrivals, a
+120-minute response deadline, an explicit waiting queue and **90 minutes of
+modeled service** after road travel. A busy brigade is not eligible for a new
+dispatch. Three modeled brigades remain at B2/B3/B4.
+
+Two load regimes were fixed before policy comparison:
+
+- low: 12 expected fires / 24 h;
+- high: 36 expected fires / 24 h.
+
+The future-coverage potential accounts for a busy brigade through its remaining
+busy time plus road ETA from its release position. AEMET classes remain ordinal
+hazard weights, never incident probabilities.
+
+Across the three frozen AEMET snapshots × two fixed load regimes, lambda=.2 has
+lower mean synthetic harm than lambda=0 in all six point estimates; five paired
+bootstrap 95% intervals are entirely below zero and one crosses zero. Lambda=1
+worsens synthetic harm in all six conditions. This is **exploratory** and no
+optimal lambda is declared.
+
+Under high load the model produces substantial congestion: about 36 generated
+fires/day, roughly 74% coverage, approximately 18.5 minutes mean queue wait and
+~80% mean brigade utilization. This demonstrates that preserving future coverage
+now acts in a model where resources genuinely become unavailable.
+
+- Design: [`docs/temporal-fire-v1.5-design.md`](docs/temporal-fire-v1.5-design.md)
+- Methods/results: [`docs/temporal-fire-v1.5.md`](docs/temporal-fire-v1.5.md)
+- Result JSON: `web/data/temporal-fire-v1.5.json`
+- Public section: `#temporal-fire`
+
+Real/frozen layers remain OSM/OSRM routing and archived AEMET hazard. Fleet,
+arrivals, incident locations, severity, service, emissions and harm are modeled.
+No operational-efficacy claim is made.

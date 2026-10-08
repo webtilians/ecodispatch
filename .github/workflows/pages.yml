@@ -63,6 +63,11 @@ jobs:
           node scripts/run_fire_benchmark.cjs
           git diff --exit-code -- web/data/fire-snapshots-v1.4.json web/data/fire-benchmark-v1.4.json web/data/fire-benchmark-v1.4.csv results/fire-dispatch-v1.4-rows.json results/fire-dispatch-v1.4-report.md
 
+      - name: Reproduce fixed-design v1.5 temporal fire experiment offline
+        run: |
+          node scripts/run_temporal_fire_benchmark.cjs
+          git diff --exit-code -- web/data/temporal-fire-v1.5.json web/data/temporal-fire-v1.5.csv results/temporal-fire-v1.5-report.md
+
       - name: Validate paired study, model regression, translations and syntax
         run: |
           node tests/ablation.test.cjs
@@ -72,6 +77,7 @@ jobs:
           node tests/real-hazard.test.cjs
           node tests/spatial-hazard.test.cjs
           node tests/fire-dispatch.test.cjs
+          node tests/temporal-fire.test.cjs
           python -m unittest discover -s tests
 
       - name: Install Playwright

@@ -1,5 +1,5 @@
 {
-  "version": "1.4",
+  "version": "1.5",
   "date": "2026-10-08",
   "placement": {
     "selected_bases": [
@@ -428,6 +428,36 @@
       "result": "./data/fire-benchmark-v1.4.json",
       "fleet": "three modeled brigades at B2/B3/B4",
       "limitation": "three forecast validities from one model issue, not independent historical days"
+    },
+    "temporal_fire": {
+      "status": "exploratory_fixed_design",
+      "confirmatory": false,
+      "design_commit": "1b1a3836503384392565a06703b50d45c14dfd18",
+      "protocol": "data/temporal-fire-v1.5/protocol.json",
+      "result": "./data/temporal-fire-v1.5.json",
+      "snapshots": 3,
+      "load_regimes": {
+        "low": 12,
+        "high": 36
+      },
+      "service_minutes": 90,
+      "deadline_minutes": 120,
+      "queue": true,
+      "fleet": "three modeled brigades at B2/B3/B4",
+      "real_layers": [
+        "frozen OSM/OSRM routing",
+        "archived AEMET spatial hazard"
+      ],
+      "modeled_layers": [
+        "fleet",
+        "Poisson arrivals",
+        "uniform incident locations",
+        "severity",
+        "service",
+        "emissions",
+        "harm"
+      ],
+      "descriptive_result": "lambda 0.2 lowers mean synthetic harm in five of six fixed snapshot/load combinations with bootstrap intervals below zero; lambda 1 worsens harm in all six; no optimal lambda claim"
     }
   }
 }
