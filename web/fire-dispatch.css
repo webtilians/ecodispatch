@@ -1,0 +1,21 @@
+#fire-dispatch { scroll-margin-top: 110px; }
+#fire-dispatch .fd-intro { max-width: 76ch; }
+#fire-dispatch .fd-controls { display:flex; flex-wrap:wrap; gap:14px; align-items:end; margin:20px 0; }
+#fire-dispatch label { display:grid; gap:8px; max-width:100%; }
+#fd-snapshot { max-width:100%; background:#142b27; color:#edf5ef; border:1px solid #658579; padding:12px; border-radius:8px; }
+#fire-dispatch .fd-layout { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:20px; margin:20px 0; }
+#fire-dispatch .panel { padding:22px; min-width:0; }
+#fd-map { width:100%; height:auto; display:block; background:#10231f; border-radius:12px; }
+.fd-grid { stroke:#385249; stroke-width:1; }
+.fd-axis { fill:#aebfb8; font-size:10px; }
+.fd-label { fill:#f2f6f3; font-size:13px; paint-order:stroke; stroke:#10231f; stroke-width:3px; }
+#fd-legend { display:flex; flex-wrap:wrap; gap:8px 14px; margin:14px 0; font-size:13px; }
+#fd-legend span { border-left:8px solid; padding-left:5px; }
+#fire-dispatch .fd-table-wrap { overflow-x:auto; max-width:100%; }
+#fire-dispatch table { width:100%; border-collapse:collapse; font-size:13px; }
+#fire-dispatch th,#fire-dispatch td { padding:11px 9px; border-bottom:1px solid #365047; text-align:left; white-space:nowrap; }
+#fire-dispatch th { color:#9cd3b8; }
+#fd-source { overflow-wrap:anywhere; }
+#fire-dispatch .fd-note { color:#b9c9c0; font-size:14px; line-height:1.65; }
+#fire-dispatch .fd-links { display:flex; flex-wrap:wrap; gap:16px; margin-top:16px; }
+@media(max-width:850px) { #fire-dispatch .fd-layout { grid-template-columns:1fr; } #fire-dispatch .panel { padding:14px; } }

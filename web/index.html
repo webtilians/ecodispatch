@@ -6,6 +6,7 @@
   <meta name="description" content="EcoDispatch — open research into risk-aware resource allocation for emergency response.">
   <title>EcoDispatch — Research Lab</title>
   <link rel="stylesheet" href="./styles.css?v=1.3">
+  <link rel="stylesheet" href="./fire-dispatch.css?v=1.4">
 </head>
 <body>
   <header class="topbar">
@@ -14,6 +15,7 @@
       <span><strong>EcoDispatch</strong><small data-i18n="brand.subtitle">Laboratorio abierto de investigación</small></span>
     </a>
     <nav>
+      <a href="#fire-dispatch">Fire Dispatch v1.4</a>
       <a id="sh-nav" href="#spatial-hazard">Peligro espacial v1.3</a>
       <a href="#real-hazard" data-i18n="hz.nav">Peligro AEMET</a>
       <a href="#real-routing" data-i18n="rr.nav">Routing real</a>
@@ -43,7 +45,7 @@
           cómo asignarlos cuando llegan varios incidentes a la vez y cómo mantener buena cobertura durante una jornada completa.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="#real-hazard" data-i18n="hero.cta">Ver routing real</a>
+          <a class="button primary" href="#fire-dispatch" data-i18n="hero.cta">Ver routing real</a>
           <a class="button" href="#research" data-i18n="hero.method">Ver metodología</a>
         </div>
       </div>
@@ -163,6 +165,26 @@
           </article>
         </div>
       </section>
+    </section>
+
+    <section id="fire-dispatch" class="section">
+      <div class="section-heading"><div><p class="eyebrow">EXPLORATORY · v1.4</p><h2>Fire Dispatch v1.4</h2></div><p data-fd="intro"></p></div>
+      <p class="fd-intro" data-fd="scope"></p>
+      <p class="fd-note" data-fd="limit"></p>
+      <p class="fd-note" data-fd="selection"></p>
+      <div class="fd-controls">
+        <label><span data-fd="snapshot"></span><select id="fd-snapshot" disabled></select></label>
+        <button id="fd-json" class="button" type="button" data-fd="json" disabled></button>
+        <button id="fd-csv" class="button" type="button" data-fd="csv" disabled></button>
+      </div>
+      <p id="fd-status" role="status" aria-live="polite"></p>
+      <p id="fd-source" class="fd-note"></p>
+      <div class="fd-layout">
+        <article class="panel"><h3 data-fd="map"></h3><svg id="fd-map" viewBox="0 0 740 420" role="img"></svg><div id="fd-legend"></div><p class="fd-note" data-fd="mapNote"></p></article>
+        <article class="panel"><h3 data-fd="fleet"></h3><p class="fd-note" data-fd="fleetNote"></p><div class="fd-table-wrap"><table id="fd-nodes"></table></div></article>
+      </div>
+      <article class="panel"><h3 data-fd="results"></h3><div class="fd-table-wrap"><table id="fd-results"></table></div><p id="fd-diagnostics" class="fd-note"></p><p class="fd-note" data-fd="metrics"></p></article>
+      <div class="fd-links"><a href="https://github.com/webtilians/ecodispatch/blob/master/docs/fire-dispatch-v1.4.md" data-fd="methods"></a><a href="./data/fire-snapshots-v1.4.json" data-fd="catalog"></a><a href="https://www.aemet.es/es/eltiempo/prediccion/incendios/ayuda">Fuente / Source: AEMET</a></div>
     </section>
 
     <section id="spatial-hazard" class="section">
@@ -543,7 +565,7 @@
 
   <footer><span data-i18n="footer">EcoDispatch · open research prototype</span><a href="https://github.com/webtilians/ecodispatch">GitHub</a></footer>
 
-  <script src="./i18n.js?v=1.3"></script>
+  <script src="./i18n.js?v=1.4"></script>
   <script src="./simulation.js?v=1.2.1"></script>
   <script src="./ablation-core.js?v=1.2.1"></script>
   <script src="./ablation.js?v=1.2.1"></script>
@@ -556,5 +578,6 @@
   <script src="./holdout.js?v=1.2.1"></script>
   <script src="./app.js?v=1.2.1"></script>
   <script src="./spatial-hazard.js?v=1.3"></script>
+  <script src="./fire-dispatch.js?v=1.4"></script>
 </body>
 </html>

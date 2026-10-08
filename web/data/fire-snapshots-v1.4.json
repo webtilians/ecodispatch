@@ -1,0 +1,1330 @@
+{
+  "dataset": "aemet-fire-snapshots-v1.4",
+  "version": "1.4",
+  "confirmatory": false,
+  "protocol_sha256": "7b65f182a022b37096728b13f3029ea110f62f65805c71d1fed65aaeedcb4cf8",
+  "acquisitions_sha256": "7400062d732ddb999ca5112ee2656eb7fb18bdfd00ea10b31e4e0b6b73162076",
+  "routing": {
+    "dataset": "malaga-real-routing-v1",
+    "sha256": "70ded244e34f1708d9c549f3e50fc13e723d5e5319396a397016dad898c3dade"
+  },
+  "selection": {
+    "rule": "Rank eligible Peninsula danger rasters by distinct node classes descending, class range descending, mean node class descending, validity ascending, model time ascending, raster SHA ascending. Select top 3 plus the v1.3 reference raster if absent. No policy results enter selection.",
+    "top": 3,
+    "reference_member": "down_20261007_peligro_p_D01.tif",
+    "selected_ids": [
+      "down_20261007_peligro_p_D02-24297c444c84",
+      "down_20261007_peligro_p_D01-3acf9899447e",
+      "down_20261007_peligro_p_D04-7ab3652678c2"
+    ]
+  },
+  "sampling": "Original WGS84 coordinates; containing pixel, no interpolation; ordinal classes 1..6, not probabilities",
+  "limitation": "Forecast validities may share one model issue. No independent historical AEMET archive was obtained. No temporal generalization or operational efficacy.",
+  "candidates": [
+    {
+      "id": "down_20261007_peligro_p_D02-24297c444c84",
+      "source": {
+        "publisher": "AEMET",
+        "url": "https://www.aemet.es/es/api-eltiempo/incendios/download",
+        "retrieved_at_utc": "2026-10-08T15:40:05Z",
+        "archive": "data/spatial-hazard-v1.3/aemet-20261007.tar.gz",
+        "archive_sha256": "a0816b24fcfe981163d2f00706c411124ef89b67dde42e9ec45cf061ec09983c",
+        "member": "down_20261007_peligro_p_D02.tif",
+        "raster_sha256": "24297c444c84a3743b5cae45c29ef8ec3a37834542a69eff4d6ecca420e36d60",
+        "legend_sha256": "02f567f784c9bc0b72b98d3d4e242a4b3677934c019ac6249deb3153fa22f3db",
+        "model_time_utc": "2026-10-07T12:00:00Z",
+        "valid_time_utc": "2026-10-09T12:00:00Z",
+        "lead_hours": 48.0,
+        "tags": {
+          "CAMPO": "Peligro",
+          "coords_unit": "degrees_east / degrees_north",
+          "ESCALA": "{\"Producto\":\"RIESGO\",\"Lista RGBA\":[{\"Valores\":[\"0\"],\"RGBA\":[\"0,0,255,125\"]},{\"Valores\":[\"1\"],\"RGBA\":[\"75,150,227,255\"]},{\"Valores\":[\"2\"],\"RGBA\":[\"81,209,246,255\"]},{\"Valores\":[\"3\"],\"RGBA\":[\"87,229,32,255\"]},{\"Valores\":[\"4\"],\"RGBA\":[\"249,251,47,255\"]},{\"Valores\":[\"5\"],\"RGBA\":[\"239,133,4,255\"]},{\"Valores\":[\"6\"],\"RGBA\":[\"245,35,0,255\"]},{\"Valores\":[\"255\"],\"RGBA\":[\"100,100,100,150\"]}]}",
+          "FUENTE": "Aemet",
+          "institution": "Agencia Estatal de Meteorología (AEMET)",
+          "long_name": "Danger level",
+          "Model": "European Centre for Medium-Range Weather Forecasts (ECMWF)",
+          "model_time": "2026-10-07T12:00:00",
+          "region": "Iberian Peninsula and Balearic Islands",
+          "short_name": "peligro",
+          "source": "Model",
+          "time_unit": "Coordinated Universal Time (UTC)",
+          "UNIDADES": "El peligro de incendio se estratifica en seis niveles de peligro (muy bajo, bajo, moderado, alto, muy alto y extremo)",
+          "USO": "© Aemet. Autorizado el uso de la información y su reproducción citando a Aemet como autora de la misma.",
+          "valid_time": "2026-10-09T12:00:00",
+          "AREA_OR_POINT": "Area"
+        }
+      },
+      "raster": {
+        "crs": "EPSG:4326",
+        "transform": [
+          0.009999999999999787,
+          0.0,
+          -10.204999999999998,
+          0.0,
+          -0.00999999999999801,
+          44.21499999999817
+        ],
+        "width": 1541,
+        "height": 922,
+        "nodata": null
+      },
+      "nodes": [
+        {
+          "id": "D0",
+          "longitude": -4.4502439,
+          "latitude": 36.7664706,
+          "row": 744,
+          "column": 575,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D1",
+          "longitude": -4.4209756,
+          "latitude": 36.7755294,
+          "row": 743,
+          "column": 578,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D2",
+          "longitude": -4.3526829,
+          "latitude": 36.7703529,
+          "row": 744,
+          "column": 585,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        },
+        {
+          "id": "D3",
+          "longitude": -4.3136585,
+          "latitude": 36.7794118,
+          "row": 743,
+          "column": 589,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        },
+        {
+          "id": "D4",
+          "longitude": -4.4404878,
+          "latitude": 36.8182353,
+          "row": 739,
+          "column": 576,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D6",
+          "longitude": -4.3526829,
+          "latitude": 36.8221176,
+          "row": 739,
+          "column": 585,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        },
+        {
+          "id": "D7",
+          "longitude": -4.3039024,
+          "latitude": 36.8247059,
+          "row": 739,
+          "column": 590,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        },
+        {
+          "id": "D9",
+          "longitude": -4.3819512,
+          "latitude": 36.8505882,
+          "row": 736,
+          "column": 582,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D10",
+          "longitude": -4.3273171,
+          "latitude": 36.8609412,
+          "row": 735,
+          "column": 587,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        },
+        {
+          "id": "D11",
+          "longitude": -4.3,
+          "latitude": 36.87,
+          "row": 734,
+          "column": 590,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        }
+      ],
+      "diversity": {
+        "distinct_classes": 2,
+        "range": 1,
+        "mean_class": 1.6,
+        "histogram": {
+          "1": 4,
+          "2": 6,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        }
+      }
+    },
+    {
+      "id": "down_20261007_peligro_p_D01-3acf9899447e",
+      "source": {
+        "publisher": "AEMET",
+        "url": "https://www.aemet.es/es/api-eltiempo/incendios/download",
+        "retrieved_at_utc": "2026-10-08T15:40:05Z",
+        "archive": "data/spatial-hazard-v1.3/aemet-20261007.tar.gz",
+        "archive_sha256": "a0816b24fcfe981163d2f00706c411124ef89b67dde42e9ec45cf061ec09983c",
+        "member": "down_20261007_peligro_p_D01.tif",
+        "raster_sha256": "3acf9899447eff7c4cb5d48d94e1b4f5ae860157399248ffd5e426e550688e03",
+        "legend_sha256": "02f567f784c9bc0b72b98d3d4e242a4b3677934c019ac6249deb3153fa22f3db",
+        "model_time_utc": "2026-10-07T12:00:00Z",
+        "valid_time_utc": "2026-10-08T12:00:00Z",
+        "lead_hours": 24.0,
+        "tags": {
+          "CAMPO": "Peligro",
+          "coords_unit": "degrees_east / degrees_north",
+          "ESCALA": "{\"Producto\":\"RIESGO\",\"Lista RGBA\":[{\"Valores\":[\"0\"],\"RGBA\":[\"0,0,255,125\"]},{\"Valores\":[\"1\"],\"RGBA\":[\"75,150,227,255\"]},{\"Valores\":[\"2\"],\"RGBA\":[\"81,209,246,255\"]},{\"Valores\":[\"3\"],\"RGBA\":[\"87,229,32,255\"]},{\"Valores\":[\"4\"],\"RGBA\":[\"249,251,47,255\"]},{\"Valores\":[\"5\"],\"RGBA\":[\"239,133,4,255\"]},{\"Valores\":[\"6\"],\"RGBA\":[\"245,35,0,255\"]},{\"Valores\":[\"255\"],\"RGBA\":[\"100,100,100,150\"]}]}",
+          "FUENTE": "Aemet",
+          "institution": "Agencia Estatal de Meteorología (AEMET)",
+          "long_name": "Danger level",
+          "Model": "European Centre for Medium-Range Weather Forecasts (ECMWF)",
+          "model_time": "2026-10-07T12:00:00",
+          "region": "Iberian Peninsula and Balearic Islands",
+          "short_name": "peligro",
+          "source": "Model",
+          "time_unit": "Coordinated Universal Time (UTC)",
+          "UNIDADES": "El peligro de incendio se estratifica en seis niveles de peligro (muy bajo, bajo, moderado, alto, muy alto y extremo)",
+          "USO": "© Aemet. Autorizado el uso de la información y su reproducción citando a Aemet como autora de la misma.",
+          "valid_time": "2026-10-08T12:00:00",
+          "AREA_OR_POINT": "Area"
+        }
+      },
+      "raster": {
+        "crs": "EPSG:4326",
+        "transform": [
+          0.009999999999999787,
+          0.0,
+          -10.204999999999998,
+          0.0,
+          -0.00999999999999801,
+          44.21499999999817
+        ],
+        "width": 1541,
+        "height": 922,
+        "nodata": null
+      },
+      "nodes": [
+        {
+          "id": "D0",
+          "longitude": -4.4502439,
+          "latitude": 36.7664706,
+          "row": 744,
+          "column": 575,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D1",
+          "longitude": -4.4209756,
+          "latitude": 36.7755294,
+          "row": 743,
+          "column": 578,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D2",
+          "longitude": -4.3526829,
+          "latitude": 36.7703529,
+          "row": 744,
+          "column": 585,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D3",
+          "longitude": -4.3136585,
+          "latitude": 36.7794118,
+          "row": 743,
+          "column": 589,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D4",
+          "longitude": -4.4404878,
+          "latitude": 36.8182353,
+          "row": 739,
+          "column": 576,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D6",
+          "longitude": -4.3526829,
+          "latitude": 36.8221176,
+          "row": 739,
+          "column": 585,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D7",
+          "longitude": -4.3039024,
+          "latitude": 36.8247059,
+          "row": 739,
+          "column": 590,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        },
+        {
+          "id": "D9",
+          "longitude": -4.3819512,
+          "latitude": 36.8505882,
+          "row": 736,
+          "column": 582,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D10",
+          "longitude": -4.3273171,
+          "latitude": 36.8609412,
+          "row": 735,
+          "column": 587,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D11",
+          "longitude": -4.3,
+          "latitude": 36.87,
+          "row": 734,
+          "column": 590,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        }
+      ],
+      "diversity": {
+        "distinct_classes": 2,
+        "range": 1,
+        "mean_class": 1.2,
+        "histogram": {
+          "1": 8,
+          "2": 2,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        }
+      }
+    },
+    {
+      "id": "down_20261007_peligro_p_D04-7ab3652678c2",
+      "source": {
+        "publisher": "AEMET",
+        "url": "https://www.aemet.es/es/api-eltiempo/incendios/download",
+        "retrieved_at_utc": "2026-10-08T15:40:05Z",
+        "archive": "data/spatial-hazard-v1.3/aemet-20261007.tar.gz",
+        "archive_sha256": "a0816b24fcfe981163d2f00706c411124ef89b67dde42e9ec45cf061ec09983c",
+        "member": "down_20261007_peligro_p_D04.tif",
+        "raster_sha256": "7ab3652678c2216dcaaf709000ec86d99e64ce21594aeec447c8b3bc2eb2bd99",
+        "legend_sha256": "02f567f784c9bc0b72b98d3d4e242a4b3677934c019ac6249deb3153fa22f3db",
+        "model_time_utc": "2026-10-07T12:00:00Z",
+        "valid_time_utc": "2026-10-11T12:00:00Z",
+        "lead_hours": 96.0,
+        "tags": {
+          "CAMPO": "Peligro",
+          "coords_unit": "degrees_east / degrees_north",
+          "ESCALA": "{\"Producto\":\"RIESGO\",\"Lista RGBA\":[{\"Valores\":[\"0\"],\"RGBA\":[\"0,0,255,125\"]},{\"Valores\":[\"1\"],\"RGBA\":[\"75,150,227,255\"]},{\"Valores\":[\"2\"],\"RGBA\":[\"81,209,246,255\"]},{\"Valores\":[\"3\"],\"RGBA\":[\"87,229,32,255\"]},{\"Valores\":[\"4\"],\"RGBA\":[\"249,251,47,255\"]},{\"Valores\":[\"5\"],\"RGBA\":[\"239,133,4,255\"]},{\"Valores\":[\"6\"],\"RGBA\":[\"245,35,0,255\"]},{\"Valores\":[\"255\"],\"RGBA\":[\"100,100,100,150\"]}]}",
+          "FUENTE": "Aemet",
+          "institution": "Agencia Estatal de Meteorología (AEMET)",
+          "long_name": "Danger level",
+          "Model": "European Centre for Medium-Range Weather Forecasts (ECMWF)",
+          "model_time": "2026-10-07T12:00:00",
+          "region": "Iberian Peninsula and Balearic Islands",
+          "short_name": "peligro",
+          "source": "Model",
+          "time_unit": "Coordinated Universal Time (UTC)",
+          "UNIDADES": "El peligro de incendio se estratifica en seis niveles de peligro (muy bajo, bajo, moderado, alto, muy alto y extremo)",
+          "USO": "© Aemet. Autorizado el uso de la información y su reproducción citando a Aemet como autora de la misma.",
+          "valid_time": "2026-10-11T12:00:00",
+          "AREA_OR_POINT": "Area"
+        }
+      },
+      "raster": {
+        "crs": "EPSG:4326",
+        "transform": [
+          0.009999999999999787,
+          0.0,
+          -10.204999999999998,
+          0.0,
+          -0.00999999999999801,
+          44.21499999999817
+        ],
+        "width": 1541,
+        "height": 922,
+        "nodata": null
+      },
+      "nodes": [
+        {
+          "id": "D0",
+          "longitude": -4.4502439,
+          "latitude": 36.7664706,
+          "row": 744,
+          "column": 575,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D1",
+          "longitude": -4.4209756,
+          "latitude": 36.7755294,
+          "row": 743,
+          "column": 578,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D2",
+          "longitude": -4.3526829,
+          "latitude": 36.7703529,
+          "row": 744,
+          "column": 585,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D3",
+          "longitude": -4.3136585,
+          "latitude": 36.7794118,
+          "row": 743,
+          "column": 589,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D4",
+          "longitude": -4.4404878,
+          "latitude": 36.8182353,
+          "row": 739,
+          "column": 576,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D6",
+          "longitude": -4.3526829,
+          "latitude": 36.8221176,
+          "row": 739,
+          "column": 585,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D7",
+          "longitude": -4.3039024,
+          "latitude": 36.8247059,
+          "row": 739,
+          "column": 590,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        },
+        {
+          "id": "D9",
+          "longitude": -4.3819512,
+          "latitude": 36.8505882,
+          "row": 736,
+          "column": 582,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D10",
+          "longitude": -4.3273171,
+          "latitude": 36.8609412,
+          "row": 735,
+          "column": 587,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D11",
+          "longitude": -4.3,
+          "latitude": 36.87,
+          "row": 734,
+          "column": 590,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        }
+      ],
+      "diversity": {
+        "distinct_classes": 2,
+        "range": 1,
+        "mean_class": 1.2,
+        "histogram": {
+          "1": 8,
+          "2": 2,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        }
+      }
+    },
+    {
+      "id": "down_20261007_peligro_p_D05-d40cfa211b99",
+      "source": {
+        "publisher": "AEMET",
+        "url": "https://www.aemet.es/es/api-eltiempo/incendios/download",
+        "retrieved_at_utc": "2026-10-08T15:40:05Z",
+        "archive": "data/spatial-hazard-v1.3/aemet-20261007.tar.gz",
+        "archive_sha256": "a0816b24fcfe981163d2f00706c411124ef89b67dde42e9ec45cf061ec09983c",
+        "member": "down_20261007_peligro_p_D05.tif",
+        "raster_sha256": "d40cfa211b997d13be28b6f30e2b719572d5a806dfe71bbea6287c6b372dc561",
+        "legend_sha256": "02f567f784c9bc0b72b98d3d4e242a4b3677934c019ac6249deb3153fa22f3db",
+        "model_time_utc": "2026-10-07T12:00:00Z",
+        "valid_time_utc": "2026-10-12T12:00:00Z",
+        "lead_hours": 120.0,
+        "tags": {
+          "CAMPO": "Peligro",
+          "coords_unit": "degrees_east / degrees_north",
+          "ESCALA": "{\"Producto\":\"RIESGO\",\"Lista RGBA\":[{\"Valores\":[\"0\"],\"RGBA\":[\"0,0,255,125\"]},{\"Valores\":[\"1\"],\"RGBA\":[\"75,150,227,255\"]},{\"Valores\":[\"2\"],\"RGBA\":[\"81,209,246,255\"]},{\"Valores\":[\"3\"],\"RGBA\":[\"87,229,32,255\"]},{\"Valores\":[\"4\"],\"RGBA\":[\"249,251,47,255\"]},{\"Valores\":[\"5\"],\"RGBA\":[\"239,133,4,255\"]},{\"Valores\":[\"6\"],\"RGBA\":[\"245,35,0,255\"]},{\"Valores\":[\"255\"],\"RGBA\":[\"100,100,100,150\"]}]}",
+          "FUENTE": "Aemet",
+          "institution": "Agencia Estatal de Meteorología (AEMET)",
+          "long_name": "Danger level",
+          "Model": "European Centre for Medium-Range Weather Forecasts (ECMWF)",
+          "model_time": "2026-10-07T12:00:00",
+          "region": "Iberian Peninsula and Balearic Islands",
+          "short_name": "peligro",
+          "source": "Model",
+          "time_unit": "Coordinated Universal Time (UTC)",
+          "UNIDADES": "El peligro de incendio se estratifica en seis niveles de peligro (muy bajo, bajo, moderado, alto, muy alto y extremo)",
+          "USO": "© Aemet. Autorizado el uso de la información y su reproducción citando a Aemet como autora de la misma.",
+          "valid_time": "2026-10-12T12:00:00",
+          "AREA_OR_POINT": "Area"
+        }
+      },
+      "raster": {
+        "crs": "EPSG:4326",
+        "transform": [
+          0.009999999999999787,
+          0.0,
+          -10.204999999999998,
+          0.0,
+          -0.00999999999999801,
+          44.21499999999817
+        ],
+        "width": 1541,
+        "height": 922,
+        "nodata": null
+      },
+      "nodes": [
+        {
+          "id": "D0",
+          "longitude": -4.4502439,
+          "latitude": 36.7664706,
+          "row": 744,
+          "column": 575,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D1",
+          "longitude": -4.4209756,
+          "latitude": 36.7755294,
+          "row": 743,
+          "column": 578,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D2",
+          "longitude": -4.3526829,
+          "latitude": 36.7703529,
+          "row": 744,
+          "column": 585,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D3",
+          "longitude": -4.3136585,
+          "latitude": 36.7794118,
+          "row": 743,
+          "column": 589,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D4",
+          "longitude": -4.4404878,
+          "latitude": 36.8182353,
+          "row": 739,
+          "column": 576,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D6",
+          "longitude": -4.3526829,
+          "latitude": 36.8221176,
+          "row": 739,
+          "column": 585,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D7",
+          "longitude": -4.3039024,
+          "latitude": 36.8247059,
+          "row": 739,
+          "column": 590,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        },
+        {
+          "id": "D9",
+          "longitude": -4.3819512,
+          "latitude": 36.8505882,
+          "row": 736,
+          "column": 582,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D10",
+          "longitude": -4.3273171,
+          "latitude": 36.8609412,
+          "row": 735,
+          "column": 587,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D11",
+          "longitude": -4.3,
+          "latitude": 36.87,
+          "row": 734,
+          "column": 590,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        }
+      ],
+      "diversity": {
+        "distinct_classes": 2,
+        "range": 1,
+        "mean_class": 1.2,
+        "histogram": {
+          "1": 8,
+          "2": 2,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        }
+      }
+    },
+    {
+      "id": "down_20261007_peligro_p_D06-5dde1e90ab53",
+      "source": {
+        "publisher": "AEMET",
+        "url": "https://www.aemet.es/es/api-eltiempo/incendios/download",
+        "retrieved_at_utc": "2026-10-08T15:40:05Z",
+        "archive": "data/spatial-hazard-v1.3/aemet-20261007.tar.gz",
+        "archive_sha256": "a0816b24fcfe981163d2f00706c411124ef89b67dde42e9ec45cf061ec09983c",
+        "member": "down_20261007_peligro_p_D06.tif",
+        "raster_sha256": "5dde1e90ab5380917b1325ce3bcfb92253476e03975c52b315c50ba6f1fe6916",
+        "legend_sha256": "02f567f784c9bc0b72b98d3d4e242a4b3677934c019ac6249deb3153fa22f3db",
+        "model_time_utc": "2026-10-07T12:00:00Z",
+        "valid_time_utc": "2026-10-13T12:00:00Z",
+        "lead_hours": 144.0,
+        "tags": {
+          "CAMPO": "Peligro",
+          "coords_unit": "degrees_east / degrees_north",
+          "ESCALA": "{\"Producto\":\"RIESGO\",\"Lista RGBA\":[{\"Valores\":[\"0\"],\"RGBA\":[\"0,0,255,125\"]},{\"Valores\":[\"1\"],\"RGBA\":[\"75,150,227,255\"]},{\"Valores\":[\"2\"],\"RGBA\":[\"81,209,246,255\"]},{\"Valores\":[\"3\"],\"RGBA\":[\"87,229,32,255\"]},{\"Valores\":[\"4\"],\"RGBA\":[\"249,251,47,255\"]},{\"Valores\":[\"5\"],\"RGBA\":[\"239,133,4,255\"]},{\"Valores\":[\"6\"],\"RGBA\":[\"245,35,0,255\"]},{\"Valores\":[\"255\"],\"RGBA\":[\"100,100,100,150\"]}]}",
+          "FUENTE": "Aemet",
+          "institution": "Agencia Estatal de Meteorología (AEMET)",
+          "long_name": "Danger level",
+          "Model": "European Centre for Medium-Range Weather Forecasts (ECMWF)",
+          "model_time": "2026-10-07T12:00:00",
+          "region": "Iberian Peninsula and Balearic Islands",
+          "short_name": "peligro",
+          "source": "Model",
+          "time_unit": "Coordinated Universal Time (UTC)",
+          "UNIDADES": "El peligro de incendio se estratifica en seis niveles de peligro (muy bajo, bajo, moderado, alto, muy alto y extremo)",
+          "USO": "© Aemet. Autorizado el uso de la información y su reproducción citando a Aemet como autora de la misma.",
+          "valid_time": "2026-10-13T12:00:00",
+          "AREA_OR_POINT": "Area"
+        }
+      },
+      "raster": {
+        "crs": "EPSG:4326",
+        "transform": [
+          0.009999999999999787,
+          0.0,
+          -10.204999999999998,
+          0.0,
+          -0.00999999999999801,
+          44.21499999999817
+        ],
+        "width": 1541,
+        "height": 922,
+        "nodata": null
+      },
+      "nodes": [
+        {
+          "id": "D0",
+          "longitude": -4.4502439,
+          "latitude": 36.7664706,
+          "row": 744,
+          "column": 575,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D1",
+          "longitude": -4.4209756,
+          "latitude": 36.7755294,
+          "row": 743,
+          "column": 578,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D2",
+          "longitude": -4.3526829,
+          "latitude": 36.7703529,
+          "row": 744,
+          "column": 585,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D3",
+          "longitude": -4.3136585,
+          "latitude": 36.7794118,
+          "row": 743,
+          "column": 589,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D4",
+          "longitude": -4.4404878,
+          "latitude": 36.8182353,
+          "row": 739,
+          "column": 576,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D6",
+          "longitude": -4.3526829,
+          "latitude": 36.8221176,
+          "row": 739,
+          "column": 585,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D7",
+          "longitude": -4.3039024,
+          "latitude": 36.8247059,
+          "row": 739,
+          "column": 590,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        },
+        {
+          "id": "D9",
+          "longitude": -4.3819512,
+          "latitude": 36.8505882,
+          "row": 736,
+          "column": 582,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D10",
+          "longitude": -4.3273171,
+          "latitude": 36.8609412,
+          "row": 735,
+          "column": 587,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D11",
+          "longitude": -4.3,
+          "latitude": 36.87,
+          "row": 734,
+          "column": 590,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        }
+      ],
+      "diversity": {
+        "distinct_classes": 2,
+        "range": 1,
+        "mean_class": 1.2,
+        "histogram": {
+          "1": 8,
+          "2": 2,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        }
+      }
+    },
+    {
+      "id": "down_20261007_peligro_p_D07-efc31acb77a9",
+      "source": {
+        "publisher": "AEMET",
+        "url": "https://www.aemet.es/es/api-eltiempo/incendios/download",
+        "retrieved_at_utc": "2026-10-08T15:40:05Z",
+        "archive": "data/spatial-hazard-v1.3/aemet-20261007.tar.gz",
+        "archive_sha256": "a0816b24fcfe981163d2f00706c411124ef89b67dde42e9ec45cf061ec09983c",
+        "member": "down_20261007_peligro_p_D07.tif",
+        "raster_sha256": "efc31acb77a9b3a684769fe6a32ef0e498927443b0467d9b8a5b9b6773fb0c7e",
+        "legend_sha256": "02f567f784c9bc0b72b98d3d4e242a4b3677934c019ac6249deb3153fa22f3db",
+        "model_time_utc": "2026-10-07T12:00:00Z",
+        "valid_time_utc": "2026-10-14T12:00:00Z",
+        "lead_hours": 168.0,
+        "tags": {
+          "CAMPO": "Peligro",
+          "coords_unit": "degrees_east / degrees_north",
+          "ESCALA": "{\"Producto\":\"RIESGO\",\"Lista RGBA\":[{\"Valores\":[\"0\"],\"RGBA\":[\"0,0,255,125\"]},{\"Valores\":[\"1\"],\"RGBA\":[\"75,150,227,255\"]},{\"Valores\":[\"2\"],\"RGBA\":[\"81,209,246,255\"]},{\"Valores\":[\"3\"],\"RGBA\":[\"87,229,32,255\"]},{\"Valores\":[\"4\"],\"RGBA\":[\"249,251,47,255\"]},{\"Valores\":[\"5\"],\"RGBA\":[\"239,133,4,255\"]},{\"Valores\":[\"6\"],\"RGBA\":[\"245,35,0,255\"]},{\"Valores\":[\"255\"],\"RGBA\":[\"100,100,100,150\"]}]}",
+          "FUENTE": "Aemet",
+          "institution": "Agencia Estatal de Meteorología (AEMET)",
+          "long_name": "Danger level",
+          "Model": "European Centre for Medium-Range Weather Forecasts (ECMWF)",
+          "model_time": "2026-10-07T12:00:00",
+          "region": "Iberian Peninsula and Balearic Islands",
+          "short_name": "peligro",
+          "source": "Model",
+          "time_unit": "Coordinated Universal Time (UTC)",
+          "UNIDADES": "El peligro de incendio se estratifica en seis niveles de peligro (muy bajo, bajo, moderado, alto, muy alto y extremo)",
+          "USO": "© Aemet. Autorizado el uso de la información y su reproducción citando a Aemet como autora de la misma.",
+          "valid_time": "2026-10-14T12:00:00",
+          "AREA_OR_POINT": "Area"
+        }
+      },
+      "raster": {
+        "crs": "EPSG:4326",
+        "transform": [
+          0.009999999999999787,
+          0.0,
+          -10.204999999999998,
+          0.0,
+          -0.00999999999999801,
+          44.21499999999817
+        ],
+        "width": 1541,
+        "height": 922,
+        "nodata": null
+      },
+      "nodes": [
+        {
+          "id": "D0",
+          "longitude": -4.4502439,
+          "latitude": 36.7664706,
+          "row": 744,
+          "column": 575,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D1",
+          "longitude": -4.4209756,
+          "latitude": 36.7755294,
+          "row": 743,
+          "column": 578,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D2",
+          "longitude": -4.3526829,
+          "latitude": 36.7703529,
+          "row": 744,
+          "column": 585,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D3",
+          "longitude": -4.3136585,
+          "latitude": 36.7794118,
+          "row": 743,
+          "column": 589,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D4",
+          "longitude": -4.4404878,
+          "latitude": 36.8182353,
+          "row": 739,
+          "column": 576,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D6",
+          "longitude": -4.3526829,
+          "latitude": 36.8221176,
+          "row": 739,
+          "column": 585,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D7",
+          "longitude": -4.3039024,
+          "latitude": 36.8247059,
+          "row": 739,
+          "column": 590,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        },
+        {
+          "id": "D9",
+          "longitude": -4.3819512,
+          "latitude": 36.8505882,
+          "row": 736,
+          "column": 582,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D10",
+          "longitude": -4.3273171,
+          "latitude": 36.8609412,
+          "row": 735,
+          "column": 587,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D11",
+          "longitude": -4.3,
+          "latitude": 36.87,
+          "row": 734,
+          "column": 590,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        }
+      ],
+      "diversity": {
+        "distinct_classes": 2,
+        "range": 1,
+        "mean_class": 1.2,
+        "histogram": {
+          "1": 8,
+          "2": 2,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        }
+      }
+    },
+    {
+      "id": "down_20261007_peligro_p_D03-923cb97b5677",
+      "source": {
+        "publisher": "AEMET",
+        "url": "https://www.aemet.es/es/api-eltiempo/incendios/download",
+        "retrieved_at_utc": "2026-10-08T15:40:05Z",
+        "archive": "data/spatial-hazard-v1.3/aemet-20261007.tar.gz",
+        "archive_sha256": "a0816b24fcfe981163d2f00706c411124ef89b67dde42e9ec45cf061ec09983c",
+        "member": "down_20261007_peligro_p_D03.tif",
+        "raster_sha256": "923cb97b5677772ffb0b97c3ac0facfd8a4eebe534433b984a173a9c799f3cb5",
+        "legend_sha256": "02f567f784c9bc0b72b98d3d4e242a4b3677934c019ac6249deb3153fa22f3db",
+        "model_time_utc": "2026-10-07T12:00:00Z",
+        "valid_time_utc": "2026-10-10T12:00:00Z",
+        "lead_hours": 72.0,
+        "tags": {
+          "CAMPO": "Peligro",
+          "coords_unit": "degrees_east / degrees_north",
+          "ESCALA": "{\"Producto\":\"RIESGO\",\"Lista RGBA\":[{\"Valores\":[\"0\"],\"RGBA\":[\"0,0,255,125\"]},{\"Valores\":[\"1\"],\"RGBA\":[\"75,150,227,255\"]},{\"Valores\":[\"2\"],\"RGBA\":[\"81,209,246,255\"]},{\"Valores\":[\"3\"],\"RGBA\":[\"87,229,32,255\"]},{\"Valores\":[\"4\"],\"RGBA\":[\"249,251,47,255\"]},{\"Valores\":[\"5\"],\"RGBA\":[\"239,133,4,255\"]},{\"Valores\":[\"6\"],\"RGBA\":[\"245,35,0,255\"]},{\"Valores\":[\"255\"],\"RGBA\":[\"100,100,100,150\"]}]}",
+          "FUENTE": "Aemet",
+          "institution": "Agencia Estatal de Meteorología (AEMET)",
+          "long_name": "Danger level",
+          "Model": "European Centre for Medium-Range Weather Forecasts (ECMWF)",
+          "model_time": "2026-10-07T12:00:00",
+          "region": "Iberian Peninsula and Balearic Islands",
+          "short_name": "peligro",
+          "source": "Model",
+          "time_unit": "Coordinated Universal Time (UTC)",
+          "UNIDADES": "El peligro de incendio se estratifica en seis niveles de peligro (muy bajo, bajo, moderado, alto, muy alto y extremo)",
+          "USO": "© Aemet. Autorizado el uso de la información y su reproducción citando a Aemet como autora de la misma.",
+          "valid_time": "2026-10-10T12:00:00",
+          "AREA_OR_POINT": "Area"
+        }
+      },
+      "raster": {
+        "crs": "EPSG:4326",
+        "transform": [
+          0.009999999999999787,
+          0.0,
+          -10.204999999999998,
+          0.0,
+          -0.00999999999999801,
+          44.21499999999817
+        ],
+        "width": 1541,
+        "height": 922,
+        "nodata": null
+      },
+      "nodes": [
+        {
+          "id": "D0",
+          "longitude": -4.4502439,
+          "latitude": 36.7664706,
+          "row": 744,
+          "column": 575,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D1",
+          "longitude": -4.4209756,
+          "latitude": 36.7755294,
+          "row": 743,
+          "column": 578,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D2",
+          "longitude": -4.3526829,
+          "latitude": 36.7703529,
+          "row": 744,
+          "column": 585,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D3",
+          "longitude": -4.3136585,
+          "latitude": 36.7794118,
+          "row": 743,
+          "column": 589,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D4",
+          "longitude": -4.4404878,
+          "latitude": 36.8182353,
+          "row": 739,
+          "column": 576,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D6",
+          "longitude": -4.3526829,
+          "latitude": 36.8221176,
+          "row": 739,
+          "column": 585,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D7",
+          "longitude": -4.3039024,
+          "latitude": 36.8247059,
+          "row": 739,
+          "column": 590,
+          "source_value": 2,
+          "hazard_weight": 2,
+          "label_es": "Bajo"
+        },
+        {
+          "id": "D9",
+          "longitude": -4.3819512,
+          "latitude": 36.8505882,
+          "row": 736,
+          "column": 582,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D10",
+          "longitude": -4.3273171,
+          "latitude": 36.8609412,
+          "row": 735,
+          "column": 587,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D11",
+          "longitude": -4.3,
+          "latitude": 36.87,
+          "row": 734,
+          "column": 590,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        }
+      ],
+      "diversity": {
+        "distinct_classes": 2,
+        "range": 1,
+        "mean_class": 1.1,
+        "histogram": {
+          "1": 9,
+          "2": 1,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        }
+      }
+    },
+    {
+      "id": "down_20261007_peligro_p_D00-6e8589325089",
+      "source": {
+        "publisher": "AEMET",
+        "url": "https://www.aemet.es/es/api-eltiempo/incendios/download",
+        "retrieved_at_utc": "2026-10-08T15:40:05Z",
+        "archive": "data/spatial-hazard-v1.3/aemet-20261007.tar.gz",
+        "archive_sha256": "a0816b24fcfe981163d2f00706c411124ef89b67dde42e9ec45cf061ec09983c",
+        "member": "down_20261007_peligro_p_D00.tif",
+        "raster_sha256": "6e8589325089560d21405b455a45c05c38c918a9d1ab8818ec6760a144a7f6c4",
+        "legend_sha256": "02f567f784c9bc0b72b98d3d4e242a4b3677934c019ac6249deb3153fa22f3db",
+        "model_time_utc": "2026-10-07T12:00:00Z",
+        "valid_time_utc": "2026-10-07T12:00:00Z",
+        "lead_hours": 0.0,
+        "tags": {
+          "CAMPO": "Peligro",
+          "coords_unit": "degrees_east / degrees_north",
+          "ESCALA": "{\"Producto\":\"RIESGO\",\"Lista RGBA\":[{\"Valores\":[\"0\"],\"RGBA\":[\"0,0,255,125\"]},{\"Valores\":[\"1\"],\"RGBA\":[\"75,150,227,255\"]},{\"Valores\":[\"2\"],\"RGBA\":[\"81,209,246,255\"]},{\"Valores\":[\"3\"],\"RGBA\":[\"87,229,32,255\"]},{\"Valores\":[\"4\"],\"RGBA\":[\"249,251,47,255\"]},{\"Valores\":[\"5\"],\"RGBA\":[\"239,133,4,255\"]},{\"Valores\":[\"6\"],\"RGBA\":[\"245,35,0,255\"]},{\"Valores\":[\"255\"],\"RGBA\":[\"100,100,100,150\"]}]}",
+          "FUENTE": "Aemet",
+          "institution": "Agencia Estatal de Meteorología (AEMET)",
+          "long_name": "Danger level",
+          "Model": "European Centre for Medium-Range Weather Forecasts (ECMWF)",
+          "model_time": "2026-10-07T12:00:00",
+          "region": "Iberian Peninsula and Balearic Islands",
+          "short_name": "peligro",
+          "source": "Model",
+          "time_unit": "Coordinated Universal Time (UTC)",
+          "UNIDADES": "El peligro de incendio se estratifica en seis niveles de peligro (muy bajo, bajo, moderado, alto, muy alto y extremo)",
+          "USO": "© Aemet. Autorizado el uso de la información y su reproducción citando a Aemet como autora de la misma.",
+          "valid_time": "2026-10-07T12:00:00",
+          "AREA_OR_POINT": "Area"
+        }
+      },
+      "raster": {
+        "crs": "EPSG:4326",
+        "transform": [
+          0.009999999999999787,
+          0.0,
+          -10.204999999999998,
+          0.0,
+          -0.00999999999999801,
+          44.21499999999817
+        ],
+        "width": 1541,
+        "height": 922,
+        "nodata": null
+      },
+      "nodes": [
+        {
+          "id": "D0",
+          "longitude": -4.4502439,
+          "latitude": 36.7664706,
+          "row": 744,
+          "column": 575,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D1",
+          "longitude": -4.4209756,
+          "latitude": 36.7755294,
+          "row": 743,
+          "column": 578,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D2",
+          "longitude": -4.3526829,
+          "latitude": 36.7703529,
+          "row": 744,
+          "column": 585,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D3",
+          "longitude": -4.3136585,
+          "latitude": 36.7794118,
+          "row": 743,
+          "column": 589,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D4",
+          "longitude": -4.4404878,
+          "latitude": 36.8182353,
+          "row": 739,
+          "column": 576,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D6",
+          "longitude": -4.3526829,
+          "latitude": 36.8221176,
+          "row": 739,
+          "column": 585,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D7",
+          "longitude": -4.3039024,
+          "latitude": 36.8247059,
+          "row": 739,
+          "column": 590,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D9",
+          "longitude": -4.3819512,
+          "latitude": 36.8505882,
+          "row": 736,
+          "column": 582,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D10",
+          "longitude": -4.3273171,
+          "latitude": 36.8609412,
+          "row": 735,
+          "column": 587,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        },
+        {
+          "id": "D11",
+          "longitude": -4.3,
+          "latitude": 36.87,
+          "row": 734,
+          "column": 590,
+          "source_value": 1,
+          "hazard_weight": 1,
+          "label_es": "Muy bajo"
+        }
+      ],
+      "diversity": {
+        "distinct_classes": 1,
+        "range": 0,
+        "mean_class": 1.0,
+        "histogram": {
+          "1": 10,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        }
+      }
+    }
+  ],
+  "rejected": []
+}

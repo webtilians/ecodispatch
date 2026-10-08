@@ -1,5 +1,5 @@
 {
-  "version": "1.3",
+  "version": "1.4",
   "date": "2026-10-08",
   "placement": {
     "selected_bases": [
@@ -419,6 +419,15 @@
       "integrated_into": "fire exposure only",
       "medical_recon": "synthetic",
       "confirmatory": false
+    },
+    "fire_dispatch": {
+      "status": "exploratory_not_preregistered",
+      "confirmatory": false,
+      "dataset": "aemet-fire-snapshots-v1.4",
+      "data": "./data/fire-snapshots-v1.4.json",
+      "result": "./data/fire-benchmark-v1.4.json",
+      "fleet": "three modeled brigades at B2/B3/B4",
+      "limitation": "three forecast validities from one model issue, not independent historical days"
     }
   }
 }
