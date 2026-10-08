@@ -6,12 +6,12 @@
 
   class RealRoutingHoldoutUI{
     constructor(config,routing){
-      this.config=config;this.routing=routing;this.worker=null;this.result=null;this.progress=null;this.error=false;
+      this.config=config;this.routing=routing;this.worker=null;this.result=null;this.progress=null;this.error=false;this.frozen=false;
       $('rh-run').onclick=()=>this.run();
       $('rh-json').onclick=()=>this.download('json',JSON.stringify(this.result,null,2),'application/json');
-      $('rh-csv').onclick=()=>this.download('csv',EcoDispatchRealRoutingHoldout.csv(this.result),'text/csv;charset=utf-8');
-      window.addEventListener('languagechange',()=>this.renderProtocol());
-      this.renderProtocol();this.status();
+      $('rh-csv').onclick=()=>this.download('csv',this.frozen?this.frozenCsv():EcoDispatchRealRoutingHoldout.csv(this.result),'text/csv;charset=utf-8');
+      window.addEventListener('languagechange',()=>{this.renderProtocol();this.status();});
+      this.renderProtocol();this.status();this.loadFrozen();
     }
 
     renderProtocol(){
@@ -25,12 +25,23 @@
       $('rh-bases').textContent=p.placementBases.join(' · ');
     }
 
+    async loadFrozen(){
+      try{
+        const response=await fetch('./data/real-routing-holdout-v1.1.1-frozen.json?v=1.1.1');
+        if(!response.ok)throw new Error('Frozen v1.1.1 result unavailable');
+        if(this.worker)return;
+        this.result=await response.json();this.frozen=true;
+        $('rh-json').disabled=false;$('rh-csv').disabled=false;
+        this.render();
+      }catch(error){console.warn(error);}
+    }
+
     run(){
       if(this.worker)return;
-      this.error=false;this.result=null;this.progress={done:0,total:EcoDispatchRealRoutingHoldout.protocol.n};
+      this.error=false;this.frozen=false;this.result=null;this.progress={done:0,total:EcoDispatchRealRoutingHoldout.protocol.n};
       $('rh-results').hidden=true;$('rh-run').disabled=true;$('rh-json').disabled=true;$('rh-csv').disabled=true;this.status();
       try{
-        this.worker=new Worker('./real-routing-holdout-worker.js?v=1.1.0');
+        this.worker=new Worker('./real-routing-holdout-worker.js?v=1.1.1');
         this.worker.onmessage=({data})=>{
           if(data.type==='progress'){this.progress=data;this.status();}
           if(data.type==='complete'){this.result=data.result;this.stop();this.render();}
@@ -50,7 +61,7 @@
 
     status(){
       $('rh-status').textContent=this.error?T('error'):this.result
-        ?T('complete',{n:this.result.protocol.n})
+        ?(this.frozen?T('frozenLoaded'):T('complete',{n:this.result.protocol.n}))
         :this.progress?I18N.t('mc.progress',this.progress)
         :T('ready');
       if(this.progress)$('rh-progress-bar').style.width=(100*this.progress.done/this.progress.total).toFixed(1)+'%';
@@ -104,10 +115,25 @@
       }
     }
 
+    frozenCsv(){
+      const q=v=>'"'+String(v??'').replaceAll('"','""')+'"';
+      const lines=[['policy','deltaH','bootstrapLow','bootstrapHigh','rawP','holmP','pass','deltaServed','deltaMeanEta','deltaP95Eta','deltaDistance','deltaCo2Kg']];
+      for(const p of this.result.analysis.primary){
+        lines.push([
+          'lambda='+p.lambda,p.harm.mean,p.harm.bootstrap.ciLow,p.harm.bootstrap.ciHigh,p.rawP,p.holmP,p.pass,
+          p.secondary.served.mean,p.secondary.meanEta.mean,p.secondary.p95Eta.mean,p.secondary.distance.mean,p.secondary.co2Kg.mean
+        ]);
+      }
+      for(const b of this.result.analysis.baselines){
+        lines.push([b.id,b.versusZero.totalHarm.mean,'','','','','',b.versusZero.served.mean,b.versusZero.meanEta.mean,b.versusZero.p95Eta.mean,b.versusZero.distance.mean,b.versusZero.co2Kg.mean]);
+      }
+      return lines.map(row=>row.map(q).join(',')).join('\r\n');
+    }
+
     download(ext,content,type){
       if(!this.result)return;
       const url=URL.createObjectURL(new Blob([content],{type}));
-      const a=document.createElement('a');a.href=url;a.download='ecodispatch-v1.1-real-routing-holdout.'+ext;
+      const a=document.createElement('a');a.href=url;a.download=(this.frozen?'ecodispatch-v1.1.1-real-routing-holdout-frozen':'ecodispatch-v1.1-real-routing-holdout')+'.'+ext;
       document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
     }
   }
