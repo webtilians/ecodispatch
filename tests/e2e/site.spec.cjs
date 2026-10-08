@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test('v1.1.1 boots, translates, runs exploratory and isolated holdout workers', async ({ page }) => {
+test('v1.2 boots, translates, runs exploratory and isolated holdout workers', async ({ page }) => {
   const critical=[];
   page.on('pageerror', error=>critical.push('pageerror: '+error.message));
   page.on('console', msg=>{
@@ -11,6 +11,14 @@ test('v1.1.1 boots, translates, runs exploratory and isolated holdout workers', 
   await expect(page.locator('html')).toHaveAttribute('lang','en');
   await expect(page.locator('[data-i18n="ab.title"]')).toContainText('v0.8');
   await expect(page.locator('#ab-run')).toBeEnabled();
+
+  await expect(page.locator('#hz-annual-high')).toHaveText('25.21%');
+  await expect(page.locator('#hz-peak-high')).toHaveText('87.1%');
+  await expect(page.locator('#hz-aug-extreme')).toHaveText('25.81%');
+  await expect(page.locator('#hz-annual-extreme')).toHaveText('4.66%');
+  await expect(page.locator('#hz-chart .hz-high')).toHaveCount(13);
+  await expect(page.locator('#hz-chart .hz-extreme')).toHaveCount(13);
+  await expect(page.locator('#real-hazard a[href*="aemet.es"]')).toBeVisible();
 
   await expect(page.locator('#rr-pairs')).toHaveText('400');
   await expect(page.locator('#rr-eligible')).toHaveText('10/12');
@@ -53,14 +61,14 @@ test('v1.1.1 boots, translates, runs exploratory and isolated holdout workers', 
   // Never consume the real v1.1 holdout seed in CI. Exercise the actual worker
   // with its explicit CI-only gate.
   const realHoldoutResult=await page.evaluate(()=>new Promise((resolve,reject)=>{
-    const worker=new Worker('./real-routing-holdout-worker.js?v=1.1.1');
+    const worker=new Worker('./real-routing-holdout-worker.js?v=1.2.0');
     worker.onmessage=({data})=>{
       if(data.type==='complete'){worker.terminate();resolve(data.result);}
       if(data.type==='error'){worker.terminate();reject(new Error(data.message));}
     };
     Promise.all([
-      fetch('./data/current.json?v=1.1.1').then(r=>r.json()),
-      fetch('./data/routing-v1.0.json?v=1.1.1').then(r=>r.json())
+      fetch('./data/current.json?v=1.2.0').then(r=>r.json()),
+      fetch('./data/routing-v1.0.json?v=1.2.0').then(r=>r.json())
     ]).then(([config,routing])=>{
       worker.postMessage({
         config,routing,testMode:true,
@@ -95,12 +103,12 @@ test('v1.1.1 boots, translates, runs exploratory and isolated holdout workers', 
 
   // Never consume the real holdout seed in CI. Exercise the real worker with a CI-only seed.
   const holdoutResult=await page.evaluate(()=>new Promise((resolve,reject)=>{
-    const worker=new Worker('./holdout-worker.js?v=1.1.1');
+    const worker=new Worker('./holdout-worker.js?v=1.2.0');
     worker.onmessage=({data})=>{
       if(data.type==='complete'){worker.terminate();resolve(data.result);}
       if(data.type==='error'){worker.terminate();reject(new Error(data.message));}
     };
-    fetch('./data/current.json?v=1.1.1').then(r=>r.json()).then(config=>{
+    fetch('./data/current.json?v=1.2.0').then(r=>r.json()).then(config=>{
       worker.postMessage({config,testMode:true,seed:'ci-holdout-browser',n:10});
     }).catch(reject);
   }));
