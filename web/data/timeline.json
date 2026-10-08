@@ -1,5 +1,35 @@
 [
   {
+    "version": "v1.5",
+    "date": "2026-10-08",
+    "title_es": "Operaciones temporales: brigadas ocupadas, cola y servicio",
+    "title_en": "Temporal operations: busy brigades, queue and service",
+    "description_es": "Diseño fijado antes de resultados: reloj de 24 h, llegadas Poisson baja/alta, 90 min de servicio y tres brigadas. λ=.2 reduce daño sintético en cinco de seis condiciones con IC bootstrap <0; λ=1 empeora las seis. Exploratorio.",
+    "description_en": "Design fixed before outcomes: 24 h clock, low/high Poisson arrivals, 90 min service and three brigades. λ=.2 lowers synthetic harm in five of six conditions with bootstrap CI <0; λ=1 worsens all six. Exploratory.",
+    "tags": [
+      "v1.5",
+      "temporal",
+      "queue",
+      "busy resources",
+      "AEMET"
+    ],
+    "tags_es": [
+      "v1.5",
+      "temporal",
+      "cola",
+      "brigadas ocupadas",
+      "AEMET"
+    ],
+    "tags_en": [
+      "v1.5",
+      "temporal",
+      "queue",
+      "busy resources",
+      "AEMET"
+    ],
+    "screenshot": null
+  },
+  {
     "version": "v1.4",
     "date": "2026-10-08",
     "title_es": "Fire Dispatch: tres brigadas y varias predicciones AEMET",
