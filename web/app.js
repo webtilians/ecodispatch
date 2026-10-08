@@ -1,29 +1,49 @@
-const currentUrl="./data/current.json?v=1.2.0";
-const timelineUrl="./data/timeline.json?v=1.2.0";
-const routingUrl="./data/routing-v1.0.json?v=1.2.0";
-const hazardUrl="./data/aemet-malaga-fwi-2025.json?v=1.2.0";
+const currentUrl="./data/current.json?v=1.2.1";
+const timelineUrl="./data/timeline.json?v=1.2.1";
+const routingUrl="./data/routing-v1.0.json?v=1.2.1";
+const hazardUrl="./data/aemet-malaga-fwi-2025.json?v=1.2.1";
 let timelineData=[];
 
-Promise.all([
-  fetch(currentUrl).then(r=>{if(!r.ok)throw new Error("current.json");return r.json();}),
-  fetch(timelineUrl).then(r=>{if(!r.ok)throw new Error("timeline.json");return r.json();}),
-  fetch(routingUrl).then(r=>{if(!r.ok)throw new Error("routing-v1.0.json");return r.json();}),
-  fetch(hazardUrl).then(r=>{if(!r.ok)throw new Error("aemet-malaga-fwi-2025.json");return r.json();})
-]).then(([data,timeline,routing,hazard])=>{
+const fetchJson=(url,label)=>fetch(url,{cache:"no-store"}).then(r=>{
+  if(!r.ok)throw new Error(label+" HTTP "+r.status);
+  return r.json();
+});
+
+const corePromise=Promise.all([
+  fetchJson(currentUrl,"current.json"),
+  fetchJson(timelineUrl,"timeline.json"),
+  fetchJson(routingUrl,"routing-v1.0.json")
+]).then(([data,timeline,routing])=>{
   timelineData=timeline;
   setupExperimentTabs();
   renderTimeline();
   window.ecoLab=window.EcoDispatchResearch.init(data);
-  window.ecoRealHazard=window.EcoDispatchRealHazardUI.init(hazard);
   window.ecoRealRouting=window.EcoDispatchRealRoutingUI.init(data,routing);
   window.ecoRealRoutingHoldout=window.EcoDispatchRealRoutingHoldoutUI.init(data,routing);
   window.ecoAblation=window.EcoDispatchAblationUI.init(data);
   window.ecoHoldout=window.EcoDispatchHoldoutUI.init(data);
   window.ecoMonteCarlo=window.EcoDispatchMonteCarlo.init(data);
 }).catch(error=>{
-  console.error(error);
-  document.querySelectorAll("svg").forEach(svg=>svg.innerHTML='<text x="50%" y="50%" text-anchor="middle" fill="#92a0aa">Data unavailable</text>');
+  console.error("EcoDispatch core data failed:",error);
+  document.querySelectorAll("svg:not(#hz-chart)").forEach(svg=>{
+    svg.innerHTML='<text x="50%" y="50%" text-anchor="middle" fill="#92a0aa">Data unavailable</text>';
+  });
 });
+
+const hazardPromise=fetchJson(hazardUrl,"aemet-malaga-fwi-2025.json")
+  .then(hazard=>{
+    window.ecoRealHazard=window.EcoDispatchRealHazardUI.init(hazard);
+  })
+  .catch(error=>{
+    console.warn("EcoDispatch AEMET layer unavailable:",error);
+    const svg=document.getElementById("hz-chart");
+    if(svg)svg.innerHTML='<text x="50%" y="50%" text-anchor="middle" fill="#92a0aa">'+
+      (I18N.lang==="es"?"Datos AEMET no disponibles":"AEMET data unavailable")+'</text>';
+    const generated=document.getElementById("hz-generated");
+    if(generated)generated.textContent=I18N.lang==="es"?"No disponible":"Unavailable";
+  });
+
+Promise.allSettled([corePromise,hazardPromise]);
 
 window.addEventListener("languagechange",()=>renderTimeline());
 
