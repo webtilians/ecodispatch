@@ -129,10 +129,10 @@
     return dur.map(x=>x/horizon);
   }
 
-  function simulate(state,events,policy,lambda=0){
+  function simulate(state,events,policy,lambda=0,options={}){
     if(!['eco','eta-greedy','distance-greedy'].includes(policy))throw Error('Invalid policy');
     const resources=state.resources.map(r=>({...r,nodeId:r.station,availableAt:0,intervals:[]}));
-    const queue=[],dispatch=Array(events.length).fill(null),response=[],travel=[],waits=[];
+    const queue=[],dispatch=Array(events.length).fill(null),response=[],travel=[],waits=[],trace=options.trace?[]:null;
     let nextArrival=0,t=0,served=0,unserved=0,distance=0,co2G=0,totalHarm=0;
     let arrivalsAllBusy=0,arrivalsAnyBusy=0,waitedServed=0,maxQueue=0;
     const expireAt=e=>e.arrival_min+e.deadline_min;
@@ -169,8 +169,10 @@
           const r=resources[best.ri];
           const release=t+best.eta+state.protocol.service_minutes;
           if(release<r.availableAt-EPS)throw Error('Availability regression');
+          const priorAvailableAt=r.availableAt;
           r.intervals.push([t,release]);r.availableAt=release;r.nodeId=e.nodeId;
           dispatch[e.index]=r.name;
+          if(trace)trace.push({eventIndex:e.index,event:e.name,brigade:r.name,arrival:e.arrival_min,dispatchTime:t,travelEta:best.eta,wait:best.wait,responseDelay:best.responseDelay,priorAvailableAt,releaseTime:release,nodeId:e.nodeId});
           queue.splice(qi,1);
           served++;distance+=best.distance;co2G+=best.emissionsG;
           totalHarm+=e.severity*best.responseDelay;
@@ -208,7 +210,7 @@
       utilizationMean:util.reduce((a,b)=>a+b,0)/util.length,
       utilF01:util[0],utilF02:util[1],utilF03:util[2],
       free0Share:free[0],free1Share:free[1],free2Share:free[2],free3Share:free[3],
-      dispatch
+      dispatch,...(trace?{trace}:{})
     };
   }
 
