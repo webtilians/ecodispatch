@@ -5,7 +5,7 @@ EcoDispatch is a research prototype for allocating scarce mobile resources
 using a hierarchical optimization architecture inspired by recent results in
 metric **k-median**, **maximum matching**, and **k-server**.
 
-## Current architecture (v1.1)
+## Current architecture (v1.1.1)
 
 1. **Pre-positioning** — risk-weighted metric k-median chooses where resources
    should wait before incidents are known.
@@ -339,3 +339,28 @@ and cannot redefine confirmation.
 
 Automated tests are prohibited from using the real holdout seed. CI may execute
 the worker only with `ci-real-routing-holdout-*` seeds.
+
+
+## v1.1.1 — frozen real-routing confirmation
+
+v1.1.1 is a conservative reporting/freeze patch. It does not change the routing
+dataset, simulator, preregistered policy family, seeds, K, bootstrap or
+confirmation rule.
+
+Canonical artifacts:
+
+- `results/real-routing-holdout-v1.1.1-summary.json`
+- `results/real-routing-holdout-v1.1.1-report.md`
+- `web/data/real-routing-holdout-v1.1.1-frozen.json`
+
+Raw user-exported result provenance:
+
+- SHA-256: `1b63e5a5c5cd14752a6e79871f7be971c642b09e7d45b88c3953f93428454112`
+- bytes: `2,558,536`
+- generated: `2026-10-08T08:49:14.774Z`
+- preregistration commit: `691a85c96afa497fc8c2f42386d1d12c00a4ff5a`
+
+All four preregistered lambdas pass the frozen total-harm rule after Holm
+correction. The public real-routing holdout section now loads the frozen result
+by default. The scope remains confirmation inside a simulator with real routing
+but synthetic risk and incidents.
