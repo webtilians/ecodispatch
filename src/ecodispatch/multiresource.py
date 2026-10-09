@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
-from typing import Callable, Iterable, Mapping, Sequence
+from typing import Callable, Mapping, Sequence
 
 
 @dataclass(frozen=True)
@@ -77,6 +77,21 @@ def _expanded_slots(requirements: Sequence[Requirement]) -> list[str]:
     return slots
 
 
+def _incomplete_reason(
+    slots: Sequence[str],
+    eligibility: Mapping[str, Sequence[OperationalResource]],
+) -> tuple[str, ...]:
+    missing: list[str] = []
+    for capability in sorted(set(slots)):
+        required = slots.count(capability)
+        deficit = required - len(eligibility[capability])
+        if deficit > 0:
+            missing.extend([capability] * deficit)
+    if not missing:
+        missing.append("distinct_resource_capacity_conflict")
+    return tuple(missing)
+
+
 def dispatch_atomic_bundle(
     resources: Sequence[OperationalResource],
     incident: OperationalIncident,
@@ -86,12 +101,16 @@ def dispatch_atomic_bundle(
 ) -> tuple[BundleDispatch, tuple[OperationalResource, ...]]:
     """Assign a complete heterogeneous resource bundle or mutate nothing.
 
-    v1.7.2a intentionally implements an architecture oracle rather than an
-    EcoDispatch policy. Slots are ordered by scarcity, then filled by the
-    eligible distinct resource with the earliest predicted arrival.
+    v1.7.2a is an architecture oracle, not an EcoDispatch policy comparison.
+    It solves the small bundle assignment exactly over distinct resources.
+    The objective is deterministic and operationally neutral:
+
+      1) minimize the time at which the whole bundle has arrived;
+      2) minimize total resource arrival time;
+      3) deterministic lexical tie-break.
 
     A resource can expose multiple capabilities but can fill only one
-    simultaneous slot for this incident.
+    simultaneous slot for the incident.
     """
     slots = _expanded_slots(incident.requirements)
     eligibility = {
@@ -100,36 +119,56 @@ def dispatch_atomic_bundle(
     }
     slots.sort(key=lambda capability: (len(eligibility[capability]), capability))
 
-    chosen: list[tuple[OperationalResource, str, float, float]] = []
-    used: set[str] = set()
-    missing: list[str] = []
-
-    for capability in slots:
-        candidates: list[tuple[float, str, OperationalResource, float]] = []
+    candidate_rows: dict[str, list[tuple[float, str, OperationalResource, float]]] = {}
+    for capability in set(slots):
+        rows = []
         for resource in eligibility[capability]:
-            if resource.resource_id in used:
-                continue
             travel = float(travel_time(resource, incident))
             if travel < 0:
                 raise ValueError("travel time must be non-negative")
             dispatch = max(incident.arrival_min, resource.available_at_min)
             arrival = dispatch + travel
-            candidates.append((arrival, resource.resource_id, resource, travel))
+            rows.append((arrival, resource.resource_id, resource, travel))
+        candidate_rows[capability] = sorted(rows, key=lambda row: (row[0], row[1]))
 
-        if not candidates:
-            missing.append(capability)
-            continue
+    best_key: tuple | None = None
+    best_choice: tuple[tuple[OperationalResource, str, float, float], ...] | None = None
 
-        arrival, _, resource, travel = min(candidates)
-        used.add(resource.resource_id)
-        chosen.append((resource, capability, travel, arrival))
+    def search(
+        slot_index: int,
+        used: set[str],
+        chosen: list[tuple[OperationalResource, str, float, float]],
+    ) -> None:
+        nonlocal best_key, best_choice
+        if slot_index == len(slots):
+            arrivals = [row[3] for row in chosen]
+            lexical = tuple(sorted((row[1], row[0].resource_id) for row in chosen))
+            key = (max(arrivals), sum(arrivals), lexical)
+            if best_key is None or key < best_key:
+                best_key = key
+                best_choice = tuple(chosen)
+            return
 
-    if missing:
+        capability = slots[slot_index]
+        for arrival, _, resource, travel in candidate_rows[capability]:
+            if resource.resource_id in used:
+                continue
+            if best_key is not None and arrival > best_key[0]:
+                continue
+            used.add(resource.resource_id)
+            chosen.append((resource, capability, travel, arrival))
+            search(slot_index + 1, used, chosen)
+            chosen.pop()
+            used.remove(resource.resource_id)
+
+    search(0, set(), [])
+
+    if best_choice is None:
         result = BundleDispatch(
             incident_id=incident.incident_id,
             complete=False,
             assignments=(),
-            missing_capabilities=tuple(sorted(missing)),
+            missing_capabilities=_incomplete_reason(slots, eligibility),
             bundle_ready_min=None,
             queue_wait_min=None,
         )
@@ -138,7 +177,7 @@ def dispatch_atomic_bundle(
     assignments: list[ResourceAssignment] = []
     by_id = {resource.resource_id: resource for resource in resources}
 
-    for resource, capability, travel, arrival in chosen:
+    for resource, capability, travel, arrival in best_choice:
         dispatch = max(incident.arrival_min, resource.available_at_min)
         duration = float(service_time(resource, incident, capability))
         if duration < 0:
