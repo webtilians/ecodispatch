@@ -1,0 +1,14 @@
+{
+  "version": "1.7.1",
+  "status": "frozen_before_dispatch_outcomes",
+  "routing_sha256": "026144ac508b7834c1f0ee9e6bb66277ac0b6f799bc44c532cef6c14c29ec640",
+  "routing_bytes": 964510,
+  "generated_at_utc": "2026-10-09T08:43:01.413446+00:00",
+  "route_counts": {
+    "base_to_event": 4392,
+    "event_to_potential": 14640,
+    "event_to_event_same_day": 682
+  },
+  "primary_events": 1464,
+  "note": "Generated and frozen before any v1.7.1 policy runner existed. Re-fetching OSRM later is not expected to reproduce the same network; benchmark execution uses this static artifact only."
+}
