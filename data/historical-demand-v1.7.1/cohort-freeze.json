@@ -1,0 +1,42 @@
+{
+  "version": "1.7.1",
+  "status": "frozen_before_dispatch_outcomes",
+  "source_ci_run": 37905854915,
+  "source_head_sha": "36d04396998507d5f0ebd7f23efcf5198a465dfc",
+  "artifacts": {
+    "data/historical-demand-v1.7.1/cohort.json": {
+      "sha256": "71db4176869c6dd43802ad327dc66eac56ee5d5bfcec62e6cac37972fc78fddb",
+      "bytes": 451425
+    },
+    "results/historical-demand-v1.7.1-cohort.md": {
+      "sha256": "0a2d667e0d7f74f86e85f7c79ed43b1d5cbc966f03a7640fb48719a0c1e66b74",
+      "bytes": 1034
+    }
+  },
+  "counts": {
+    "candidate_parts": 1467,
+    "primary_events": 1464,
+    "excluded_detection_time_precision": 3,
+    "active_fire_days": 1194,
+    "calendar_days": 6574,
+    "zero_fire_days": 5380
+  },
+  "exclusions": [
+    {
+      "incident_id": "egif:1054433",
+      "detected_at": "2008-07-07T00:00:00",
+      "source_flag": "midnight_precision_unknown"
+    },
+    {
+      "incident_id": "egif:1194941",
+      "detected_at": "2019-09-08T00:00:00",
+      "source_flag": "midnight_precision_unknown"
+    },
+    {
+      "incident_id": "egif:1278209",
+      "detected_at": "2022-06-28T00:00:00",
+      "source_flag": "midnight_precision_unknown"
+    }
+  ],
+  "note": "Hashes were produced in CI before any v1.7.1 dispatch runner or policy outcome existed. The full cohort may be regenerated deterministically from the frozen v1.7 incident extraction."
+}
