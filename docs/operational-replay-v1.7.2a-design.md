@@ -84,6 +84,14 @@ For every assigned resource:
 
 `release_time = arrival_time + service_duration(resource, incident)`.
 
+Bundle diagnostics are kept distinct:
+
+- `queue_wait = max(resource_dispatch_time) - incident_time`;
+- `bundle_ready_time = max(resource_arrival_time)`;
+- travel time remains a separate per-resource quantity.
+
+Thus queueing never includes road/air travel time.
+
 This is a state-machine invariant, not yet an INFOCA service-time calibration.
 
 ## Service time
