@@ -108,7 +108,8 @@ class OperationalFleetV172aTests(unittest.TestCase):
         self.assertTrue(result2.complete)
         self.assertEqual(result2.assignments[0].dispatch_min, 60)
         self.assertEqual(result2.assignments[0].arrival_min, 65)
-        self.assertEqual(result2.queue_wait_min, 35)
+        self.assertEqual(result2.queue_wait_min, 30)
+        self.assertEqual(result2.bundle_ready_min, 65)
         self.assertEqual(after2[0].available_at_min, 85)
 
 
