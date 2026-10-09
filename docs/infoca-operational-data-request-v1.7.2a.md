@@ -20,6 +20,35 @@ useful provided the covered dates and extraction rules are supplied.
 
 No personal data about workers or crews is requested.
 
+## Preferred source system: SIGDIF
+
+Official Junta material states that INFOCA has used an integrated information
+system since 2006 to manage wildfire emergencies and assigned resources. In
+February 2024 the Junta presented the renewed SIGDIF, based on Tecnosylva
+fiResponse, replacing/updating the earlier integrated system.
+
+Official references:
+
+- https://www.juntadeandalucia.es/presidencia/portavoz/gobiernoaldia/190946/PlanInfoca/SistemaIntegralparalaGestionyDirecciondeIncendiosForestalesSIGDIF/fiResponse/Incendiosforestales/Andalucia/JuntadeAndalucia
+- https://www.juntadeandalucia.es/organismos/transparencia/empleo-publico/entidades-instrumentales/ofertas-empleo/detalle/656548.html
+
+The preferred response is therefore an export from **SIGDIF / fiResponse** (and
+the legacy SIGDIF store where needed), rather than a manually reconstructed
+spreadsheet.
+
+Because the requested 2015–2025 interval crosses the system renewal, every row or
+extract should preserve, if available:
+
+- source system / system version;
+- legacy vs renewed SIGDIF origin;
+- migration/import flag;
+- extraction date;
+- original event/resource identifiers or stable anonymized replacements;
+- data dictionary or field mapping used during migration.
+
+Primary completeness and interval audits must be stratified by source-system era
+before pooling years across the migration boundary.
+
 ## Preferred fields
 
 ### Intervention identity
@@ -65,7 +94,8 @@ Please include, if available:
 - timestamp precision;
 - definition of each status/milestone;
 - reason codes for cancellation/diversion;
-- source system / extraction date;
+- source system / system version / extraction date;
+- legacy-to-fiResponse migration flag or field mapping, where applicable;
 - missing-value conventions;
 - data dictionary.
 
@@ -146,7 +176,8 @@ universal bundle from a single large-fire report.
 ## Proposed public-information request text
 
 > Solicito, preferentemente en formato reutilizable CSV/JSON, los registros
-> históricos asociados a las intervenciones del dispositivo INFOCA en la
+> históricos disponibles en SIGDIF/fiResponse (y, para periodos anteriores a la
+> renovación del sistema, en el repositorio SIGDIF legado) asociados a las intervenciones del dispositivo INFOCA en la
 > provincia de Málaga, incluyendo para cada recurso un identificador anonimizado,
 > tipo de recurso, base o centro de adscripción, identificador anonimizado de la
 > intervención y los hitos temporales disponibles: activación o despacho, salida,
@@ -169,7 +200,9 @@ universal bundle from a single large-fire report.
 > solicito cualquier periodo o subconjunto de clases de recurso para el que estos
 > datos se encuentren disponibles electrónicamente.
 >
-> Se solicita también, si existe, el diccionario de datos o definición de los
+> Se solicita también, si existe, la identificación de la versión/sistema origen
+> (SIGDIF legado o SIGDIF/fiResponse), documentación de migración entre ambos y el
+> diccionario de datos o definición de los
 > estados y marcas temporales, incluida la zona horaria, precisión y convención
 > utilizada para valores ausentes o cancelaciones.
 
