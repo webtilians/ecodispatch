@@ -111,3 +111,17 @@ It can claim that:
 5. no new policy result was generated from the incomplete substrate.
 
 It cannot claim operational efficacy, historical fleet fidelity or calibrated INFOCA service duration.
+
+## Exact operational-support assets
+
+The same 2026 catalogue also provides two exact Málaga support facts that are
+kept separate from suppression capacity:
+
+- INFOCA has eight UMMT vehicles, **one per province**; v1.7.2a therefore records
+  one Málaga UMMT for mobile meteorology/communications.
+- During the high-risk campaign MITECO contributes one UMAP located in Málaga;
+  it is recorded as seasonal external analysis/planning support.
+
+Neither unit satisfies an extinction requirement slot by default. This avoids
+artificially increasing suppression capacity while preserving the published
+operational topology.
