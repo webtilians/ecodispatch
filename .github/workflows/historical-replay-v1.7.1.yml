@@ -51,7 +51,15 @@ jobs:
           test -s web/data/historical-demand-v1.7.1-summary.json
           test -s web/data/historical-demand-v1.7.1.csv
           test -s results/historical-demand-v1.7.1-report.md
+          python -m json.tool web/data/historical-demand-v1.7.1.json > /dev/null
+          python -m json.tool web/data/historical-demand-v1.7.1-summary.json > /dev/null
           git diff --check
+
+      - name: Browser integration on regenerated replay
+        run: |
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          npm run test:e2e
 
       - name: Commit exploratory replay outputs
         run: |
