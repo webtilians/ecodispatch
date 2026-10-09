@@ -174,7 +174,7 @@
       "reason": "2026 public catalogue gives 108 heavy autobombas and 11 tenders Andalusia-wide, without an explicit Málaga allocation"
     }
   ],
-  "andALUSIA_context_totals_not_for_provincial_simulation": {
+  "andalusia_context_totals_not_for_provincial_simulation": {
     "specialist_groups": 269,
     "support_groups": 42,
     "bricas": 12,
@@ -182,5 +182,5 @@
     "heavy_autobombas": 108,
     "water_tenders": 11
   },
-  "simulation_rule": "Only exact_assets may instantiate operational units in v1.7.2a. unresolved_ground_pools are evidence gaps and MUST NOT be interpreted as zero capacity or estimated capacity."
+  "simulation_rule": "Only catalogued exact local/regional assets instantiate by default. national_external_support assets require explicit opt-in. unresolved_ground_pools are evidence gaps and MUST NOT be interpreted as zero capacity or estimated capacity."
 }
