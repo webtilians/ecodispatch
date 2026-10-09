@@ -82,7 +82,10 @@
       "facility_id": "MA-CEDEFO-COLMENAR",
       "resource_class": "HTER",
       "model_class": "ligero",
-      "capabilities": ["air_transport_specialists", "air_water_attack"],
+      "capabilities": [
+        "air_transport_specialists",
+        "air_water_attack"
+      ],
       "water_capacity_l": 900,
       "units": 1,
       "operational_scope": "regional",
@@ -94,7 +97,10 @@
       "facility_id": "MA-CEDEFO-RONDA",
       "resource_class": "HTER",
       "model_class": "semipesado",
-      "capabilities": ["air_transport_specialists", "air_water_attack"],
+      "capabilities": [
+        "air_transport_specialists",
+        "air_water_attack"
+      ],
       "water_capacity_l": 1300,
       "units": 1,
       "operational_scope": "regional",
@@ -106,7 +112,10 @@
       "facility_id": "MA-BASE-SIERRA-NIEVES",
       "resource_class": "HTER",
       "model_class": "ligero",
-      "capabilities": ["air_transport_specialists", "air_water_attack"],
+      "capabilities": [
+        "air_transport_specialists",
+        "air_water_attack"
+      ],
       "water_capacity_l": 900,
       "units": 1,
       "operational_scope": "regional",
@@ -118,7 +127,10 @@
       "facility_id": "MA-BRICA-CARTAMA",
       "resource_class": "HTEGC",
       "model_class": "pesado",
-      "capabilities": ["air_transport_brica", "air_water_attack"],
+      "capabilities": [
+        "air_transport_brica",
+        "air_water_attack"
+      ],
       "water_capacity_l": 2500,
       "units": 1,
       "operational_scope": "regional",
@@ -130,7 +142,9 @@
       "facility_id": "MA-AIRPORT",
       "resource_class": "AA",
       "model_class": "CL-415 T",
-      "capabilities": ["air_water_attack"],
+      "capabilities": [
+        "air_water_attack"
+      ],
       "water_capacity_l": 5500,
       "units": 1,
       "operational_scope": "national_external_support",
@@ -141,35 +155,45 @@
     {
       "facility_id": "MA-CEDEFO-COLMENAR",
       "resource_class": "specialist_group",
-      "capabilities": ["ground_specialists"],
+      "capabilities": [
+        "ground_specialists"
+      ],
       "capacity": null,
       "reason": "2026 public catalogue gives Andalusia-wide specialist-group totals but not an explicit Málaga/Colmenar allocation"
     },
     {
       "facility_id": "MA-CEDEFO-RONDA",
       "resource_class": "specialist_group",
-      "capabilities": ["ground_specialists"],
+      "capabilities": [
+        "ground_specialists"
+      ],
       "capacity": null,
       "reason": "2026 public catalogue gives Andalusia-wide specialist-group totals but not an explicit Málaga/Ronda allocation"
     },
     {
       "facility_id": "MA-BASE-SIERRA-NIEVES",
       "resource_class": "specialist_group",
-      "capabilities": ["ground_specialists"],
+      "capabilities": [
+        "ground_specialists"
+      ],
       "capacity": null,
       "reason": "2026 public catalogue gives Andalusia-wide specialist-group totals but not an explicit base allocation"
     },
     {
       "facility_id": "MA-BRICA-CARTAMA",
       "resource_class": "BRICA",
-      "capabilities": ["ground_brica"],
+      "capabilities": [
+        "ground_brica"
+      ],
       "capacity": null,
       "reason": "Cártama is an official BRICA base, but the 12 Andalusia-wide BRICA units are not explicitly allocated by base in the public catalogue"
     },
     {
       "facility_id": "province:malaga",
       "resource_class": "autobomba",
-      "capabilities": ["ground_water_attack"],
+      "capabilities": [
+        "ground_water_attack"
+      ],
       "capacity": null,
       "reason": "2026 public catalogue gives 108 heavy autobombas and 11 tenders Andalusia-wide, without an explicit Málaga allocation"
     }
@@ -182,5 +206,37 @@
     "heavy_autobombas": 108,
     "water_tenders": 11
   },
-  "simulation_rule": "Only catalogued exact local/regional assets instantiate by default. national_external_support assets require explicit opt-in. unresolved_ground_pools are evidence gaps and MUST NOT be interpreted as zero capacity or estimated capacity."
+  "simulation_rule": "Only catalogued exact local/regional assets instantiate by default. national_external_support assets require explicit opt-in. unresolved_ground_pools are evidence gaps and MUST NOT be interpreted as zero capacity or estimated capacity.",
+  "support_assets": [
+    {
+      "resource_id": "MA-UMMT-01",
+      "owner_scope": "Junta de Andalucía",
+      "facility_id": "province:malaga",
+      "resource_class": "UMMT",
+      "capabilities": [
+        "mobile_meteorology",
+        "communications"
+      ],
+      "units": 1,
+      "operational_scope": "provincial_support",
+      "availability_scope": "catalogued one-per-province",
+      "default_extinction_bundle": false,
+      "source_status": "catalogued_exact"
+    },
+    {
+      "resource_id": "MA-UMAP-MITECO-HIGHRISK-01",
+      "owner_scope": "MITECO",
+      "facility_id": "province:malaga",
+      "resource_class": "UMAP",
+      "capabilities": [
+        "mobile_analysis",
+        "planning"
+      ],
+      "units": 1,
+      "operational_scope": "national_external_support",
+      "availability_scope": "high-risk campaign only; located in Málaga",
+      "default_extinction_bundle": false,
+      "source_status": "catalogued_exact_seasonal"
+    }
+  ]
 }
