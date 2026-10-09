@@ -21,9 +21,9 @@ class OperationalFleetV172aTests(unittest.TestCase):
         path = ROOT / "data" / "operational-replay-v1.7.2a" / "infoca-2026-malaga-fleet.json"
         cls.payload = json.loads(path.read_text(encoding="utf-8"))
 
-    def test_only_exact_catalogued_units_instantiate(self):
+    def test_only_exact_catalogued_local_or_regional_units_instantiate_by_default(self):
         resources = resources_from_exact_assets(self.payload)
-        self.assertEqual(len(resources), 5)
+        self.assertEqual(len(resources), 4)
         self.assertEqual(
             {r.resource_id for r in resources},
             {
@@ -31,10 +31,15 @@ class OperationalFleetV172aTests(unittest.TestCase):
                 "MA-HTER-RONDA-01",
                 "MA-HTER-SIERRA-NIEVES-01",
                 "MA-HTEGC-CARTAMA-01",
-                "MA-AA-CL415T-AIRPORT-01",
             },
         )
         self.assertTrue(all(pool["capacity"] is None for pool in self.payload["unresolved_ground_pools"]))
+
+    def test_external_national_support_requires_explicit_opt_in(self):
+        resources = resources_from_exact_assets(self.payload, include_external_support=True)
+        self.assertEqual(len(resources), 5)
+        cl415 = next(r for r in resources if r.resource_id == "MA-AA-CL415T-AIRPORT-01")
+        self.assertEqual(cl415.operational_scope, "national_external_support")
 
     def test_multicapability_resource_cannot_fill_two_slots(self):
         resources = (
