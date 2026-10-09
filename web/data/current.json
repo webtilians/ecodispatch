@@ -1,6 +1,6 @@
 {
-  "version": "1.7",
-  "date": "2026-10-08",
+  "version": "1.7.1",
+  "date": "2026-10-09",
   "placement": {
     "selected_bases": [
       "B3",
@@ -525,6 +525,49 @@
       "integrated_into_dispatch": false,
       "imputation": false,
       "parameter_tuning": false
+    },
+    "historical_demand_replay": {
+      "status": "exploratory_fixed_before_outcomes",
+      "confirmatory": false,
+      "protocol": "data/historical-demand-v1.7.1/protocol.json",
+      "result": "./data/historical-demand-v1.7.1.json",
+      "summary": "./data/historical-demand-v1.7.1-summary.json",
+      "cohort_years": [
+        2006,
+        2023
+      ],
+      "candidate_parts": 1467,
+      "primary_events": 1464,
+      "active_fire_days": 1194,
+      "calendar_days": 6574,
+      "service_minutes": [
+        45,
+        90,
+        180
+      ],
+      "harm_k": [
+        10,
+        60,
+        120
+      ],
+      "routing_sha256": "026144ac508b7834c1f0ee9e6bb66277ac0b6f799bc44c532cef6c14c29ec640",
+      "observed_layers": [
+        "EGIF detection calendar time",
+        "EGIF latitude/longitude"
+      ],
+      "modeled_layers": [
+        "three-brigade fleet",
+        "severity",
+        "service duration",
+        "deadline",
+        "emissions",
+        "harm",
+        "2026 AEMET policy contexts"
+      ],
+      "main_result": "At K=60 every positive lambda is unfavorable in all 9 fixed cells versus lambda=0; ETA-greedy is effectively indistinguishable from lambda=0. No positive lambda is favorable at K=120.",
+      "interpretation": "The v1.6 small-positive-lambda signal does not survive replacement of synthetic arrivals and locations by observed EGIF demand; historical wildfire demand is much sparser than the v1.5/v1.6 synthetic regimes.",
+      "next_step": "v1.7.2 empirical operational service/release-time calibration if suitable data are obtained",
+      "claim_scope": "historical spatiotemporal demand replay only; not operational efficacy"
     }
   }
 }
