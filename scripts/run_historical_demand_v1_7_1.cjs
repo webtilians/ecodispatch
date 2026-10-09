@@ -205,7 +205,29 @@ const result={
   routingAudit:HR.audit,
   conditions,robustness
 };
-fs.writeFileSync('web/data/historical-demand-v1.7.1.json',JSON.stringify(result,null,2)+'\n');
+fs.writeFileSync('web/data/historical-demand-v1.7.1.json',JSON.stringify(result,null,2)+'\\n');
+
+const compact={
+  version:result.version,benchmark:result.benchmark,confirmatory:false,
+  frozenAt:result.frozenAt,cohort:result.cohort,assumptions:result.assumptions,
+  routingAudit:result.routingAudit,robustness:result.robustness,
+  conditions:conditions.map(c=>({
+    snapshotId:c.snapshotId,serviceMinutes:c.serviceMinutes,source:c.source,hazard:c.hazard,demand:c.demand,
+    operational:Object.fromEntries(X.POLICY_DEFS.map(def=>[def.id,{
+      eventWeighted:c.operational[def.id].eventWeighted,
+      decisionDifferentActiveDays:c.operational[def.id].decisionDifferentActiveDays,
+      activeDays:c.operational[def.id].activeDays
+    }])),
+    harm:Object.fromEntries(P.harm_k.map(k=>[
+      String(k),
+      Object.fromEntries(X.POLICY_DEFS.map(def=>[
+        def.id,{versusZero:c.harm[String(k)][def.id].versusZero,total:c.harm[String(k)][def.id].total}
+      ]))
+    ])),
+    classifications:c.classifications
+  }))
+};
+fs.writeFileSync('web/data/historical-demand-v1.7.1-summary.json',JSON.stringify(compact,null,2)+'\\n');
 
 const report=[
   '# Historical Demand Replay v1.7.1 — exploratory results','',
