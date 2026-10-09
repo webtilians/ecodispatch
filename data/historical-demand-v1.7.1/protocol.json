@@ -1,0 +1,126 @@
+{
+  "version": "1.7.1",
+  "experiment": "Historical Demand Replay",
+  "confirmatory": false,
+  "status": "exploratory_design_fixed_before_policy_outcomes",
+  "design_base_commit": "97098e5d3ce056de5f2fc623029c5dd18c82d875",
+  "base_model": {
+    "temporal_engine": "v1.5",
+    "robustness_surface": "v1.6",
+    "principle": "replace synthetic incident arrival times and locations with observed EGIF demand while holding the remaining v1.6 model assumptions fixed"
+  },
+  "cohort": {
+    "source": "web/data/real-fire-incidents-v1.7.json",
+    "source_audit": "web/data/real-fire-summary-v1.7.json",
+    "years": [2006, 2023],
+    "candidate_parts": 1467,
+    "year_selection_reason": "first contiguous year through the archive end for which the v1.7 audit reports coordinates for every EGIF part in every year",
+    "required_coordinate_flag": "valid_rectangle_only",
+    "required_detection_flag": "valid",
+    "midnight_policy": "exclude from the primary replay any detection flagged midnight_precision_unknown; retain the exclusion and source timestamp in the cohort audit",
+    "timezone": "unknown/local-naive",
+    "calendar_grouping": "group by the source detection calendar date without UTC or daylight-saving conversion",
+    "event_order": "detected_at ascending, then incident_id lexical tie-break",
+    "no_imputation": true
+  },
+  "historical_days": {
+    "calendar_start": "2006-01-01",
+    "calendar_end": "2023-12-31",
+    "include_zero_fire_days_in_calendar_aggregates": true,
+    "reset_fleet_each_day": true,
+    "arrival_minute": "hour*60 + minute + second/60 from observed detected_at"
+  },
+  "frozen_inputs": {
+    "routing_static": "web/data/routing-v1.0.json",
+    "hazard_catalog": "web/data/fire-snapshots-v1.4.json",
+    "hazard_snapshot_ids": [
+      "down_20261007_peligro_p_D02-24297c444c84",
+      "down_20261007_peligro_p_D01-3acf9899447e",
+      "down_20261007_peligro_p_D04-7ab3652678c2"
+    ],
+    "temporal_protocol": "data/temporal-fire-v1.5/protocol.json",
+    "robustness_protocol": "data/temporal-robustness-v1.6/protocol.json",
+    "fleet": "inherit v1.5 exactly: three modeled fire brigades F-01/F-02/F-03 at B2/B3/B4",
+    "potential_nodes": "inherit the ten routing-eligible v1.4/v1.5 demand nodes"
+  },
+  "routing_extension": {
+    "status": "must be frozen before any policy outcomes are generated",
+    "profile": "OSRM driving over OpenStreetMap, matching v1.0",
+    "semantics": "current frozen road access to historical incident coordinates; not a reconstruction of the historical road network",
+    "required_directed_edges": [
+      "B2/B3/B4 -> every primary replay event",
+      "every primary replay event -> each of the ten frozen potential nodes",
+      "all directed event-to-event pairs within the same historical calendar day"
+    ],
+    "missing_route_policy": "no imputation; retain incident/day exclusion with explicit reason",
+    "snap_distance_policy": "record OSRM input-to-snapped-road distance as a diagnostic; do not exclude a wildfire solely because it is off-road",
+    "runtime_network_calls": false
+  },
+  "severity": {
+    "historical": false,
+    "distribution": "uniform [2,5), inherited from v1.5/v1.6",
+    "assignment": "deterministic per incident_id from the fixed v1.7.1 severity seed; identical across policies, hazard contexts and service times",
+    "seed": "ecodispatch-historical-replay-171-severity-20261009"
+  },
+  "deadline_min": 120,
+  "service_minutes": [45, 90, 180],
+  "service_rule": "inherit the fixed v1.6 half / baseline / double sensitivity; no empirical service-time calibration in v1.7.1",
+  "harm_k": [10, 60, 120],
+  "harm_rule": "inherit v1.6 evaluation only; K never changes dispatch decisions",
+  "policies": {
+    "reference_lambda": 0,
+    "lambdas": [0, 0.2, 0.35, 0.5, 1],
+    "baselines": ["eta-greedy", "distance-greedy"]
+  },
+  "hazard_context": {
+    "mode": "cross the same three frozen v1.4 AEMET snapshots with every historical day",
+    "purpose": "hold the policy context fixed while replacing only the demand process",
+    "historical_weather_claim": false
+  },
+  "pairing": {
+    "same_historical_events_across_policies": true,
+    "same_severity_per_incident_across_policies": true,
+    "same_historical_events_across_service_times": true,
+    "same_historical_events_across_hazard_contexts": true
+  },
+  "aggregation": {
+    "primary_unit": "calendar day",
+    "also_report": ["active-fire-day", "year", "event-weighted"],
+    "bootstrap_replicates": 500,
+    "paired_reference": "lambda=0 under the identical historical day, hazard context and service time"
+  },
+  "metrics": [
+    "eventCount",
+    "served",
+    "unserved",
+    "coverage",
+    "meanResponseDelay",
+    "p95ResponseDelay",
+    "meanTravelEta",
+    "meanWait",
+    "p95Wait",
+    "distance",
+    "co2Kg",
+    "arrivalsAllBusy",
+    "arrivalsAnyBusy",
+    "waitedServed",
+    "maxQueue",
+    "utilizationMean",
+    "free0Share",
+    "free1Share",
+    "free2Share",
+    "free3Share",
+    "totalHarm"
+  ],
+  "out_of_scope": {
+    "version": "1.7.2",
+    "items": [
+      "empirical brigade service/release-time calibration",
+      "official historical station/fleet availability",
+      "historical AEMET weather reconstruction",
+      "burned-area-derived severity calibration",
+      "operational efficacy claims"
+    ]
+  },
+  "claim_scope": "exploratory replay of observed Málaga EGIF spatiotemporal demand using the frozen EcoDispatch v1.6 modeled fleet, severity, service-time sensitivity, policy family and non-historical hazard contexts"
+}

@@ -1,5 +1,35 @@
 [
   {
+    "version": "v1.7.1",
+    "date": "2026-10-09",
+    "title_es": "Replay histórico: la señal de λ no generaliza",
+    "title_en": "Historical replay: the lambda signal does not generalize",
+    "description_es": "Cohorte 2006–2023 congelada antes de resultados: 1.464 incendios EGIF con hora+coordenada y routing OSRM disperso. Con K=60, todos los λ>0 son desfavorables en 9/9 celdas frente a λ=0. El régimen histórico es mucho más disperso; servicio real queda para v1.7.2.",
+    "description_en": "Pre-outcome frozen 2006–2023 cohort: 1,464 EGIF fires with observed time+coordinate and sparse OSRM routing. At K=60 every λ>0 is unfavorable in 9/9 cells versus λ=0. Historical demand is much sparser; real service calibration is deferred to v1.7.2.",
+    "tags": [
+      "v1.7.1",
+      "EGIF",
+      "historical replay",
+      "negative result",
+      "OSRM"
+    ],
+    "tags_es": [
+      "v1.7.1",
+      "EGIF",
+      "replay histórico",
+      "resultado negativo",
+      "OSRM"
+    ],
+    "tags_en": [
+      "v1.7.1",
+      "EGIF",
+      "historical replay",
+      "negative result",
+      "OSRM"
+    ],
+    "screenshot": null
+  },
+  {
     "version": "v1.7",
     "date": "2026-10-08",
     "title_es": "Incendios reales: extracción y validación EGIF",

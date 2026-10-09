@@ -2,7 +2,7 @@ name: Deploy EcoDispatch dashboard
 
 on:
   push:
-    branches: ["master", "feature/real-fire-derived-v1.7"]
+    branches: ["master", "feature/real-fire-derived-v1.7", "feature/historical-demand-replay-v1.7.1"]
     paths:
       - "web/**"
       - "src/**"
@@ -23,7 +23,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -76,6 +76,37 @@ jobs:
       - name: Reproduce and validate real incident extraction offline
         run: python scripts/build_real_fire_v1_7.py --check
 
+      - name: Rebuild and verify frozen v1.7.1 historical demand cohort
+        run: |
+          python scripts/build_historical_demand_v1_7_1.py
+          python scripts/verify_historical_demand_v1_7_1.py
+
+      - name: Reproduce frozen v1.7.1 historical demand replay offline
+        run: |
+          python -m unittest tests.test_historical_routing_v1_7_1
+          node tests/historical-demand.test.cjs
+          node scripts/run_historical_demand_v1_7_1.cjs
+          git diff --exit-code -- web/data/historical-demand-v1.7.1.json web/data/historical-demand-v1.7.1-summary.json web/data/historical-demand-v1.7.1.csv results/historical-demand-v1.7.1-report.md
+
+      - name: Upload v1.7.1 cohort candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: historical-demand-v1.7.1-${{ github.sha }}
+          path: |
+            data/historical-demand-v1.7.1/cohort.json
+            results/historical-demand-v1.7.1-cohort.md
+
+      - name: Freeze generated v1.7.1 cohort bytes on design branch
+        if: github.event_name == 'push' && github.ref == 'refs/heads/feature/historical-demand-replay-v1.7.1'
+        run: |
+          if ! git diff --quiet -- data/historical-demand-v1.7.1/cohort.json results/historical-demand-v1.7.1-cohort.md; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/historical-demand-v1.7.1/cohort.json results/historical-demand-v1.7.1-cohort.md
+            git commit -m "v1.7.1: freeze generated historical demand cohort"
+            git push origin HEAD:feature/historical-demand-replay-v1.7.1
+          fi
+
       - name: Validate paired study, model regression, translations and syntax
         run: |
           node tests/ablation.test.cjs
@@ -87,6 +118,7 @@ jobs:
           node tests/fire-dispatch.test.cjs
           node tests/temporal-fire.test.cjs
           node tests/temporal-robustness.test.cjs
+          node tests/historical-demand.test.cjs
           python -m unittest discover -s tests
 
       - name: Install Playwright
