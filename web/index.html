@@ -7,7 +7,7 @@
   <title>EcoDispatch — Research Lab</title>
   <link rel="stylesheet" href="./styles.css?v=1.6">
   <link rel="stylesheet" href="./fire-dispatch.css?v=1.4">
-  <link rel="stylesheet" href="./real-fire-data.css?v=1.7">
+  <link rel="stylesheet" href="./real-fire-data.css?v=1.7">\n  <link rel="stylesheet" href="./historical-demand.css?v=1.7.1">
 </head>
 <body>
   <header class="topbar">
@@ -169,6 +169,62 @@
           </article>
         </div>
       </section>
+    </section>
+
+    <section id="historical-demand-replay" class="section">
+      <div class="section-heading">
+        <div><p class="eyebrow">HISTORICAL DEMAND REPLAY · v1.7.1</p><h2>Historical Demand Replay v1.7.1</h2></div>
+        <p data-hr="intro"></p>
+      </div>
+      <p class="hr-scope" data-hr="scope"></p>
+
+      <div class="hr-controls panel">
+        <label><span data-hr="k"></span><select id="hr-k" disabled></select></label>
+        <label><span data-hr="policy"></span><select id="hr-policy" disabled></select></label>
+        <a class="button" href="./data/historical-demand-v1.7.1.csv" download data-hr="csv"></a>
+        <a class="button" href="./data/historical-demand-v1.7.1.json" download data-hr="full"></a>
+      </div>
+      <p id="hr-status" role="status" aria-live="polite"></p>
+
+      <div class="rr-facts">
+        <article class="metric"><span>EGIF events</span><strong id="hr-demand">—</strong><small>2006–2023</small></article>
+        <article class="metric"><span>Active fire days</span><strong id="hr-days">—</strong><small>6,574 calendar days</small></article>
+        <article class="metric"><span>Multi-event days</span><strong id="hr-multi">—</strong><small>max 5 fires/day</small></article>
+        <article class="metric"><span>Median road snap</span><strong id="hr-snap">—</strong><small id="hr-snap-note">—</small></article>
+      </div>
+
+      <div class="rr-facts tr-facts">
+        <article class="metric"><span data-hr="favorable"></span><strong id="hr-neg">—</strong><small>bootstrap 95%</small></article>
+        <article class="metric"><span data-hr="inconclusive"></span><strong id="hr-inc">—</strong><small>9 cells</small></article>
+        <article class="metric"><span data-hr="unfavorable"></span><strong id="hr-pos">—</strong><small>bootstrap 95%</small></article>
+        <article class="metric"><span data-hr="robust"></span><strong id="hr-robust">—</strong><small>3 AEMET contexts</small></article>
+      </div>
+
+      <div class="experiment-grid hr-grid">
+        <article class="panel result-panel">
+          <div class="result-hero compact"><span data-hr="finding"></span><strong>v1.6 ≠ v1.7.1</strong><p data-hr="findingCopy"></p></div>
+          <div class="explain-box"><strong data-hr="density"></strong><p data-hr="densityCopy"></p></div>
+        </article>
+        <article class="panel result-panel">
+          <div class="explain-box"><strong data-hr="boundary"></strong><p data-hr="boundaryCopy"></p></div>
+          <div class="explain-box"><strong data-hr="routing"></strong><p data-hr="routingCopy"></p></div>
+        </article>
+      </div>
+
+      <article class="panel">
+        <h3 data-hr="summary"></h3>
+        <div class="ab-table-wrap"><table id="hr-summary"></table></div>
+      </article>
+
+      <article class="panel">
+        <h3 data-hr="detail"></h3>
+        <div class="ab-table-wrap"><table id="hr-detail"></table></div>
+      </article>
+
+      <div class="fd-links">
+        <a href="https://github.com/webtilians/ecodispatch/blob/master/docs/historical-demand-replay-v1.7.1-design.md" data-hr="methods"></a>
+        <a href="https://github.com/webtilians/ecodispatch/blob/master/results/historical-demand-v1.7.1-report.md" data-hr="report"></a>
+      </div>
     </section>
 
     <section id="temporal-robustness" class="section">
@@ -682,7 +738,7 @@
   <script src="./app.js?v=1.2.1"></script>
   <script src="./spatial-hazard.js?v=1.3"></script>
   <script src="./fire-dispatch.js?v=1.4"></script>
-  <script src="./temporal-robustness.js?v=1.6"></script>
+  <script src="./historical-demand.js?v=1.7.1"></script>\n  <script src="./temporal-robustness.js?v=1.6"></script>
   <script src="./temporal-fire.js?v=1.5"></script>
   <script src="./real-fire-data.js?v=1.7"></script>
 </body>
