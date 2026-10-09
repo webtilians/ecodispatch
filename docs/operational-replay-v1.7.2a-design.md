@@ -38,7 +38,9 @@ The public 2026 catalogue explicitly locates the following resources in Málaga:
 | Cártama | HTEGC | heavy | 2,500 L |
 | Málaga airport | MITECO CL-415 T | amphibious aircraft | 5,500 L |
 
-The three Junta HTER/HTEGC resources have regional scope. The CL-415 T is external national support and remains labelled as such.
+The four Junta helicopter resources (three HTER plus one HTEGC) have regional scope. The CL-415 T is external national support, remains labelled as such, and is excluded from the active Málaga fleet unless a scenario explicitly opts it in.
+
+By default, v1.7.2a therefore instantiates four Málaga Junta helicopter units. The catalogued MITECO CL-415 T is preserved as an exact asset but is not assumed continuously available to Málaga.
 
 ## Known facilities with unresolved terrestrial capacity
 
