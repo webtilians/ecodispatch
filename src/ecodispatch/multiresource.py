@@ -9,6 +9,7 @@ class OperationalResource:
     resource_id: str
     base_id: str
     capabilities: frozenset[str]
+    operational_scope: str = "regional_or_local"
     available_at_min: float = 0.0
     location_id: str | None = None
 
@@ -103,8 +104,8 @@ def dispatch_atomic_bundle(
 
     v1.7.2a is an architecture oracle, not an EcoDispatch policy comparison.
     It solves the small bundle assignment exactly over distinct resources.
-    The objective is deterministic and operationally neutral:
 
+    Objective:
       1) minimize the time at which the whole bundle has arrived;
       2) minimize total resource arrival time;
       3) deterministic lexical tie-break.
@@ -213,19 +214,33 @@ def dispatch_atomic_bundle(
     return result, updated
 
 
-def resources_from_exact_assets(payload: Mapping) -> tuple[OperationalResource, ...]:
-    """Instantiate only source rows explicitly marked as exact single units."""
+def resources_from_exact_assets(
+    payload: Mapping,
+    *,
+    include_external_support: bool = False,
+) -> tuple[OperationalResource, ...]:
+    """Instantiate exact single units without assuming external support is local.
+
+    By default, assets explicitly labelled as national/external support remain in
+    the catalogue but are not considered continuously available to Málaga.
+    """
     out: list[OperationalResource] = []
     for asset in payload.get("exact_assets", []):
         if asset.get("source_status") != "catalogued_exact":
             continue
         if asset.get("units") != 1:
             raise ValueError("v1.7.2a exact_assets must be individual units")
+
+        scope = asset.get("operational_scope", "regional_or_local")
+        if scope == "national_external_support" and not include_external_support:
+            continue
+
         out.append(
             OperationalResource(
                 resource_id=asset["resource_id"],
                 base_id=asset["facility_id"],
                 capabilities=frozenset(asset["capabilities"]),
+                operational_scope=scope,
                 location_id=asset["facility_id"],
             )
         )
