@@ -539,3 +539,7 @@ service-robust**. v1.6 narrows the claim rather than turning it into confirmatio
 The real/frozen layers remain OSM/OSRM routing and archived AEMET hazard.
 Fleet, arrivals, event locations, severity, service scenarios, emissions and
 harm remain modeled. No operational-efficacy claim is made.
+
+## v1.7 — Real incident data / Datos reales
+
+[EGIF extraction and validation](docs/real-fire-v1.7.md): 7,496 Málaga reports, 1968–2023, with explicit nulls, conservative time/coordinate checks and a [reproducible audit](results/real-fire-v1.7-audit.md). Static ES/EN panel: `#real-fire-data`. No dispatch integration, imputation, REDIAM matching or simulation parameter tuning. Original sources and v1.6 artifacts remain unchanged.

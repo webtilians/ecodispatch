@@ -1,5 +1,29 @@
 [
   {
+    "version": "v1.7",
+    "date": "2026-10-08",
+    "title_es": "Incendios reales: extracción y validación EGIF",
+    "title_en": "Real fires: EGIF extraction and validation",
+    "description_es": "7.496 partes de Málaga (1968–2023), auditoría reproducible y datos faltantes explícitos. Sin integración en dispatch ni ajuste de parámetros.",
+    "description_en": "7,496 Málaga reports (1968–2023), reproducible audit and explicit missingness. No dispatch integration or parameter tuning.",
+    "tags": [
+      "v1.7",
+      "EGIF",
+      "data audit"
+    ],
+    "tags_es": [
+      "v1.7",
+      "EGIF",
+      "auditoría"
+    ],
+    "tags_en": [
+      "v1.7",
+      "EGIF",
+      "data audit"
+    ],
+    "screenshot": null
+  },
+  {
     "version": "v1.6",
     "date": "2026-10-08",
     "title_es": "Robustez temporal: servicio × penalización por no atender",

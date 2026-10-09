@@ -7,6 +7,7 @@
   <title>EcoDispatch — Research Lab</title>
   <link rel="stylesheet" href="./styles.css?v=1.6">
   <link rel="stylesheet" href="./fire-dispatch.css?v=1.4">
+  <link rel="stylesheet" href="./real-fire-data.css?v=1.7">
 </head>
 <body>
   <header class="topbar">
@@ -19,6 +20,7 @@
       <a href="#temporal-fire">Temporal Fire v1.5</a>
       <a href="#fire-dispatch">Fire Dispatch v1.4</a>
       <a id="sh-nav" href="#spatial-hazard">Peligro espacial v1.3</a>
+      <a id="rf-nav" href="#real-fire-data">Incendios reales</a>
       <a href="#real-hazard" data-i18n="hz.nav">Peligro AEMET</a>
       <a href="#real-routing" data-i18n="rr.nav">Routing real</a>
       <a href="#real-routing-holdout" data-i18n="rh.nav">Holdout routing</a>
@@ -299,6 +301,11 @@
       <div class="panel ab-table-wrap"><table id="sh-fire-benchmark" aria-labelledby="sh-fire"></table></div>
       <p id="sh-metricNote"></p>
       <p><a id="sh-methods" href="https://github.com/webtilians/ecodispatch/blob/master/docs/spatial-hazard-v1.3.md"></a> · <a id="sh-json" href="./data/spatial-hazard-v1.3.json" download></a> · <a id="sh-results" href="./data/spatial-benchmark-v1.3.json" download></a></p>
+    </section>
+
+    <section id="real-fire-data" class="section">
+      <h2 id="rf-title">v1.7 · Incendios reales de Málaga</h2>
+      <div id="real-fire-content" aria-live="polite"></div>
     </section>
 
     <section id="real-hazard" class="section">
@@ -677,5 +684,6 @@
   <script src="./fire-dispatch.js?v=1.4"></script>
   <script src="./temporal-robustness.js?v=1.6"></script>
   <script src="./temporal-fire.js?v=1.5"></script>
+  <script src="./real-fire-data.js?v=1.7"></script>
 </body>
 </html>

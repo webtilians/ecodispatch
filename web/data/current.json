@@ -1,5 +1,5 @@
 {
-  "version": "1.6",
+  "version": "1.7",
   "date": "2026-10-08",
   "placement": {
     "selected_bases": [
@@ -517,6 +517,14 @@
       },
       "conclusion": "lambda 0.2 is directionally favorable but not globally service-robust; lambda 1 is consistently too aggressive across the fixed sensitivity surface",
       "claim_scope": "internal simulator robustness only; no real-world efficacy"
+    },
+    "real_fire_data": {
+      "status": "extraction_validation_only",
+      "data": "./data/real-fire-incidents-v1.7.json",
+      "summary": "./data/real-fire-summary-v1.7.json",
+      "integrated_into_dispatch": false,
+      "imputation": false,
+      "parameter_tuning": false
     }
   }
 }
