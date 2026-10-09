@@ -201,7 +201,7 @@ def dispatch_atomic_bundle(
         )
 
     ready = max(a.arrival_min for a in assignments)
-    wait = max(0.0, ready - incident.arrival_min)
+    wait = max(0.0, max(a.dispatch_min for a in assignments) - incident.arrival_min)
     result = BundleDispatch(
         incident_id=incident.incident_id,
         complete=True,
