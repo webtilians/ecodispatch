@@ -184,6 +184,8 @@ Generated outputs:
   context × service × K × policy;
 - `results/historical-demand-v1.7.1-report.md` — generated result table.
 
+The public panel fetches only the compact summary; the full ~2 MB result stays available for audit/download. Browser integration tests parse the compact JSON and verify the fixed K=60/K=120 classifications in both languages.
+
 ## v1.7.2 boundary
 
 The next step, if suitable data can be obtained, is **operational service
