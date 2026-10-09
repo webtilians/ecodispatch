@@ -5,36 +5,43 @@ EcoDispatch is a research prototype for allocating scarce mobile resources
 using a hierarchical optimization architecture inspired by recent results in
 metric **k-median**, **maximum matching**, and **k-server**.
 
-## Current release: Temporal Fire Robustness v1.6 (exploratory)
+## Current release: Historical Demand Replay v1.7.1 (exploratory)
 
-[Open the ES/EN experiment](https://webtilians.github.io/ecodispatch/?lang=es#fire-dispatch) ·
-[Methods](docs/fire-dispatch-v1.4.md) · [Results](results/fire-dispatch-v1.4-report.md) ·
-[Selection rule fixed before comparisons](docs/fire-dispatch-v1.4-selection.md).
+[Open the ES/EN replay](https://webtilians.github.io/ecodispatch/?lang=es#historical-demand-replay) ·
+[Methods and interpretation](docs/historical-demand-replay-v1.7.1.md) ·
+[Fixed pre-outcome design](docs/historical-demand-replay-v1.7.1-design.md) ·
+[Generated report](results/historical-demand-v1.7.1-report.md).
 
-Three **modeled** fire brigades at B2/B3/B4 remove v1.3's single-brigade dispatch
-invariance. Real inputs are the frozen OSM/OSRM road matrix and official archived
-AEMET spatial danger classes. Incidents, severity, fleet/stations, emissions and
-zero service times remain synthetic. No operational efficacy claim, preregistration
-or confirmation; v0.x, v1.0/v1.1.1, v1.2 and v1.3 artifacts remain unchanged.
+v1.7.1 replaces the v1.5/v1.6 synthetic Poisson arrival times and synthetic
+incident nodes with **1,464 observed Málaga EGIF fire detections and coordinates,
+2006–2023**. The cohort and a sparse 19,714-edge OSM/OSRM routing layer were
+frozen before the replay runner existed. Service-time sensitivity remains
+45/90/180 minutes; service calibration is deliberately deferred to v1.7.2.
 
-The outcome-independent rule selects three of eight archived Peninsula rasters,
-valid October 8, 9 and 11, 2026. They come from **one October 7 model issue**, not
-independent historical days; future forecasts are not observations. The rolling
-endpoint returned identical archived bytes, and no independent historical archive
-was obtained. Classes stay 1–2 at these sites, with only two distinct selected
-node-class profiles. No dates, gradients or official station data were invented.
+The historical demand regime is much sparser than the synthetic temporal study:
+1,194 active days across 6,574 calendar days, with 984 single-fire days, only 210
+multi-fire days and a maximum of five fires/day.
 
-Each snapshot has 1,000 paired synthetic replicates × 120 fire incidents and seven
-policies: λ=0, .2, .35, .5, 1, ETA-greedy and distance-greedy. All selected snapshots
-produce dispatch differences, including sensitivity to actual hazard vs uniform
-class 1. This is not a consistent performance gain: higher λ can increase synthetic
-harm. Full metrics, descriptive paired intervals, input identities and exports are
-available in the web section and report. No best λ is selected.
+This changes the result. At K=60, every positive lambda (.2/.35/.5/1) is
+**unfavorable in all 9 fixed cells** versus lambda=0; ETA-greedy is effectively
+indistinguishable from lambda=0. At K=10 the same 9/9 unfavorable pattern holds.
+At K=120 no positive lambda becomes favorable: .2/.35/.5 are unfavorable in
+6/9 cells and inconclusive in 3/9; lambda=1 is inconclusive in 9/9.
 
-Reproduce with `python scripts/build_fire_snapshots.py` and
-`node scripts/run_fire_benchmark.cjs` after installing `requirements-spatial.txt`.
-CI also rebuilds v1.3, runs all Node/Python/Playwright checks and gates Pages deploy.
-Future acquisitions require a new experiment manifest/version; v1.4 is locked.
+Thus the v1.6 small-positive-lambda signal does **not** survive replacement of
+synthetic demand by observed EGIF spatiotemporal demand. This is a boundary
+condition of the modeled future-coverage mechanism, not an operational-efficacy
+claim. Fleet, severity, service duration, deadline, emissions, harm and the three
+2026 AEMET policy contexts remain modeled.
+
+Reproduce offline with:
+
+```bash
+python scripts/verify_historical_demand_v1_7_1.py
+python -m unittest tests.test_historical_routing_v1_7_1
+node tests/historical-demand.test.cjs
+node scripts/run_historical_demand_v1_7_1.cjs
+```
 
 ## Historical architecture (through v1.3)
 
@@ -542,4 +549,25 @@ harm remain modeled. No operational-efficacy claim is made.
 
 ## v1.7 — Real incident data / Datos reales
 
-[EGIF extraction and validation](docs/real-fire-v1.7.md): 7,496 Málaga reports, 1968–2023, with explicit nulls, conservative time/coordinate checks and a [reproducible audit](results/real-fire-v1.7-audit.md). Static ES/EN panel: `#real-fire-data`. No dispatch integration, imputation, REDIAM matching or simulation parameter tuning. Original sources and v1.6 artifacts remain unchanged.
+[EGIF extraction and validation](docs/real-fire-v1.7.md): 7,496 Málaga reports,
+1968–2023, with explicit nulls, conservative time/coordinate checks and a
+[reproducible audit](results/real-fire-v1.7-audit.md). Static ES/EN panel:
+`#real-fire-data`. This step is descriptive only and does not tune the simulator.
+
+## v1.7.1 — Historical Demand Replay
+
+The modern complete-coordinate cohort is fixed to 2006–2023: 1,467 candidate
+parts and 1,464 primary replay events after the pre-existing midnight-precision
+rule excludes three records. The replay uses observed detection time and
+coordinate, a frozen sparse modern OSM/OSRM access graph, and the unchanged v1.6
+service/K policy surface.
+
+At K=60 all positive lambdas are unfavorable in 9/9 cells. The earlier v1.6
+benefit therefore does not generalize to this observed demand regime. See
+[methods and interpretation](docs/historical-demand-replay-v1.7.1.md), the
+[fixed design](docs/historical-demand-replay-v1.7.1-design.md), the
+[generated report](results/historical-demand-v1.7.1-report.md), and public panel
+`#historical-demand-replay`.
+
+v1.7.2 is reserved for empirical service/release-time calibration if suitable
+operational data can be obtained.
