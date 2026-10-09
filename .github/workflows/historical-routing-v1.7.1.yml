@@ -1,0 +1,53 @@
+name: Acquire v1.7.1 historical routing
+
+on:
+  push:
+    branches: ["feature/historical-demand-replay-v1.7.1"]
+    paths:
+      - "scripts/fetch_historical_routing_v1_7_1.py"
+      - "scripts/build_historical_demand_v1_7_1.py"
+      - "scripts/verify_historical_demand_v1_7_1.py"
+      - "data/historical-demand-v1.7.1/protocol.json"
+      - "data/historical-demand-v1.7.1/cohort-freeze.json"
+      - ".github/workflows/historical-routing-v1.7.1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "historical-routing-v1.7.1-${{ github.ref }}"
+  cancel-in-progress: false
+
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify demand freeze before network acquisition
+        run: python scripts/verify_historical_demand_v1_7_1.py
+
+      - name: Acquire sparse OSRM routing
+        run: python scripts/fetch_historical_routing_v1_7_1.py
+
+      - name: Commit frozen routing artifact
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/historical-demand-v1.7.1/routing.json
+          git add data/historical-demand-v1.7.1/routing-freeze.json
+          git add results/historical-routing-v1.7.1-audit.md
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No routing changes to commit"
+          else
+            git commit -m "v1.7.1: freeze sparse historical routing"
+            git push origin HEAD:feature/historical-demand-replay-v1.7.1
+          fi
