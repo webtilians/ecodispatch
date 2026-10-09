@@ -1,0 +1,186 @@
+{
+  "version": "1.7.2a",
+  "dataset": "INFOCA 2026 Málaga operational fleet substrate",
+  "status": "source_frozen_before_policy_outcomes",
+  "frozen_on": "2026-10-09",
+  "scope": {
+    "province": "Málaga",
+    "purpose": "multi-resource architecture substrate; not a historical fleet reconstruction",
+    "catalog_year": 2026
+  },
+  "sources": [
+    {
+      "id": "infoca-catalog-2026",
+      "publisher": "Junta de Andalucía · Agencia de Emergencias de Andalucía",
+      "title": "Catálogo de medios 2026",
+      "url": "https://www.juntadeandalucia.es/organismos/ema/areas/incendios-forestales/dispositivo-infoca/catalogo-medios.html",
+      "publication_basis": "Orden de 11 de junio de 2026"
+    },
+    {
+      "id": "boja-2026-115-22",
+      "publisher": "Boletín Oficial de la Junta de Andalucía",
+      "title": "Orden de 11 de junio de 2026, por la que se aprueba el Catálogo de Medios del Plan INFOCA 2026",
+      "url": "https://www.juntadeandalucia.es/boja/2026/115/22",
+      "published": "2026-06-17",
+      "cve": "00339267"
+    }
+  ],
+  "facilities": [
+    {
+      "facility_id": "MA-COP-MALAGA",
+      "kind": "COP",
+      "name": "Centro Operativo Provincial de Málaga",
+      "address": "Centro Emergencias 112, Calle Severo Ochoa 30, Málaga",
+      "dispatch_base": false,
+      "source_status": "catalogued_exact"
+    },
+    {
+      "facility_id": "MA-CEDEFO-COLMENAR",
+      "kind": "CEDEFO",
+      "name": "Colmenar",
+      "address": "Camino de Regles s/n, 29170 Colmenar, Málaga",
+      "dispatch_base": true,
+      "source_status": "catalogued_exact"
+    },
+    {
+      "facility_id": "MA-BASE-SIERRA-NIEVES",
+      "kind": "defense_base",
+      "name": "Base Sierra de Las Nieves",
+      "address": "Carretera A-7176 Marbella-Istán, km 6.5, 29611 Istán, Málaga",
+      "dispatch_base": true,
+      "source_status": "catalogued_exact"
+    },
+    {
+      "facility_id": "MA-CEDEFO-RONDA",
+      "kind": "CEDEFO",
+      "name": "Ronda",
+      "address": "Ctra. Algodonales-Ronda, km 4, Ronda, Málaga",
+      "dispatch_base": true,
+      "source_status": "catalogued_exact"
+    },
+    {
+      "facility_id": "MA-BRICA-CARTAMA",
+      "kind": "BRICA_base",
+      "name": "Cártama",
+      "address": "Ctra. Cártama-Pizarra, Río Grande, Paraje Casa Palma, Cártama, Málaga",
+      "dispatch_base": true,
+      "source_status": "catalogued_exact"
+    },
+    {
+      "facility_id": "MA-AIRPORT",
+      "kind": "airport",
+      "name": "Aeropuerto de Málaga",
+      "address": "Aeropuerto de Málaga-Costa del Sol, Málaga",
+      "dispatch_base": true,
+      "source_status": "catalogued_exact_for_aircraft_station"
+    }
+  ],
+  "exact_assets": [
+    {
+      "resource_id": "MA-HTER-COLMENAR-01",
+      "owner_scope": "Junta de Andalucía",
+      "facility_id": "MA-CEDEFO-COLMENAR",
+      "resource_class": "HTER",
+      "model_class": "ligero",
+      "capabilities": ["air_transport_specialists", "air_water_attack"],
+      "water_capacity_l": 900,
+      "units": 1,
+      "operational_scope": "regional",
+      "source_status": "catalogued_exact"
+    },
+    {
+      "resource_id": "MA-HTER-RONDA-01",
+      "owner_scope": "Junta de Andalucía",
+      "facility_id": "MA-CEDEFO-RONDA",
+      "resource_class": "HTER",
+      "model_class": "semipesado",
+      "capabilities": ["air_transport_specialists", "air_water_attack"],
+      "water_capacity_l": 1300,
+      "units": 1,
+      "operational_scope": "regional",
+      "source_status": "catalogued_exact"
+    },
+    {
+      "resource_id": "MA-HTER-SIERRA-NIEVES-01",
+      "owner_scope": "Junta de Andalucía",
+      "facility_id": "MA-BASE-SIERRA-NIEVES",
+      "resource_class": "HTER",
+      "model_class": "ligero",
+      "capabilities": ["air_transport_specialists", "air_water_attack"],
+      "water_capacity_l": 900,
+      "units": 1,
+      "operational_scope": "regional",
+      "source_status": "catalogued_exact"
+    },
+    {
+      "resource_id": "MA-HTEGC-CARTAMA-01",
+      "owner_scope": "Junta de Andalucía",
+      "facility_id": "MA-BRICA-CARTAMA",
+      "resource_class": "HTEGC",
+      "model_class": "pesado",
+      "capabilities": ["air_transport_brica", "air_water_attack"],
+      "water_capacity_l": 2500,
+      "units": 1,
+      "operational_scope": "regional",
+      "source_status": "catalogued_exact"
+    },
+    {
+      "resource_id": "MA-AA-CL415T-AIRPORT-01",
+      "owner_scope": "MITECO",
+      "facility_id": "MA-AIRPORT",
+      "resource_class": "AA",
+      "model_class": "CL-415 T",
+      "capabilities": ["air_water_attack"],
+      "water_capacity_l": 5500,
+      "units": 1,
+      "operational_scope": "national_external_support",
+      "source_status": "catalogued_exact"
+    }
+  ],
+  "unresolved_ground_pools": [
+    {
+      "facility_id": "MA-CEDEFO-COLMENAR",
+      "resource_class": "specialist_group",
+      "capabilities": ["ground_specialists"],
+      "capacity": null,
+      "reason": "2026 public catalogue gives Andalusia-wide specialist-group totals but not an explicit Málaga/Colmenar allocation"
+    },
+    {
+      "facility_id": "MA-CEDEFO-RONDA",
+      "resource_class": "specialist_group",
+      "capabilities": ["ground_specialists"],
+      "capacity": null,
+      "reason": "2026 public catalogue gives Andalusia-wide specialist-group totals but not an explicit Málaga/Ronda allocation"
+    },
+    {
+      "facility_id": "MA-BASE-SIERRA-NIEVES",
+      "resource_class": "specialist_group",
+      "capabilities": ["ground_specialists"],
+      "capacity": null,
+      "reason": "2026 public catalogue gives Andalusia-wide specialist-group totals but not an explicit base allocation"
+    },
+    {
+      "facility_id": "MA-BRICA-CARTAMA",
+      "resource_class": "BRICA",
+      "capabilities": ["ground_brica"],
+      "capacity": null,
+      "reason": "Cártama is an official BRICA base, but the 12 Andalusia-wide BRICA units are not explicitly allocated by base in the public catalogue"
+    },
+    {
+      "facility_id": "province:malaga",
+      "resource_class": "autobomba",
+      "capabilities": ["ground_water_attack"],
+      "capacity": null,
+      "reason": "2026 public catalogue gives 108 heavy autobombas and 11 tenders Andalusia-wide, without an explicit Málaga allocation"
+    }
+  ],
+  "andALUSIA_context_totals_not_for_provincial_simulation": {
+    "specialist_groups": 269,
+    "support_groups": 42,
+    "bricas": 12,
+    "vehicle_crews": 244,
+    "heavy_autobombas": 108,
+    "water_tenders": 11
+  },
+  "simulation_rule": "Only exact_assets may instantiate operational units in v1.7.2a. unresolved_ground_pools are evidence gaps and MUST NOT be interpreted as zero capacity or estimated capacity."
+}
