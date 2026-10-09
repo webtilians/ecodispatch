@@ -205,7 +205,7 @@ const result={
   routingAudit:HR.audit,
   conditions,robustness
 };
-fs.writeFileSync('web/data/historical-demand-v1.7.1.json',JSON.stringify(result,null,2)+'\\n');
+fs.writeFileSync('web/data/historical-demand-v1.7.1.json',JSON.stringify(result,null,2)+'\n');
 
 const compact={
   version:result.version,benchmark:result.benchmark,confirmatory:false,
@@ -227,7 +227,7 @@ const compact={
     classifications:c.classifications
   }))
 };
-fs.writeFileSync('web/data/historical-demand-v1.7.1-summary.json',JSON.stringify(compact,null,2)+'\\n');
+fs.writeFileSync('web/data/historical-demand-v1.7.1-summary.json',JSON.stringify(compact,null,2)+'\n');
 
 const report=[
   '# Historical Demand Replay v1.7.1 — exploratory results','',
