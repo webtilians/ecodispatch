@@ -1,0 +1,44 @@
+{
+  "version": "1.7.2a",
+  "experiment": "INFOCA multi-resource operational substrate",
+  "confirmatory": false,
+  "status": "design_and_source_substrate_fixed_before_policy_outcomes",
+  "parent": "v1.7.1",
+  "question": "Can EcoDispatch represent an incident as a bundle of heterogeneous resources with independent availability rather than one fire consuming one modeled brigade?",
+  "scope": {
+    "historical_demand": "inherit the frozen 2006-2023 EGIF cohort from v1.7.1",
+    "fleet_reference": "INFOCA 2026 Málaga catalogue; this is a present-day structural reference, not a reconstruction of historical fleet availability",
+    "policy_outcomes_in_1_7_2a": false
+  },
+  "evidence_rules": {
+    "exact_resource_instantiation": "requires an explicit unit and base in an official source",
+    "unknown_capacity": "must remain null/unresolved; never coerce to zero and never estimate by dividing Andalusia totals",
+    "external_assets": "retain ownership/scope and do not silently treat national support as permanently provincial",
+    "no_imputation": true
+  },
+  "resource_model": {
+    "unit_identity": true,
+    "heterogeneous_capabilities": true,
+    "incident_requires_resource_bundle": true,
+    "one_resource_cannot_fill_two_simultaneous_requirement_slots": true,
+    "availability_state_per_resource": true,
+    "release_time_per_resource": true,
+    "partial_bundle_dispatch_primary_model": false,
+    "atomic_bundle_for_architecture_tests": true
+  },
+  "service_time": {
+    "calibrated": false,
+    "status": "sensitivity_only_until INFOCA dispatch/withdrawal records are obtained",
+    "candidate_minutes": [45, 90, 180],
+    "meaning": "architecture stress values, not inferred real INFOCA durations"
+  },
+  "official_fleet_file": "data/operational-replay-v1.7.2a/infoca-2026-malaga-fleet.json",
+  "historical_demand_protocol": "data/historical-demand-v1.7.1/protocol.json",
+  "next_required_evidence": [
+    "Málaga allocation of specialist groups / support groups / autobombas by base or shift",
+    "resource-level activation/departure/arrival/withdrawal/available-again timestamps",
+    "rules for first-attack bundle composition by incident class and escalation level"
+  ],
+  "outcome_gate": "Do not run or publish lambda policy comparisons until the operational resource substrate has enough ground capacity information to avoid a structurally air-only replay.",
+  "claim_scope": "v1.7.2a validates a multi-resource state/availability architecture against exact published 2026 Málaga aerial assets and explicitly records unresolved terrestrial capacity. It is not an operational performance evaluation."
+}
