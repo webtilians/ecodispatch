@@ -351,7 +351,6 @@ def report(data, freeze):
         "This is a modern frozen OSM/OSRM network, not a reconstruction of roads in 2006–2023.",
         "",
         f"Frozen routing SHA-256: `{freeze['routing_sha256']}`.",
-        "",
     ]) + "\n"
 
 
